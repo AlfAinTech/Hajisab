@@ -1,0 +1,90 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Hotel.master.cs" Inherits="UmrahComponents_AdminMasterPages_Hotel" MasterPageFile="~/Admin.master" %>
+<%@ Register Src="~/UmrahComponents/AdminControls/Hotel/HotelList.ascx" TagPrefix="uc2" TagName="HotelList" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+      
+  <%--  <script src="<%# Server.MapPath("~/") %>/Admin/Content/js/jquery-ui.js"></script>
+<script src="<%# Server.MapPath("~/") %>/Admin/Content/js/bootstrap.min.js"></script>
+<script src="<%# Server.MapPath("~/") %>/Components/PageTemplate/Content/js/myScript.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">--%>
+    <script>
+    selectedItem = function(data)
+    {
+       // alert("here");
+        name = "dreamButton_" + data;
+        console.log($("#" + name + ""));
+        e = document.getElementsByName(name);
+        console.log(e);
+        $(e).addClass("active");
+    }
+    function OpenTab(data) {
+        var result = document.getElementsByClassName(data);
+        var p = data[0];
+        x = result[0].parentElement;
+        $(x).addClass("active");
+    }
+</script>
+  <div class="content_wrapper">
+<div class="row" style="margin:0;">
+<div class="col-md-3" style="padding:0;">
+	<div class="col-md-12" id="welcome_nav">
+        <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+            <LoggedInTemplate>
+               <h3><a runat="server" href="~/Account/Manage" title="Manage your account">Good Day, <%: Context.User.Identity.GetUserName()  %>!</a></h3>
+            </LoggedInTemplate>
+        </asp:LoginView>
+	</div>
+
+	<div class="col-md-12" id="side-nav">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <uc2:HotelList runat="server" id="HotelList" OnAddClicked="adbtn_clicked" OnhotelCllicked="hotelClicked_hotelClick" OnActivatePanels="hotelListView_ActivatePanels" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
+	</div>
+</div>
+<div class="col-md-9" style="background-color:#fcfcfc; padding:30px; height:565px;">
+    
+  
+    <asp:HiddenField ID="TabName" runat="server" />
+        <h3 style="margin-top: -20px;">
+            <asp:Label ID="dreamname" runat="server"></asp:Label></h3>
+        <div id="myTabs">
+            <ul class="nav nav-tabs"  runat="server" ID="Ul1" >
+                <li role="presentation" >
+                    <asp:LinkButton ID="basicInfo_link" OnClick="basicInfo_Clicked" class="BasicInfo" runat="server" CausesValidation="False">BasicInfo</asp:LinkButton></li>
+                <li role="presentation">
+                    <asp:LinkButton  ID="accommodation_link" OnClick="accommodation_Clicked" runat="server"  class="Accommodations" CausesValidation="False" >Accommodations</asp:LinkButton></li>
+                 <li role="presentation">
+                    <asp:LinkButton  ID="facilities_link" OnClick="facilities_Clicked" runat="server"  CausesValidation="False" >Facilities</asp:LinkButton></li>
+                 <li role="presentation">
+                    <asp:LinkButton ID="images_link" runat="server" OnClick="images_Clicked"  CausesValidation="False"  >Images</asp:LinkButton></li>
+                 <li role="presentation">
+                    <asp:LinkButton  ID="directions_link" runat="server" OnClick="directions_Clicked"  CausesValidation="False"   >Directions</asp:LinkButton></li>
+            </ul>
+
+
+             <div class="tab-content" style="height: 467px;">
+                   <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                    </asp:ContentPlaceHolder>
+     
+
+            </div>
+       
+    
+</div>
+</div>
+</div></div>
+
+    
+      
+       </asp:Content>
+
+   
+
+   
+    
+ 
+    
+

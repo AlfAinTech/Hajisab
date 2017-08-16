@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin.master" CodeFile="VisaPackage.master.cs" Inherits="UmrahComponents_AdminMasterPages_VisaPackage" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+
+<%--<link rel="stylesheet" href="<%# Server.MapPath("~/") %>/UmrahComponents/Contents/css/bootstrap.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="<%# Server.MapPath("~/") %>/UmrahComponents/Contents/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="<%# Server.MapPath("~/") %>/UmrahComponents/Contents/css/style.css">
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="<%# Server.MapPath("~/") %>/UmrahComponents/Contents/js/bootstrap.js"></script>
+    <script type="text/javascript" src="<%# Server.MapPath("~/") %>/UmrahComponents/Contents/js/myScript.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">--%>
+
+  <div class="content_wrapper">
+<div class="row" style="margin:0;">
+<div class="col-md-3" style="padding:0;">
+	<div class="col-md-12" id="welcome_nav">
+        <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+            <LoggedInTemplate>
+               <h3><a runat="server" href="~/Account/Manage" title="Manage your account">Good Day, <%: Context.User.Identity.GetUserName()  %>!</a></h3>
+            </LoggedInTemplate>
+        </asp:LoginView>
+	</div>
+
+	<div class="col-md-12" id="side-nav">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <%--<uc1:AirLineList runat="server" ID="AirLineList" OnAirLineCllicked="AirLineClicked" OnAddClicked="adbtn_clicked" />--%>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+	</div>
+</div>
+<div class="col-md-9" style="background-color:#fcfcfc; padding:30px; height:565px;">
+    
+  
+    <asp:HiddenField ID="TabName" runat="server" />
+        <h3 style="margin-top: -20px;">
+            <asp:Label ID="dreamname" runat="server"></asp:Label></h3>
+        <div id="myTabs">
+            <%--<ul class="nav nav-tabs"  runat="server" ID="Ul1" >
+                <li role="presentation" >
+                    <asp:LinkButton ID="basicInfo_link" OnClick="basicInfo_Clicked" class="BasicInfo" runat="server" CausesValidation="False">BasicInfo</asp:LinkButton></li>
+                <li role="presentation">
+                    <asp:LinkButton  ID="flight_link" OnClick="flight_Clicked" runat="server"  class="Flight" CausesValidation="False" >Flights</asp:LinkButton></li>
+             </ul>--%>
+
+
+             <div class="tab-content" style="height: 467px;background-color:#ffffff">
+                   <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" >
+        
+                    </asp:ContentPlaceHolder>
+     
+
+            </div>
+       
+    
+</div>
+</div>
+</div></div>
+
+    
+       </asp:Content>
+

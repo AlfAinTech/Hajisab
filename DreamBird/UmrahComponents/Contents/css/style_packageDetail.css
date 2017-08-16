@@ -1,0 +1,458 @@
+body
+{
+	font-family: 'Raleway', sans-serif;
+}
+
+html, body
+{
+    height: 100%;
+}
+
+.header_wrapper nav
+{
+	border-top: 5px solid #8e89b1;
+	background-color: white;
+	background-image: none;
+}
+
+.navbar
+{
+	margin-bottom: 0;
+}
+
+.tint
+{
+	background-color: rgba(0, 0, 0, .6);
+}
+
+.form-control
+{
+	border-radius: 0;
+}
+.dashed
+{
+	margin-top: 25px;
+	border:3px dashed #5cb85c;
+}
+
+.pending
+{
+	background-color: #9d9911;
+	border-radius: 50%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.done
+{
+	background-color: #078606;
+	border-radius: 50%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.slider_wrapper
+{
+	background-image: url(../img/slider_image.jpg);
+	height: 580px;
+	background-position:center;
+	top: -30px;
+
+}
+.ui-datepicker 
+{
+	width:100% !important;
+}
+.slider_wrapper_search
+{
+	background-image: url(../img/slider_image_4.jpg);
+	height: 180px;
+	background-position:center;
+	top: -30px;
+}
+#accommodation h4
+{
+	color: black;
+	text-align: left;
+}
+.slider_wrapper_makkah
+{
+	background-image: url(../img/slider_image_1.jpg);
+	height: 580px;
+	background-position:center;
+	top: -30px;
+}
+
+.slider_wrapper_flight
+{
+	background-image: url(../img/slider_image_3.jpg);
+	height: 580px;
+	background-position:center;
+	top: -30px;
+}
+
+.slider_wrapper_madina
+{
+	background-image: url(../img/slider_image_2.jpg);
+	height: 580px;
+	background-position:center;
+	top: -30px;
+}
+
+#slider_widget
+{
+	margin-top: 4%;
+}
+.nav-jahanzaib > li
+{
+	width:35%;
+	text-align: center;
+}
+
+.nav-tabs > li > a
+{
+	font-size: 1.3em;
+	color: white;
+	border:none;
+}
+.nav-tabs > li.active > a
+{
+	color:white !important;
+}
+.nav-tabs > li.active > a:hover
+{
+	color:white;
+}
+
+.nav-jahanzaib > li.active > a
+{
+	border:none !important;
+	background: rgba(0, 0, 0, .6) !important;
+}
+.nav-jahanzaib > li > a
+{
+	border-radius: 0px;
+	background: rgba(0, 0, 0, .3) !important;
+}
+
+#slider_tabs .tab-pane
+{
+	height:450px;
+	background: rgba(0, 0, 0, .6) !important;
+}
+
+.slider_wrapper h1, h2, h3, h4, h5, h6
+{
+	color:white;
+	text-align: center;
+}
+
+.slider_wrapper .form-control
+{
+	background-color: #808080;
+	border-color: black;
+	color:white;
+}
+
+#slider_widget_item
+{
+	margin-top: 20px; 
+	border: 1px solid black;  
+	background-color: rgba(0, 0, 0, .5);
+}
+
+.slider_wrapper .btn-success
+{
+	border-radius: 0;
+	padding:4px 12px;
+	float:right;
+}
+
+.slider_wrapper .btn-default
+{
+	border-radius: 0;
+	padding:4px 12px;
+	float:right;
+	width: 100%;
+	background-color: #d8d6d6;
+	background-image: none;
+}
+
+.featured_wrapper
+{
+	background-color: #e6e6e6;
+	padding:10px;
+}
+
+.featured_wrapper h2, h3, h4
+{
+	text-align: center; color: white;
+}
+
+.one
+{
+	padding-bottom:20px; 
+	padding-top: 10px; 
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9def5f+0,29bb4e+100 */
+background: #9def5f; /* Old browsers */
+background: -moz-linear-gradient(left,  #9def5f 0%, #29bb4e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #9def5f 0%,#29bb4e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #9def5f 0%,#29bb4e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9def5f', endColorstr='#29bb4e',GradientType=1 ); /* IE6-9 */
+
+}
+
+.two
+{
+	padding-bottom:20px; 
+	padding-top: 10px; 
+background: #f2b074; /* Old browsers */
+background: -moz-linear-gradient(left,  #f2b074 0%, #d77342 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #f2b074 0%,#d77342 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #f2b074 0%,#d77342 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2b074', endColorstr='#d77342',GradientType=1 ); /* IE6-9 */
+
+}
+
+.three
+{
+	padding-bottom:20px; 
+	padding-top: 10px; 
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7791f0+0,46ccd5+100 */
+background: #7791f0; /* Old browsers */
+background: -moz-linear-gradient(left,  #7791f0 0%, #46ccd5 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #7791f0 0%,#46ccd5 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #7791f0 0%,#46ccd5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7791f0', endColorstr='#46ccd5',GradientType=1 ); /* IE6-9 */
+
+}
+
+.four
+{
+	padding-bottom:7px; 
+	padding-top: 5px;  
+	padding-left: 15px;  
+	padding-right: 15px;  
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#55feeb+0,45d5d5+100 */
+background: #55feeb; /* Old browsers */
+background: -moz-linear-gradient(left,  #55feeb 0%, #45d5d5 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #55feeb 0%,#45d5d5 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #55feeb 0%,#45d5d5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#55feeb', endColorstr='#45d5d5',GradientType=1 ); /* IE6-9 */
+
+}
+.slider_wrapper .btn-warning {
+    border-radius: 0;
+    padding: 4px 12px;
+    float: right;
+}
+.featured_package
+{
+	margin-right: 4%;
+	margin-left: 4%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding:0;
+	height: 320px;
+		-webkit-filter: grayscale(25%); /* Safari */
+    filter: grayscale(25%);
+}
+
+.package_title
+{
+	margin-top: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: rgba(70, 55, 52, 0.7);
+}
+
+.package_title_detail
+{
+	margin-right: 50%;
+	margin-left: 5%;
+	padding-top: 5px;
+	padding-left: 25px;
+	padding-bottom: 5px;
+	position: relative;
+	bottom:-70px;
+	background-color: rgba(70, 55, 52, 0.7);
+}
+
+.package_title_search
+{
+	margin-right: 50%;
+	margin-left: 5%;
+	padding-top: 5px;
+	padding-left: 25px;
+	padding-bottom: 5px;
+	position: relative;
+	bottom:-70px;
+	background-color: rgba(70, 55, 52, 0.7);
+}
+#package_detail h3
+{
+	color: black;
+	text-align: left;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.tab-content .form-control
+{
+	border-radius: 0px;
+	height:40px;
+	font-size: 16px;
+}
+.nav-tabs > li > a {
+    border-radius: 0px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #ffffff;
+    background-color: #278ac1;
+    border: 1px solid #dddddd;
+    border-bottom-color: transparent;
+    cursor: default;
+}
+
+#package_detail h5
+{
+	color: black;
+	text-align: left;
+}
+
+#package_detail h4
+{
+	color: black;
+	text-align: left;
+}
+
+.content_wrapper
+{
+	padding-top: 25px;
+}
+.package_title_detail h2
+{
+	text-align: left;
+}
+
+.package_title_search h2
+{
+	text-align: left;
+}
+
+.package_title h5
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+.package_title h6
+{
+	margin-top: 0px;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+#wrapper {
+	background-color: #fff;
+	width: 100%;
+	height: 350px;
+	margin-top: 50px;
+}
+
+#carousel div {
+	text-align: center;
+	width: 200px;
+	height: 230px;
+	padding: 0 20px;
+	float: left;
+	position: relative;
+}
+#carousel div img {
+	border: none;
+	width: 100%;
+	height: auto;
+}
+#carousel div span {
+	display: none;
+}
+#carousel div:hover span,
+#carousel div.hover span {
+	background-color: #333;
+	color: #fff;
+	display: inline-block;
+	width: 100px;
+	padding: 2px 0;
+	margin: 0 0 0 -50px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	border-radius: 3px;
+}
+#pager {
+	text-align: center;
+	padding-top: 20px;
+}
+#pager a {
+	background: #ccc;
+	display: inline-block;
+	border-radius: 5px;
+	width: 10px;
+	height: 10px;
+	margin: 0 2px;
+}
+#pager a.selected {
+	background: #999;
+}
+#pager a:hover {
+	background: #666;
+}
+#pager a span {
+	display: none;
+}
+
+.footer_wrapper
+{
+	background-color: white;
+	color: black;
+}
+
+.footer_wrapper h3, .footer_wrapper h5
+{
+	color: black;
+	text-align: left;
+}
+
+.footer_wrapper h4
+{
+	text-align: right;
+}
+
+.footer_wrapper p
+{
+	text-align: justify;
+}
+
+.breadcrumb
+{
+	margin:0;
+	height:50px;
+}
+.activityLevel {
+    position: relative;
+    padding-top: 10px;
+}
+.sliderLabel
+{
+    position: absolute;
+    top: 0;
+    text-align: center;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 14px;
+    padding: 0 5px;
+    border: 1px solid #888;
+    z-index: 99;
+    margin-left: -4px;
+}

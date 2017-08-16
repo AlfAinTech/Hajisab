@@ -1,0 +1,1 @@
+update DreamLayouts set IsPublicDefaultPage=0

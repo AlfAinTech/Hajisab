@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin.master" CodeFile="Package.master.cs" Inherits="UmrahComponents_AdminMasterPages_Package" %>
+
+<%@ Register Src="~/UmrahComponents/AdminControls/Packages/PackageList.ascx" TagPrefix="uc1" TagName="PackageList" %>
+<%@ Register Src="~/Components/Dreams/DreamListView.ascx" TagPrefix="uc1" TagName="DreamListView" %>
+
+
+
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+   
+  <div class="content_wrapper">
+<div class="row" style="margin:0;">
+<div class="col-md-3" style="padding:0;">
+	<div class="col-md-12" id="welcome_nav">
+        <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+            <LoggedInTemplate>
+               <h3><a runat="server" href="~/Account/Manage" title="Manage your account">Good Day, <%: Context.User.Identity.GetUserName()  %>!</a></h3>
+            </LoggedInTemplate>
+        </asp:LoginView>
+	</div>
+
+	<div class="col-md-12" id="side-nav">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <%--<uc1:PackageList runat="server" ID="PackageList" OnpackageCllicked="packageClicked_packageClick"  OnAddClicked="adbtn_clicked" />--%>
+                <uc1:DreamListView runat="server" ID="DreamListView" OndreamCllicked="packageClicked_packageClick" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
+	</div>
+</div>
+<div class="col-md-9" style="background-color:#fcfcfc; padding:30px; height:565px;">
+    
+  
+    <asp:HiddenField ID="TabName" runat="server" />
+        <h3 style="margin-top: -20px;">
+            <asp:Label ID="dreamname" runat="server"></asp:Label></h3>
+        <div id="myTabs">
+            <ul class="nav nav-tabs"  runat="server" ID="Ul1" >
+                <li role="presentation">
+                    <asp:LinkButton  ID="discount_link" OnClick="discount_Clicked" runat="server"  CausesValidation="False" >Discount Packages</asp:LinkButton></li>
+                  </ul>
+
+
+             <div class="tab-content" style="height: 467px;">
+                   <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                    </asp:ContentPlaceHolder>
+     
+
+            </div>
+       
+    
+</div>
+</div>
+</div></div>
+
+    
+      
+       </asp:Content>
+
+   

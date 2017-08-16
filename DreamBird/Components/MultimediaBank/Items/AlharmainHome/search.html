@@ -1,0 +1,728 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/bootstrap.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="js/bootstrap.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <script src="js/jquery.carouFredSel-6.1.0-packed.js" type="text/javascript"></script>
+        <script>
+          $( function() {
+            $( "#datepicker" ).datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+        } );
+    </script>
+    <script type="text/javascript">
+        $(function() {
+
+            $('#carousel').carouFredSel({
+                width: '100%',
+                items: {
+                    visible: 'odd+2'
+                },
+                scroll: {
+                    pauseOnHover: true,
+                    onBefore: function() {
+                        $(this).children().removeClass( 'hover' );
+                    }
+                },
+                auto: {
+                    items: 1,
+                    easing: 'linear',
+                    duration: 1250,
+                    timeoutDuration: 0
+                },
+                pagination: {
+                    container: '#pager',
+                    items: 1,
+                    duration: 0.5,
+                    queue: 'last',
+                    onAfter: function() {
+                        var cur = $(this).triggerHandler( 'currentVisible' ),
+                        mid = Math.floor( cur.length / 2 );
+
+                        cur.eq( mid ).addClass( 'hover' );
+                    }
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="header_wrapper">
+        <nav class="navbar navbar-default navbar-static-top">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search Packages">
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Featured<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Economy<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Luxury<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posted By Agents<span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+<div class="slider_wrapper_search">
+<div class="package_title_search">
+    <h2>Search Packages</h2>
+</div>
+</div>
+<div class="featured_package_wrapper">
+
+    <div class="col-md-3" style="border:1px solid #e6e6e6; padding-top:15px; ">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Filter Criteria</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-1">
+                <a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+            </div>
+            <div class="col-md-10">Package Month: December</div>
+            <div class="col-md-1">
+                <a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+            </div>
+            <div class="col-md-10">Package Price: PKR 17000</div>
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-danger" style="padding:3px 10px;">Clear</button>
+      </div>
+  </div>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Budget</h3>
+    </div>
+    <div class="panel-body">
+        <h3 style="color:black">75000</h3>
+        <div class="col-md-12">
+            <input type="range" class="form-control" name="">
+        </div>
+    </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  <h3 class="panel-title">Package Month</h3>
+</div>
+<div class="panel-body">
+    <div id="datepicker" style="width:100%"></div>
+</div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Duration of Stay</h3>
+</div>
+<div class="panel-body">
+    <h3 style="color:black">7 Days</h3>
+        <div class="col-md-12">
+            <input type="range" class="form-control" name="">
+        </div>
+</div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Accommodation Type</h3>
+</div>
+<div class="panel-body" id="accommodation">
+    <h4><input type="radio" name=""> 3 Star</h4>
+    <h4><input type="radio" name=""> 4 Star</h4>
+    <h4><input type="radio" name=""> 5 Star</h4>
+</div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Select Flight</h3>
+</div>
+<div class="panel-body" id="accommodation">
+    <select class="form-control">
+        <option>PIA</option>
+        <option>Emirates</option>
+        <option>Qatar Airways</option>
+    </select>
+</div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Distance From Haram</h3>
+</div>
+<div class="panel-body" id="accommodation">
+    <h3 style="color:black">7 KM</h3>
+        <div class="col-md-12">
+            <input type="range" class="form-control" name="">
+        </div>
+</div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Distance From Masjid Nabvi</h3>
+</div>
+<div class="panel-body" id="accommodation">
+    <h3 style="color:black">7 KM</h3>
+        <div class="col-md-12">
+            <input type="range" class="form-control" name="">
+        </div>
+</div>
+</div>
+</div>
+<div class="col-md-9" style="padding-right:10%; padding-left:10%; ">
+    <div class="col-md-5 featured_package tint" style="background-image: url(img/pkg-1.jpg);">
+        <div class="col-md-12">
+            <div class="package_title">
+                <h4>Economy Umra Package</h4></div>
+                <h4>PKR 17000</h4>
+                <div class="package_title" style="margin-top: 7px; height:150px;">
+                    <div class="col-md-12" style=" margin-top: 5px;">
+                        <div class="col-md-2" style="padding:0">
+                            <img src="img/khana_kaba.png" width="100%">
+                        </div>
+                        <div class="col-md-10" style="padding-right:0">
+                            <h5>Hilton Suits Makkah, KSA</h5>
+                            <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                            <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                            <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12" style=" margin-top: 5px;">
+                        <div class="col-md-2" style="padding:0">
+                            <img src="img/mnabvi.png" width="100%">
+                        </div>
+                        <div class="col-md-10" style="padding-right:0">
+                            <h5>Hilton Suits Makkah, KSA</h5>
+                            <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                            <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                            <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding:0; margin-top: 5px;">
+                        <div class="col-md-3">
+                            <img src="img/airline.png" width="100%">
+                        </div>
+                        <div class="col-md-3">
+                            <img src="img/transport.png" width="100%">
+                        </div>
+                        <div class="col-md-3">
+                            <img src="img/vissa.png" width="100%">
+                        </div>
+                        <div class="col-md-3">
+                            <img src="img/mosque.png" width="100%">
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top: 20px;">
+                        <button class="btn btn-success" style="width:100%;">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 featured_package tint" style="background-image: url(img/pkg-2.jpg);">
+            <div class="col-md-12">
+                <div class="package_title">
+                    <h4>Economy Umra Package</h4></div>
+                    <h4>PKR 17000</h4>
+                    <div class="package_title" style="margin-top: 7px; height:150px;">
+                        <div class="col-md-12" style=" margin-top: 5px;">
+                            <div class="col-md-2" style="padding:0">
+                                <img src="img/khana_kaba.png" width="100%">
+                            </div>
+                            <div class="col-md-10" style="padding-right:0">
+                                <h5>Hilton Suits Makkah, KSA</h5>
+                                <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12" style=" margin-top: 5px;">
+                            <div class="col-md-2" style="padding:0">
+                                <img src="img/mnabvi.png" width="100%">
+                            </div>
+                            <div class="col-md-10" style="padding-right:0">
+                                <h5>Hilton Suits Makkah, KSA</h5>
+                                <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="padding:0; margin-top: 5px;">
+                            <div class="col-md-3">
+                                <img src="img/airline.png" width="100%">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="img/transport.png" width="100%">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="img/vissa.png" width="100%">
+                            </div>
+                            <div class="col-md-3">
+                                <img src="img/mosque.png" width="100%">
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 20px;">
+                            <button class="btn btn-success" style="width:100%;">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 featured_package tint" style="background-image: url(img/pkg-3.jpg);">
+                <div class="col-md-12">
+                    <div class="package_title">
+                        <h4>Economy Ziarat Package</h4></div>
+                        <h4>PKR 17000</h4>
+                        <div class="package_title" style="margin-top: 7px; height:150px;">
+                            <div class="col-md-12" style=" margin-top: 5px;">
+                                <div class="col-md-2" style="padding:0">
+                                    <img src="img/khana_kaba.png" width="100%">
+                                </div>
+                                <div class="col-md-10" style="padding-right:0">
+                                    <h5>Hilton Suits Makkah, KSA</h5>
+                                    <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                    <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                    <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12" style=" margin-top: 5px;">
+                                <div class="col-md-2" style="padding:0">
+                                    <img src="img/mnabvi.png" width="100%">
+                                </div>
+                                <div class="col-md-10" style="padding-right:0">
+                                    <h5>Hilton Suits Makkah, KSA</h5>
+                                    <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                    <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                    <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding:0; margin-top: 5px;">
+                                <div class="col-md-3">
+                                    <img src="img/airline.png" width="100%">
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="img/transport.png" width="100%">
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="img/vissa.png" width="100%">
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="img/mosque.png" width="100%">
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 20px;">
+                                <button class="btn btn-success" style="width:100%;">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 featured_package tint" style="background-image: url(img/pkg-1.jpg);">
+                    <div class="col-md-12">
+                        <div class="package_title">
+                            <h4>Economy Umra Package</h4></div>
+                            <h4>PKR 17000</h4>
+                            <div class="package_title" style="margin-top: 7px; height:150px;">
+                                <div class="col-md-12" style=" margin-top: 5px;">
+                                    <div class="col-md-2" style="padding:0">
+                                        <img src="img/khana_kaba.png" width="100%">
+                                    </div>
+                                    <div class="col-md-10" style="padding-right:0">
+                                        <h5>Hilton Suits Makkah, KSA</h5>
+                                        <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                        <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                        <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style=" margin-top: 5px;">
+                                    <div class="col-md-2" style="padding:0">
+                                        <img src="img/mnabvi.png" width="100%">
+                                    </div>
+                                    <div class="col-md-10" style="padding-right:0">
+                                        <h5>Hilton Suits Makkah, KSA</h5>
+                                        <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                        <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                        <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding:0; margin-top: 5px;">
+                                    <div class="col-md-3">
+                                        <img src="img/airline.png" width="100%">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <img src="img/transport.png" width="100%">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <img src="img/vissa.png" width="100%">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <img src="img/mosque.png" width="100%">
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-top: 20px;">
+                                    <button class="btn btn-success" style="width:100%;">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 featured_package tint" style="background-image: url(img/pkg-2.jpg);">
+                        <div class="col-md-12">
+                            <div class="package_title">
+                                <h4>Economy Umra Package</h4></div>
+                                <h4>PKR 17000</h4>
+                                <div class="package_title" style="margin-top: 7px; height:150px;">
+                                    <div class="col-md-12" style=" margin-top: 5px;">
+                                        <div class="col-md-2" style="padding:0">
+                                            <img src="img/khana_kaba.png" width="100%">
+                                        </div>
+                                        <div class="col-md-10" style="padding-right:0">
+                                            <h5>Hilton Suits Makkah, KSA</h5>
+                                            <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                            <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                            <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style=" margin-top: 5px;">
+                                        <div class="col-md-2" style="padding:0">
+                                            <img src="img/mnabvi.png" width="100%">
+                                        </div>
+                                        <div class="col-md-10" style="padding-right:0">
+                                            <h5>Hilton Suits Makkah, KSA</h5>
+                                            <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                            <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                            <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="padding:0; margin-top: 5px;">
+                                        <div class="col-md-3">
+                                            <img src="img/airline.png" width="100%">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <img src="img/transport.png" width="100%">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <img src="img/vissa.png" width="100%">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <img src="img/mosque.png" width="100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top: 20px;">
+                                        <button class="btn btn-success" style="width:100%;">Book Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 featured_package tint" style="background-image: url(img/pkg-3.jpg);">
+                            <div class="col-md-12">
+                                <div class="package_title">
+                                    <h4>Economy Ziarat Package</h4></div>
+                                    <h4>PKR 17000</h4>
+                                    <div class="package_title" style="margin-top: 7px; height:150px;">
+                                        <div class="col-md-12" style=" margin-top: 5px;">
+                                            <div class="col-md-2" style="padding:0">
+                                                <img src="img/khana_kaba.png" width="100%">
+                                            </div>
+                                            <div class="col-md-10" style="padding-right:0">
+                                                <h5>Hilton Suits Makkah, KSA</h5>
+                                                <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                                <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                                <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style=" margin-top: 5px;">
+                                            <div class="col-md-2" style="padding:0">
+                                                <img src="img/mnabvi.png" width="100%">
+                                            </div>
+                                            <div class="col-md-10" style="padding-right:0">
+                                                <h5>Hilton Suits Makkah, KSA</h5>
+                                                <div class="col-md-4" style="padding:0;"><h6 style="font-size: .8em;"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></h6></div>
+                                                <div class="col-md-4" style="padding:0"><h6>5 Nights</h6></div>
+                                                <div class="col-md-4" style="padding:0"><h6>4.5 km</h6></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="padding:0; margin-top: 5px;">
+                                            <div class="col-md-3">
+                                                <img src="img/airline.png" width="100%">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="img/transport.png" width="100%">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="img/vissa.png" width="100%">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="img/mosque.png" width="100%">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="margin-top: 20px;">
+                                            <button class="btn btn-success" style="width:100%;">Book Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="text-align: center;">
+                                <h2><a href="#">Load More</a></h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <h2 style="color:black">Our Top Agents</h2>
+                            <div id="wrapper">
+                                <div id="carousel">
+                                    <div>
+                                        <img src="img/01.png" alt="fruit1" width="200" height="200" />
+                                        <span>Apple</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/02.png" alt="fruit2" width="200" height="200" />
+                                        <span>Mandarin</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/03.png" alt="fruit3" width="200" height="200" />
+                                        <span>Banannas</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/04.png" alt="fruit4" width="200" height="200" />
+                                        <span>Cherries</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/05.png" alt="fruit5" width="200" height="200" />
+                                        <span>Orange</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/06.png" alt="fruit6" width="200" height="200" />
+                                        <span>Melon</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/07.png" alt="fruit7" width="200" height="200" />
+                                        <span>Lemon</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/08.png" alt="fruit8" width="200" height="200" />
+                                        <span>Grapes</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/09.png" alt="fruit9" width="200" height="200" />
+                                        <span>Peach</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/10.png" alt="fruit10" width="200" height="200" />
+                                        <span>Pear</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/11.png" alt="fruit11" width="200" height="200" />
+                                        <span>Strawberry</span>
+                                    </div>
+                                    <div>
+                                        <img src="img/12.png" alt="fruit12" width="200" height="200" />
+                                        <span>Melon</span>
+                                    </div>
+                                </div>
+                                <div id="pager"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="background-color: #e6e6e6">
+                            <h2 style="color:black">Client's Testimonials</h2>
+                            <div class="col-md-12" style="padding-right: 100px; margin-top: 50px; margin-bottom: 50px; padding-left: 100px;">
+                                <div class="col-md-6" style="padding-right: 50px; padding-left: 50px;">
+                                    <div class="col-md-2" style="padding:0">
+                                        <img src="img/me.jpg" width="100%">
+                                    </div>
+                                    <div class="col-md-10" style="padding:5px; background-color: white;">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur a dipiscing elit. Etiam tincidunt varius felis, non sodales neque faucibus a. Curabitur mollis in justo id vehicula.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="padding-right: 50px; padding-left: 50px;">
+                                    <div class="col-md-2" style="padding:0">
+                                        <img src="img/me.jpg" width="100%">
+                                    </div>
+                                    <div class="col-md-10" style="padding:5px; background-color: white;">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt varius felis, non sodales neque faucibus a. Curabitur mollis in justo id vehicula.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container" style="padding-right: 300px; padding-left: 300px;">
+                                <div class="col-md-12" style="padding-right: 50px; padding-left: 50px;">
+                                    <div class="col-md-2" style="padding:0">
+                                        <img src="img/me.jpg" width="100%">
+                                    </div>
+                                    <div class="col-md-10" style="padding:5px; background-color: white;">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt varius felis, non sodales neque faucibus a. Curabitur mollis in justo id vehicula.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding-right: 100px; margin-top: 50px; margin-bottom: 50px; padding-left: 100px;">
+                                <div class="col-md-6" style="padding-right: 50px; padding-left: 50px;">
+                                    <div class="col-md-2" style="padding:0">
+                                        <img src="img/me.jpg" width="100%">
+                                    </div>
+                                    <div class="col-md-10" style="padding:5px; background-color: white;">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur a dipiscing elit. Etiam tincidunt varius felis, non sodales neque faucibus a. Curabitur mollis in justo id vehicula.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="padding-right: 50px; padding-left: 50px;">
+                                    <div class="col-md-2" style="padding:0">
+                                        <img src="img/me.jpg" width="100%">
+                                    </div>
+                                    <div class="col-md-10" style="padding:5px; background-color: white;">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt varius felis, non sodales neque faucibus a. Curabitur mollis in justo id vehicula.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_wrapper">
+                        <div class="col-md-12">
+                            <div class="container">
+                                <div class="col-md-4">
+                                    <h3 style="color: black; text-align: left;">
+                                        About Alharmain.org
+                                    </h3>
+                                    <p>
+                                        In hendrerit lorem in tellus aliquet, eu posuere nibh tempor. Nunc convallis tortor nec diam fringilla, in viverra urna tristique. Curabitur volutpat eu odio tempor ultricies. Duis accumsan posuere nisi, ut bibendum lacus feugiat a. Ut sagittis est nec ligula viverra, a aliquet dui cursus. Duis ac dolor non tortor varius condimentum. Maecenas efficitur faucibus turpis, sit amet dictum turpis. Vestibulum convallis, nulla ac faucibus pellentesque, lectus nibh vehicula quam, eget sollicitudin arcu sapien eget dolor. Sed sed ligula fringilla, hendrerit nunc id, tincidunt magna. Integer vel tristique massa.
+                                    </p>
+                                </div>
+                                <div class="col-md-5" style="padding:0">
+                                    <div class="col-md-12">
+                                        <div class="col-md-2" style="padding:25px; padding-right:0; padding-left: 50px;">
+                                            <img src="img/phone.png" width="100%">
+                                        </div>
+                                        <div class="col-md-10" style="padding:15px;">
+                                            <h4 style="color: black; text-align: left;">+92-321 8818813</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top:-25px;">
+                                        <div class="col-md-2" style="padding:25px; padding-right:0; padding-left: 50px;">
+                                            <img src="img/mail.png" width="100%">
+                                        </div>
+                                        <div class="col-md-10" style="padding:15px;">
+                                            <h4 style="color: black; text-align: left;">info@alharmain.org</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" style="margin-top:-25px;">
+                                        <div class="col-md-2" style="padding:25px; padding-right:0; padding-left: 50px;">
+                                            <img src="img/address.png" width="100%">
+                                        </div>
+                                        <div class="col-md-10" style="padding:15px;">
+                                            <h4 style="color: black; text-align: left;">162-H, Block-C, DHA Phase-6, Lahore, Punjab, Pakistan</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" style="float:right">
+                                    <div class="col-md-12" style="padding:0"><div class="col-md-3" style="padding:15px;">
+                                        <img src="img/fb_icon.png" width="100%">
+                                    </div>
+                                    <div class="col-md-3" style="padding:15px;">
+                                        <img src="img/g+.png" width="100%">
+                                    </div>
+                                    <div class="col-md-3" style="padding:15px;">
+                                        <img src="img/linkedin-icon.png" width="100%">
+                                    </div>
+                                    <div class="col-md-3" style="padding:15px;">
+                                        <img src="img/twiiter-icon.png" width="100%">
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding:0">
+                                    <h4>
+                                        <a href="#">Privacy Policy</a>
+                                    </h4>
+                                </div>
+                                <div class="col-md-12" style="padding:0">
+                                    <h4>
+                                        <a href="#">Terms & Conditions</a>
+                                    </h4>
+                                </div>
+                                <div class="col-md-12" style="padding:0">
+                                    <h4>
+                                        <a href="#">Cookie Policy & client side regulations</a>
+                                    </h4>
+                                </div>
+                                <div class="col-md-12" style="padding:0">
+                                    <h4>
+                                        <a href="#">About Alfain Technologies (Pvt) Limited</a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-md-12" style="padding:0;">
+                        <div class="breadcrumb">
+                            <div class="container">
+                                <h5>Copyrights &copy 2016, Al-Harmain Travellers, All Rights Reserved</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+            </html>

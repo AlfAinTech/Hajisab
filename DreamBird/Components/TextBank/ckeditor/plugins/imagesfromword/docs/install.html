@@ -1,0 +1,76 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ImagesFromWord plugin</title>
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>ImagesFromWord Plugin for CKEditor</h1>
+
+<h2>Introduction</h2>
+<p>This is a plugin for <a href="http://www.ckeditor.com">CKEditor</a> that enhances SimpleUploads to detect Images pasted from MS Word.</p>
+
+<h3 id="contact">Author:</h3>
+<p><a href="mailto:soporte@uritec.es">Uritec SL</a></p>
+
+<h3>Version history: </h3>
+<p>This version: 1.1.2</p>
+<p><a href="https://www.pluginsforckeditor.com/Image-Plugins/72/ImagesFromWord-Support#history">Check online for updates and full history</a></p>
+
+<h2>Installation</h2>
+<h3>1. Copying the files</h3>
+<p>Extract the contents of the zip in you plugins directory, so it ends up like
+    this<br>
+    <!--<img src="installation.png" alt="Screenshot of installation" width="311" height="346" longdesc="#install">-->
+    </p>
+<pre id="--install">
+ckeditor\
+	...
+	images\
+	lang\
+	plugins\
+		...
+		imagesfromword\
+			plugin.js
+			dialogs\
+			docs\
+			lang\
+		...
+	skins\
+	themes\
+</pre>
+<h3>2. Adding it to CKEditor</h3>
+<p>Now add the plugin in your <em>config.js</em> or custom js configuration file:
+<code>config.extraPlugins='imagesfromword'; </code>
+If you're already using other extraPlugins, you must add it to the same setting, adding a comma:
+<code>config.extraPlugins='simpleuploads,imagesfromword'; </code>
+</p>
+<p>If you have problems, please <a href="http://www.uritec.es/portal/seccion.aspx?N=73">check the FAQ</a></p>
+
+<h3>3. Configuration</h3>
+<p>Currently there are no configuration options for this plugin</p>
+
+<h3>4. Translations</h3>
+<p>To add a new translation open plugin.js and search for "translations", it's at line 14 and add your language (the example is based on adding Polish 'pl' ).
+  <code>    // translations
+    lang : 'en,es',</code>
+to<code>    // translations
+    lang : 'en,es,pl',</code></p>
+<p>
+Then in the lang folder copy the en.js to pl.js, edit that file and in the first line set your language:
+<code>CKEDITOR.addPluginLang( "imagesfromword", "pl",</code>
+and finally, translate all the text between quotes :-)</p>
+<p>If you send it back to us, we will include it in the next versions.</p>
+
+<!--
+<h2>Final notes</h2>
+-->
+
+<h2>Disclaimers</h2>
+ImagesFromWord plugin is &copy; Uritec S.L.<br>
+SimpleUploads plugin is &copy; Alfonso Martínez de Lizarrondo<br>
+CKEditor is &copy; CKSource<br>
+</body>
+</html>
