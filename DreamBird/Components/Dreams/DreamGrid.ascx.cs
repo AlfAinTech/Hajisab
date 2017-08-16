@@ -49,6 +49,31 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
             rptr_dream_pagination.Visible = false;
         }
     }
+    private void BindSearchedDreams(List<Dream> DreamList)
+    {
+        DreamBirdEntities db = new DreamBirdEntities();
+        //int DreamTypeID = Convert.ToInt32(ddl_DreamCat.SelectedItem.Value);
+        //var DreamList = db.Dreams.Where(w => w.dreamTypeID == DreamTypeID).ToList();
+        PagedDataSource pds = new PagedDataSource();
+        int totalcount = 12;
+        int currentcount = 0;
+        pds.DataSource = DreamList;
+        pds.AllowPaging = true;
+        pds.PageSize = totalcount;
+        pds.CurrentPageIndex = (int)ViewState["PageNo"];
+        rptr_dreamGrid.DataSource = pds;
+        rptr_dreamGrid.DataBind();
+        currentcount = DreamList.Count;
+        if (totalcount != 0)
+        {
+            decimal pageNo = Math.Ceiling((Convert.ToDecimal(currentcount) / Convert.ToDecimal(totalcount)));
+            PopulatePager(pageNo, currentcount, totalcount);
+        }
+        else if (currentcount <= totalcount)
+        {
+            rptr_dream_pagination.Visible = false;
+        }
+    }
 
     private void PopulatePager(decimal recordCount, int totalrecords, int limit)
     {
@@ -119,8 +144,7 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
 
         if (result.Count() > 0)
         {
-            rptr_dreamGrid.DataSource = result.ToList();
-            rptr_dreamGrid.DataBind();
+            BindSearchedDreams(result.ToList());
         }
         else
         {// ShowError("No items match your search");

@@ -5,8 +5,8 @@
 <%@ Register Src="~/Components/PageTemplate/LayoutsList.ascx" TagPrefix="uc1" TagName="LayoutsList" %>
 <%@ Register Src="~/Components/PageTemplate/PageTemplate.ascx" TagPrefix="uc1" TagName="PageTemplate" %>
 <%@ Register Src="~/Components/PageTemplate/ControlsList.ascx" TagPrefix="uc1" TagName="ControlsList" %>
-<%@ Register Src="~/Components/PageTemplate/CSSStyler.ascx" TagPrefix="uc1" TagName="CSSStyler" %>
 <%@ Register Src="~/Components/LessonMenu/LessonMenuList.ascx" TagPrefix="uc1" TagName="LessonMenuList" %>
+<%@ Register Src="~/Components/PageTemplate/CSSStyler.ascx" TagPrefix="uc1" TagName="CSSStyler" %>
 <%@ Register Src="~/Components/PageTemplate/DreamsandPages.ascx" TagPrefix="uc1" TagName="DreamsandPages" %>
 <%@ Register Src="~/Components/LessonMenu/LessonMenuAvailability/LessonAvailabilityAdmin.ascx" TagPrefix="uc1" TagName="LessonAvailabilityAdmin" %>
 <%@ Register Src="~/Components/LessonMenu/EditMenuDetails.ascx" TagPrefix="uc1" TagName="EditMenuDetails" %>
