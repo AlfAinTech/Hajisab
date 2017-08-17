@@ -10,7 +10,10 @@ public partial class UmrahComponents_AdminMasterPages_Hotel : System.Web.UI.Mast
     public static int selected_id=0;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if(Request.QueryString["hotelID"] != null)
+        {
+            selected_id = int.Parse(Request.QueryString["hotelID"].ToString());
+        }
     }
     protected void basicInfo_Clicked(object sender, EventArgs e)
     {

@@ -22,7 +22,7 @@
             <div class="col-md-12" >
                 <div class="btn btn-primary" style="background:#333333">
             <div class="col-md-8"> <asp:Label ID="name_txt" Text='<%# Eval("Name") %>' runat="server" Enabled="false" style="color:white"></asp:Label></div>
-            <div class="col-md-2"  ><asp:CheckBox ID="available_chk"  Checked='<%# Eval("availability") %>' runat="server"  Enabled="false" /></div>
+            <div class="col-md-2"  ><asp:CheckBox ID="available_chk"   Checked='<%# Eval("availability") %>' runat="server"  Enabled="false" /></div>
             </div>
                 </div>
              <div class="col-md-12">
@@ -58,7 +58,7 @@
                     </td>
                     <td>
                         <asp:TextBox runat="server" ID="addName_txt" type="text" class="form-control" placeholder="Facility Name" name=""></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="addName_txt" Font-Size="X-Large" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="addName_txt" Font-Size="X-Large" ForeColor="Red"  Display="Dynamic" SetFocusOnError="true"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                         <asp:CheckBox runat="server" ID="Addavailable_chk" AutoPostBack="false" class="form-control" placeholder="Price" name=""></asp:CheckBox>

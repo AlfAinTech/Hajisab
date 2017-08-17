@@ -123,7 +123,7 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
         DreamBirdEntities db = new DreamBirdEntities();
         String uid = HttpContext.Current.User.Identity.GetUserId();
         //  int dream_id = db.Dreams.Where(dream => dream.DreamName == dream_name).First().id;
-        List<Dream> result = new List<Dream>();
+        List<Dream> result = new List<Dream>(); 
         List<int?> taglist = new List<int?>();
         List<int?> dreamTagList = new List<int?>();
         if (db.Tags.Any(a => a.Name == searched_text))

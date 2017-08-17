@@ -121,7 +121,7 @@ public partial class UmrahComponents_AdminControls_Hotel_BasicInfo : System.Web.
 
            // MediaBank.setMediaItem(selected_hotel_img.id);
             ViewState["selectedImageID"] = selected_hotel_img.id;
-
+            hotelImg_id.Text = selected_hotel_img.id.ToString();
             if (selected_hotel_img.mediaType == "Image")
             {
                 hotel_img.ImageUrl = selected_hotel_img.Path100;

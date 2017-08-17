@@ -188,35 +188,35 @@ public partial class UmrahComponents_AdminControls_Packages_PackageDetail : Syst
 
                 if (isZiarat_chk.Checked) { pd.ziaratID = int.Parse(ziarat_list.SelectedValue); }
                 db.PackageDetails.Add(pd);
-
+                //=================================Code for Creating by default detail anf booking page
                 //save two pages pkg detail and Booking Form first time
-                ClientLayout cl_detail = db.ClientLayouts.Where(q=>q.layoutName == "UmrahDetail").First();
-                ClientLayout cl_bookingForm = db.ClientLayouts.Where(q => q.layoutName == "BookingForm").First();
-                DreamLayout dl_detail = new DreamLayout
-                {
-                    DreamID= DreamID,
-                    IsPublished=true,
-                    Layout = cl_detail.layoutContent,
-                    Page="umrahDetail",
-                    IsUserDefaultPage=false,
-                    LayoutType="Normal",
-                };
-                DreamLayout dl_bookingForm = new DreamLayout
-                {
-                    DreamID = DreamID,
-                    IsPublished = true,
-                    Layout = cl_bookingForm.layoutContent,
-                    Page = "bookingForm",
-                    IsUserDefaultPage = false,
-                    LayoutType = "Normal",
-                };
-                db.DreamLayouts.Add(dl_detail);
-                db.DreamLayouts.Add(dl_bookingForm);
-                db.SaveChanges();
-                String content_detail = cl_detail.layoutContent + "SPLITumrahDetailSPLITPageSPLIT" +DreamID+ "SPLITLayout";
-                requestdata(content_detail);
-                String content_form = cl_bookingForm.layoutContent + "SPLITbookingFormSPLITPageSPLIT" + DreamID + "SPLITLayout";
-                requestdata(content_form);
+                //ClientLayout cl_detail = db.ClientLayouts.Where(q=>q.layoutName == "UmrahDetail").First();
+                //ClientLayout cl_bookingForm = db.ClientLayouts.Where(q => q.layoutName == "BookingForm").First();
+                //DreamLayout dl_detail = new DreamLayout
+                //{
+                //    DreamID= DreamID,
+                //    IsPublished=true,
+                //    Layout = cl_detail.layoutContent,
+                //    Page="umrahDetail",
+                //    IsUserDefaultPage=false,
+                //    LayoutType="Normal",
+                //};
+                //DreamLayout dl_bookingForm = new DreamLayout
+                //{
+                //    DreamID = DreamID,
+                //    IsPublished = true,
+                //    Layout = cl_bookingForm.layoutContent,
+                //    Page = "bookingForm",
+                //    IsUserDefaultPage = false,
+                //    LayoutType = "Normal",
+                //};
+                //db.DreamLayouts.Add(dl_detail);
+                //db.DreamLayouts.Add(dl_bookingForm);
+                //db.SaveChanges();
+                //String content_detail = cl_detail.layoutContent + "SPLITumrahDetailSPLITPageSPLIT" +DreamID+ "SPLITLayout";
+                //requestdata(content_detail);
+                //String content_form = cl_bookingForm.layoutContent + "SPLITbookingFormSPLITPageSPLIT" + DreamID + "SPLITLayout";
+                //requestdata(content_form);
 
 
             }
