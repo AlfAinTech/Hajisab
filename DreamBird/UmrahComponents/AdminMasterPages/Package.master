@@ -27,7 +27,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <%--<uc1:PackageList runat="server" ID="PackageList" OnpackageCllicked="packageClicked_packageClick"  OnAddClicked="adbtn_clicked" />--%>
-                <uc1:DreamListView runat="server" ID="DreamListView" OndreamCllicked="packageClicked_packageClick" />
+                <uc1:DreamListView runat="server" ID="DreamListView" OndreamCllicked="packageClicked_packageClick" DreamType="2"  />
             </ContentTemplate>
         </asp:UpdatePanel>
 	</div>

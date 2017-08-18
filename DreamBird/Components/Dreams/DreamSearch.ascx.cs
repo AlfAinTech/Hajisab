@@ -20,8 +20,8 @@ public partial class Components_Dreams_DreamSearch : System.Web.UI.UserControl, 
 
         if (!keyword.Equals(""))
         {
-            EventArgHotelSearch evt = new EventArgHotelSearch();
-            evt.SearchHotelName = keyword;
+            EventArgDreamSearch evt = new EventArgDreamSearch();
+            evt.SearchDreamName = keyword;
             
             if (dreamSearch != null)
                 dreamSearch(this, evt);

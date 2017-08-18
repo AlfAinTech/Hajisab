@@ -60,6 +60,7 @@ public partial class UmrahComponents_AdminControls_Packages_PackageDetail : Syst
         if (data.Count() != 0)
             { 
                 PackageDetail pd = data[0];
+                
                 additionalExp_txt.Text = pd.additionalExpense.ToString();
                 additionalDetail_txt.Text = pd.additionalDetail;
                 startDate.Text = pd.startDate.Value.ToString("yyyy-MM-dd");
@@ -140,7 +141,11 @@ public partial class UmrahComponents_AdminControls_Packages_PackageDetail : Syst
                 pd = data[0];
                 pd.hotelIDMakkah = int.Parse(makkahHotel_list.SelectedValue);
                 pd.hotelIDMadina = int.Parse(hotelMadina_list.SelectedValue);
-                pd.additionalExpense = int.Parse(additionalExp_txt.Text);
+                int additionalExp = 0;
+                if(!string.IsNullOrWhiteSpace(additionalExp_txt.Text))
+                    additionalExp = int.Parse(additionalExp_txt.Text);
+
+                pd.additionalExpense = additionalExp;
                 pd.startDate = DateTime.Parse(startDate.Text.ToString());
                 pd.additionalDetail = additionalDetail_txt.Text;
                 pd.returnFlight = roundTrip_chk.Checked;
@@ -163,22 +168,26 @@ public partial class UmrahComponents_AdminControls_Packages_PackageDetail : Syst
             else
             {
 
-                pd = new PackageDetail
-                {
-                    hotelIDMakkah = int.Parse(makkahHotel_list.SelectedValue),
-                    hotelIDMadina = int.Parse(hotelMadina_list.SelectedValue),
-                    additionalExpense = int.Parse(additionalExp_txt.Text),
-                    additionalDetail = additionalDetail_txt.Text,
-                    nightsInMakkah = int.Parse(nightInMakkah_txt.Text),
-                    nightsInMadina = int.Parse(nightsInMadina_txt.Text),
-                    returnFlight = roundTrip_chk.Checked,
-                    isVisaAvailable = isVisa_chk.Checked,
-                    isTransportAvailable = isTranspost_chk.Checked,
-                    isZiaratAvailable = isZiarat_chk.Checked,
-                    dreamID = DreamID,
-                    startDate = DateTime.Parse(startDate.Text),
-                        packageType=packageType.SelectedValue,
-            };
+                pd = new PackageDetail();
+
+                pd.hotelIDMakkah = int.Parse(makkahHotel_list.SelectedValue);
+                pd.hotelIDMadina = int.Parse(hotelMadina_list.SelectedValue);
+                int additionalExp = 0;
+                if (!string.IsNullOrWhiteSpace(additionalExp_txt.Text))
+                    additionalExp = int.Parse(additionalExp_txt.Text);
+
+                pd.additionalExpense = additionalExp;
+                pd.additionalDetail = additionalDetail_txt.Text;
+                pd.nightsInMakkah = int.Parse(nightInMakkah_txt.Text);
+                pd.nightsInMadina = int.Parse(nightsInMadina_txt.Text);
+                pd.returnFlight = roundTrip_chk.Checked;
+                pd.isVisaAvailable = isVisa_chk.Checked;
+                pd.isTransportAvailable = isTranspost_chk.Checked;
+                pd.isZiaratAvailable = isZiarat_chk.Checked;
+                pd.dreamID = DreamID;
+                pd.startDate = DateTime.Parse(startDate.Text);
+                pd.packageType = packageType.SelectedValue;
+            
                 if (roundTrip_chk.Checked) { pd.returnFlightID = pd.departureFlightID= int.Parse(flight_list.SelectedValue); }
                 else { if (oneWay_chk.Checked) { pd.returnFlightID = int.Parse(flightReturn_list.SelectedValue); pd.departureFlightID = int.Parse(flightDeparture_list.SelectedValue); } }
 
