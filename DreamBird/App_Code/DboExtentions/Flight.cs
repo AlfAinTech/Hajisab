@@ -49,4 +49,15 @@ public partial class Flight
             IsRoundTrip = value;
         }
     }
+    public string getDepartureDate
+    {
+        set
+        {
+            getDepartureDate = value;
+        }
+        get
+        {
+            return departureDate.ToShortDateString().ToString();
+        }
+    }
 }

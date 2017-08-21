@@ -245,7 +245,7 @@
                                             <img src="/chat/contents/img/HajiSb.png" width="100%">
                                             </div>
                                             <div class="col-md-7 hajisb">
-                                                <h6>Type any words… no digits, symbols or special letters!</h6>
+                                                <h6>Haji Sab Available</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -277,7 +277,7 @@
     var count=-1;
     bindMyScript = function (data)
     {
-       
+       console.log(data);
         $(this).attr("CommandArgument", data);
        // $(this).Click();
         __doPostBack('page', data);

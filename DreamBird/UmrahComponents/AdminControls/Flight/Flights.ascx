@@ -21,10 +21,10 @@
         <div class="col-md-3" style="max-height: 250px; padding:20px; margin-top: 15px; margin-bottom: 15px;">
         <div class="col-md-12" style="background-color: #e6e6e6; padding:15px;">
             <div class="col-md-6" style="padding:0"><asp:LinkButton runat="server" CommandArgument='<%# Eval("id") %>' OnClick="openEditPanel" ><h3><%# Eval("Name") %></h3></asp:LinkButton></div>
-            <div class="col-md-6" style="padding:0; text-align: right;"><H5><%# Eval("departureDate") %> </H5></div>
+            <div class="col-md-6" style="padding:0; text-align: right;"><H5><%# Eval("getDepartureDate") %> </H5></div>
             <div class="col-md-12" style="padding:0"><h4><%# Eval("fromCity") %> to <%# Eval("destinationCity") %></h4></div>
             <div class="col-md-6" style="padding:0"><h5>Ecomony Class</h5></div>
-            <div class="col-md-6" style="padding:0"><h5> <%# "Ticket Price: PKR"+Eval("price").ToString() %></h5></div>
+            <div class="col-md-6" style="padding:0"><h5> <%# "Ticket Price: PKR "+Eval("price").ToString() %></h5></div>
             <div class="col-md-6" style="padding:0"><h5><asp:CheckBox ID="one_way_chk" runat="server" name="" Text="One Way" Checked='<%# Eval("IsOneWay") %>' Enabled="False" /></h5></div>
             <div class="col-md-6" style="padding:0"><h5><asp:CheckBox ID="round_trip_chk" runat="server" name="" Text="Round Trip" Checked='<%# Eval("IsRoundTrip") %>' Enabled="False" /></h5></div>
         </div>

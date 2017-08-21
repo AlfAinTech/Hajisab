@@ -30,27 +30,27 @@
         <div class="col-md-12">
           <h5>Name</h5>
                    <asp:TextBox  runat="server" ID="name_txt" class="form-control" name=""/>
-                       <asp:RequiredFieldValidator ID="name_required" runat="server" ErrorMessage="*" ControlToValidate="name_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
+                       <asp:RequiredFieldValidator ID="name_required" ValidationGroup="saveBooking" runat="server" ErrorMessage="*" ControlToValidate="name_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
 
         </div>
         <div class="col-md-12">
                         <h5>Mobile Number</h5>
                         <asp:TextBox  runat="server" ID="mobile_txt" class="form-control" name=""  />
-                       <asp:RequiredFieldValidator ID="name_required0" runat="server" ErrorMessage="*" ControlToValidate="mobile_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
-              <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
-                   ControlToValidate="mobile_txt" ValidationExpression="\(?\d{3}\)?-? *\d{3}-? *-?\d{4}"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
+                       <asp:RequiredFieldValidator ValidationGroup="saveBooking" ID="name_required0" runat="server" ErrorMessage="*" ControlToValidate="mobile_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
+              <asp:RegularExpressionValidator ValidationGroup="saveBooking" ID="RegularExpressionValidator4" runat="server"
+                   ControlToValidate="mobile_txt" ValidationExpression="\(?\d{4}\)?-? *\d{3}-? *-?\d{4}"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
          </div>
           <div class="col-md-12">
                <h5>Email Address</h5>
                    <asp:TextBox  runat="server" ID="email_txt" class="form-control" name=""/>
-                       <asp:RequiredFieldValidator ID="name_required1" runat="server" ErrorMessage="*" ControlToValidate="email_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server"
+                       <asp:RequiredFieldValidator ValidationGroup="saveBooking" ID="name_required1" runat="server" ErrorMessage="*" ControlToValidate="email_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ValidationGroup="saveBooking" ID="RegularExpressionValidator5" runat="server"
                    ControlToValidate="email_txt" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
           </div>
           <div class="col-md-12">
                <h5>Contact Address</h5>
                    <textarea class="form-control" runat="server" ID="contect_txt" style="height: 100px;"></textarea>
-                       <asp:RequiredFieldValidator ID="name_required2" runat="server" ErrorMessage="*" ControlToValidate="contect_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
+                       <asp:RequiredFieldValidator ValidationGroup="saveBooking" ID="name_required2" runat="server" ErrorMessage="*" ControlToValidate="contect_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
 
           </div>
         <%--  <div class="col-md-12">
@@ -182,7 +182,7 @@
               </div>
         </div>
         <div class="row">
-                   <asp:Button runat="server" ID="saveUser" class="btn btn-primary" style="width:100%" Text="Complete your booking" OnClick="saveUser_Click"/>
+                   <asp:Button runat="server" ID="saveUser" class="btn btn-primary" style="width:100%" Text="Complete your booking" OnClick="saveUser_Click" ValidationGroup="saveBooking"/>
                    <h6 style="color:black;">By clicking above, you agree to our <a href="">Terms and Conditions</a></h6>
                
             </div>     

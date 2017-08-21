@@ -136,7 +136,12 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
         PackageDetail pd = db.PackageDetails.Where(q => q.id == pkgID).First();
         
         totalnights.Text = pd.getTotelNights.ToString();
-        duration.Text = pd.startDate.Value.Day.ToString() + "-" + (pd.startDate.Value.AddDays(pd.getTotelNights)).Day.ToString() + " " + pd.startDate.Value.ToString("MMMM", CultureInfo.InvariantCulture) + ", " + pd.startDate.Value.Year.ToString();
+        string durationtxt = "";
+        if (pd.startDate.Value.Month == pd.startDate.Value.AddDays(pd.getTotelNights).Month)
+            durationtxt = pd.startDate.Value.Day.ToString() + "-" + (pd.startDate.Value.AddDays(pd.getTotelNights)).Day.ToString() + " " + pd.startDate.Value.ToString("MMMM", CultureInfo.InvariantCulture) + ", " + pd.startDate.Value.Year.ToString();
+        else
+            durationtxt = pd.startDate.Value.Day.ToString() + "-" + (pd.startDate.Value.AddDays(pd.getTotelNights)).Day.ToString() + " " + pd.startDate.Value.ToString("MMMM", CultureInfo.InvariantCulture) + ", "+ pd.startDate.Value.AddDays(pd.getTotelNights).ToString("MMMM", CultureInfo.InvariantCulture) + ", " + pd.startDate.Value.Year.ToString();
+        duration.Text = durationtxt;
         itenry_list.DataSource = tripDetailList.DataSource = db.PackageItenryDetails.Where(q => q.packageDetailID == pkgID && q.alharmainUserID == Session.SessionID).ToList();
         itenry_list.DataBind();
         tripDetailList.DataBind();
