@@ -9,7 +9,17 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
+     <script>
+         selectedPackage = function (data)
+    {
+       name = data + "_PackageButton";
+        console.log(name);
+        e = document.getElementsByName(name);
+        console.log(e);
+        $(e).addClass("active");
+    }
+   
+</script>
    
   <div class="content_wrapper">
 <div class="row" style="margin:0;">

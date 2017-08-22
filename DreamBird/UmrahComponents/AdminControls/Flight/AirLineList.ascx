@@ -13,7 +13,7 @@
         <div class="list-group">
     </HeaderTemplate>
     <ItemTemplate>
-        <asp:LinkButton ID="airlineName" Text='<%# Eval("Name") %>' CssClass="list-group-item" CommandArgument='<%# Eval("id")%>' OnClick="airLine_btn_Click" CausesValidation="false" runat="server"></asp:LinkButton>
+        <asp:LinkButton ID="airlineName" Text='<%# Eval("Name") %>'  name='<%# "AirLineButton_"+Eval("id").ToString() %>' CssClass="list-group-item" CommandArgument='<%# Eval("id")%>' OnClick="airLine_btn_Click" CausesValidation="false" runat="server"></asp:LinkButton>
     </ItemTemplate>
     <FooterTemplate>
        </div>

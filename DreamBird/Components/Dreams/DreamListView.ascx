@@ -15,7 +15,7 @@
                 </HeaderTemplate>
                 <ItemTemplate>
 
-                    <asp:LinkButton ID="dreamName" Text='<%# Eval("DreamName") %>' CssClass="list-group-item" CommandArgument='<%# Eval("id")%>' OnClick="dream_btn_Click" CausesValidation="false" runat="server"></asp:LinkButton>
+                    <asp:LinkButton ID="dreamName" Text='<%# Eval("DreamName") %>' CssClass="list-group-item" CommandArgument='<%# Eval("id")%>' name='<%# Eval("id").ToString()+"_PackageButton" %>' OnClick="dream_btn_Click" CausesValidation="false" runat="server"></asp:LinkButton>
                 </ItemTemplate>
                 <FooterTemplate>
                     </div>

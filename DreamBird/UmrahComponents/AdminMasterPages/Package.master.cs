@@ -34,15 +34,8 @@ public partial class UmrahComponents_AdminMasterPages_Package : System.Web.UI.Ma
     {
         EventArgDreamEdit evt = (EventArgDreamEdit)e;
         int did = evt.DreamEditID;
-        DreamBirdEntities db = new DreamBirdEntities();
-        var data = db.PackageDetails.Where(q => q.dreamID == did).ToList();
-        if (data.Count() != 0)
-        {
-            PackageDetail pd = data[0];
-            selected_id = pd.id;
-            ViewState["SelectedPackageID"] = pd.id;
-            Response.Redirect("~/UmrahComponents/AdminPages/Package/PackageDiscount?packageID=" + pd.id);
-        }
+        
+            Response.Redirect("~/UmrahComponents/AdminPages/Package/PackageDiscount?packageID=" + did);
 
 
     }

@@ -19,7 +19,7 @@ public partial class UmrahComponents_AdminControls_Packages_DiscountPackages : S
         DreamBirdEntities db = new DreamBirdEntities();
         if(Request.QueryString["packageID"] != null) {
             int package_id = int.Parse(Request.QueryString["packageID"].ToString());
-        packages_list.DataSource = db.DiscountPackages.Where(q=>q.packageDetailID==package_id).ToList();
+        packages_list.DataSource = db.DiscountPackages.Where(q=>q.PackageDetail.dreamID==package_id).ToList();
         packages_list.DataBind();
         }
         // ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "a_keys", "OpenTab('Accommodations')", true);
