@@ -8,7 +8,25 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-
+      <script>
+    selectedFlight = function(data)
+    {
+       // alert("here");
+        name = "AirLineButton_" + data;
+        console.log($("#" + name + ""));
+        e = document.getElementsByName(name);
+        console.log(e);
+        $(e).addClass("active");
+    }
+    OpenTab = function(data) {
+        var result = document.getElementsByClassName(data);
+        console.log(data);
+        var p = data[0];
+        x = result[0].parentElement;
+        console.log(x)
+        $(x).addClass("active");
+    }
+</script>
 
 
   <div class="content_wrapper">

@@ -13,6 +13,7 @@ public partial class UmrahComponents_AdminPages_Flight_AirLineFlight : System.We
         {
             int airLineID_id = int.Parse(Request.QueryString["airLineID"]);
             Flights.bindData(airLineID_id);
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "keytab", "selectedFlight('" + airLineID_id + "');OpenTab('Flight');", true);
         }
     }
 

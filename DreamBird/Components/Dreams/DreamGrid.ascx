@@ -1,47 +1,69 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="DreamGrid.ascx.cs" Inherits="Components_Dreams_DreamGrid" %>
 
-<div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px;">
-    <div class="col-md-3">
-        <asp:DropDownList ID="ddl_DreamCat" OnSelectedIndexChanged="ddl_DreamCat_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control" runat="server">
-        </asp:DropDownList>
-    </div>
-    <div class="col-md-9">
-        <div class="row">
-            <!-- /.col-lg-6 -->
-            <div class="col-lg-12">
-                <div class="input-group">
-                    <asp:TextBox ID="dream_keyword" class="form-control" placeholder="Search Dreams" runat="server"></asp:TextBox>
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" causesvalidation="false" id="search_dream_button" runat="server" onserverclick="search_dream_button_ServerClick" type="button">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                        </button>
-                    </span>
-                </div>
-                <!-- /input-group -->
-            </div>
-            <!-- /.col-lg-6 -->
-        </div>
-        <!-- /.row -->
-    </div>
 
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-12">
+                    <asp:Panel DefaultButton="search_dream_button" runat="server" CssClass="input-group blogsearch">
+                        <asp:TextBox ID="dream_keyword" class="form-control" placeholder="Search Dreams" runat="server"></asp:TextBox>
+                        <span class="input-group-btn">
+                            <asp:LinkButton  class="btn btn-primary" validationgroup="SearchDream"  ID="search_dream_button" runat="server"  OnClick="search_dream_button_ServerClick">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </asp:LinkButton>
+                        </span>
+                    </asp:Panel>
+                    <!-- /input-group -->
+                    <%--<asp:Panel DefaultButton="search_dream_button" runat="server" CssClass="input-group blogsearch">
+                        <asp:TextBox ID="dream_keyword" CssClass="form-control" runat="server" Width="100%" Placeholder="Search for..."></asp:TextBox>
+                        <span class="input-group-btn">
+                            <asp:LinkButton ID="search_dream_button" onserverclick="search_dream_button_ServerClick"  runat="server" CssClass="btn btn-default"><i class="fa fa-search"></i></asp:LinkButton>
+                    </span>
+                                            <asp:RequiredFieldValidator ID="req_dream_keyword" ControlToValidate="dream_keyword" ValidationGroup="SearchDream" runat="server" ErrorMessage="Field Required"></asp:RequiredFieldValidator>
+
+                    </asp:Panel>--%>
+
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <div class="col-md-3">
+            <asp:DropDownList ID="ddl_DreamCat" OnSelectedIndexChanged="ddl_DreamCat_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control" runat="server">
+            </asp:DropDownList>
+        </div>
+    </div>
 </div>
 <div class="col-md-12">
-    <asp:Repeater ID="rptr_dreamGrid" runat="server">
-        <ItemTemplate>
-            <div class="col-md-2" style="margin-top: 10px; margin-bottom: 5px;">
-                <div class="col-md-12" style="background-color: #e6e6e6; padding: 15px;">
-                    <div class="col-md-12" style="padding: 0;">
-                        <asp:Image ID="img_dream" ImageUrl='<%# Eval("MediaItem.Path500") %>' runat="server" Width="100%" />
-                    </div>
-                    <div class="col-md-12">
-                        <asp:LinkButton ID="lb1" CommandName='<%# Eval("id") %>' CausesValidation="false" OnClick="lb1_Click" runat="server">
-                        <h4 style="text-align: center;"><%# Eval("DreamName") %></h4></asp:LinkButton>
+    <h5>Showing
+        <asp:Label ID="current_count" runat="server" Text="0"></asp:Label>
+        of
+        <asp:Label ID="total_count" runat="server" Text="0"></asp:Label>
+        Dream(s)</h5>
+    <div class="row">
+        <asp:Repeater ID="rptr_dreamGrid" runat="server">
+            <ItemTemplate>
+                <div class="col-md-2" style="margin-top: 10px; margin-bottom: 5px;">
+                    <div class="col-md-12" style="background-color: #e6e6e6; height: 165px; padding:10px;">
+
+                        <asp:HyperLink ID="lb1" CommandName='<%# Eval("id") %>' CausesValidation="false" NavigateUrl='<%# "../../Admin/DreamPreview?DID="+Eval("id") %>' runat="server">
+                            <div class="col-md-12" style="padding: 0;">
+                                <asp:Image ID="img_dream" ImageUrl='<%# Eval("MediaItem.Path500") %>' runat="server" Width="100%" />
+                            </div>
+                            <div class="col-md-12">
+
+                                <h5 style="text-align:center; nowrap; overflow:hidden; text-overflow:ellipsis;"><%# Eval("DreamName") %></h5>
+                            </div>
+                        </asp:HyperLink>
                     </div>
                 </div>
-            </div>
-             <div style="clear: both" runat="server" Visible="<%# (Container.ItemIndex+1) % 6 == 0 %>"></div>
-        </ItemTemplate>
-    </asp:Repeater>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+    <h4>
+        <asp:Label ID="errormessage" runat="server"></asp:Label></h4>
 </div>
 <div class="col-md-12">
     <div class="row">

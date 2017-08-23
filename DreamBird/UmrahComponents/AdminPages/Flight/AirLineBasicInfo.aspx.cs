@@ -9,6 +9,12 @@ public partial class UmrahComponents_AdminPages_Flight_AirLineBasicInfo : System
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if(Request.QueryString["airLineId"]!=null)
+        {
+            int aid = int.Parse(Request.QueryString["airLineId"].ToString());
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "a_keys", "selectedFlight('"+aid+ "');OpenTab('BasicInfo');", true);
+
+        }
 
     }
    
