@@ -66,7 +66,13 @@ public partial class Components_Dreams_DreamBasicInfo : System.Web.UI.UserContro
             //userRoles.DataValueField = "Name";
             //userRoles.DataBind();
             DreamBirdEntities db = new DreamBirdEntities();
+            String uid = HttpContext.Current.User.Identity.GetUserId();
             dreamType_list.DataSource = db.DreamTypes.ToList();
+            if (HttpContext.Current.User.IsInRole("UmrahAdmin") && !HttpContext.Current.User.IsInRole("Admin"))
+            {
+                dreamType_list.DataSource = db.DreamTypes.Where(q => q.Name == "UmrahDetail").ToList();
+            }
+           
             dreamType_list.DataTextField = "Name";
             dreamType_list.DataValueField = "id";
             dreamType_list.DataBind();
@@ -93,7 +99,7 @@ public partial class Components_Dreams_DreamBasicInfo : System.Web.UI.UserContro
                 {
                     if (!(db.Dreams.Where(w => w.IsDefault).Select(s => s.DreamName).First().Equals(DreamName_txt.Text)))
                     {
-                        ShowError("Default Dream Already Exist");
+                        ShowError("Default Package Already Exist");
                         return;
                     }
                     ScriptManager.RegisterStartupScript(Page, Page.GetType(), "a_key", "OpenMainsTabs();", true);
@@ -119,15 +125,15 @@ public partial class Components_Dreams_DreamBasicInfo : System.Web.UI.UserContro
 
                     db.Dreams.Add(d);
                     db.SaveChanges();
-                    if(ddl_public_default.Items.Count != 0 && ddl_user_default.Items.Count != 0)
-                    {
-                        int publicDefaultPage = Convert.ToInt32(ddl_public_default.SelectedValue);
-                        int userDefaultPage = Convert.ToInt32(ddl_user_default.SelectedValue);
-                        db.DreamLayouts.Where(w => w.DreamID == d.id && w.id != publicDefaultPage && w.IsPublicDefaultPage == true).ToList().ForEach(f => f.IsPublicDefaultPage = false);
-                        db.DreamLayouts.Where(w => w.DreamID == d.id && w.id == publicDefaultPage).First().IsPublicDefaultPage = true;
-                        db.DreamLayouts.Where(w => w.DreamID == d.id && w.id != userDefaultPage && w.IsUserDefaultPage == true).ToList().ForEach(f => f.IsUserDefaultPage = false);
-                        db.DreamLayouts.Where(w => w.DreamID == d.id && w.id == userDefaultPage).First().IsUserDefaultPage = true;
-                    }
+                    //if(ddl_public_default.Items.Count != 0 && ddl_user_default.Items.Count != 0)
+                    //{
+                    //    int publicDefaultPage = Convert.ToInt32(ddl_public_default.SelectedValue);
+                    //    int userDefaultPage = Convert.ToInt32(ddl_user_default.SelectedValue);
+                    //    db.DreamLayouts.Where(w => w.DreamID == d.id && w.id != publicDefaultPage && w.IsPublicDefaultPage == true).ToList().ForEach(f => f.IsPublicDefaultPage = false);
+                    //    db.DreamLayouts.Where(w => w.DreamID == d.id && w.id == publicDefaultPage).First().IsPublicDefaultPage = true;
+                    //    db.DreamLayouts.Where(w => w.DreamID == d.id && w.id != userDefaultPage && w.IsUserDefaultPage == true).ToList().ForEach(f => f.IsUserDefaultPage = false);
+                    //    db.DreamLayouts.Where(w => w.DreamID == d.id && w.id == userDefaultPage).First().IsUserDefaultPage = true;
+                    //}
                     taglist = TagControl.GetTags();
                     if (taglist.Count > 0)
                     {
@@ -188,21 +194,21 @@ public partial class Components_Dreams_DreamBasicInfo : System.Web.UI.UserContro
                 d.IsPublished = isPublished_chk.Checked;
                 d.LikeSeed = Convert.ToInt32(LikeSeed.Text);
                 d.dreamTypeID = int.Parse(dreamType_list.SelectedValue);
-                if (ddl_public_default.SelectedValue != "")
-                {
-                    int publicDefaultPage = Convert.ToInt32(ddl_public_default.SelectedValue);
+                //if (ddl_public_default.SelectedValue != "")
+                //{
+                //    int publicDefaultPage = Convert.ToInt32(ddl_public_default.SelectedValue);
 
-                    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id != publicDefaultPage && w.IsPublicDefaultPage == true).ToList().ForEach(f => f.IsPublicDefaultPage = false);
-                    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id == publicDefaultPage).First().IsPublicDefaultPage = true;
+                //    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id != publicDefaultPage && w.IsPublicDefaultPage == true).ToList().ForEach(f => f.IsPublicDefaultPage = false);
+                //    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id == publicDefaultPage).First().IsPublicDefaultPage = true;
 
-                }
-                if(ddl_user_default.SelectedValue!="")
-                {
-                    int userDefaultPage = Convert.ToInt32(ddl_user_default.SelectedValue);
-                    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id != userDefaultPage && w.IsUserDefaultPage == true).ToList().ForEach(f => f.IsUserDefaultPage = false);
-                    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id == userDefaultPage).First().IsUserDefaultPage = true;
+                //}
+                //if(ddl_user_default.SelectedValue!="")
+                //{
+                //    int userDefaultPage = Convert.ToInt32(ddl_user_default.SelectedValue);
+                //    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id != userDefaultPage && w.IsUserDefaultPage == true).ToList().ForEach(f => f.IsUserDefaultPage = false);
+                //    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id == userDefaultPage).First().IsUserDefaultPage = true;
 
-                }
+                //}
                 db.SaveChanges();
 
                 //dreamname.Text = DreamName_txt.Text;
@@ -293,14 +299,14 @@ public partial class Components_Dreams_DreamBasicInfo : System.Web.UI.UserContro
         DereamDetail_txt.Text = dr.Description;
         isPublished_chk.Checked = dr.IsPublished;
         LikeSeed.Text = dr.LikeSeed.ToString();
-        if(db.DreamLayouts.Any(a => a.DreamID == dr.id && a.IsPublicDefaultPage == true))
-        {
-            ddl_public_default.SelectedValue = db.DreamLayouts.Where(w => w.DreamID == dr.id && w.IsPublicDefaultPage == true).First().id.ToString();
-        }
-        if (db.DreamLayouts.Any(a => a.DreamID == dr.id && a.IsUserDefaultPage == true))
-        {
-            ddl_user_default.SelectedValue = db.DreamLayouts.Where(w => w.DreamID == dr.id && w.IsUserDefaultPage == true).First().id.ToString();
-        }
+        //if(db.DreamLayouts.Any(a => a.DreamID == dr.id && a.IsPublicDefaultPage == true))
+        //{
+        //    ddl_public_default.SelectedValue = db.DreamLayouts.Where(w => w.DreamID == dr.id && w.IsPublicDefaultPage == true).First().id.ToString();
+        //}
+        //if (db.DreamLayouts.Any(a => a.DreamID == dr.id && a.IsUserDefaultPage == true))
+        //{
+        //    ddl_user_default.SelectedValue = db.DreamLayouts.Where(w => w.DreamID == dr.id && w.IsUserDefaultPage == true).First().id.ToString();
+        //}
         dreamType_list.SelectedValue = dr.dreamTypeID.ToString();
         MediaItem selected_dream_img;
         if (dr.MediaItem_id != null)
@@ -338,11 +344,11 @@ public partial class Components_Dreams_DreamBasicInfo : System.Web.UI.UserContro
         //  DreamPageEdit.Visible = true;
         var pageids = db.DreamLayouts.Where(w => w.DreamID == dr.id).Select<DreamLayout, int?>(s => s.id).ToList();
         var lessonMenuPages = db.LessonMenus.Where(w => pageids.Contains(w.ParentLayoutID)).Select<LessonMenu, int?>(s => s.DreamLayoutID).ToList();
-        ddl_user_default.DataSource = ddl_public_default.DataSource = db.DreamLayouts.Where(q => q.DreamID == dr.id && !lessonMenuPages.Contains(q.id)).ToList();
-        ddl_user_default.DataTextField = ddl_public_default.DataTextField = "Page";
-        ddl_user_default.DataValueField = ddl_public_default.DataValueField = "id";
-        ddl_public_default.DataBind();
-        ddl_user_default.DataBind();
+        //ddl_user_default.DataSource = ddl_public_default.DataSource = db.DreamLayouts.Where(q => q.DreamID == dr.id && !lessonMenuPages.Contains(q.id)).ToList();
+        //ddl_user_default.DataTextField = ddl_public_default.DataTextField = "Page";
+        //ddl_user_default.DataValueField = ddl_public_default.DataValueField = "id";
+        //ddl_public_default.DataBind();
+        //ddl_user_default.DataBind();
         // ViewState.Clear();
         // ViewState["SelectedDreamID"] = id;
         // basicInfo_link_Click(this, EventArgs.Empty);

@@ -8,7 +8,7 @@
                 <!-- /.col-lg-6 -->
                 <div class="col-lg-12">
                     <asp:Panel DefaultButton="search_dream_button" runat="server" CssClass="input-group blogsearch">
-                        <asp:TextBox ID="dream_keyword" class="form-control" placeholder="Search Dreams" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="dream_keyword" class="form-control" placeholder="Search Package" runat="server"></asp:TextBox>
                         <span class="input-group-btn">
                             <asp:LinkButton  class="btn btn-primary" validationgroup="SearchDream"  ID="search_dream_button" runat="server"  OnClick="search_dream_button_ServerClick">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -41,14 +41,14 @@
         <asp:Label ID="current_count" runat="server" Text="0"></asp:Label>
         of
         <asp:Label ID="total_count" runat="server" Text="0"></asp:Label>
-        Dream(s)</h5>
+        Packages(s)</h5>
     <div class="row">
         <asp:Repeater ID="rptr_dreamGrid" runat="server">
             <ItemTemplate>
                 <div class="col-md-2" style="margin-top: 10px; margin-bottom: 5px;">
                     <div class="col-md-12" style="background-color: #e6e6e6; height: 165px; padding:10px;">
 
-                        <asp:HyperLink ID="lb1" CommandName='<%# Eval("id") %>' CausesValidation="false" NavigateUrl='<%# "../../Admin/DreamPreview?DID="+Eval("id") %>' runat="server">
+                        <asp:HyperLink ID="lb1" CommandName='<%# Eval("id") %>' CausesValidation="false" NavigateUrl='<%# "../../Admin/DreamDetail?DID="+Eval("id") %>' runat="server">
                             <div class="col-md-12" style="padding: 0;">
                                 <asp:Image ID="img_dream" ImageUrl='<%# Eval("MediaItem.Path500") %>' runat="server" Width="100%" />
                             </div>

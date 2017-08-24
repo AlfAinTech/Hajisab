@@ -451,3 +451,15 @@ function getUrlVars() {
     }
     return vars;
 }
+function OpenBasicInfo(data)
+{
+    document.getElementsByName('Page_Preview')[0].src = data;
+    $('.page_frame').css('display', 'block');
+    $('#content_item').css('display', 'none');
+}
+function OpenUmrahDetail(data) {
+    
+    document.getElementsByName('Page_Preview')[0].src = data;
+    $('.page_frame').css('display', 'block');
+    $('#content_item').css('display', 'none');
+}

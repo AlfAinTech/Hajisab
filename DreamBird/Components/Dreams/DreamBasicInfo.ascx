@@ -49,33 +49,34 @@
     <div class="col-md-12" style="background-color: #e6e6e6; padding-top: 25px;">
         <div class="col-md-8">
             <div class="col-md-12" style="padding: 0">
-                <div class="col-md-4">
-                    <h5>Dream Name</h5>
+                <div class="col-md-6">
+                    <h5>Package Name</h5>
                     <asp:TextBox ID="DreamName_txt" runat="server" CssClass="form-control" placeholder="Dream Name"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="namevalidator" runat="server" ControlToValidate="DreamName_txt" ErrorMessage="Add Name" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
-                <div class="col-md-4">
-                    <h5>Dream Tags</h5>
+                <div class="col-md-6">
+                    <h5>Package Tags</h5>
                     <uc1:TagControl runat="server" ID="TagControl" />
                 </div>
-                <div class="col-md-4">
-                    <h5>Seed Likes</h5>
-                    <asp:TextBox ID="LikeSeed" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="LikeSeed" runat="server" ErrorMessage="Add Seeds"></asp:RequiredFieldValidator>
-                    <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Value must between 1-1000" Type="Integer" MinimumValue="1" MaximumValue="1000" ForeColor="Red" ControlToValidate="LikeSeed"></asp:RangeValidator>
-                </div>
+                
             </div>
             <div class="col-md-12" style="padding: 0">
-                <div class="col-md-4">
+                <%--<div class="col-md-4">
                     <h5>Public Default Page</h5>
                     <asp:DropDownList ID="ddl_public_default" CssClass="form-control" runat="server"></asp:DropDownList>
                 </div>
                 <div class="col-md-4">
                     <h5>User Default Page</h5>
                     <asp:DropDownList ID="ddl_user_default" CssClass="form-control" runat="server"></asp:DropDownList>
+                </div>--%>
+                <div class="col-md-6">
+                    <h5>Seed Likes</h5>
+                    <asp:TextBox ID="LikeSeed" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="LikeSeed" runat="server" ErrorMessage="Add Seeds"></asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Value must between 1-1000" Type="Integer" MinimumValue="1" MaximumValue="1000" ForeColor="Red" ControlToValidate="LikeSeed"></asp:RangeValidator>
                 </div>
-                <div class="col-md-4">
-                    <h5>dream Type</h5>
+                <div class="col-md-6">
+                    <h5>Package Type</h5>
                     <asp:DropDownList ID="dreamType_list" runat="server" CssClass="form-control" DataTextField="Name" DataValueField="id"></asp:DropDownList>
                 </div>
             </div>
@@ -95,7 +96,7 @@
                     <asp:CheckBox ID="default_chk" runat="server" CssClass="form-control" />
                 </div>
                 <div class="col-md-2" style="padding: 0;">
-                    <h4>Default Dream</h4>
+                    <h4>Default Package</h4>
                 </div>
                 <div class="col-md-2">
                     <asp:CheckBox ID="isPublished_chk" runat="server" CssClass="form-control" />

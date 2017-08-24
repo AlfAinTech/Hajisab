@@ -12,9 +12,12 @@
         <div class="col-md-2" style="padding: 0;">
             <div class="col-md-2">
                 <div class="row">
-                    <asp:HyperLink ID="dream_basic_info" onclick="$('.page_frame').css('display', 'block'); $('#content_item').css('display', 'none');" Target="Page_Preview" runat="server" CssClass="btn btn-primary">
+                    <asp:HyperLink ID="dream_basic_info" onclick="$('.page_frame').css('display', 'block'); $('#content_item').css('display', 'none');" Target="Page_Preview" runat="server" CssClass="btn btn-primary BasicInfo">
                          <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                     </asp:HyperLink>
+                    <asp:HyperLink ID="UmrahDetails" Visible="false" onclick="$('.page_frame').css('display', 'block'); $('#content_item').css('display', 'none');" Target="Page_Preview" runat="server" CssClass="btn btn-success UmrahDetail">
+                <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+            </asp:HyperLink>
                 </div>
             </div>
             <div class="col-md-10">
@@ -24,7 +27,7 @@
                     <%--<asp:LinkButton ID="" OnClick="dream_name_Click" runat="server"></asp:LinkButton>--%></h3>
             </div>
         </div>
-        <div class="col-md-2">
+       <%-- <div class="col-md-2">
             <div class="dropdown">
                 <a id="dLabel" data-target="#" href="#" class="btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span id="dLabelSpan">Select Dream Pages</span>
     <span class="caret"></span>
@@ -64,14 +67,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
         <div class="col-md-1" style="margin-left: -37px;">
-            <a href="#" class="btn btn-primary" id="add_new_page">
+            <%--<a href="#" class="btn btn-primary" id="add_new_page">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </a>
-            <asp:HyperLink ID="UmrahDetails" Visible="false" onclick="$('.page_frame').css('display', 'block'); $('#content_item').css('display', 'none');" Target="Page_Preview" runat="server" CssClass="btn btn-success">
-                <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
-            </asp:HyperLink>
+            </a>--%>
+            
         </div>
 
         <div class="col-md-4" id="save_new_page" style="display: none;">
@@ -135,7 +136,7 @@
         </div>
     </div>--%>
     <div class="col-md-12" style="background-color: #e6e6e6; padding: 0;">
-        <iframe name="Page_Preview" class="page_frame" scrolling="no" onload="calcHeight();" width="100%" height="580px" border="no" scroll="yes"></iframe>
+        <iframe name="Page_Preview" class="page_frame" scrolling="no" onload="calcHeight();" width="100%" height="580px" border="no" scroll="yes" style="display:block"></iframe>
     </div>
 </asp:Content>
 

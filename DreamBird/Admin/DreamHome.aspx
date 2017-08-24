@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="DreamHome.aspx.cs" Inherits="Admin_DreamHome" %>
 
 <%@ Register Src="~/Components/Dreams/DreamGrid.ascx" TagPrefix="uc1" TagName="DreamGrid" %>
-<%@ Register Src="~/Components/Dreams/RecentlyEditedDreams.ascx" TagPrefix="uc1" TagName="RecentlyEditedDreams" %>
 <%@ Register Src="~/Components/Dreams/DreamBasicInfo.ascx" TagPrefix="uc1" TagName="DreamBasicInfo" %>
 
 
@@ -16,13 +15,13 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="row">
-                                <h3>Dreams</h3>
+                                <h3>Umrah Packages</h3>
                             </div>
                         </div>
                         <div class="col-md-3" style="float: right; padding-top: 15px;">
                             <div class="row">
                                 <button type="button" id="add_new_dream_first" runat="server" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="float: right;">
-                                    Add New Dream
+                                    Add New Package
                                 </button>
                             </div>
                         </div>
@@ -44,31 +43,18 @@
                         </div>
                     </div>
                     <div id="normal_flow" runat="server">
-                        <div class="row" style="border-bottom: 1px solid #a6a6a6;">
-                            <div class="col-md-12">
-                                <h4>Recently Edited Dreams</h4>
-                                <uc1:RecentlyEditedDreams runat="server" ID="RecentlyEditedDreams" OnDreamClicked="DreamGrid_DreamClicked" />
-                            </div>
-                        </div>
+                        
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>All Dreams</h4>
+                                <h4>All Packages</h4>
                             </div>
                             <uc1:DreamGrid runat="server" ID="DreamGrid" OnDreamClicked="DreamGrid_DreamClicked" />
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-3" style="padding-top: 20px;">
-                    <div class="panel panel-default">
-                        <!-- Default panel contents -->
-                        <div class="panel-heading">Recent Activities</div>
-                        <div class="panel-body" style="min-height: 300px;">
-                            <p>No Activity to show right now</p>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

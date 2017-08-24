@@ -21,13 +21,21 @@ public partial class Admin_DreamDetail : System.Web.UI.Page
                 {
                     UmrahDetails.Visible = true;
                     UmrahDetails.NavigateUrl = "../../Components/Dreams/UmrahDetails.aspx?DID=" + DreamID;
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "openInfo", "OpenUmrahDetail('"+ "../../Components/Dreams/UmrahDetails.aspx?DID=" + DreamID + "')", true);
+
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "openInfo", "OpenUmrahDetail('" + "../../Components/Dreams/DreamAdminPages.aspx?DID=" + DreamID + "')", true);
+
                 }
                 var pageids = db.DreamLayouts.Where(w => w.DreamID == DreamID).Select<DreamLayout, int?>(s => s.id).ToList();
                 var lessonMenuPages = db.LessonMenus.Where(w => pageids.Contains(w.ParentLayoutID)).Select<LessonMenu, int?>(s => s.DreamLayoutID).ToList();
-                dream_pages.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id) && q.LayoutType == "Normal").ToList();
-                dream_pages.DataBind();
-                Repeater1.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id) && q.LayoutType == "Activity").ToList();
-                Repeater1.DataBind();
+                
+                //dream_pages.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id) && q.LayoutType == "Normal").ToList();
+                //dream_pages.DataBind();
+                //Repeater1.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id) && q.LayoutType == "Activity").ToList();
+                //Repeater1.DataBind();
                 //DreamPageListView.BindData(Dream.id);
             }
         }
@@ -87,10 +95,10 @@ public partial class Admin_DreamDetail : System.Web.UI.Page
         DreamBirdEntities db = new DreamBirdEntities();
         var pageids = db.DreamLayouts.Where(w => w.DreamID == DreamID).Select<DreamLayout, int?>(s => s.id).ToList();
         var lessonMenuPages = db.LessonMenus.Where(w => pageids.Contains(w.ParentLayoutID)).Select<LessonMenu, int?>(s => s.DreamLayoutID).ToList();
-        dream_pages.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id)).ToList();
-        dream_pages.DataBind();
-        Repeater1.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id)).ToList();
-        Repeater1.DataBind();
+        //dream_pages.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id)).ToList();
+        //dream_pages.DataBind();
+        //Repeater1.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id)).ToList();
+        //Repeater1.DataBind();
     }
 
     protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -150,10 +158,10 @@ public partial class Admin_DreamDetail : System.Web.UI.Page
                 }
                 var pageids = db.DreamLayouts.Where(w => w.DreamID == DreamID).Select<DreamLayout, int?>(s => s.id).ToList();
                 var lessonMenuPages = db.LessonMenus.Where(w => pageids.Contains(w.ParentLayoutID)).Select<LessonMenu, int?>(s => s.DreamLayoutID).ToList();
-                dream_pages.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id) && q.LayoutType == "Normal").ToList();
-                dream_pages.DataBind();
-                Repeater1.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id) && q.LayoutType == "Activity").ToList();
-                Repeater1.DataBind();
+                //dream_pages.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id) && q.LayoutType == "Normal").ToList();
+                //dream_pages.DataBind();
+                //Repeater1.DataSource = db.DreamLayouts.Where(q => q.DreamID == DreamID && !lessonMenuPages.Contains(q.id) && q.LayoutType == "Activity").ToList();
+                //Repeater1.DataBind();
             }
             
         }

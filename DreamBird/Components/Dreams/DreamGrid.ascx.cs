@@ -16,6 +16,11 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
             ViewState["PageNo"] = 0;
             DreamBirdEntities db = new DreamBirdEntities();
             ddl_DreamCat.DataSource = db.DreamTypes.ToList();
+            String uid = HttpContext.Current.User.Identity.GetUserId();
+            if (HttpContext.Current.User.IsInRole("UmrahAdmin") && !HttpContext.Current.User.IsInRole("Admin"))
+            {
+                ddl_DreamCat.DataSource = db.DreamTypes.Where(q => q.Name == "UmrahDetail").ToList();
+            }
             ddl_DreamCat.DataTextField = "Name";
             ddl_DreamCat.DataValueField = "id";
             ddl_DreamCat.DataBind();
