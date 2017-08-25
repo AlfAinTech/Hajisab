@@ -34,7 +34,7 @@ public partial class Components_Dreams_DreamListView : System.Web.UI.UserControl
             Dream_data_list.DataSource = db.Dreams.Where(q=>q.dreamTypeID == DreamType).ToList();
         else
             Dream_data_list.DataSource = db.Dreams.ToList();
-        if (HttpContext.Current.User.IsInRole("UmrahAdmin")) { Dream_data_list.DataSource = db.Dreams.Where(q => q.AspNetUserID == uid).ToList(); }
+        if (HttpContext.Current.User.IsInRole("UmrahAdmin")) { Dream_data_list.DataSource = db.Dreams.Where(q => q.AspNetUserID == uid && q.DreamType.id == DreamType).ToList(); }
             Dream_data_list.DataBind();
        
         //  int dream_id = db.Dreams.Where(dream => dream.DreamName == dream_name).First().id;
@@ -59,16 +59,18 @@ public partial class Components_Dreams_DreamListView : System.Web.UI.UserControl
         {
             taglist = db.Tags.Where(w => w.Name == searched_text).Select<Tag, int?>(s => s.id).ToList();
         }
-        if(taglist.Count > 0)
+         result = db.Dreams.Where(q=>q.DreamType.id == DreamType).ToList();
+
+        if (taglist.Count > 0)
         {
             if(db.DreamTags.Any(a => taglist.Contains(a.Tag_id)))
             {
                 dreamTagList = db.DreamTags.Where(w => taglist.Contains(w.Tag_id)).Select<DreamTag, int?>(s => s.Dream_id).ToList();
             }
         }
-        if(db.Dreams.Any(a => a.DreamName == searched_text) || db.Dreams.Any(a => a.Description.Contains(searched_text)) || db.DreamTags.Any(a => taglist.Contains(a.Tag_id)))
+        if(result.Any(a => a.DreamName.ToLower().Contains( searched_text.ToLower())) || result.Any(a => a.Description.Contains(searched_text)) || db.DreamTags.Any(a => taglist.Contains(a.Tag_id)))
         {
-            result = db.Dreams.Where(w=>(w.DreamName == searched_text) || (w.Description.Contains(searched_text))|| dreamTagList.Contains(w.id)).ToList();
+            result = result.Where(w=>(w.DreamName.ToLower().Contains( searched_text.ToLower())) || (w.Description.Contains(searched_text))|| dreamTagList.Contains(w.id)).ToList();
         }
 
         if (result.Count() > 0)

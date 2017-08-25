@@ -51,7 +51,7 @@
             <div class="col-md-12" style="padding: 0">
                 <div class="col-md-6">
                     <h5>Package Name</h5>
-                    <asp:TextBox ID="DreamName_txt" runat="server" CssClass="form-control" placeholder="Dream Name"></asp:TextBox>
+                    <asp:TextBox ID="DreamName_txt" runat="server" CssClass="form-control" placeholder="Package Name"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="namevalidator" runat="server" ControlToValidate="DreamName_txt" ErrorMessage="Add Name" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
                 <div class="col-md-6">

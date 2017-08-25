@@ -18,14 +18,13 @@ public partial class Components_Dreams_DreamSearch : System.Web.UI.UserControl, 
     {
         string keyword = SearchBox.Text;
 
-        if (!keyword.Equals(""))
-        {
+        
             EventArgDreamSearch evt = new EventArgDreamSearch();
             evt.SearchDreamName = keyword;
             
             if (dreamSearch != null)
                 dreamSearch(this, evt);
-        }
+        
         //TagControl.LoadScripts();
     }
 

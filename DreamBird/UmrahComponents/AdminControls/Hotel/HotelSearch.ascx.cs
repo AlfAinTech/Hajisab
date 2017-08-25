@@ -40,14 +40,13 @@ public partial class UmrahComponents_AdminControls_Hotel_HotelSearch : System.We
     {
         string keyword = SearchBox.Text;
 
-        if (!keyword.Equals(""))
-        {
+        
             EventArgHotelSearch evt = new EventArgHotelSearch();
             evt.SearchHotelName = keyword;
 
             if (hotelSearch != null)
                 hotelSearch(this, evt);
-        }
+        
         //TagControl.LoadScripts();
     }
 }
