@@ -50,7 +50,11 @@
 
                         <asp:HyperLink ID="lb1" CommandName='<%# Eval("id") %>' CausesValidation="false" NavigateUrl='<%# "../../Admin/DreamDetail?DID="+Eval("id") %>' runat="server">
                             <div class="col-md-12" style="padding: 0;">
-                                <asp:Image ID="img_dream" ImageUrl='<%# Eval("MediaItem.Path500") %>' runat="server" Width="100%" />
+                                <asp:Image ID="img_dream" ImageUrl='<%# Eval("MediaItem.Path500") %>' runat="server" Width="100%"  Visible='<%# Bind("IsMediaItemImage") %>' />
+                                <br />
+                                    <video id="dream_video" runat="server" display="dynamic" onclick="playvideo(this)" visible='<%# Bind("IsMediaItemVideo") %>' width="100%">
+                                        <source type="video/mp4" src='<%# Eval("MediaItem.Path480") %>'>
+                                    </video>
                             </div>
                             <div class="col-md-12">
 
@@ -97,3 +101,13 @@
     </div>
 </div>
 
+<script>
+    function playvideo(thisobj) {
+        thisobj.paused ? thisobj.play() : thisobj.pause();
+        if (thisobj.hasAttribute("controls")) {
+            thisobj.removeAttribute("controls")
+        } else {
+            thisobj.setAttribute("controls", "controls")
+        }
+    }
+</script>

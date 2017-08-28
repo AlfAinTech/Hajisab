@@ -2,9 +2,9 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="~/Components/LessonMenu/MenuOrder.ascx" TagPrefix="uc1" TagName="MenuOrder" %>
 <%@ Register Src="~/Components/PageTemplate/ColumnsList.ascx" TagPrefix="uc1" TagName="ColumnsList" %>
-<%@ Register Src="~/Components/LessonMenu/LessonMenuList.ascx" TagPrefix="uc1" TagName="LessonMenuList" %>
 <%@ Register Src="~/Components/PageTemplate/LayoutsList.ascx" TagPrefix="uc1" TagName="LayoutsList" %>
 <%@ Register Src="~/Components/PageTemplate/PageTemplate.ascx" TagPrefix="uc1" TagName="PageTemplate" %>
+<%@ Register Src="~/Components/LessonMenu/LessonMenuList.ascx" TagPrefix="uc1" TagName="LessonMenuList" %>
 <%@ Register Src="~/Components/PageTemplate/ControlsList.ascx" TagPrefix="uc1" TagName="ControlsList" %>
 <%@ Register Src="~/Components/PageTemplate/CSSStyler.ascx" TagPrefix="uc1" TagName="CSSStyler" %>
 <%@ Register Src="~/Components/PageTemplate/DreamsandPages.ascx" TagPrefix="uc1" TagName="DreamsandPages" %>

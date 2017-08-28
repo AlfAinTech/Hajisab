@@ -1,7 +1,7 @@
 ﻿<%@ Register Src="~/Components/LessonMenu/LessonMenuAvailability/LessonAvailabilityAdmin.ascx" TagPrefix="uc1" TagName="LessonAvailabilityAdmin" %>
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="EditMenuDetails.ascx.cs" Inherits="Components_LessonMenu_EditMenuDetails" %>
-<%@ Register Src="~/Components/LessonMenu/LessonMenuList.ascx" TagPrefix="uc1" TagName="LessonMenuList" %>
 
+<%@ Register Src="~/Components/LessonMenu/LessonMenuList.ascx" TagPrefix="uc1" TagName="LessonMenuList" %>
 
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>

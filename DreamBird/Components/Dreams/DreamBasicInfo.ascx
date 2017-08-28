@@ -132,7 +132,7 @@
                         <asp:LinkButton ID="cmdSelectImage" CssClass="btn btn-default" runat="server" CausesValidation="False">Select Media</asp:LinkButton>
                         <ajaxtoolkit:ModalPopupExtender ID="ModalPopupExtender1" CancelControlID="Button4" TargetControlID="cmdSelectImage" PopupControlID="popupPanel" runat="server"></ajaxtoolkit:ModalPopupExtender>
                         <asp:Panel ID="popupPanel" runat="server" BackColor="#CCCCCC" BorderWidth="2px" Style="width:1200px; height: 90vh;">
-                            <uc1:MediaBank runat="server" OnMediaSelected="MediaSelectedEvent" ID="MediaBank" />
+                            <uc1:MediaBank runat="server" OnMediaSelected="MediaSelectedEvent" ID="MediaBank"  showVideoTypeMedia ="false"   />
                             <%--<uc1:MediaSelection runat="server" ID="MediaSelection" OncloseMediaBank="MediaSelection_closeMediaBank" OnMyEvents="MediaSelection_MyEvents" ShowImageTypeMedia="true" ShowVideoTypeMedia="true" OnMediaSelectedEvent="MediaSelectedEvent" />--%>
                             <asp:Button ID="Button4" CssClass="btn btn-danger" runat="server" CausesValidation="false" Style="border-radius: 0px; position: absolute; top: 0px; right: 0px;" Text="X" />
                         </asp:Panel>

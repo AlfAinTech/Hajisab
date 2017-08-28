@@ -9,11 +9,10 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="name_txt" ErrorMessage="*" Font-Bold="True" Font-Size="X-Large" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
         <div class="col-md-6">
-            <h4><asp:CheckBox runat="server" ID="one_way_chk" style="margin-right: 15px;"/>One Way</h4>
-            
+            <h4><asp:RadioButton  GroupName="trip" runat="server" ID="one_way_chk" style="margin-right: 15px;"/>One Way</h4>
         </div>
         <div class="col-md-6">
-            <h4><asp:CheckBox runat="server" ID="roundTrip_chk" style="margin-right: 15px;"/>Round Trip</h4>
+            <h4><asp:RadioButton  GroupName="trip" runat="server" ID="roundTrip_chk" style="margin-right: 15px;"/>Round Trip</h4>
         </div>
         <div class="col-md-12">
         <h4>Departure Date</h4>
