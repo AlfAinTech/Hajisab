@@ -143,6 +143,7 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
    
     protected void search_dream_button_ServerClick(object sender, EventArgs e)
     {
+        ViewState["PageNo"] = 0;
         string searched_text = dream_keyword.Text;
         BindDreamGrid(searched_text);
     }

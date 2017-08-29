@@ -45,7 +45,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
             facility_imgAdd.Style.Add("display", "none");
             facility_videoAdd.Style.Add("display", "block");
         }
-        facility_imgAdd.ImageUrl = media_item.PathWithResolution;//.path;
+        facility_imgAdd.ImageUrl = media_item.Path500;//.path;
         facilityImg_id.Text = media_item.id.ToString();
         ViewState["selectedImageID"] = media_item.id;
         ModalPopupExtender1.Hide();

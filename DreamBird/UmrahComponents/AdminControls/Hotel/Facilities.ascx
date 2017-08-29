@@ -45,9 +45,11 @@
              <table width="100%">
                  <tr>
                      <td></td> <td></td> <td></td>
-                      <td>
-                           <asp:Image ID="facility_imgAdd" runat="server" Width="100%" Style="min-height: 285px;" />
+                      <td style="width:50%">
+                           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate><asp:Image ID="facility_imgAdd" runat="server" Width="100%" Style="min-height: 285px;" />
                                     <video id="facility_videoAdd" runat="server" width="100%" style="display:none"></video>
+                            </ContentTemplate></asp:UpdatePanel>
                       </td>
                  </tr>
         <tr>
