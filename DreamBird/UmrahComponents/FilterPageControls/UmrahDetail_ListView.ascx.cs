@@ -133,9 +133,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
         int id = int.Parse(b.CommandArgument);
         DreamBirdEntities db = new DreamBirdEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        var data = db.DreamLayouts.Where(q => q.DreamID == pd.dreamID && q.Page == "umrahDetail").ToList();
-        if (data.Count() != 0)
-        {
+       
             RepeaterItem ri = b.NamingContainer as RepeaterItem;
             string queryString = "";
             if (ri != null)
@@ -145,9 +143,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
                 queryString += "?AccomMakkahID=" + dl_makkah.SelectedValue;
                 queryString += "&AccomMadinaID=" + dl_madina.SelectedValue;
 
-            }
-                DreamLayout dl = data[0];
-            Response.Redirect("~/UmrahHome/" + pd.Dream.DreamName + "/" + dl.Page+queryString);
+            Response.Redirect("~/UmrahDetailPage/" + pd.Dream.DreamName + "/umrahDetail" + queryString);
         }
 
     }
@@ -176,10 +172,14 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
             int pkgId = int.Parse(bt.CommandArgument);
             int accomID_makkah = int.Parse(dl_makkah.SelectedValue);
             Accommodation makkah = db.Accommodations.Where(q => q.id == accomID_makkah).First();
-            int accomID_madina = int.Parse(dl_madina.SelectedValue);
-            Accommodation madina = db.Accommodations.Where(q => q.id == accomID_madina).First();
+            Accommodation madina = new Accommodation();
+            if (dl_madina.SelectedValue != "")
+            {
+                int accomID_madina = int.Parse(dl_madina.SelectedValue);
+                madina = db.Accommodations.Where(q => q.id == accomID_madina).First();
+            }
             PackageDetail pd = db.PackageDetails.Where(q => q.id == pkgId).First();
-            double price = pd.getPriceWithout_accommodation + (madina.price*pd.nightsInMadina) + (makkah.price*pd.nightsInMakkah);
+            double price = pd.getPriceWithout_accommodation + ((madina!=null? madina.price:0)*(pd.nightsInMadina)) + (makkah.price*pd.nightsInMakkah);
             Label lb = (Label)ri.FindControl("price");
             lb.Text = price.ToString();
         }

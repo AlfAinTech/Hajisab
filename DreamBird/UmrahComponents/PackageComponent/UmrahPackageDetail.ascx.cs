@@ -23,7 +23,7 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
             myDaTAbIND();
             int madinaAccom_id = 0;
             int makkahAccom_id = 0;
-            if (Request.QueryString["AccomMadinaID"] != null)
+            if (Request.QueryString["AccomMadinaID"] != null && Request.QueryString["AccomMadinaID"] != "")
             {
                 madinaAccom_id = int.Parse(Request.QueryString["AccomMadinaID"].ToString());
             }

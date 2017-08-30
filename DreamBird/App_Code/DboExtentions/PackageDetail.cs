@@ -122,8 +122,8 @@ public partial class PackageDetail
             if (isVisaAvailable && VisaPackage != null) { result += VisaPackage.amount; }
             if (Hotel != null || Hotel1 != null)
             {
-                if (Hotel.Accommodations != null) { result += Hotel.Accommodations.Select(q => q.price).Min() * nightsInMadina; }
-                if (Hotel1.Accommodations != null) { result += Hotel1.Accommodations.Select(q => q.price).Min() * nightsInMakkah; }
+                if (Hotel.Accommodations != null) { result += Hotel.Accommodations.Select(q => q.price).DefaultIfEmpty(0).Min() * nightsInMadina; }
+                if (Hotel1.Accommodations != null) { result += Hotel1.Accommodations.Select(q => q.price).DefaultIfEmpty(0).Min() * nightsInMakkah; }
             }
             result += additionalExpense;
             return result;
@@ -139,8 +139,8 @@ public partial class PackageDetail
             if (isVisaAvailable && VisaPackage != null) { result += VisaPackage.amount; }
             if (Hotel != null || Hotel1 != null)
             {
-                if (Hotel.Accommodations != null) { result += Hotel.Accommodations.Select(q => q.price).Max() * nightsInMadina; }
-                if (Hotel1.Accommodations != null) { result += Hotel1.Accommodations.Select(q => q.price).Max() * nightsInMakkah; }
+                if (Hotel.Accommodations != null) { result += Hotel.Accommodations.Select(q => q.price).DefaultIfEmpty(0).Max() * nightsInMadina; }
+                if (Hotel1.Accommodations != null) { result += Hotel1.Accommodations.Select(q => q.price).DefaultIfEmpty(0).Max() * nightsInMakkah; }
             }
             result += additionalExpense;
             return result;

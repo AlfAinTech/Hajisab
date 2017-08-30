@@ -16,14 +16,13 @@ public partial class UmrahComponents_AdminControls_Flight_AirLineSearch : System
     {
         string keyword = SearchBox.Text;
 
-        if (!keyword.Equals(""))
-        {
+        
             EventArgAirLineSearch evt = new EventArgAirLineSearch();
             evt.SearcText = keyword;
 
             if (AirLineSearch != null)
                 AirLineSearch(this, evt);
-        }
+        
         //TagControl.LoadScripts();
     }
 }

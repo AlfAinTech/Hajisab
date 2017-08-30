@@ -69,7 +69,7 @@ public partial class UmrahComponents_AdminControls_Flight_AirLineList : System.W
             AirLine_data_list.DataBind();
         }
         else
-        {// ShowError("No items match your search");
+        { ShowError("No items match your search");
         }
 
 
@@ -79,5 +79,9 @@ public partial class UmrahComponents_AdminControls_Flight_AirLineList : System.W
     {
         if (AddClicked != null) {        AddClicked(this, EventArgs.Empty);
  }
+    }
+    protected void ShowError(string errorMsg)
+    {
+        ScriptManager.RegisterStartupScript(Page, typeof(Page), "showError", "alert('" + errorMsg + "');", true);
     }
 }
