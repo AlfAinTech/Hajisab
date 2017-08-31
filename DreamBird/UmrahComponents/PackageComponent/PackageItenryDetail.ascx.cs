@@ -136,6 +136,7 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
         PackageDetail pd = db.PackageDetails.Where(q => q.id == pkgID).First();
         
         totalnights.Text = pd.getTotelNights.ToString();
+        hiddentotaNights.Value = pd.getTotelNights.ToString();
         string durationtxt = "";
         if (pd.startDate.Value.Month == pd.startDate.Value.AddDays(pd.getTotelNights).Month)
             durationtxt = pd.startDate.Value.Day.ToString() + "-" + (pd.startDate.Value.AddDays(pd.getTotelNights)).Day.ToString() + " " + pd.startDate.Value.ToString("MMMM", CultureInfo.InvariantCulture) + ", " + pd.startDate.Value.Year.ToString();

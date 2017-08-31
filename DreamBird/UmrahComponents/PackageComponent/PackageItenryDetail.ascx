@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true"  CodeFile="PackageItenryDetail.ascx.cs" Inherits="UmrahComponents_PackageComponent_PackageItenryDetail" %>
 <script src="/UmrahComponents/Contents/js/jquery.quicksearch.js"></script> 
  <asp:HiddenField ID="hiddencity" runat="server" />
+<asp:HiddenField ID="hiddentotaNights" runat="server" />
 <script type="text/javascript">
      myfnction = function (current) {
           strUser = current.options[current.selectedIndex].value;
@@ -25,6 +26,21 @@
          strUser =  $('#hotelListAdd').find(":selected").val();;
          document.getElementById('<%=hiddencity.ClientID %>').value = strUser;
      }
+    CalculateNights= function()
+    {
+        var totalNights = document.getElementById('<%=hiddentotaNights.ClientID %>').value
+        var nights=0;
+        $('.nights').each(function (x) {
+            nights = nights +   parseFloat( $('.nights')[x].innerHTML);
+        });
+         var inputNights = document.getElementById('UmrahPackageDetail_PackageItenryDetail_itenry_list_nights_add').value
+        console.log(nights);
+        if (nights + inputNights > totalNights) {
+            window.alert("No of Nights should not Exceed Total Nights");
+            return false;
+        }
+        return true;
+}
 </script>
  <div class="col-md-12">
 
@@ -55,7 +71,7 @@
                                               <tr>
                                                 <td>
                                                     <asp:Literal ID="cityList" Text='<% # Eval("cityName") %>' runat="server"></asp:Literal></td>
-                                                <td><asp:Literal ID="night" Text='<%# Eval("nights") %>' runat="server"></asp:Literal> Nights</td>
+                                                <td class="nights"><asp:Literal ID="night" Text='<%# Eval("nights") %>' runat="server"></asp:Literal></td>
                                                 <td><asp:Literal ID="hotelName" Text='<%# Eval("Hotel.hotelName") %>' runat="server"></asp:Literal></td>
                                                 <td>
 
@@ -80,7 +96,7 @@
                                                     <asp:DropDownList ID="hotelListAdd" ClientIDMode="Static" runat="server"  CssClass="form-control" DataTextField="hotelName" DataValueField="id"></asp:DropDownList>
                                                 </td>
                                                 <td>
-                                                   <asp:LinkButton  runat="server" ClientIDMode="Static" CssClass="btn btn-success" ID="save" ValidationGroup="addDataValid" CausesValidation="true" CommandName="add">
+                                                   <asp:LinkButton  runat="server" ClientIDMode="Static" OnClientClick="return CalculateNights()" CssClass="btn btn-success" ID="save" ValidationGroup="addDataValid" CausesValidation="true" CommandName="add">
                                                   <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
                                                 </asp:LinkButton>
                                                 </td>

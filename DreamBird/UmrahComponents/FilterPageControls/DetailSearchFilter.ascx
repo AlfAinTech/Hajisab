@@ -77,19 +77,19 @@
         </div>
         <div class="col-md-12">
             <div class="col-md-2" style="margin-top:10px;">
-            <asp:TextBox ID="control1"  type="range" runat="server"  name="price_range" OnTextChanged="price_range_TextChanged" AutoPostBack="true"  ></asp:TextBox>
-                <output for="price_range" onforminput="value = price_range.valueAsNumber;"></output>
+            <asp:TextBox ID="control1"  type="range" runat="server"  name="price_range"  OnTextChanged="price_range_TextChanged"  onchange="bindDataScript()"></asp:TextBox>
+                <output for="price_range" onforminput="value = price_range.valueAsNumber;" ></output>
             </div>
             <div class="col-md-2">
-                 <asp:TextBox ID="control2" CssClass="form-control" runat="server" type="month" OnTextChanged="package_month_TextChanged"  AutoPostBack="true"></asp:TextBox>
+                 <asp:TextBox ID="control2" CssClass="form-control" runat="server" type="month" OnTextChanged="package_month_TextChanged"  onchange="bindDataScript()"></asp:TextBox>
             </div>
             <div class="col-md-2" style="margin-top:10px;">
-                <asp:TextBox ID="control3" name="duration_txt" type="range" runat="server" OnTextChanged="duration_txt_TextChanged"  AutoPostBack="true"></asp:TextBox>
-                <output for="duration_txt" onforminput="value = fooduration_txtvalueAsNumber;"></output>
+                <asp:TextBox ID="control3" name="duration_txt" type="range" runat="server" OnTextChanged="duration_txt_TextChanged"  onchange="bindDataScript()"></asp:TextBox>
+                <output for="duration_txt" onforminput="value = fooduration_txtvalueAsNumber;" onchange="bindDataScript()"></output>
             </div>
             <div class="col-md-2">
                 
-                <asp:DropDownList runat="server" class="form-control" ID="control4" OnSelectedIndexChanged="rating_Changed" AutoPostBack="true">
+                <asp:DropDownList runat="server" class="form-control" ID="control4" OnSelectedIndexChanged="rating_Changed" onchange="bindDataScript()">
                      <asp:ListItem selected="True">--Select--</asp:ListItem>
                     <asp:ListItem  value="1">Economy</asp:ListItem>
                      <asp:ListItem  value="2">Budget</asp:ListItem>
@@ -99,15 +99,16 @@
                 </asp:DropDownList>
             </div>
             <div class="col-md-2">
-                <asp:DropDownList ID="control5" runat="server" CssClass="form-control" OnSelectedIndexChanged="airLine_list_SelectedIndexChanged" DataTextField="Name" DataValueField="id" AutoPostBack="True">
+                <asp:DropDownList ID="control5" runat="server" CssClass="form-control" OnSelectedIndexChanged="airLine_list_SelectedIndexChanged" DataTextField="Name" DataValueField="id" onchange="bindDataScript()">
                     <asp:ListItem selected="True">--Select--</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class="col-md-2" style="margin-top:10px;">
-                <asp:TextBox name="foo" ID="control6" runat="server"  type="range" OnTextChanged="distanceHaram_txt_TextChanged" AutoPostBack="true"></asp:TextBox>
+                <asp:TextBox name="foo" ID="control6" runat="server"  type="range" OnTextChanged="distanceHaram_txt_TextChanged" onchange="bindDataScript()"></asp:TextBox>
                 <output for="foo" onforminput="value = foo.valueAsNumber;"></output>
             </div>
         </div>
+           
         <div class="col-md-12" style="padding-top: 10px;">
             <div class="col-md-8">
                 <div class="col-md-2" style="padding:0;">
@@ -142,8 +143,11 @@
                 <h5>
                     <asp:Label ID="foundRecord" runat="server" ></asp:Label></h5>
             </div>
-           
+           <div class="col-md-6">
+                <asp:Button class="btn btn-primary" ID="searchBtn" style="width:100%;" runat="server" Text="Update Filter" OnClick="searchBtn_Click"  />
+            </div>
         </div>
+            
     </div>
 </div>
 </div>

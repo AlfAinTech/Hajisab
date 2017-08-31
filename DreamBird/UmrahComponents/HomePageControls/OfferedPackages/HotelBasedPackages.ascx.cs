@@ -38,7 +38,7 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_HotelBased
         int id = int.Parse(bt.CommandArgument);
         DreamBirdEntities db = new DreamBirdEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        Response.Redirect("/UmrahHome/" + pd.Dream.DreamName + "/UmrahDetail");
+        Response.Redirect("/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
     }
 
     protected void PackageType_clicked(object sender, EventArgs e)

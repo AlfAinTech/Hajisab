@@ -256,4 +256,10 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
     {
         //throw new NotImplementedException();
     }
+
+    protected void searchBtn_Click(object sender, EventArgs e)
+    {
+        search();
+        ScriptManager.RegisterStartupScript(Page, typeof(Page), "bindData", "bindDataScript();", true);
+    }
 }
