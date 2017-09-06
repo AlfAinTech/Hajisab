@@ -24,7 +24,7 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
     private static Random random = new Random();
     public static string RandomString(int length)
     {
-        Boolean flag = false;
+        Boolean flag = true;
         string result = "";
         while (flag)
         {    
@@ -33,7 +33,7 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
           .Select(s => s[random.Next(s.Length)]).ToArray());
             DreamBirdEntities db = new DreamBirdEntities();
            int count =  db.AlharmainUserPackages.Where(q => q.trackingID == result).Count();
-            flag = count == 0;
+            flag = count != 0;
          }
         return result;
     }
@@ -73,7 +73,10 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
            string Response = send_mail(user.email,up);
             if(Response == "E-mail sent!")
             {
-                clearControl();
+            txttrackingId.Text = up.trackingID;
+            txtfullnights.Text = up.PackageDetail.getTotelNights.ToString();
+                ScriptManager.RegisterStartupScript(Page, typeof(Page), "packageBook", "openConfirmationForm();", true);
+            clearControl();
                 ShowError("Your Umrah Package Booked Now. Tracking id Sent to your Email ID");
             }
             else
@@ -106,6 +109,7 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
             ServicePointManager.ServerCertificateValidationCallback =
          delegate (object s, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors) { return true; };
             smtpClient.Send(mailMessage);
+            
             return "E-mail sent!";
         }
         catch (Exception ex)

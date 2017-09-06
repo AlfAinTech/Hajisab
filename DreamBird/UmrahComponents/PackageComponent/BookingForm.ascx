@@ -20,8 +20,14 @@
     }
 
     $('.stars').stars();
+    openConfirmationForm = function()
+    {
+        $(".bookingContainer").hide();
+        $(".finalContainer").show();
+    }
     </script>
-<div class="container"  style="background-color:white; box-shadow:2px 2px 2px 2px #464646;">
+<div  class="container " style="background-color:white; box-shadow:2px 2px 2px 2px #464646;min-height:650px">
+<div class="bookingContainer" id="bookingContainer" runat="server"  style="background-color:white;">
     <h3 style="text-align:center;">Booking Information</h3>
      <div class="col-md-12" id="booking_form">
       <div class="col-md-6">
@@ -194,4 +200,18 @@
    
 
          
+</div>
+    <div  id="FinalContainer" runat="server"  class="finalContainer" style="background-color:white;margin:10px;display:none">
+          <div  style="margin-left:auto; margin-right:auto; float:none;width: 58.33333333%;">
+                <div style="border:solid #190940;padding: 20px;padding-left: 40px;padding-right: 40px;">
+                    <h2 style="text-align: center;color: #190940;"><asp:Literal ID="txtfullnights" runat="server"></asp:Literal> Days Umrah Package</h2>
+                    <div  style="padding-left:20px; padding-right:20px;margin-left: -15px;margin-right: -15px;">
+                        <h3 style="font-size: 18px; margin-top: 10px;margin-bottom: 10px;">One Final Step</h3>
+                        <p>Thank you for Booking Your Umrah Package at <a href="www.hajisab.com">hajisab.com</a>. Confirm your Package by given Tracking ID. </p>
+                        <h3><span>Tracking ID : <asp:Literal ID="txttrackingId" runat="server"></asp:Literal></span></h3>
+                    </div>
+                    </div>
+                  
+                </div>
+</div>
 </div>

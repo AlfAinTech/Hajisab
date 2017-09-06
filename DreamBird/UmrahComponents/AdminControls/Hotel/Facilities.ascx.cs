@@ -72,7 +72,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
         db.HotelFacilities.Remove(hf);
         db.SaveChanges();
         bindData(hotel_id);
-        //ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "a_key", "OpenMainsTabs();", true);
+        //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "a_keys", "OpenTab(Facilities);", true);
     }
     protected void edit_click(object sender, EventArgs e)
     {
@@ -102,6 +102,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
             facility_imgAdd.Style.Add("display", "none");
             facility_videoAdd.Style.Add("display", "block");
         }
+        //ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "a_keys", "OpenTab(Facilities);", true);
 
     }
     protected void add_btn_Clicked(object sender, EventArgs e)
@@ -140,6 +141,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
             }
            
             clearControl();
+            //ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "a_keys", "OpenTab(Facilities);", true);
 
         }
     }
@@ -159,5 +161,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
         DreamBirdEntities db = new DreamBirdEntities();
         facility_list.DataSource = db.HotelFacilities.Where(q => q.hotelID == hotel_id).ToList();
         facility_list.DataBind();
+        //ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "a_keys", "OpenTab(Facilities);", true);
+
     }
 }

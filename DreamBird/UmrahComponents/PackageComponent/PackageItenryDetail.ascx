@@ -35,7 +35,7 @@
         });
          var inputNights = document.getElementById('UmrahPackageDetail_PackageItenryDetail_itenry_list_nights_add').value
         console.log(nights);
-        if (nights + inputNights > totalNights) {
+        if (nights + parseFloat(inputNights) > parseFloat(totalNights)) {
             window.alert("No of Nights should not Exceed Total Nights");
             return false;
         }
@@ -55,7 +55,8 @@
                                       <div class="row" style="overflow:scroll;height:60vh;overflow-x:hidden;">
                                         <div class="well" style="height:inherit">
                                           <h4>Select Your Transport Type</h4>
-                                          
+                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                <ContentTemplate>
                                               <asp:DropDownList ID="transportList" runat="server" CssClass="form-control" DataTextField="Name" DataValueField="id"></asp:DropDownList> 
                                           <asp:Repeater runat="server" ID="itenry_list" OnItemCommand="itenry_list_ItemCommand" OnItemDataBound="Repeater1_ItemDataBound"   >
 
@@ -104,6 +105,7 @@
                                            
                                           </table>
                                                   </FooterTemplate></asp:Repeater>
+                                                </ContentTemplate></asp:UpdatePanel>
                                         </div>
                                       </div>
                                     </div>

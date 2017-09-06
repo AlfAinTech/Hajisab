@@ -340,3 +340,32 @@ function finallizeAmount()
 {
     alert("here");
 }
+//function callModal(param) {
+//    debugger;
+    
+//    $('#myModal').addClass("in");
+//    $('#myModal').modal('show');
+//    currentCommand = $(param).attr('href'); console.log($(param));
+//    return false;
+//}
+
+//function executeCurrentCommand() {
+//    location.href = currentCommand;
+//}
+function callModal(param) {
+    debugger;
+
+    $('#myModal').addClass("in");
+    $('#myModal').show()
+    currentCommand = $(param).attr('href'); console.log($(param));
+    return false;
+}
+
+function executeCurrentCommand() {
+    location.href = currentCommand;
+}
+function CancelModel() {
+    $('#myModal').removeClass("in");
+    $('#myModal').hide();
+    return false;
+}

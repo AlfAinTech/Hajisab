@@ -30,7 +30,7 @@
                 <asp:LinkButton ID="edit_btn" class="btn btn-default" runat="server" CommandArgument='<%# Eval("id") %>' OnClick="edit_click"  CausesValidation="False"><span class="glyphicon glyphicon-pencil" ></span></asp:LinkButton>
            </div>
              <div class="col-md-6" style="padding:0;">
-                  <asp:LinkButton ID="delete_btn" class="btn btn-primary" runat="server" CommandArgument='<%# Eval("id") %>' OnClick="delete_click"   CausesValidation="False"><span class="glyphicon glyphicon-remove"></asp:LinkButton>
+                  <asp:LinkButton ID="delete_btn" data-toggle="tooltip" data-placement="top" class="btn btn-primary" runat="server" CommandArgument='<%# Eval("id") %>'  OnClientClick="return callModal(this);"  OnClick="delete_click"   CausesValidation="False"><span class="glyphicon glyphicon-remove"></asp:LinkButton>
             </div>
              </div>
             </div>

@@ -18,10 +18,10 @@
                     <td>
                         <div class="col-md-6" style="padding:0;">
                             <asp:LinkButton class="btn btn-default" ID="update_btn" CommandArgument='<%# Eval("id") %>' ValidationGroup="EditDataValid" runat="server" OnClick="updatebutton_clicked" Visible="false"><span class="glyphicon glyphicon-pencil" ></span></asp:LinkButton>
-                            <asp:LinkButton class="btn btn-default" ID="edit_btn" CommandArgument='<%# Eval("id") %>' runat="server" OnClick="editbutton_clicked"><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
+                            <asp:LinkButton class="btn btn-default" ID="edit_btn" CommandArgument='<%# Eval("id") %>' runat="server" OnClick="editbutton_clicked" ><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
                         </div>
                         <div class="col-md-6" style="padding:0;">
-                            <asp:LinkButton runat="server" ID="delete_btn" CommandArgument='<%# Eval("id") %>' OnClick="deleteButton_clicked" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="delete_btn" data-toggle="tooltip" data-placement="top" CommandArgument='<%# Eval("id") %>'  OnClientClick="return callModal(this);" OnClick="deleteButton_clicked" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
                         </div>
                     </td>
                     <td>

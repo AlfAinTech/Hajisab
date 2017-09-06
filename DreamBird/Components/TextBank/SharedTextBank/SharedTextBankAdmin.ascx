@@ -1,7 +1,8 @@
 ﻿
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="SharedTextBankAdmin.ascx.cs" Inherits="Components_TextBank_SharedTextBankAdmin" %>
-<%@ Register Src="~/Components/TextBank/TextBankAdmin.ascx" TagPrefix="uc1" TagName="TextBankAdmin" %>
 
+
+<%@ Register Src="~/Components/TextBank/TextBankAdmin.ascx" TagPrefix="uc1" TagName="TextBankAdmin" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <%@ Register Src="~/Components/TextBank/SharedTextBank/SharedTextBankList.ascx" TagPrefix="uc1" TagName="SharedTextBankList" %>
