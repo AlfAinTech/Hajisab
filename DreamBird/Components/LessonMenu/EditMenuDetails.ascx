@@ -2,6 +2,9 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeFile="EditMenuDetails.ascx.cs" Inherits="Components_LessonMenu_EditMenuDetails" %>
 
 
+
+
+
 <%@ Register Src="~/Components/LessonMenu/LessonMenuList.ascx" TagPrefix="uc1" TagName="LessonMenuList" %>
 
 

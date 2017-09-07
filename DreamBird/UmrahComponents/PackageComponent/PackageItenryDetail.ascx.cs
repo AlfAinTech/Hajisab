@@ -20,7 +20,7 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
     protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
         DreamBirdEntities db = new DreamBirdEntities();
-
+       
                 if (e.Item.ItemType == ListItemType.Footer)
                 {
             DropDownList dl = (DropDownList)e.Item.FindControl("cityList_add");
@@ -32,7 +32,12 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
                 tb.Items[0].Selected = true;
                 hiddencity.Value = tb.Items[0].Value;
             }
+            string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
+            Dream dream = db.Dreams.Where(q => q.DreamName == dreamName).FirstOrDefault();
             var data = db.Hotels.Select(q => new { q.id, q.hotelName, q.hotelType }).ToList();
+            if (dream != null)
+                data = db.Hotels.Where(q=>q.AspNetUserID == dream.AspNetUserID).Select(q => new { q.id, q.hotelName, q.hotelType }).ToList();
+
             JsonConvert.SerializeObject(data);
             var serializer = new JavaScriptSerializer();
             String result = serializer.Serialize(data);

@@ -4,6 +4,8 @@
 
 <script src="<%# Server.MapPath("~/") %>/Admin/Content/js/bootstrap.min.js"></script>
 
+
+
 <%@ Register Src="~/Components/TextBank/TextBankAdmin.ascx" TagPrefix="uc1" TagName="TextBankAdmin" %>
 
 
