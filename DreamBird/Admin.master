@@ -34,13 +34,13 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="main-menu">
                         <%--<li><a href="~/Admin/Default" runat="server">Dashboard</a></li>--%>
-                        <li><a href="~/Admin/DreamHome" runat="server">Packages</a></li>
+                        <li><a href="~/Admin/DreamHome" runat="server" name="packages">Packages</a></li>
                         
-                                <li><a href="~/UmrahComponents/AdminPages/Hotel/HotelBasicInfo" runat="server">Hotels</a></li>
-                                <li><a href="~/UmrahComponents/AdminPages/Flight/AirLineBasicInfo" runat="server">Flights</a></li>
-                                <li><a href="~/UmrahComponents/AdminPages/VisaPackages/VisaPackage" runat="server">VisaPackages</a></li>
-                                <li><a href="~/UmrahComponents/AdminPages/Package/PackageDiscount" runat="server">Discounts</a></li>
-                                <li><a href="~/UmrahComponents/AdminPages/BookingConfirmation/BookingConfirmation" runat="server">Booking Confirmation</a></li>
+                                <li><a href="~/UmrahComponents/AdminPages/Hotel/HotelBasicInfo" name="hotels" runat="server">Hotels</a></li>
+                                <li><a href="~/UmrahComponents/AdminPages/Flight/AirLineBasicInfo" runat="server" name="flights">Flights</a></li>
+                                <li><a href="~/UmrahComponents/AdminPages/VisaPackages/VisaPackage" runat="server" name="visapackages">VisaPackages</a></li>
+                                <li><a href="~/UmrahComponents/AdminPages/Package/PackageDiscount" runat="server" name="discount">Discounts</a></li>
+                                <li><a href="~/UmrahComponents/AdminPages/BookingConfirmation/BookingDetail"  name="booking" runat="server">Booking</a></li>
                             
                     </ul>
                 </div>

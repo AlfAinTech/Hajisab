@@ -23,4 +23,10 @@ public partial class UmrahComponents_AdminMasterPages_BookingConfirmation : Syst
         String url = "~/UmrahComponents/AdminPages/BookingConfirmation/BookingReminder";
         Response.Redirect(url);
     }
+
+    protected void BookedPackages_Clicked(object sender, EventArgs e)
+    {
+        String url = "~/UmrahComponents/AdminPages/BookingConfirmation/BookingDetail";
+        Response.Redirect(url);
+    }
 }

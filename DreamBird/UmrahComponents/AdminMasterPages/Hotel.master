@@ -7,6 +7,9 @@
 <script src="<%# Server.MapPath("~/") %>/Components/PageTemplate/Content/js/myScript.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">--%>
     <script>
+        e = document.getElementsByName('hotels');
+        $(e).parent().addClass("active");
+
     selectedItem = function(data)
     {
        // alert("here");
@@ -15,6 +18,7 @@
         e = document.getElementsByName(name);
         console.log(e);
         $(e).addClass("active");
+       
     }
     function OpenTab(data) {
         var result = document.getElementsByClassName(data);

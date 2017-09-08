@@ -9,6 +9,6 @@ public partial class UmrahComponents_AdminPages_BookingConfirmation_BookingConfi
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        ScriptManager.RegisterStartupScript(Page, typeof(Page), "b_key", "selectedItem('confirmation' );", true);
     }
 }

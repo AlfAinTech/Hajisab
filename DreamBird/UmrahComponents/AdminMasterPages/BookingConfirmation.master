@@ -2,7 +2,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 
+     <script>
+         e = document.getElementsByName('booking');
+         $(e).parent().addClass("active");
 
+    selectedItem = function(data)
+    {
+       // alert("here");
+        name = "Packages_" + data;
+        console.log($("#" + name + ""));
+        e = document.getElementsByName(name);
+        console.log(e);
+        $(e).parent().addClass("active");
+        
+    }
+    </script>
 
   <div class="content_wrapper">
 <div class="row" style="margin:0;">
@@ -32,10 +46,13 @@
             <asp:Label ID="dreamname" runat="server"></asp:Label></h3>
         <div id="myTabs">
             <ul class="nav nav-tabs"  runat="server" ID="Ul1" >
-                <li role="presentation" >
-                    <asp:LinkButton ID="PaymentConfirmation_link" OnClick="PaymentConfirmation_Clicked" class="BasicInfo" runat="server" CausesValidation="False">Payment Confirmation</asp:LinkButton></li>
                 <li role="presentation">
-                    <asp:LinkButton  ID="EmailReminder_link" OnClick="EmailReminder_Clicked" runat="server"  class="Flight" CausesValidation="False" >Email Reminder</asp:LinkButton></li>
+                    <asp:LinkButton  ID="Packages_booking" name="Packages_booking" OnClick="BookedPackages_Clicked" runat="server"  class="Booked" CausesValidation="False" >Booked Packages</asp:LinkButton></li>
+                <li role="presentation" >
+                    <asp:LinkButton ID="Packages_confirmation" name="Packages_confirmation"  OnClick="PaymentConfirmation_Clicked" class="BasicInfo" runat="server" CausesValidation="False">Payment Confirmation</asp:LinkButton></li>
+                <li role="presentation">
+                    <asp:LinkButton  ID="packages_reminder" name="Packages_reminder" OnClick="EmailReminder_Clicked" runat="server"  class="Flight" CausesValidation="False" >Email Reminder</asp:LinkButton></li>
+                
              </ul>
 
 
