@@ -1,8 +1,28 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true"  CodeFile="PackageItenryDetail.ascx.cs" Inherits="UmrahComponents_PackageComponent_PackageItenryDetail" %>
 <script src="/UmrahComponents/Contents/js/jquery.quicksearch.js"></script> 
- <asp:HiddenField ID="hiddencity" runat="server" />
+ <asp:HiddenField ID="hiddenHotel" runat="server" />
 <asp:HiddenField ID="hiddentotaNights" runat="server" />
 <script type="text/javascript">
+    bindData = function (id)
+    {
+       
+        var hotels = $.grep(jsondataHotel, function (n, i) {
+            return (n.hotelType == id);
+        });
+        var hotelList = $('#hotelListAdd');
+        console.log(hotels);
+        hotelList[0].innerHTML = '';
+        $.each(hotels, function () {
+            var newOption = $('<option>');
+            newOption.attr('value', this.id).text(this.hotelName);
+            hotelList.append(newOption);
+
+        });
+        $('#hotelListAdd option:first-child').attr("selected", "selected");
+        strUser = $('#hotelListAdd').find(":selected").val();
+        document.getElementById('<%=hiddenHotel.ClientID %>').value = strUser;
+    }
+
      myfnction = function (current) {
           strUser = current.options[current.selectedIndex].value;
           var hotels = $.grep(jsondataHotel, function (n, i) {
@@ -14,17 +34,19 @@
           $.each(hotels, function () {
               var newOption = $('<option>');
               newOption.attr('value', this.id).text(this.hotelName);
-              hotelList.append(newOption);
-              $('#hotelListAdd option:first-child').attr("selected", "selected");
+              hotelList.append(newOption);})
+          $('#hotelListAdd option:first-child').attr("selected", "selected");
+
               yourFunction();
-          })
+         
 
      }
      yourFunction = function()
      {
         
-         strUser =  $('#hotelListAdd').find(":selected").val();;
-         document.getElementById('<%=hiddencity.ClientID %>').value = strUser;
+         strUser =  $('#hotelListAdd').find(":selected").val();
+         document.getElementById('<%=hiddenHotel.ClientID %>').value = strUser;
+         document.getElementById('hotelList_Value').value = strUser;
      }
     CalculateNights= function()
     {
@@ -55,8 +77,8 @@
                                       <div class="row" style="overflow:scroll;height:60vh;overflow-x:hidden;">
                                         <div class="well" style="height:inherit">
                                           <h4>Select Your Transport Type</h4>
-                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                                <ContentTemplate>
+                                           <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                <ContentTemplate>--%>
                                               <asp:DropDownList ID="transportList" runat="server" CssClass="form-control" DataTextField="Name" DataValueField="id"></asp:DropDownList> 
                                           <asp:Repeater runat="server" ID="itenry_list" OnItemCommand="itenry_list_ItemCommand" OnItemDataBound="Repeater1_ItemDataBound"   >
 
@@ -84,20 +106,24 @@
                                                 </ItemTemplate>
                                               <FooterTemplate>
                                               <tr>
-                                                <td><asp:DropDownList  runat="server" ID="cityList_add" type="text" class="form-control"  AutoPostBack="false"
+
+                                                <td>
+                                                    <asp:DropDownList  runat="server" ID="cityList_add" type="text" class="form-control"  AutoPostBack="false"
  >
                                                   <asp:ListItem Value="makkah"  >Makkah</asp:ListItem>
                                                   <asp:ListItem Value="madina">Madina</asp:ListItem>
                                                   </asp:DropDownList></td>
                                                 <td><asp:TextBox  ID="nights_add" min="1" type="number" class="form-control"  runat="server" Text="1" ValidationGroup="addValidation"/>
-                                                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="nights_add"  OnInit="myInit_Range" ErrorMessage="Invalid" Display="Dynamic" SetFocusOnError="true" ValidationGroup="addDataValid" Font-Bold="True"  ForeColor="Red" Type="Integer"></asp:RangeValidator>    
+                                              <%--  <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="nights_add"  OnInit="myInit_Range" ErrorMessage="Invalid" Display="Dynamic" SetFocusOnError="true" ValidationGroup="addDataValid" Font-Bold="True"  ForeColor="Red" Type="Integer"></asp:RangeValidator>    
                                                                <asp:RequiredFieldValidator  ID="RequiredFieldValidator1" runat="server" ControlToValidate="nights_add"  Display="Dynamic" SetFocusOnError="true" ValidationGroup="addDataValid" ErrorMessage="Field Required" Font-Bold="True"  ForeColor="Red"></asp:RequiredFieldValidator>
-                                                  </td>
+                                                 --%> </td>
                                                 <td>
-                                                    <asp:DropDownList ID="hotelListAdd" ClientIDMode="Static" runat="server"  CssClass="form-control" DataTextField="hotelName" DataValueField="id"></asp:DropDownList>
+                                                    <%--<asp:TextBox ID="hotelList_Value" runat="server" style="display:none" ClientIDMode="Static" ></asp:TextBox>--%>
+
+                                                    <select ID="hotelListAdd" class="form-control" DataTextField="hotelName" onchange="return yourFunction();" DataValueField="id"></select>
                                                 </td>
                                                 <td>
-                                                   <asp:LinkButton  runat="server" ClientIDMode="Static" OnClientClick="return CalculateNights()" CssClass="btn btn-success" ID="save" ValidationGroup="addDataValid" CausesValidation="true" CommandName="add">
+                                                   <asp:LinkButton  runat="server" ClientIDMode="Static" OnClientClick="return CalculateNights()" CssClass="btn btn-success" ID="save"  CausesValidation="true" CommandName="add">
                                                   <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
                                                 </asp:LinkButton>
                                                 </td>
@@ -105,7 +131,7 @@
                                            
                                           </table>
                                                   </FooterTemplate></asp:Repeater>
-                                                </ContentTemplate></asp:UpdatePanel>
+                                                <%--</ContentTemplate></asp:UpdatePanel>--%>
                                         </div>
                                       </div>
                                     </div>

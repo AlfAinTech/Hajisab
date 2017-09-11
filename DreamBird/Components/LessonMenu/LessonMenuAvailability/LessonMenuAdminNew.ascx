@@ -6,10 +6,10 @@
 <%@ Register Src="~/Components/PageTemplate/LayoutsList.ascx" TagPrefix="uc1" TagName="LayoutsList" %>
 <%@ Register Src="~/Components/PageTemplate/PageTemplate.ascx" TagPrefix="uc1" TagName="PageTemplate" %>
 <%@ Register Src="~/Components/PageTemplate/ControlsList.ascx" TagPrefix="uc1" TagName="ControlsList" %>
-
-
-
 <%@ Register Src="~/Components/LessonMenu/LessonMenuList.ascx" TagPrefix="uc1" TagName="LessonMenuList" %>
+
+
+
 <%@ Register Src="~/Components/LessonMenu/EditMenuDetails.ascx" TagPrefix="uc1" TagName="EditMenuDetails" %>
 
 

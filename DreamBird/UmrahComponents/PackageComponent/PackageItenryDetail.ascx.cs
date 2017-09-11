@@ -24,14 +24,6 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
                 if (e.Item.ItemType == ListItemType.Footer)
                 {
             DropDownList dl = (DropDownList)e.Item.FindControl("cityList_add");
-            DropDownList tb = (DropDownList)e.Item.FindControl("hotelListAdd");
-             tb.DataSource = db.Hotels.Where(q=>q.hotelType == dl.SelectedValue).ToList();
-            tb.DataBind();
-            if(tb.Items.Count !=0)
-            {
-                tb.Items[0].Selected = true;
-                hiddencity.Value = tb.Items[0].Value;
-            }
             string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
             Dream dream = db.Dreams.Where(q => q.DreamName == dreamName).FirstOrDefault();
             var data = db.Hotels.Select(q => new { q.id, q.hotelName, q.hotelType }).ToList();
@@ -41,9 +33,9 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
             JsonConvert.SerializeObject(data);
             var serializer = new JavaScriptSerializer();
             String result = serializer.Serialize(data);
-            ScriptManager.RegisterStartupScript(Page, typeof(Page), "showError", "var jsondataHotel = " + result + ";", true);
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "showError", "var jsondataHotel = " + result + ";bindData('" + dl.SelectedValue+"');", true);
             dl.Attributes.Add("onchange", " return myfnction(this);");
-            tb.Attributes.Add("onchange", " return yourFunction();");
+          //  tb.Attributes.Add("onchange", " return yourFunction();");
             // ScriptManager.RegisterStartupScript(Page, typeof(Page), "errormine", "myfnction();", true);
 
         }
@@ -97,7 +89,7 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
                         nights = int.Parse(tb.Text),
                         packageDetailID = pd.id,
                         alharmainUserID = session,
-                        hotelID = int.Parse(hiddencity.Value),
+                        hotelID = int.Parse(hiddenHotel.Value),
                         transportID = int.Parse(transportList.SelectedValue)
                     };
                     db.PackageItenryDetails.Add(pid);

@@ -16,10 +16,17 @@ public partial class PackageItenryDetail
            int spendNights = db.PackageItenryDetails.Where(p => p.alharmainUserID == this.alharmainUserID && p.id<this.id).OrderBy(q => q.id).Select(q => q.nights).DefaultIfEmpty(0).Sum();
             DateTime start = (PackageDetail.startDate.Value.AddDays(spendNights));
             DateTime EndDate = start.AddDays(nights-1);
-            if(start.Month == EndDate.Month)
-                return start.Day.ToString() + "-" + EndDate.Day.ToString() + " " + start.ToString("MMMM",CultureInfo.InvariantCulture);
+            string DateString = "";
+            if (start.Day == EndDate.Day)
+                DateString = start.Day + "";
             else
-                return start.Day.ToString() + "-" + EndDate.Day.ToString() + " " + start.ToString("MMMM", CultureInfo.InvariantCulture)+", "+EndDate.ToString("MMMM", CultureInfo.InvariantCulture);
+                DateString = start.Day.ToString() + "-" + EndDate.Day.ToString();
+
+            if(start.Month == EndDate.Month)
+                DateString  += " " + start.ToString("MMMM",CultureInfo.InvariantCulture);
+            else
+               DateString +=" " + start.ToString("MMMM", CultureInfo.InvariantCulture)+", "+EndDate.ToString("MMMM", CultureInfo.InvariantCulture);
+            return DateString;
         }
         set { }
     }
