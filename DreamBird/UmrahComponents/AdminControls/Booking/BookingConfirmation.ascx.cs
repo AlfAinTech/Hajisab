@@ -32,6 +32,9 @@ public partial class UmrahComponents_AdminControls_Booking_BookingConfirmation :
             nights_inMakkah.Text = pd.PackageDetail.nightsInMakkah.ToString();
             hotelName_madina.Text = pd.PackageDetail.Hotel.hotelName;
             nights_inMadina.Text = pd.PackageDetail.nightsInMadina.ToString();
+            adults_no.Text = pd.adults.ToString();
+            children_no.Text = pd.children.ToString();
+            infant_no.Text = pd.infants.ToString();
             if (pd.PackageDetail.Hotel.rating > 2)
             {
                 hotelRating_madina.Attributes.Add("data-rating", pd.PackageDetail.Hotel.rating.ToString());

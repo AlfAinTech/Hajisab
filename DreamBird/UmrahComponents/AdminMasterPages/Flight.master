@@ -9,6 +9,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
       <script>
+          e = document.getElementsByName('flights');
+          $(e).parent().addClass("active");
+
     selectedFlight = function(data)
     {
        // alert("here");
@@ -17,6 +20,7 @@
         e = document.getElementsByName(name);
         console.log(e);
         $(e).addClass("active");
+       
     }
     OpenTab = function(data) {
         var result = document.getElementsByClassName(data);

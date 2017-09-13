@@ -15,7 +15,42 @@
     <script src="<%# Server.MapPath("~/") %>/UmrahComponents/Contents/js/bootstrap.js"></script>
     <script type="text/javascript" src="<%# Server.MapPath("~/") %>/UmrahComponents/Contents/js/myScript.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">--%>
+      <script>
+        e = document.getElementsByName('visapackages');
+              $(e).parent().addClass("active");
+    //selectedItem = function(data)
+    //{
+    //   // alert("here");
+    //    name = "dreamButton_" + data;
+    //    console.log($("#" + name + ""));
+    //    e = document.getElementsByName(name);
+    //    console.log(e);
+    //    $(e).addClass("active");
+    //}
+    //function OpenTab(data) {
+    //    var result = document.getElementsByClassName(data);
+    //    var p = data[0];
+    //    x = result[0].parentElement;
+    //    $(x).addClass("active");
+    //}
+          function callModal(param) {
+              debugger;
 
+              $('#confirmationModel').addClass("in");
+              $('#confirmationModel').show();
+              currentCommand = $(param).attr('href'); console.log($(param));
+              return false;
+          }
+
+          function executeCurrentCommand() {
+              location.href = currentCommand;
+          }
+          function CancelModel() {
+              $('#confirmationModel').removeClass("in");
+              $('#confirmationModel').hide();
+              return false;
+          }
+</script>
   <div class="content_wrapper">
 <div class="row" style="margin:0;">
 <div class="col-md-3" style="padding:0;">

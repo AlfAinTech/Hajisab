@@ -84,29 +84,31 @@ public partial class UmrahComponents_AdminControls_Packages_DiscountPackages : S
                 DateTime till = DateTime.Parse(AddavailableTill_txt.Text);
                 if (from > till) { ShowError("invalid Date Limit"); return; }
                 float value = float.Parse(addpercent_txt.Text);
-                
-
-                if (db.DiscountPackages.Where(q => q.name == addTitle_txt.Text).Count() == 0)
-            {
-                DiscountPackage ac = new DiscountPackage
+                if (db.PackageDetails.Any(q => q.dreamID == package_id))
                 {
-                    name = addTitle_txt.Text,
-                    discountPercent = Math.Round( float.Parse(addpercent_txt.Text),2),
-                    availableFrom = from,
-                    availableTill = till,
-                    packageDetailID=package_id,
+                    int detailId = db.PackageDetails.FirstOrDefault(q => q.dreamID == package_id).id;
+                    if (db.DiscountPackages.Where(q => q.name == addTitle_txt.Text).Count() == 0)
+                    {
+                        DiscountPackage ac = new DiscountPackage
+                        {
+                            name = addTitle_txt.Text,
+                            discountPercent = Math.Round(float.Parse(addpercent_txt.Text), 2),
+                            availableFrom = from,
+                            availableTill = till,
+                            packageDetailID = detailId,
 
-                };
-                db.DiscountPackages.Add(ac);
-                db.SaveChanges();
-                clearControl();
-                dataBind();
-            }
-            else
-            {
-                ShowError("Package Title Already Exist! Change the Name and try again");
-                return;
-            }
+                        };
+                        db.DiscountPackages.Add(ac);
+                        db.SaveChanges();
+                        clearControl();
+                        dataBind();
+                    }
+                }
+                else
+                {
+                    ShowError("Package Title Already Exist! Change the Name and try again");
+                    return;
+                }
             }
         }
         else

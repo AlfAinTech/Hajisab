@@ -97,17 +97,17 @@
           <div class="col-md-12">
           <div class="col-md-4">
           <h5>Adults</h5>
-                   <asp:TextBox type="number" runat="server" ID="adults_no" class="form-control" name="" ReadOnly="true" Text="0"/>
+                   <asp:TextBox runat="server" ID="adults_no" class="form-control" name="" ReadOnly="true" Text="0"/>
                  
         </div>
          <div class="col-md-4">
           <h5>Children</h5>
-                   <asp:TextBox type="number" runat="server" ID="children_no" class="form-control" ReadOnly="true"  name="" Text="0"/>
+                   <asp:TextBox  runat="server" ID="children_no" class="form-control" ReadOnly="true"  name="" Text="0"/>
                      
         </div>
            <div class="col-md-4">
           <h5>Infants</h5>
-                   <asp:TextBox type="number" runat="server" ID="infant_no" class="form-control" name="" ReadOnly="true" Text="0"/>
+                   <asp:TextBox  runat="server" ID="infant_no" class="form-control" name="" ReadOnly="true" Text="0"/>
                      
         </div>
               </div>

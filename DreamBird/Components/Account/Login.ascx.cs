@@ -19,6 +19,7 @@ public partial class Account_Login : System.Web.UI.UserControl
     protected void LogIn(object sender, EventArgs e)
     {
         var manager = new UserManager();
+        
         ApplicationUser user = manager.Find(UserName.Text, Password.Text);
         if (user != null)
         {

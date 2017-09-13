@@ -29,7 +29,7 @@ public partial class Components_Dreams_BookedPackages : System.Web.UI.UserContro
         if (DreamList.Count == 0)
         {
             errormessage.Visible = true;
-            errormessage.Text = "No items match your search";
+            errormessage.Text = "Packages not booked";
         }
         else
         {
