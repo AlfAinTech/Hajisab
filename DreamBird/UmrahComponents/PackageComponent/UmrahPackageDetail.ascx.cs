@@ -46,6 +46,7 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
         if (data.Count != 0)
         {
             PackageDetail pd = data[0];
+            
             PackageItenryDetail.bindItenryData(pd.id);
             totelNights.Text = (pd.nightsInMakkah + pd.nightsInMadina).ToString();
             bookPackage.CommandArgument = pd.id.ToString();
@@ -320,6 +321,7 @@ public void ComputePrice(int makkahAccom_id, int madinaAccom_id)
     }
     else { price = pd.minAmount; }
     Session["grandTotel"] = price.ToString();
+        hiddenprice.Value = price.ToString();
     Computed_amount.Text = Math.Round(price, 2).ToString();
     DateTime today = System.DateTime.Today;
     List<DiscountPackage> discounts = db.DiscountPackages.Where(q => q.packageDetailID == pd.id && (q.availableFrom <= today && q.availableTill >= today)).OrderByDescending(q => q.discountPercent).ToList();

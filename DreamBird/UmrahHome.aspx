@@ -10,7 +10,9 @@
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--%>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <%--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -22,10 +24,12 @@
     <link rel="stylesheet" href="~/UmrahComponents/Contents/css/liquid-slider.css"/>
     <link rel="stylesheet" href="~/UmrahComponents/Contents/css/bootstrap-theme.css"/>
     <link rel="stylesheet" href="~/UmrahComponents/Contents/css/style.css"/>
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
     <asp:PlaceHolder ID="PlaceHolder1" runat="server">
     <script src='<% = ResolveUrl("~/UmrahComponents/Contents/js/jquery.cycle.lite.js") %>' ></script>
+
+    <script src='<%= ResolveUrl("~/chat/contents/js/jquery.quicksearch.js") %>'></script>
+    <script src='<%= ResolveUrl("~/UmrahComponents/Contents/js/bootstrap.js") %>'></script></asp:PlaceHolder>
     <script type="text/javascript">
        Initialize = function(){
             $('.right').cycle({
@@ -44,9 +48,20 @@
            $('#chat_now').click();
        });
 
+       function finallizeAmount() {
+           alert("here");
+       } function callModal(param) {
+           debugger;
+           $('#myModal').modal('show');
+           currentCommand = $(param).attr('href'); console.log($(param));
+           return false;
+       }
+
+       function executeCurrentCommand() {
+           location.href = currentCommand;
+       }
     </script>
-     <script src='<%= ResolveUrl("~/chat/contents/js/jquery.quicksearch.js") %>'></script>
-    <script src='<%= ResolveUrl("~/UmrahComponents/Contents/js/bootstrap.js") %>'></script></asp:PlaceHolder>
+
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,700,900" rel="stylesheet">
     

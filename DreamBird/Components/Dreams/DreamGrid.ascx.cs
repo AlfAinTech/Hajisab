@@ -34,13 +34,24 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
         DreamBirdEntities db = new DreamBirdEntities();
         int DreamTypeID = Convert.ToInt32(ddl_DreamCat.SelectedItem.Value);
         List<Dream> DreamList = new List<Dream>();
-        if (searched_text == null)
+        String uid = HttpContext.Current.User.Identity.GetUserId();
+        if (HttpContext.Current.User.IsInRole("Admin"))
         {
             DreamList = db.Dreams.Where(w => w.dreamTypeID == DreamTypeID).ToList();
         }
         else
         {
-            String uid = HttpContext.Current.User.Identity.GetUserId();
+           if (HttpContext.Current.User.IsInRole("UmrahAdmin"))
+            {
+                DreamList = db.Dreams.Where(w => w.dreamTypeID == DreamTypeID && w.AspNetUserID ==uid ).ToList();
+            }
+        }
+        if (searched_text == null)
+        {
+            DreamList = DreamList.Where(w => w.dreamTypeID == DreamTypeID).ToList();
+        }
+        else
+        {
             //  int dream_id = db.Dreams.Where(dream => dream.DreamName == dream_name).First().id;
             List<int?> taglist = new List<int?>();
             List<int?> dreamTagList = new List<int?>();
@@ -55,9 +66,9 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
                     dreamTagList = db.DreamTags.Where(w => taglist.Contains(w.Tag_id)).Select<DreamTag, int?>(s => s.Dream_id).ToList();
                 }
             }
-            if (db.Dreams.Any(a => a.DreamName.Contains(searched_text)) || db.Dreams.Any(a => a.Description.Contains(searched_text)) || db.DreamTags.Any(a => taglist.Contains(a.Tag_id)))
+            if (DreamList.Any(a => a.DreamName.Contains(searched_text)) || DreamList.Any(a => a.Description.Contains(searched_text)) || db.DreamTags.Any(a => taglist.Contains(a.Tag_id)))
             {
-                DreamList = db.Dreams.Where(w => w.dreamTypeID == DreamTypeID && ((w.DreamName.Contains(searched_text)) || (w.Description.Contains(searched_text)) || dreamTagList.Contains(w.id))).ToList();
+                DreamList = DreamList.Where(w =>  ((w.DreamName.Contains(searched_text)) || (w.Description.Contains(searched_text)) || dreamTagList.Contains(w.id))).ToList();
             }
 
         }
