@@ -69,13 +69,13 @@
                                             <div class="col-md-2" style="padding:0;">
                                                 <img src="/UmrahComponents/Contents/img/kaba-hotel-icon.png" width="100%" />
                                             </div>
-                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel1.hotelName").ToString().Length > 10 ? Eval("Hotel1.hotelName").ToString().Substring(0,10)+"..." : Eval("Hotel1.hotelName") %></h6></div>
+                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel1.distance").ToString() + "Meters" %></h6></div>
                                         </div>
                                         <div class="col-md-12" style="padding:0; margin-bottom: 5px;">
                                             <div class="col-md-2" style="padding:0;">
                                                 <img src="/UmrahComponents/Contents/img/madina-hotel-icon.png" width="100%" />
                                             </div>
-                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel.hotelName").ToString().Length > 10 ? Eval("Hotel.hotelName").ToString().Substring(0,10)+"..." : Eval("Hotel.hotelName") %></h6></div>
+                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel.hotelName").ToString() + "Meters" %></h6></div>
                                         </div>
                                         <div class="col-md-12" style="padding:0; margin-top: 5px;">
                                             <h3><%# Eval("minRange")+" PKR" %></h3>
@@ -89,7 +89,7 @@
                                 </ItemTemplate></asp:Repeater>
                             <div class="col-md-12">
                                 <div class="col-md-4" style="padding-top: 20px; margin-right: auto; margin-left: auto; float: none;">
-                                    <asp:Button Text="Learn More" runat="server" ID="Explore"  OnClick="Explore_ButtonClicked" class="btn btn-primary" />
+                                    <asp:Button Text="Browse Packages" runat="server" ID="Explore"  OnClick="Explore_ButtonClicked" class="btn btn-primary" />
                                 </div>
                             </div>
                         </div>

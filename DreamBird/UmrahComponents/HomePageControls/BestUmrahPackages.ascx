@@ -66,7 +66,7 @@
                                         <img src="/UmrahComponents/Contents/img/kaba-hotel-icon.png" width="100%">
                                     </div>
                                     <div class="col-md-9" style="padding:0">
-                                        <h6><asp:Label   runat="server" ID="hotelMakkah" Text='<% # Eval("Hotel1.hotelName").ToString().Length > 10 ? Eval("Hotel1.hotelName").ToString().Substring(0,10)+"..." : Eval("Hotel1.hotelName")%>'></asp:Label></h6>
+                                        <h6><asp:Label   runat="server" ID="hotelMakkah" Text='<% # Eval("Hotel1.distance").ToString()+ " Meters" %>'></asp:Label></h6>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -74,7 +74,7 @@
                                         <img src="/UmrahComponents/Contents/img/madina-hotel-icon.png" width="100%">
                                     </div>
                                     <div class="col-md-9" style="padding:0">
-                                        <h6><asp:Label   runat="server" ID="hotelMadina" Text='<%# Eval("Hotel.hotelName").ToString().Length > 10 ? Eval("Hotel.hotelName").ToString().Substring(0,10)+"..." : Eval("Hotel.hotelName") %>'></asp:Label></h6>
+                                        <h6><asp:Label   runat="server" ID="hotelMadina" Text='<%# Eval("Hotel.distance").ToString()+" Meters" %>'></asp:Label></h6>
                                     </div>
                                 </div>
                             </div></div>

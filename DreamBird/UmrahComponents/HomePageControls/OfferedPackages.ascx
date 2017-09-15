@@ -10,7 +10,7 @@
 
 <div id="what_we_offer">
     <h1>
-        What we offer?
+       Select Packages
     </h1>
     <h4>
         We offer a great variety of umrah packages based on your needs. Filter by:

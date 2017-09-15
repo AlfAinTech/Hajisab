@@ -19,9 +19,9 @@
                             <ul>
                                 <li><%# Eval("getTotelnights")+" Nights" %>
                                 </li>
-                                <li><%# Eval("Hotel1.hotelName").ToString().Length > 10 ? Eval("Hotel1.hotelName").ToString().Substring(0,10)+"..." : Eval("Hotel1.hotelName") %>
+                                <li><%# Eval("Hotel1.distance").ToString()+" Meters" %>
                                 </li>
-                                <li><%# Eval("Hotel.hotelName").ToString().Length > 10 ? Eval("Hotel.hotelName").ToString().Substring(0,10)+"..." : Eval("Hotel.hotelName") %>
+                                <li><%# Eval("Hotel.distance").ToString()+" Meters" %>
                                 </li>
                                 
                             </ul>
