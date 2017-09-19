@@ -1,4 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="BestUmrahPackages.ascx.cs" Inherits="UmrahComponents_PackageComponent_BestUmrahPackages" %>
+
+
 <div id="special_package_wrapper">
     <h3 style="margin-top:10px; margin-bottom:20px;">Our Best Packages</h3>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -66,7 +68,11 @@
                                         <img src="/UmrahComponents/Contents/img/kaba-hotel-icon.png" width="100%">
                                     </div>
                                     <div class="col-md-9" style="padding:0">
-                                        <h6><asp:Label   runat="server" ID="hotelMakkah" Text='<% # Eval("Hotel1.distance").ToString()+ " Meters" %>'></asp:Label></h6>
+                                        <h6>
+                                            <asp:Label   runat="server" ID="hotel_rating" Text='<% # int.Parse(Eval("Hotel1.rating").ToString())>2? Eval("Hotel1.rating").ToString()+" Star":"Economy" %>'></asp:Label>
+                                       <asp:Label   runat="server" ID="hotelMakkah" Text='<% # Eval("Hotel1.distance").ToString()+ " m" %>'></asp:Label>
+                                             </h6>
+
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -74,7 +80,9 @@
                                         <img src="/UmrahComponents/Contents/img/madina-hotel-icon.png" width="100%">
                                     </div>
                                     <div class="col-md-9" style="padding:0">
-                                        <h6><asp:Label   runat="server" ID="hotelMadina" Text='<%# Eval("Hotel.distance").ToString()+" Meters" %>'></asp:Label></h6>
+                                        <h6><asp:Label   runat="server" ID="madinaRating" Text='<% # int.Parse(Eval("Hotel.rating").ToString())>2? Eval("Hotel.rating").ToString()+" Star":"Economy" %>'></asp:Label>
+
+                                        <asp:Label   runat="server" ID="hotelMadina" Text='<%# Eval("Hotel.distance").ToString()+" m" %>'></asp:Label></h6>
                                     </div>
                                 </div>
                             </div></div>

@@ -15,14 +15,15 @@
                     Planning for Umrah
                 </h1>
                 <h3>
-                    <%--Want to book <strong>Online? </strong> Need <strong>Guidline? </strong> Best <strong>Packages?</strong>--%>
+                    Want to book <strong>Online? </strong> Need <strong>Guidline? </strong> Best <strong>Packages?</strong>
                 </h3>
-               <%-- <h3>We are here for you available <strong>24/7!</strong></h3>
-                <h3>Lets <strong>Chat & Plan</strong></h3>
+                <h3>We are here for you available <strong>24/7!</strong></h3>
+                <h3>Lets <strong>Plan</strong></h3>
                 <div class="col-md-6" style="margin-right: auto; margin-left: auto; float: none; margin-top: 20px;">
                     <div class="col-md-3"></div>
-                    <div class="col-md-3"><button class="btn btn-primary chat" id="chat_now" style="width:100%;">Chat Now</button></div>
-                    <div class="col-md-3"><asp:LinkButton runat="server"   class="btn btn-default" id="learn_more" style="width:100%;" OnClick="learn_moreClicked">Learn More</asp:LinkButton></div>
+                    <div class="col-md-6"><asp:LinkButton runat="server"   class="btn btn-default" id="learn_more" style="width:100%;" OnClick="learn_moreClicked">Learn More</asp:LinkButton></div>
+
+                    <%--<div class="col-md-3"><button class="btn btn-primary chat" id="chat_now" style="width:100%;">Chat Now</button></div>
                     <div class="col-md-3"></div>
                 </div>--%>
             </div>

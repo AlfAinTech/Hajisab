@@ -17,6 +17,8 @@ public partial class UmrahComponents_PackageComponent_PrimaryUmrahPackages : Sys
          List<PackageDetail> pd = db.PackageDetails.ToList();
         primaryPkg_list.DataSource = db.PackageDetails.GroupBy(x => x.packageType).Select(group =>  group.Where(x => x.minRange == group.Min(y => y.minRange)).FirstOrDefault()).ToList();
         primaryPkg_list.DataBind();
+       // ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
+
     }
 
     public void OnHideAdminEvent(object sender, EventArgs e)

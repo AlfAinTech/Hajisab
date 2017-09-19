@@ -16,8 +16,10 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
             BindData(type);
 
             ScriptManager.RegisterStartupScript(Page, typeof(Page), "setClass", "setClass('"+type+"');", true);
-
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
         }
+        
+
     }
 
     protected void BindData(string PackageType)
@@ -47,7 +49,7 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
         UpdatePanel up = ((UpdatePanel)Page.FindControl("baseUpdatePanel"));
       //  up.Update();
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "setClass", "setClass('" + PackageType + "');", true);
-
+        ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
     }
     protected void Explore_ButtonClicked(object sender, EventArgs e)
     {

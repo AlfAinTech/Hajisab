@@ -75,13 +75,17 @@
                                             <div class="col-md-2" style="padding:0;">
                                                 <img src="/UmrahComponents/Contents/img/kaba-hotel-icon.png" width="100%" />
                                             </div>
-                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel1.distance").ToString() + "Meters" %></h6></div>
+                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel1.distance").ToString() + " m" %></h6>
+                                                <div class="col-md-12" style="padding: 0;min-height:11px" runat="server" id="star_div">
+                                                        <h6 style="font-size: .8em;"><span class="stars" data-rating='<%# Eval(" Hotel1.rating") %>' data-num-stars='<%# Eval(" Hotel1.rating") %>'>abc</span></h6>
+                                                    </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-12" style="padding:0; margin-bottom: 5px;">
                                             <div class="col-md-2" style="padding:0;">
                                                 <img src="/UmrahComponents/Contents/img/madina-hotel-icon.png" width="100%" />
                                             </div>
-                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel.hotelName").ToString() + "Meters" %></h6></div>
+                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel.distance").ToString()+ " m"%></h6></div>
                                         </div>
                                         <div class="col-md-12" style="padding:0; margin-top: 5px;">
                                             <h3><%# Eval("minRange")+" PKR" %></h3>

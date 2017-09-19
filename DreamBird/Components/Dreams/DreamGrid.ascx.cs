@@ -66,9 +66,9 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
                     dreamTagList = db.DreamTags.Where(w => taglist.Contains(w.Tag_id)).Select<DreamTag, int?>(s => s.Dream_id).ToList();
                 }
             }
-            if (DreamList.Any(a => a.DreamName.Contains(searched_text)) || DreamList.Any(a => a.Description.Contains(searched_text)) || db.DreamTags.Any(a => taglist.Contains(a.Tag_id)))
+            if (DreamList.Any(a => a.DreamName.ToLower().Contains(searched_text)) || DreamList.Any(a => a.Description.ToLower().Contains(searched_text)) || db.DreamTags.Any(a => taglist.Contains(a.Tag_id)))
             {
-                DreamList = DreamList.Where(w =>  ((w.DreamName.Contains(searched_text)) || (w.Description.Contains(searched_text)) || dreamTagList.Contains(w.id))).ToList();
+                DreamList = DreamList.Where(w =>  ((w.DreamName.ToLower().Contains(searched_text)) || (w.Description.ToLower().Contains(searched_text)) || dreamTagList.Contains(w.id))).ToList();
             }
 
         }
@@ -156,7 +156,7 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
     {
         ViewState["PageNo"] = 0;
         string searched_text = dream_keyword.Text;
-        BindDreamGrid(searched_text);
+        BindDreamGrid(searched_text.ToLower());
     }
 
     protected void ddl_DreamCat_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,7 +170,7 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
         }
         else
         {
-            BindDreamGrid(Keyword);
+            BindDreamGrid(Keyword.ToLower());
         }
     }
 
@@ -187,7 +187,7 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
         }
         else
         {
-            BindDreamGrid(Keyword);
+            BindDreamGrid(Keyword.ToLower());
         }
     }
 
@@ -207,7 +207,7 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
         }
         else
         {
-            BindDreamGrid(Keyword);
+            BindDreamGrid(Keyword.ToLower());
         }
     }
 
@@ -227,7 +227,7 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
         }
         else
         {
-            BindDreamGrid(Keyword);
+            BindDreamGrid(Keyword.ToLower());
         }
     }
 }

@@ -20,6 +20,7 @@ public partial class UmrahComponents_PackageComponent_BestUmrahPackages : System
         DreamBirdEntities db = new DreamBirdEntities();
         BetsPackages_list.DataSource = db.PackageDetails.Where(q => q.Dream.IsFeatured).ToList();
         BetsPackages_list.DataBind();
+       // ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
     }
     protected void bookNowClick(object sender, EventArgs e)
     {

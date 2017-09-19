@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Packageheader.ascx.cs" Inherits="UmrahComponents_headerFooter_Packageheader" %>
-    <nav class="navbar navbar-default">
+   <%-- <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -21,4 +21,4 @@
         </ul>
     </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
-</nav>
+</nav>--%>

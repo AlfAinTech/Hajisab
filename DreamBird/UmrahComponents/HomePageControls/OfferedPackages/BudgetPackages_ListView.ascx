@@ -1,7 +1,26 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="BudgetPackages_ListView.ascx.cs" Inherits="UmrahComponents_PackageComponent_OfferedPackages_BudgetPackages_ListView" %>
 
 <script>
+    $.fn.stars = function () {
+        //window.alert("here");
+        return $(this).each(function () {
 
+            var rating = $(this).data("rating");
+
+            var numStars = $(this).data("numStars");
+
+            var fullStar = new Array(Math.floor(rating + 1)).join('<i class="fa fa-star" style="color: #ff9900;"></i>');
+
+            var halfStar = ((rating % 1) !== 0) ? '<i class="fa fa-star-half-empty"></i>' : '';
+
+            var noStar = new Array(Math.floor(numStars + 1 - rating)).join('<i class="fa fa-star-o"></i>');
+
+            $(this).html(fullStar + halfStar + noStar);
+
+        });
+    }
+
+    $('.stars').stars();
     setClass = function(value)
     {
         $("#budget").addClass("active");
@@ -79,13 +98,17 @@
                                             <div class="col-md-2" style="padding:0;">
                                                 <img src="/UmrahComponents/Contents/img/kaba-hotel-icon.png" width="100%" />
                                             </div>
-                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel1.distance").ToString() + " Meters" %></h6></div>
+                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel1.distance").ToString() + " m" %></h6>
+                                                <div class="col-md-12" style="padding: 0;min-height:11px" runat="server" id="star_div">
+                                                        <h6 style="font-size: .8em;"><span class="stars" data-rating='<%# Eval(" Hotel1.rating") %>' data-num-stars='<%# Eval(" Hotel1.rating") %>'>abc</span></h6>
+                                                    </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-12" style="padding:0; margin-bottom: 5px;">
                                             <div class="col-md-2" style="padding:0;">
                                                 <img src="/UmrahComponents/Contents/img/madina-hotel-icon.png" width="100%" />
                                             </div>
-                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel.distance").ToString()+ " Meters"%></h6></div>
+                                            <div class="col-md-10" style="padding:0;"><h6><%# Eval("Hotel.distance").ToString()+ " m"%></h6></div>
                                         </div>
                                         <div class="col-md-12" style="padding:0; margin-top: 5px;">
                                             <h3><%# Eval("minRange")+" PKR" %></h3>
