@@ -16,7 +16,7 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages : System.W
     public void BindDataScript()
     {
         DreamBirdEntities db = new DreamBirdEntities();
-        var data1 = db.PackageDetails.AsEnumerable().Select(q => new { q.id, q.maxRange, q.minRange, q.getMonth, q.dreamID, q.Dream.DreamName, q.duration, q.isAirLineText, q.getVisaID, q.getVisaTitle, q.Hotel1.rating, hotelMadina = q.Hotel.hotelName, hotelMakkah = q.Hotel1.hotelName, q.getDepCity, airLineName = q.getairLine, q.nightsInMadina, q.nightsInMakkah, makkahRating = q.Hotel1.rating, madinaRating = q.Hotel.rating, makkahDistance = q.Hotel1.distance, madinaDistance = q.Hotel.distance, q.packageType, dreamName=q.Dream.DreamName }).ToArray();
+        var data1 = db.PackageDetails.AsEnumerable().Select(q => new { q.id, q.maxRange, minRange = Convert.ToDecimal(q.minRange).ToString("#,##0"), q.getMonth, q.dreamID, q.Dream.DreamName, q.duration, q.isAirLineText, q.getVisaID, q.getVisaTitle, q.Hotel1.rating, hotelMadina = q.Hotel.hotelName, hotelMakkah = q.Hotel1.hotelName, q.getDepCity, airLineName = q.getairLine, q.nightsInMadina, q.nightsInMakkah, makkahRating = q.Hotel1.rating, madinaRating = q.Hotel.rating, makkahDistance = q.Hotel1.distance, madinaDistance = q.Hotel.distance, q.packageType, dreamName=q.Dream.DreamName }).ToArray();
         JsonConvert.SerializeObject(data1);
         var serializer = new JavaScriptSerializer();
         String result = serializer.Serialize(data1);

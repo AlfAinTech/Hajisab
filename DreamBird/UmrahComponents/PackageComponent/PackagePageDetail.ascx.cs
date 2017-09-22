@@ -29,7 +29,7 @@ public partial class UmrahComponents_PackageComponent_PackagePageDetail : System
                 hotelName_makkah.Text = pd.Hotel1.hotelName;
                 nights_inMakkah.Text = pd.nightsInMakkah.ToString();
                 distance_makkah.Text = pd.Hotel1.distance.ToString();
-                amount_lbl.Text = pd.minAmount.ToString() + "-" + pd.maxAmount.ToString();
+                amount_lbl.Text = Convert.ToDecimal(pd.minAmount).ToString("#,##0") + "-" + Convert.ToDecimal( pd.maxAmount).ToString("#,##0");
                 hotelMadina_img.ImageUrl = pd.Hotel.MediaItem.PathOriginal;
                 hotelName_madina.Text = pd.Hotel.hotelName;
                 nights_inMadina.Text = pd.nightsInMadina.ToString();

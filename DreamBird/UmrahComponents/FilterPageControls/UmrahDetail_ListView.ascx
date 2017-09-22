@@ -209,7 +209,7 @@
                                         <div class="row" style="border-left: 3px solid #a6a6a6;">
                                             <h5>Starting From</h5>
                                             <h2>
-                                                <asp:Label ID="price" runat="server" Text='<%# Eval("minRange")+" " %>'></asp:Label>
+                                                <asp:Label ID="price" runat="server" Text='<%# Convert.ToDecimal(Eval("minRange")).ToString("#,##0")+" " %>'></asp:Label>
                                                 PKR</h2>
                                             <div class="col-md-8" style="margin-right: auto; margin-left: auto; float: none;">
                                                 ‏‏ 

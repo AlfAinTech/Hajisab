@@ -75,7 +75,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
         wholeData = data;
         pageds.DataSource = wholeData;
         pageds.AllowPaging = true;
-        pageds.PageSize = 3;
+        pageds.PageSize = 8;
         if (ViewState["PageNumber"] != null) {
             pageds.CurrentPageIndex = Convert.ToInt32(ViewState["PageNumber"])-1;
         }

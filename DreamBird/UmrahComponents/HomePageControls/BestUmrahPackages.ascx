@@ -89,7 +89,7 @@
                             <div class="row">
                                 <div class="col-md-12" style="padding:0; margin-top: 10px;">
                                     <div class="col-md-7">
-                                        <h3><asp:Label   runat="server" ID="startPrice" Text='<%# Eval("minAmount")+" PKR" %>'></asp:Label></h3>
+                                        <h3><asp:Label   runat="server" ID="startPrice" Text='<%# Convert.ToDecimal( Eval("minAmount")).ToString("#,##0")+" PKR" %>'></asp:Label></h3>
                                     </div>
                                     <div class="col-md-5">
                                         <asp:Button runat="server" ID="bookNow"  CommandArgument='<%# Eval("id") %>'  class="btn btn-primary" Text="Book Now" OnClick="bookNowClick" />

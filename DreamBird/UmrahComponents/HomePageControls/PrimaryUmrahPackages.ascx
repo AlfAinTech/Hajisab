@@ -16,7 +16,7 @@
                             <h3><%# Eval("PackageType") %></h3>
                         </div>
                         <div class="col-md-12" style="padding:0; border-bottom: 1px solid white;">
-                            <h4>Starting From <span ><%# Eval("minRange") %></span> PKR</h4>
+                            <h4>Starting From <span ><%# Convert.ToDecimal(Eval("minRange")).ToString("#,##0") %></span> PKR</h4>
                         </div>
                         <div class="col-md-12" style="padding:0;">
                             <ul style="font-size:13px">

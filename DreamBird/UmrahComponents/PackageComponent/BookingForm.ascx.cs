@@ -159,7 +159,7 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
                 departureAirLine_name.Text = pd.Flight.Name;
                 returnAirLine_name.Text = pd.Flight1.Name;
             }
-            if(Session["grandTotel"] != null) { Computed_amount.Text = Session["grandTotel"].ToString(); }
+            if(Session["grandTotel"] != null) { Computed_amount.Text = Convert.ToDecimal( Session["grandTotel"].ToString()).ToString("#,##0"); }
                
         }
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
