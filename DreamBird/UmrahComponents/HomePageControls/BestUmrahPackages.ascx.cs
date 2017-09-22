@@ -28,7 +28,6 @@ public partial class UmrahComponents_PackageComponent_BestUmrahPackages : System
         int id = int.Parse(b.CommandArgument);
         DreamBirdEntities db = new DreamBirdEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        DreamLayout dl = db.DreamLayouts.Where(q => q.DreamID == pd.dreamID && q.Page == "BookingForm").First();
         Response.Redirect("~/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
     }
 

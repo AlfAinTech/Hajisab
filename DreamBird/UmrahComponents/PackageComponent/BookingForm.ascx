@@ -207,7 +207,7 @@
                     <h2 style="text-align: center;color: #190940;"><asp:Literal ID="txtfullnights" runat="server"></asp:Literal> Days Umrah Package</h2>
                     <div  style="padding-left:20px; padding-right:20px;margin-left: -15px;margin-right: -15px;">
                         <h3 style="font-size: 18px; margin-top: 10px;margin-bottom: 10px;">One Final Step</h3>
-                        <p>Thank you for Booking Your Umrah Package at <a href="www.hajisab.com">hajisab.com</a>. Confirm your Package by given Tracking ID. </p>
+                        <p>Thank you for Booking Your Umrah Package at <a href="http://www.hajisab.com">hajisab.com</a>. Confirm your Package by given Tracking ID. </p>
                         <h3><span>Tracking ID : <asp:Literal ID="txttrackingId" runat="server"></asp:Literal></span></h3>
                     </div>
                     </div>

@@ -17,6 +17,7 @@
     <%--<script src="../Admin/Content/js/bootstrap.min.js"></script>--%>
 
     <script src="<%# Server.MapPath("~/") %>/Admin/Content/js/myScript.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
 </head>
 <body>

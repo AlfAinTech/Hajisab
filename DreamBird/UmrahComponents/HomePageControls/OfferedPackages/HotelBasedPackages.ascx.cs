@@ -15,9 +15,9 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_HotelBased
         {
             DreamBirdEntities db = new DreamBirdEntities();
             var list =   db.Hotels.GroupBy(q => q.rating).Select(key => key).ToList();
-           
-            ViewState["RatingType"] = Type.ToString(); ;
-            BindData(Type);
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "setHotel", "LoadHotelScript('" + Type.ToString() + "'); setFirstElementHotel();", true);
+            hiddentRatingType.Value = Type.ToString();
+            //BindData(Type);
            
         }
         
@@ -27,15 +27,15 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_HotelBased
     protected void BindData(int ratingType)
     {
         DreamBirdEntities db = new DreamBirdEntities();
-        if (ratingType == 3) { Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.Hotel1.rating >= ratingType).Take(3).ToList(); }
-        else { Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.Hotel1.rating == ratingType).Take(3).ToList(); }
-        Packages_DetailList.DataBind();
+        //if (ratingType == 3) { Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.Hotel1.rating >= ratingType).Take(3).ToList(); }
+        //else { Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.Hotel1.rating == ratingType).Take(3).ToList(); }
+        //Packages_DetailList.DataBind();
 
     }
     protected void BookNowClicked(object sender, EventArgs e)
     {
         Button bt = (Button)sender;
-        int id = int.Parse(bt.CommandArgument);
+        int id  = int.Parse( Request["__EVENTARGUMENT"]); ;
         DreamBirdEntities db = new DreamBirdEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
         Response.Redirect("/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
@@ -45,7 +45,7 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_HotelBased
     {
         LinkButton lb = (LinkButton)sender;
         int ratingType = int.Parse(lb.CommandArgument.ToString());
-        ViewState["budgetType"] = ratingType;
+        ViewState["RatingType"] = ratingType;
         BindData(ratingType);
        
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "setHotelClass", "setClassHotel('" + ratingType + "');", true);
@@ -53,9 +53,10 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_HotelBased
     }
     protected void Explore_ButtonClicked(object sender, EventArgs e)
     {
-        if (ViewState["budgetType"] != null)
+        string rating =  hiddentRatingType.Value;
+        if (rating != "")
         {
-            int ratingType = int.Parse(ViewState["budgetType"].ToString());
+            int ratingType = int.Parse(rating.ToString());
             string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
             Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter?rating=" + ratingType);
         }

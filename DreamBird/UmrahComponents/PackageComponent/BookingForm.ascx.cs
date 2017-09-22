@@ -77,7 +77,7 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
             txtfullnights.Text = up.PackageDetail.getTotelNights.ToString();
                 ScriptManager.RegisterStartupScript(Page, typeof(Page), "packageBook", "openConfirmationForm();", true);
             clearControl();
-                ShowError("Your Umrah Package Booked Now. Tracking id Sent to your Email ID");
+                ShowSuccess("Your Umrah Package Booked Now. Tracking id Sent to your Email ID");
             }
             else
         {
@@ -194,6 +194,10 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
     }
     public void ShowError(String errorMsg)
     {
-        ScriptManager.RegisterStartupScript(Page, typeof(Page), "showError", "alert('" + errorMsg + "');", true);
+        ScriptManager.RegisterStartupScript(Page, typeof(Page), "showError", " toastr.error('"+errorMsg+"');;", true);
+    }
+    public void ShowSuccess(String successMsg)
+    {
+        ScriptManager.RegisterStartupScript(Page, typeof(Page), "showError", " toastr.success('" + successMsg + "');;", true);
     }
 }

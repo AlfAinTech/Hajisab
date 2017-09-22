@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="~/UmrahComponents/Contents/css/style.css"/>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <asp:PlaceHolder ID="PlaceHolder1" runat="server">
     <script src='<% = ResolveUrl("~/UmrahComponents/Contents/js/jquery.cycle.lite.js") %>' ></script>
     <script type="text/javascript">

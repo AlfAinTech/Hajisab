@@ -12,9 +12,10 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_NightBased
         if (!IsPostBack)
         {
             int type = 10;
-            ViewState["nightType"] = type;
-            BindData(type);
+            hiddenNights.Value = type.ToString();
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "setNight", "LoadNightScript('" + type.ToString() + "'); setFirstElementNight();", true);
             
+
 
         }
     }
@@ -22,14 +23,14 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_NightBased
     protected void BindData(int PackageType)
     {
         DreamBirdEntities db = new DreamBirdEntities();
-        Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.nightsInMadina+q.nightsInMakkah <= PackageType && q.nightsInMadina + q.nightsInMakkah > (PackageType-10)).Take(3).ToList();
-        Packages_DetailList.DataBind();
+        //Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.nightsInMadina+q.nightsInMakkah <= PackageType && q.nightsInMadina + q.nightsInMakkah > (PackageType-10)).Take(3).ToList();
+        //Packages_DetailList.DataBind();
 
     }
     protected void BookNowClicked(object sender, EventArgs e)
     {
         Button bt = (Button)sender;
-        int id = int.Parse(bt.CommandArgument);
+        int id = int.Parse(Request["__EVENTARGUMENT"]);
         DreamBirdEntities db = new DreamBirdEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
         Response.Redirect("/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
@@ -38,7 +39,7 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_NightBased
     protected void PackageType_clicked(object sender, EventArgs e)
     {
         LinkButton lb = (LinkButton)sender;
-        int nightType = int.Parse(lb.CommandArgument.ToString());
+        int nightType = int.Parse(Request["__EVENTARGUMENT"]);
         ViewState["nightType"] = nightType;
         BindData(nightType);
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "setClass", "setNightClass('" + nightType + "');", true);
@@ -46,9 +47,9 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_NightBased
     }
     protected void Explore_ButtonClicked(object sender, EventArgs e)
     {
-        if (ViewState["nightType"] != null)
+        if (hiddenNights.Value != "")
         {
-            string nightType = ViewState["nightType"].ToString();
+            string nightType = hiddenNights.Value.ToString();
             DreamBirdEntities db = new DreamBirdEntities();
             string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
             Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter?totelNights=" + nightType);

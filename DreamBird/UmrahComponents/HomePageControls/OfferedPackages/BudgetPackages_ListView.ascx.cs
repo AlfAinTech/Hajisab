@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,30 +14,33 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
         if (!IsPostBack)
         {
             string type = "bronze";
-            ViewState["budgetType"] = type;
-            BindData(type);
-
-            ScriptManager.RegisterStartupScript(Page, typeof(Page), "setClass", "setClass('"+type+"');", true);
+            hiddenBudgetType.Value = type;
+          //  BindData(type);
+           
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "setClass", "setClass('"+type+ "');LoadScript('" + type + "');", true);
             ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
         }
         
 
     }
 
+   
+
     protected void BindData(string PackageType)
     {
         DreamBirdEntities db = new DreamBirdEntities();
-        Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.packageType.ToLower() == PackageType.ToLower()).Take(3).ToList();
-        Packages_DetailList.DataBind();
+       // Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.packageType.ToLower() == PackageType.ToLower()).Take(3).ToList();
+       // Packages_DetailList.DataBind();
 
     }
     protected void BookNowClicked(object sender, EventArgs e)
     {
         Button bt = (Button)sender;
-        int id = int.Parse(bt.CommandArgument);
+        int id = int.Parse( Request["__EVENTARGUMENT"]); 
         DreamBirdEntities db = new DreamBirdEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
         Response.Redirect("/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
+        //ScriptManager.RegisterStartupScript(Page, typeof(Page), "setClass", "setClass(' bronze');LoadScript('bronze ');", true);
     }
     
     protected void PackageType_clicked(object sender, EventArgs e)
@@ -53,9 +58,9 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
     }
     protected void Explore_ButtonClicked(object sender, EventArgs e)
     {
-        if(ViewState["budgetType"] != null)
+        if(hiddenBudgetType.Value != "")
         {
-            string PackaType = ViewState["budgetType"].ToString();
+            string PackaType = hiddenBudgetType.ToString();
             DreamBirdEntities db = new DreamBirdEntities();
             PackageDetail pd = db.PackageDetails.Where(q => q.packageType == PackaType).ToList().OrderBy(q => q.minRange).First();
             string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);

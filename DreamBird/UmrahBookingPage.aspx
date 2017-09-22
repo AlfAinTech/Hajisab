@@ -44,7 +44,9 @@
     <script src='<%= ResolveUrl("~/UmrahComponents/Contents/js/bootstrap.js") %>'></script></asp:PlaceHolder>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,700,900" rel="stylesheet">
-    
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <form id="form2" runat="server">

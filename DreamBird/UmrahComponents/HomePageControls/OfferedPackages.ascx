@@ -7,7 +7,21 @@
 
 
 <asp:UpdatePanel ID="baseUpdatePanel"  runat="server" UpdateMode="Conditional" ChildrenAsTriggers="true" ClientIDMode="Static"><ContentTemplate>
+    <script type="text/javascript">
+    var data;
+    var count=-1;
+    bindMyScript = function (data)
+    {
+       console.log(data);
+       //$(this).attr("CommandArgument", data);
+       //$(this).attr("CssClass", data);
+       // $(this).Click();
+        __doPostBack('page', data);
+        return true;
+    }
 
+    
+</script>
 <div id="what_we_offer">
     <h1>
        Select Packages

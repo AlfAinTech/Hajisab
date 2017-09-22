@@ -232,14 +232,10 @@ protected void bookPackage_Click(object sender, EventArgs e)
         String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
         Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
         Session["AIDMadina"] = madinaAccommodation_list.SelectedValue;
-        Session["AIDMakkah"] = madinaAccommodation_list.SelectedValue;
+        Session["AIDMakkah"] = makkahAccommodation_list.SelectedValue;
             Session["grandTotel"] = LabelProperty;//Computed_amount//.Text.ToString();
-        var dl = db.DreamLayouts.Where(q => q.DreamID == d.id && q.Page == "BookingForm").ToList();
-        if (dl.Count() != 0)
-        {
-            DreamLayout dll = dl[0];
-            Response.Redirect("~/UmrahBookingPage/" + d.DreamName + "/" + dll.Page);
-        }
+        
+            Response.Redirect("~/UmrahBookingPage/" + dreamName + "/BookingForm");
             
     }
 }
