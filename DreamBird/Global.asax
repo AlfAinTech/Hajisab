@@ -28,5 +28,8 @@
 
 
     }
-
+    public void Session_OnStart()
+    {
+        Session["timeStart"] = DateTime.Now;
+    }
 </script>

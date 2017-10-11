@@ -24,6 +24,7 @@ public partial class Account_Login : System.Web.UI.UserControl
         if (user != null)
         {
             IdentityHelper.SignIn(manager, user, RememberMe.Checked);
+            Session["timeStart"] = DateTime.Now;
             if (ViewState["returnURL"] != null)
             {
                 IdentityHelper.RedirectToReturnUrl(ViewState["returnURL"].ToString(), Response);

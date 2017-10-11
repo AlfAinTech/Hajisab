@@ -1,9 +1,23 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UmrahBookingPage.aspx.cs" Inherits="UmrahBookingPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UmrahCustomPackage.aspx.cs" Inherits="UmrahCustomPackage" %>
 
 <%@ Register Src="~/UmrahComponents/headerFooter/Packageheader.ascx" TagPrefix="uc1" TagName="Packageheader" %>
 <%@ Register Src="~/UmrahComponents/headerFooter/PackageFooter.ascx" TagPrefix="uc1" TagName="PackageFooter" %>
-<%@ Register Src="~/UmrahComponents/headerFooter/BookingFormHeader.ascx" TagPrefix="uc1" TagName="BookingFormHeader" %>
-<%@ Register Src="~/UmrahComponents/PackageComponent/BookingForm.ascx" TagPrefix="uc1" TagName="BookingForm" %>
+<%@ Register Src="~/UmrahComponents/headerFooter/DetailHeader.ascx" TagPrefix="uc1" TagName="DetailHeader" %>
+<%@ Register Src="~/UmrahComponents/PackageComponent/CustomPackageAdd.ascx" TagPrefix="uc1" TagName="CustomPackageAdd" %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!DOCTYPE html>
@@ -19,7 +33,8 @@
     <link rel="stylesheet" href="~/UmrahComponents/Contents/css/style.css"/>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <asp:PlaceHolder ID="PlaceHolder2" runat="server">
+
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">
     <script src='<% = ResolveUrl("~/UmrahComponents/Contents/js/jquery.cycle.lite.js") %>' ></script>
     <script type="text/javascript">
        Initialize = function(){
@@ -44,15 +59,14 @@
     <script src='<%= ResolveUrl("~/UmrahComponents/Contents/js/bootstrap.js") %>'></script></asp:PlaceHolder>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,700,900" rel="stylesheet"/>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
      <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
-
 </head>
 <body>
-    <form id="form2" runat="server">
+    <form id="form1" runat="server">
    
 
-      <asp:ScriptManager ID="ScriptManager2" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
+      <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
        
         <div class="row">
           
@@ -61,15 +75,20 @@
             <ContentTemplate>--%>
     
           
-                        <div id="Div1" class="col-md-12" runat="server">
+                        <div id="body_content" class="col-md-12" runat="server">
                             <div  class="col-md-12" runat="server">
-                                <uc1:Packageheader runat="server" ID="Packageheader1" />
-                                <uc1:BookingFormHeader runat="server" ID="BookingFormHeader1" />
+                                <uc1:Packageheader runat="server" ID="Packageheader" />
+                                <uc1:DetailHeader runat="server" ID="DetailHeader" />
 
-                                <uc1:BookingForm runat="server" ID="BookingForm" />
+                               
                         </div>
+                        <div  class="content_wrap" runat="server">
+                             <div  class="container" runat="server">
+                                 <uc1:CustomPackageAdd runat="server" ID="CustomPackageAdd" />
+                            </div>
+                            </div>
                             <div  class="col-md-12" runat="server">
-                                 <uc1:PackageFooter runat="server" ID="PackageFooter1" />
+                                 <uc1:PackageFooter runat="server" ID="PackageFooter" />
                             </div>
                         
     </div>

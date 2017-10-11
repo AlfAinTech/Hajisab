@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="CustomTextBankAdmin.ascx.cs" Inherits="Components_TextBank_CustomTextBankAdmin" %>
 <%@ Register Src="~/Components/Tags/TagControl.ascx" TagPrefix="uc1" TagName="TagControl" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
-
 <script src="<%# Server.MapPath("~/") %>/Admin/Content/js/bootstrap.min.js"></script>
 <%@ Register Src="~/Components/TextBank/TextBankAdmin.ascx" TagPrefix="uc1" TagName="TextBankAdmin" %>
 

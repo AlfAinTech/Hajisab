@@ -58,31 +58,31 @@ public partial class UmrahComponents_PackageComponent_CustomTourPlan : System.We
     {
         DreamBirdEntities db = new DreamBirdEntities();
         
-        CustomPackage pd = new CustomPackage();
-        DateTime dt = DateTime.Parse(month_txt.Text);
-        pd.month = dt.Month;
-        pd.hotelMakkahID = int.Parse(hotelMakkahID.Value);
-        pd.hotelMadinaID = int.Parse(hotelMadinaID.Value);
-        pd.nightsMakkah = int.Parse(nightsMakkah.Text);
-        pd.nightsMadina = int.Parse(nights_madina.Text);
-        pd.roomMadinaID = int.Parse(roomMadinaID.Value);
-        pd.roomMakkahID = int.Parse(roomMakkahID.Value);
-        if (isRoundTrip.Value == "false")
-        {
-            pd.returnAirLineID = int.Parse(depAirLinID.Value);
-            pd.departureAirLineID = int.Parse(retAirLineID.Value);
-            pd.retFlightID = int.Parse(retFlight_id.Value);
-            pd.depFlightID = int.Parse(depFlight_id.Value);
+        //CustomPackage pd = new CustomPackage();
+        //DateTime dt = DateTime.Parse(month_txt.Text);
+        //pd.month = dt.Month;
+        //pd.hotelMakkahID = int.Parse(hotelMakkahID.Value);
+        //pd.hotelMadinaID = int.Parse(hotelMadinaID.Value);
+        //pd.nightsMakkah = int.Parse(nightsMakkah.Text);
+        //pd.nightsMadina = int.Parse(nights_madina.Text);
+        //pd.roomMadinaID = int.Parse(roomMadinaID.Value);
+        //pd.roomMakkahID = int.Parse(roomMakkahID.Value);
+        //if (isRoundTrip.Value == "false")
+        //{
+        //    pd.returnAirLineID = int.Parse(depAirLinID.Value);
+        //    pd.departureAirLineID = int.Parse(retAirLineID.Value);
+        //    pd.retFlightID = int.Parse(retFlight_id.Value);
+        //    pd.depFlightID = int.Parse(depFlight_id.Value);
 
-        }
-        else
-        {
-            pd.returnAirLineID = pd.departureAirLineID = int.Parse(airLineID.Value);
-            pd.depFlightID = pd.retFlightID = int.Parse(flight_id.Value);
-        }
-        db.CustomPackages.Add(pd);
+        //}
+        //else
+        //{
+        //    pd.returnAirLineID = pd.departureAirLineID = int.Parse(airLineID.Value);
+        //    pd.depFlightID = pd.retFlightID = int.Parse(flight_id.Value);
+        //}
+//       db.CustomPackages.Add(pd);
         db.SaveChanges();
-        Response.Redirect("~/UmrahComponents/booking_form.aspx?isCustomPackage=true&packageID=" + pd.id);
+      //  Response.Redirect("~/UmrahComponents/booking_form.aspx?isCustomPackage=true&packageID=" + pd.id);
     }
     
 

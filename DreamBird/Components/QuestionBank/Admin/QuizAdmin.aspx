@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminBlank.master" AutoEventWireup="true" CodeFile="QuizAdmin.aspx.cs" Inherits="Components_QuestionBank_Admin_QuizAdmin" %>
-
 <%@ Register Src="~/Components/QuestionBank/Admin/QuizAdmin.ascx" TagPrefix="uc1" TagName="QuizAdmin" %>
 
 

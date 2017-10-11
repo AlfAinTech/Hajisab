@@ -16,10 +16,8 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
         Page.Header.DataBind();
         var scriptManager = ScriptManager.GetCurrent(Page);
         Boolean flag = scriptManager.IsInAsyncPostBack;
-        //postback
-        if (!IsPostBack)
-        {
-
+        
+        if (!Page.IsPostBack) {
             myDaTAbIND();
             int madinaAccom_id = 0;
             int makkahAccom_id = 0;
@@ -33,6 +31,8 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
             }
             ComputePrice(makkahAccom_id, madinaAccom_id);
         }
+        ScriptManager.RegisterStartupScript(Page, typeof(Page), "startAccom", " ManageAccomodation();", true);
+       
     }
 
     public void myDaTAbIND()
@@ -95,8 +95,9 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
                 discountPanel.Visible = true;
                 discountValue.Text = dp.discountPercent.ToString();
                 Session["discount_id"] = dp.id.ToString();
-                Paneldiscount.Visible = true;
-                Computed_amount.Attributes.Add("style", "text-decoration:line-through");
+                //Paneldiscount.Visible = true;
+                bookPackage.Text = "Book Now for " + dp.discountPercent.ToString() + "% off";
+              //  Computed_amount.Attributes.Add("style", "text-decoration:line-through");
             }
         }
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
@@ -131,29 +132,7 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
         String result = serializer.Serialize(data);
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "madinaAccom", "var MadinaAccommodations = " + result + ";", true);
 
-        //DreamBirdEntities db = new DreamBirdEntities();
-        //madinaAccommodation_list.DataSource = db.Accommodations.Where(q => q.hotelID == hotelmadinaID && q.availability == true).ToList();
-        //madinaAccommodation_list.DataBind();
-        //if (madinaAccommodation_list.DataSource != null)
-        //{
-        //    if (Request.QueryString["AccomMadinaID"] != null)
-        //    {
-        //        string id = Request.QueryString["AccomMadinaID"].ToString();
-        //        foreach (RepeaterItem item1 in madinaAccommodation_list.Items)
-        //        {
-        //            Label lb = (Label)item1.FindControl("id_madinaAccom");
-        //            if (lb.Text == id) { RadioButton rb = (RadioButton)item1.FindControl("madina_chk"); rb.Checked = true; }
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        RepeaterItem item = madinaAccommodation_list.Items[0];
-        //        RadioButton rb = (RadioButton)item.FindControl("madina_chk");
-        //        rb.Checked = true;
-        //    }
-
-        //}
+    
     }
 public void bindMakkah_accommodation(int hotelmakkahID)
 {
@@ -317,8 +296,8 @@ public void ComputePrice(int makkahAccom_id, int madinaAccom_id)
     }
     else { price = pd.minAmount; }
     Session["grandTotel"] = price.ToString();
-        hiddenprice.Value = price.ToString();
-    Computed_amount.Text = Math.Round(price, 2).ToString();
+        hiddenprice.Value = price.ToString("#,##0");
+    Computed_amount.Text = Math.Round(price, 2).ToString("#,##0");
     DateTime today = System.DateTime.Today;
     List<DiscountPackage> discounts = db.DiscountPackages.Where(q => q.packageDetailID == pd.id && (q.availableFrom <= today && q.availableTill >= today)).OrderByDescending(q => q.discountPercent).ToList();
         double total = price;
@@ -327,9 +306,9 @@ public void ComputePrice(int makkahAccom_id, int madinaAccom_id)
             DiscountPackage dp = discounts[0];
             Session["discount_id"] = dp.id.ToString();
             total = price - ((int)(price * dp.discountPercent) / 100);
-            Session["grandTotel"] = total.ToString();
+            Session["grandTotel"] = total.ToString("#,##0");
         }
-        DiscountAmount.Text = total.ToString();
+        DiscountAmount.Text = total.ToString("#,##0");
 
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
 }

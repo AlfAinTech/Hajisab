@@ -15,8 +15,6 @@ public partial class Accommodation
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public Accommodation()
     {
-        this.CustomPackages = new HashSet<CustomPackage>();
-        this.CustomPackages1 = new HashSet<CustomPackage>();
         this.AlharmainUserPackages = new HashSet<AlharmainUserPackage>();
         this.AlharmainUserPackages1 = new HashSet<AlharmainUserPackage>();
     }
@@ -28,10 +26,6 @@ public partial class Accommodation
     public int hotelID { get; set; }
 
     public virtual Hotel Hotel { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<CustomPackage> CustomPackages { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<CustomPackage> CustomPackages1 { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<AlharmainUserPackage> AlharmainUserPackages { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -50,9 +44,8 @@ public partial class AirLine
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public AirLine()
     {
-        this.CustomPackages = new HashSet<CustomPackage>();
-        this.CustomPackages1 = new HashSet<CustomPackage>();
         this.Flights = new HashSet<Flight>();
+        this.CustomFlightConfigurations = new HashSet<CustomFlightConfiguration>();
     }
 
     public int id { get; set; }
@@ -60,12 +53,10 @@ public partial class AirLine
     public string AspNetUserID { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<CustomPackage> CustomPackages { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<CustomPackage> CustomPackages1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Flight> Flights { get; set; }
     public virtual AspNetUser AspNetUser { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<CustomFlightConfiguration> CustomFlightConfigurations { get; set; }
 }
 
 public partial class AlharmainUser
@@ -92,11 +83,11 @@ public partial class AlharmainUserPackage
 {
     public long id { get; set; }
     public Nullable<int> userID { get; set; }
-    public int packageDetailID { get; set; }
+    public Nullable<int> packageDetailID { get; set; }
     public bool isCustomPackage { get; set; }
     public Nullable<int> discountID { get; set; }
-    public int AccomMakkahID { get; set; }
-    public int AccomMadinaID { get; set; }
+    public Nullable<int> AccomMakkahID { get; set; }
+    public Nullable<int> AccomMadinaID { get; set; }
     public int adults { get; set; }
     public int children { get; set; }
     public int infants { get; set; }
@@ -104,10 +95,12 @@ public partial class AlharmainUserPackage
     public bool IsAmountRecieved { get; set; }
     public System.DateTime CreatedDate { get; set; }
     public System.DateTime ModifiedDate { get; set; }
+    public Nullable<int> CustomPackageId { get; set; }
 
     public virtual Accommodation Accommodation { get; set; }
     public virtual Accommodation Accommodation1 { get; set; }
     public virtual AlharmainUser AlharmainUser { get; set; }
+    public virtual CustomPackage CustomPackage { get; set; }
     public virtual DiscountPackage DiscountPackage { get; set; }
     public virtual PackageDetail PackageDetail { get; set; }
 }
@@ -347,30 +340,52 @@ public partial class ControlCategory
     public virtual ICollection<HTMLControl> Controls2 { get; set; }
 }
 
-public partial class CustomPackage
+public partial class CustomFlightConfiguration
 {
     public int id { get; set; }
+    public int AirLineID { get; set; }
+    public int Class { get; set; }
+    public decimal EstimatedPrice { get; set; }
+    public System.DateTime Month { get; set; }
+    public bool IsRoundTrip { get; set; }
+
+    public virtual AirLine AirLine { get; set; }
+}
+
+public partial class CustomHotelConfiguration
+{
+    public int id { get; set; }
+    public int Rating { get; set; }
+    public string AccommodationType { get; set; }
+    public long Distance { get; set; }
+    public decimal EstimatedPrice { get; set; }
+    public System.DateTime Month { get; set; }
+    public string HotelCity { get; set; }
+}
+
+public partial class CustomPackage
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public CustomPackage()
+    {
+        this.AlharmainUserPackages = new HashSet<AlharmainUserPackage>();
+    }
+
+    public int id { get; set; }
     public int month { get; set; }
-    public int hotelMakkahID { get; set; }
+    public int MakkahRating { get; set; }
     public int nightsMakkah { get; set; }
-    public int hotelMadinaID { get; set; }
+    public int MadinaRating { get; set; }
     public int nightsMadina { get; set; }
     public bool isRoundTrip { get; set; }
-    public int returnAirLineID { get; set; }
-    public int departureAirLineID { get; set; }
-    public int roomMakkahID { get; set; }
-    public int roomMadinaID { get; set; }
-    public int depFlightID { get; set; }
-    public int retFlightID { get; set; }
+    public decimal MakkahDistance { get; set; }
+    public decimal MadinaDistance { get; set; }
+    public string MakkahAccom { get; set; }
+    public string MadinaAccom { get; set; }
+    public int airlineID { get; set; }
 
-    public virtual Accommodation Accommodation { get; set; }
-    public virtual Accommodation Accommodation1 { get; set; }
-    public virtual Hotel Hotel { get; set; }
-    public virtual Hotel Hotel1 { get; set; }
-    public virtual AirLine AirLine { get; set; }
-    public virtual AirLine AirLine1 { get; set; }
-    public virtual Flight Flight { get; set; }
-    public virtual Flight Flight1 { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<AlharmainUserPackage> AlharmainUserPackages { get; set; }
 }
 
 public partial class DiscountPackage
@@ -664,8 +679,6 @@ public partial class Flight
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public Flight()
     {
-        this.CustomPackages = new HashSet<CustomPackage>();
-        this.CustomPackages1 = new HashSet<CustomPackage>();
         this.PackageDetails = new HashSet<PackageDetail>();
         this.PackageDetails1 = new HashSet<PackageDetail>();
     }
@@ -681,10 +694,6 @@ public partial class Flight
     public int airLineID { get; set; }
 
     public virtual AirLine AirLine { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<CustomPackage> CustomPackages { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<CustomPackage> CustomPackages1 { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<PackageDetail> PackageDetails { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -707,8 +716,6 @@ public partial class Hotel
     public Hotel()
     {
         this.Accommodations = new HashSet<Accommodation>();
-        this.CustomPackages = new HashSet<CustomPackage>();
-        this.CustomPackages1 = new HashSet<CustomPackage>();
         this.HotelFacilities = new HashSet<HotelFacility>();
         this.HotelImages = new HashSet<HotelImage>();
         this.PackageDetails = new HashSet<PackageDetail>();
@@ -727,10 +734,6 @@ public partial class Hotel
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Accommodation> Accommodations { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<CustomPackage> CustomPackages { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<CustomPackage> CustomPackages1 { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<HotelFacility> HotelFacilities { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

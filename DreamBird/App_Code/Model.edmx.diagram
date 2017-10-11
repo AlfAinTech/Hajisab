@@ -191,7 +191,6 @@
       <Diagram DiagramId="625a1184ed4b443794f0578baf1f00a2" Name="UmrahComponent" ZoomLevel="66" >
         <EntityTypeShape EntityType="DreamBirdModel.Accommodation" Width="1.5" PointX="3" PointY="20" />
         <EntityTypeShape EntityType="DreamBirdModel.BotConversation" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.CustomPackage" Width="1.5" PointX="5.25" PointY="14.625" />
         <EntityTypeShape EntityType="DreamBirdModel.DiscountPackage" Width="1.5" PointX="5.25" PointY="11.25" />
         <EntityTypeShape EntityType="DreamBirdModel.Hotel" Width="1.5" PointX="0.75" PointY="11.5" />
         <EntityTypeShape EntityType="DreamBirdModel.HotelFacility" Width="1.5" PointX="3" PointY="17" />
@@ -201,10 +200,6 @@
         <EntityTypeShape EntityType="DreamBirdModel.PackageItenryDetail" Width="1.5" PointX="8.25" PointY="10.125" />
         <EntityTypeShape EntityType="DreamBirdModel.Ziarat" Width="1.5" PointX="0.75" PointY="8" />
         <AssociationConnector Association="DreamBirdModel.FK_Accommodation_Hotel" />
-        <AssociationConnector Association="DreamBirdModel.FK_CustomPackage_Accommodation" />
-        <AssociationConnector Association="DreamBirdModel.FK_CustomPackage_Accommodation1" />
-        <AssociationConnector Association="DreamBirdModel.FK_CustomPackage_Hotel" />
-        <AssociationConnector Association="DreamBirdModel.FK_CustomPackage_Hotel1" />
         <AssociationConnector Association="DreamBirdModel.FK_DiscountPackage_PackageDetail" />
         <AssociationConnector Association="DreamBirdModel.FK_HotelFacility_Hotel" />
         <AssociationConnector Association="DreamBirdModel.FK_HotelImage_Hotel" />
@@ -219,19 +214,20 @@
         <EntityTypeShape EntityType="DreamBirdModel.AirLine" Width="1.5" PointX="5.375" PointY="1.75" />
         <EntityTypeShape EntityType="DreamBirdModel.Flight" Width="1.5" PointX="7.625" PointY="1" />
         <EntityTypeShape EntityType="DreamBirdModel.VisaPackage" Width="1.5" PointX="0.75" PointY="19.5" />
-        <AssociationConnector Association="DreamBirdModel.FK_CustomPackage_AirLine" />
-        <AssociationConnector Association="DreamBirdModel.FK_CustomPackage_AirLine1" />
         <AssociationConnector Association="DreamBirdModel.FK_Flight_AirLine" />
-        <AssociationConnector Association="DreamBirdModel.FK_CustomPackage_Flight" />
-        <AssociationConnector Association="DreamBirdModel.FK_CustomPackage_Flight1" />
         <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_Flight" />
         <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_Flight1" />
         <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_VisaPackages" />
         <EntityTypeShape EntityType="DreamBirdModel.AlharmainUser" Width="1.5" PointX="5.375" PointY="6" />
-        <EntityTypeShape EntityType="DreamBirdModel.AlharmainUserPackage" Width="1.5" PointX="7.625" PointY="14.375" />
+        <EntityTypeShape EntityType="DreamBirdModel.CustomFlightConfiguration" Width="1.5" PointX="7.625" PointY="14.75" />
+        <AssociationConnector Association="DreamBirdModel.FK_CustomFlightConfiguration_AirLine" />
+        <EntityTypeShape EntityType="DreamBirdModel.CustomHotelConfiguration" Width="1.5" PointX="9.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DreamBirdModel.CustomPackage" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DreamBirdModel.AlharmainUserPackage" Width="1.5" PointX="12.625" PointY="9.125" />
         <AssociationConnector Association="DreamBirdModel.FK__Alharmain__Accom__436BFEE3" />
         <AssociationConnector Association="DreamBirdModel.FK__Alharmain__Accom__4460231C" />
         <AssociationConnector Association="DreamBirdModel.FK_AlharmainUserPackage_AlharmainUser1" />
+        <AssociationConnector Association="DreamBirdModel.FK_AlharmainUserPackage_CustomPackage" />
         <AssociationConnector Association="DreamBirdModel.FK_AlharmainUserPackage_DiscountPackage" />
         <AssociationConnector Association="DreamBirdModel.FK_AlharmainUserPackage_PackageDetail" />
         </Diagram>

@@ -25,7 +25,6 @@ public partial class DreamBirdEntities : DbContext
 
     public virtual DbSet<Accommodation> Accommodations { get; set; }
     public virtual DbSet<BotConversation> BotConversations { get; set; }
-    public virtual DbSet<CustomPackage> CustomPackages { get; set; }
     public virtual DbSet<DiscountPackage> DiscountPackages { get; set; }
     public virtual DbSet<Hotel> Hotels { get; set; }
     public virtual DbSet<HotelFacility> HotelFacilities { get; set; }
@@ -111,5 +110,8 @@ public partial class DreamBirdEntities : DbContext
     public virtual DbSet<DreamEnrollment> DreamEnrollments { get; set; }
     public virtual DbSet<AlharmainUser> AlharmainUsers { get; set; }
     public virtual DbSet<Dream> Dreams { get; set; }
+    public virtual DbSet<CustomFlightConfiguration> CustomFlightConfigurations { get; set; }
+    public virtual DbSet<CustomHotelConfiguration> CustomHotelConfigurations { get; set; }
+    public virtual DbSet<CustomPackage> CustomPackages { get; set; }
     public virtual DbSet<AlharmainUserPackage> AlharmainUserPackages { get; set; }
 }

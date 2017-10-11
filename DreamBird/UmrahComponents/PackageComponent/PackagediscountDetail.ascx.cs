@@ -30,20 +30,20 @@ public partial class UmrahComponents_PackageComponent_PackagediscountDetail : Sy
             }
             else
             {
-                CustomPackage cp = db.CustomPackages.Where(q => q.id == pd.id).First();
-                makkahHotel_detail.Text = cp.Hotel.hotelName + " (" + cp.nightsMakkah + " nights, " + cp.Accommodation.Name.ToLower() + " )";
-                madinaHotel_detail.Text = cp.Hotel1.hotelName + " (" + cp.nightsMadina + " nights, " + cp.Accommodation1.Name.ToLower() + " )";
-                airLine_detail.Text = cp.AirLine.Name;
-                var visa = db.VisaPackages.Where(q => q.issueDate.Month == cp.month).ToList();
-                double visaPrice = 0;
-                if(visa.Count()!=0)
-                { visaPrice = visa[0].amount; }
-                double flightPrice = 0;
-                if(!cp.isRoundTrip)
-                {flightPrice= cp.Flight.price + cp.Flight1.price; }
-                else { flightPrice = cp.Flight.price; }
-                double result = (cp.Accommodation.price * cp.nightsMakkah) + (cp.Accommodation1.price * cp.nightsMadina) + flightPrice + visaPrice;
-                totelPrice.Text = Math.Round(result).ToString();
+//                CustomPackage cp = db.CustomPackages.Where(q => q.id == pd.id).First();
+                //makkahHotel_detail.Text = cp.Hotel.hotelName + " (" + cp.nightsMakkah + " nights, " + cp.Accommodation.Name.ToLower() + " )";
+                //madinaHotel_detail.Text = cp.Hotel1.hotelName + " (" + cp.nightsMadina + " nights, " + cp.Accommodation1.Name.ToLower() + " )";
+                //airLine_detail.Text = cp.AirLine.Name;
+                //var visa = db.VisaPackages.Where(q => q.issueDate.Month == cp.month).ToList();
+                //double visaPrice = 0;
+                //if(visa.Count()!=0)
+                //{ visaPrice = visa[0].amount; }
+                //double flightPrice = 0;
+                //if(!cp.isRoundTrip)
+                //{flightPrice= cp.Flight.price + cp.Flight1.price; }
+                //else { flightPrice = cp.Flight.price; }
+                //double result = (cp.Accommodation.price * cp.nightsMakkah) + (cp.Accommodation1.price * cp.nightsMadina) + flightPrice + visaPrice;
+                //totelPrice.Text = Math.Round(result).ToString();
             }
           
         }

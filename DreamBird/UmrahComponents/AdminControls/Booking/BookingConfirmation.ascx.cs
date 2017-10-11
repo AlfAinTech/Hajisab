@@ -58,7 +58,7 @@ public partial class UmrahComponents_AdminControls_Booking_BookingConfirmation :
                 departureAirLine_name.Text = pd.PackageDetail.Flight.Name;
                 returnAirLine_name.Text = pd.PackageDetail.Flight1.Name;
             }
-            Computed_amount.Text = (ComputePrice(pd.AccomMakkahID, pd.AccomMadinaID, pd.PackageDetail) * (pd.adults + pd.children + pd.infants)).ToString();
+            Computed_amount.Text = (ComputePrice((pd.AccomMakkahID??0), (pd.AccomMadinaID??0), pd.PackageDetail) * (pd.adults + pd.children + pd.infants)).ToString();
             divMessage.Style.Add("display", "none");
             Divdetail.Style.Add("display", "block");
         }

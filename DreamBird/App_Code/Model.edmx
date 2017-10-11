@@ -59,11 +59,11 @@
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userID" Type="int" />
-          <Property Name="packageDetailID" Type="int" Nullable="false" />
+          <Property Name="packageDetailID" Type="int" />
           <Property Name="isCustomPackage" Type="bit" Nullable="false" />
           <Property Name="discountID" Type="int" />
-          <Property Name="AccomMakkahID" Type="int" Nullable="false" />
-          <Property Name="AccomMadinaID" Type="int" Nullable="false" />
+          <Property Name="AccomMakkahID" Type="int" />
+          <Property Name="AccomMadinaID" Type="int" />
           <Property Name="adults" Type="int" Nullable="false" />
           <Property Name="children" Type="int" Nullable="false" />
           <Property Name="infants" Type="int" Nullable="false" />
@@ -71,6 +71,7 @@
           <Property Name="IsAmountRecieved" Type="bit" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="CustomPackageId" Type="int" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
@@ -218,23 +219,45 @@
           <Property Name="DeleteControlPath" Type="nvarchar" MaxLength="250" />
           <Property Name="isProgress" Type="bit" />
         </EntityType>
+        <EntityType Name="CustomFlightConfiguration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AirLineID" Type="int" Nullable="false" />
+          <Property Name="Class" Type="int" Nullable="false" />
+          <Property Name="EstimatedPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Month" Type="datetime" Nullable="false" />
+          <Property Name="IsRoundTrip" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomHotelConfiguration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="AccommodationType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Distance" Type="bigint" Nullable="false" />
+          <Property Name="EstimatedPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Month" Type="datetime" Nullable="false" />
+          <Property Name="HotelCity" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="CustomPackage">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="month" Type="int" Nullable="false" />
-          <Property Name="hotelMakkahID" Type="int" Nullable="false" />
+          <Property Name="MakkahRating" Type="int" Nullable="false" />
           <Property Name="nightsMakkah" Type="int" Nullable="false" />
-          <Property Name="hotelMadinaID" Type="int" Nullable="false" />
+          <Property Name="MadinaRating" Type="int" Nullable="false" />
           <Property Name="nightsMadina" Type="int" Nullable="false" />
           <Property Name="isRoundTrip" Type="bit" Nullable="false" />
-          <Property Name="returnAirLineID" Type="int" Nullable="false" />
-          <Property Name="departureAirLineID" Type="int" Nullable="false" />
-          <Property Name="roomMakkahID" Type="int" Nullable="false" />
-          <Property Name="roomMadinaID" Type="int" Nullable="false" />
-          <Property Name="depFlightID" Type="int" Nullable="false" />
-          <Property Name="retFlightID" Type="int" Nullable="false" />
+          <Property Name="MakkahDistance" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MadinaDistance" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MakkahAccom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MadinaAccom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="airlineID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DiscountPackage">
           <Key>
@@ -946,7 +969,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Alharmain__Accom__436BFEE3">
-          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="1" />
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="0..1" />
           <End Role="AlharmainUserPackage" Type="Self.AlharmainUserPackage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Accommodation">
@@ -958,7 +981,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Alharmain__Accom__4460231C">
-          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="1" />
+          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="0..1" />
           <End Role="AlharmainUserPackage" Type="Self.AlharmainUserPackage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Accommodation">
@@ -1969,6 +1992,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AlharmainUserPackage_CustomPackage">
+          <End Role="CustomPackage" Type="Self.CustomPackage" Multiplicity="0..1" />
+          <End Role="AlharmainUserPackage" Type="Self.AlharmainUserPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomPackage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AlharmainUserPackage">
+              <PropertyRef Name="CustomPackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_AlharmainUserPackage_DiscountPackage">
           <End Role="DiscountPackage" Type="Self.DiscountPackage" Multiplicity="0..1" />
           <End Role="AlharmainUserPackage" Type="Self.AlharmainUserPackage" Multiplicity="*" />
@@ -1982,7 +2017,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AlharmainUserPackage_PackageDetail">
-          <End Role="PackageDetail" Type="Self.PackageDetail" Multiplicity="1" />
+          <End Role="PackageDetail" Type="Self.PackageDetail" Multiplicity="0..1" />
           <End Role="AlharmainUserPackage" Type="Self.AlharmainUserPackage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PackageDetail">
@@ -2005,99 +2040,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CustomPackage_Accommodation">
-          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="1" />
-          <End Role="CustomPackage" Type="Self.CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Accommodation">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="roomMakkahID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Accommodation1">
-          <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="1" />
-          <End Role="CustomPackage" Type="Self.CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Accommodation">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="roomMadinaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_AirLine">
+        <Association Name="FK_CustomFlightConfiguration_AirLine">
           <End Role="AirLine" Type="Self.AirLine" Multiplicity="1" />
-          <End Role="CustomPackage" Type="Self.CustomPackage" Multiplicity="*" />
+          <End Role="CustomFlightConfiguration" Type="Self.CustomFlightConfiguration" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AirLine">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="returnAirLineID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_AirLine1">
-          <End Role="AirLine" Type="Self.AirLine" Multiplicity="1" />
-          <End Role="CustomPackage" Type="Self.CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AirLine">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="departureAirLineID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Flight">
-          <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
-          <End Role="CustomPackage" Type="Self.CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Flight">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="depFlightID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Flight1">
-          <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
-          <End Role="CustomPackage" Type="Self.CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Flight">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="retFlightID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Hotel">
-          <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
-          <End Role="CustomPackage" Type="Self.CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hotel">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="hotelMakkahID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Hotel1">
-          <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
-          <End Role="CustomPackage" Type="Self.CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hotel">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="hotelMadinaID" />
+            <Dependent Role="CustomFlightConfiguration">
+              <PropertyRef Name="AirLineID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2855,6 +2806,8 @@
           <EntitySet Name="ClientPage" EntityType="Self.ClientPage" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="ControlCategory" EntityType="Self.ControlCategory" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="Controls" EntityType="Self.Controls" Schema="Jahanzaib" store:Type="Tables" />
+          <EntitySet Name="CustomFlightConfiguration" EntityType="Self.CustomFlightConfiguration" Schema="Jahanzaib" store:Type="Tables" />
+          <EntitySet Name="CustomHotelConfiguration" EntityType="Self.CustomHotelConfiguration" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="CustomPackage" EntityType="Self.CustomPackage" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="DiscountPackage" EntityType="Self.DiscountPackage" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="DreamEnrollment" EntityType="Self.DreamEnrollment" Schema="Jahanzaib" store:Type="Tables" />
@@ -3264,6 +3217,10 @@
             <End Role="AlharmainUser" EntitySet="AlharmainUser" />
             <End Role="AlharmainUserPackage" EntitySet="AlharmainUserPackage" />
           </AssociationSet>
+          <AssociationSet Name="FK_AlharmainUserPackage_CustomPackage" Association="Self.FK_AlharmainUserPackage_CustomPackage">
+            <End Role="CustomPackage" EntitySet="CustomPackage" />
+            <End Role="AlharmainUserPackage" EntitySet="AlharmainUserPackage" />
+          </AssociationSet>
           <AssociationSet Name="FK_AlharmainUserPackage_DiscountPackage" Association="Self.FK_AlharmainUserPackage_DiscountPackage">
             <End Role="DiscountPackage" EntitySet="DiscountPackage" />
             <End Role="AlharmainUserPackage" EntitySet="AlharmainUserPackage" />
@@ -3276,37 +3233,9 @@
             <End Role="DreamLayouts" EntitySet="DreamLayouts" />
             <End Role="ChatAdmin" EntitySet="ChatAdmin" />
           </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Accommodation" Association="Self.FK_CustomPackage_Accommodation">
-            <End Role="Accommodation" EntitySet="Accommodation" />
-            <End Role="CustomPackage" EntitySet="CustomPackage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Accommodation1" Association="Self.FK_CustomPackage_Accommodation1">
-            <End Role="Accommodation" EntitySet="Accommodation" />
-            <End Role="CustomPackage" EntitySet="CustomPackage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_AirLine" Association="Self.FK_CustomPackage_AirLine">
+          <AssociationSet Name="FK_CustomFlightConfiguration_AirLine" Association="Self.FK_CustomFlightConfiguration_AirLine">
             <End Role="AirLine" EntitySet="AirLine" />
-            <End Role="CustomPackage" EntitySet="CustomPackage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_AirLine1" Association="Self.FK_CustomPackage_AirLine1">
-            <End Role="AirLine" EntitySet="AirLine" />
-            <End Role="CustomPackage" EntitySet="CustomPackage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Flight" Association="Self.FK_CustomPackage_Flight">
-            <End Role="Flight" EntitySet="Flight" />
-            <End Role="CustomPackage" EntitySet="CustomPackage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Flight1" Association="Self.FK_CustomPackage_Flight1">
-            <End Role="Flight" EntitySet="Flight" />
-            <End Role="CustomPackage" EntitySet="CustomPackage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Hotel" Association="Self.FK_CustomPackage_Hotel">
-            <End Role="Hotel" EntitySet="Hotel" />
-            <End Role="CustomPackage" EntitySet="CustomPackage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Hotel1" Association="Self.FK_CustomPackage_Hotel1">
-            <End Role="Hotel" EntitySet="Hotel" />
-            <End Role="CustomPackage" EntitySet="CustomPackage" />
+            <End Role="CustomFlightConfiguration" EntitySet="CustomFlightConfiguration" />
           </AssociationSet>
           <AssociationSet Name="FK_DiscountPackage_PackageDetail" Association="Self.FK_DiscountPackage_PackageDetail">
             <End Role="PackageDetail" EntitySet="PackageDetail" />
@@ -3552,7 +3481,6 @@
         <EntityContainer Name="DreamBirdEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accommodations" EntityType="DreamBirdModel.Accommodation" />
           <EntitySet Name="BotConversations" EntityType="DreamBirdModel.BotConversation" />
-          <EntitySet Name="CustomPackages" EntityType="DreamBirdModel.CustomPackage" />
           <EntitySet Name="DiscountPackages" EntityType="DreamBirdModel.DiscountPackage" />
           <EntitySet Name="Hotels" EntityType="DreamBirdModel.Hotel" />
           <EntitySet Name="HotelFacilities" EntityType="DreamBirdModel.HotelFacility" />
@@ -3564,22 +3492,6 @@
           <AssociationSet Name="FK_Accommodation_Hotel" Association="DreamBirdModel.FK_Accommodation_Hotel">
             <End Role="Hotel" EntitySet="Hotels" />
             <End Role="Accommodation" EntitySet="Accommodations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Accommodation" Association="DreamBirdModel.FK_CustomPackage_Accommodation">
-            <End Role="Accommodation" EntitySet="Accommodations" />
-            <End Role="CustomPackage" EntitySet="CustomPackages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Accommodation1" Association="DreamBirdModel.FK_CustomPackage_Accommodation1">
-            <End Role="Accommodation" EntitySet="Accommodations" />
-            <End Role="CustomPackage" EntitySet="CustomPackages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Hotel" Association="DreamBirdModel.FK_CustomPackage_Hotel">
-            <End Role="Hotel" EntitySet="Hotels" />
-            <End Role="CustomPackage" EntitySet="CustomPackages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Hotel1" Association="DreamBirdModel.FK_CustomPackage_Hotel1">
-            <End Role="Hotel" EntitySet="Hotels" />
-            <End Role="CustomPackage" EntitySet="CustomPackages" />
           </AssociationSet>
           <AssociationSet Name="FK_DiscountPackage_PackageDetail" Association="DreamBirdModel.FK_DiscountPackage_PackageDetail">
             <End Role="PackageDetail" EntitySet="PackageDetails" />
@@ -4032,25 +3944,9 @@
           <EntitySet Name="AirLines" EntityType="DreamBirdModel.AirLine" />
           <EntitySet Name="Flights" EntityType="DreamBirdModel.Flight" />
           <EntitySet Name="VisaPackages" EntityType="DreamBirdModel.VisaPackage" />
-          <AssociationSet Name="FK_CustomPackage_AirLine" Association="DreamBirdModel.FK_CustomPackage_AirLine">
-            <End Role="AirLine" EntitySet="AirLines" />
-            <End Role="CustomPackage" EntitySet="CustomPackages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_AirLine1" Association="DreamBirdModel.FK_CustomPackage_AirLine1">
-            <End Role="AirLine" EntitySet="AirLines" />
-            <End Role="CustomPackage" EntitySet="CustomPackages" />
-          </AssociationSet>
           <AssociationSet Name="FK_Flight_AirLine" Association="DreamBirdModel.FK_Flight_AirLine">
             <End Role="AirLine" EntitySet="AirLines" />
             <End Role="Flight" EntitySet="Flights" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Flight" Association="DreamBirdModel.FK_CustomPackage_Flight">
-            <End Role="Flight" EntitySet="Flights" />
-            <End Role="CustomPackage" EntitySet="CustomPackages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomPackage_Flight1" Association="DreamBirdModel.FK_CustomPackage_Flight1">
-            <End Role="Flight" EntitySet="Flights" />
-            <End Role="CustomPackage" EntitySet="CustomPackages" />
           </AssociationSet>
           <AssociationSet Name="FK_PackageDetail_Flight" Association="DreamBirdModel.FK_PackageDetail_Flight">
             <End Role="Flight" EntitySet="Flights" />
@@ -4234,6 +4130,13 @@
             <End Role="Dream" EntitySet="Dreams" />
             <End Role="PackageDetail" EntitySet="PackageDetails" />
           </AssociationSet>
+          <EntitySet Name="CustomFlightConfigurations" EntityType="DreamBirdModel.CustomFlightConfiguration" />
+          <AssociationSet Name="FK_CustomFlightConfiguration_AirLine" Association="DreamBirdModel.FK_CustomFlightConfiguration_AirLine">
+            <End Role="AirLine" EntitySet="AirLines" />
+            <End Role="CustomFlightConfiguration" EntitySet="CustomFlightConfigurations" />
+          </AssociationSet>
+          <EntitySet Name="CustomHotelConfigurations" EntityType="DreamBirdModel.CustomHotelConfiguration" />
+          <EntitySet Name="CustomPackages" EntityType="DreamBirdModel.CustomPackage" />
           <EntitySet Name="AlharmainUserPackages" EntityType="DreamBirdModel.AlharmainUserPackage" />
           <AssociationSet Name="FK__Alharmain__Accom__436BFEE3" Association="DreamBirdModel.FK__Alharmain__Accom__436BFEE3">
             <End Role="Accommodation" EntitySet="Accommodations" />
@@ -4245,6 +4148,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_AlharmainUserPackage_AlharmainUser1" Association="DreamBirdModel.FK_AlharmainUserPackage_AlharmainUser1">
             <End Role="AlharmainUser" EntitySet="AlharmainUsers" />
+            <End Role="AlharmainUserPackage" EntitySet="AlharmainUserPackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AlharmainUserPackage_CustomPackage" Association="DreamBirdModel.FK_AlharmainUserPackage_CustomPackage">
+            <End Role="CustomPackage" EntitySet="CustomPackages" />
             <End Role="AlharmainUserPackage" EntitySet="AlharmainUserPackages" />
           </AssociationSet>
           <AssociationSet Name="FK_AlharmainUserPackage_DiscountPackage" Association="DreamBirdModel.FK_AlharmainUserPackage_DiscountPackage">
@@ -4266,11 +4173,9 @@
           <Property Name="availability" Type="Boolean" Nullable="false" />
           <Property Name="hotelID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Hotel" Relationship="DreamBirdModel.FK_Accommodation_Hotel" FromRole="Accommodation" ToRole="Hotel" />
-          <NavigationProperty Name="CustomPackages" Relationship="DreamBirdModel.FK_CustomPackage_Accommodation" FromRole="Accommodation" ToRole="CustomPackage" />
-          <NavigationProperty Name="CustomPackages1" Relationship="DreamBirdModel.FK_CustomPackage_Accommodation1" FromRole="Accommodation" ToRole="CustomPackage" />
           <NavigationProperty Name="AlharmainUserPackages" Relationship="DreamBirdModel.FK__Alharmain__Accom__436BFEE3" FromRole="Accommodation" ToRole="AlharmainUserPackage" />
           <NavigationProperty Name="AlharmainUserPackages1" Relationship="DreamBirdModel.FK__Alharmain__Accom__4460231C" FromRole="Accommodation" ToRole="AlharmainUserPackage" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="BotConversation">
           <Key>
             <PropertyRef Name="id" />
@@ -4280,32 +4185,6 @@
           <Property Name="answer" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="functionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="CustomPackage">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="month" Type="Int32" Nullable="false" />
-          <Property Name="hotelMakkahID" Type="Int32" Nullable="false" />
-          <Property Name="nightsMakkah" Type="Int32" Nullable="false" />
-          <Property Name="hotelMadinaID" Type="Int32" Nullable="false" />
-          <Property Name="nightsMadina" Type="Int32" Nullable="false" />
-          <Property Name="isRoundTrip" Type="Boolean" Nullable="false" />
-          <Property Name="returnAirLineID" Type="Int32" Nullable="false" />
-          <Property Name="departureAirLineID" Type="Int32" Nullable="false" />
-          <Property Name="roomMakkahID" Type="Int32" Nullable="false" />
-          <Property Name="roomMadinaID" Type="Int32" Nullable="false" />
-          <Property Name="depFlightID" Type="Int32" Nullable="false" />
-          <Property Name="retFlightID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Accommodation" Relationship="DreamBirdModel.FK_CustomPackage_Accommodation" FromRole="CustomPackage" ToRole="Accommodation" />
-          <NavigationProperty Name="Accommodation1" Relationship="DreamBirdModel.FK_CustomPackage_Accommodation1" FromRole="CustomPackage" ToRole="Accommodation" />
-          <NavigationProperty Name="Hotel" Relationship="DreamBirdModel.FK_CustomPackage_Hotel" FromRole="CustomPackage" ToRole="Hotel" />
-          <NavigationProperty Name="Hotel1" Relationship="DreamBirdModel.FK_CustomPackage_Hotel1" FromRole="CustomPackage" ToRole="Hotel" />
-          <NavigationProperty Name="AirLine" Relationship="DreamBirdModel.FK_CustomPackage_AirLine" FromRole="CustomPackage" ToRole="AirLine" />
-          <NavigationProperty Name="AirLine1" Relationship="DreamBirdModel.FK_CustomPackage_AirLine1" FromRole="CustomPackage" ToRole="AirLine" />
-          <NavigationProperty Name="Flight" Relationship="DreamBirdModel.FK_CustomPackage_Flight" FromRole="CustomPackage" ToRole="Flight" />
-          <NavigationProperty Name="Flight1" Relationship="DreamBirdModel.FK_CustomPackage_Flight1" FromRole="CustomPackage" ToRole="Flight" />
-          </EntityType>
         <EntityType Name="DiscountPackage">
           <Key>
             <PropertyRef Name="id" />
@@ -4332,8 +4211,6 @@
           <Property Name="AspNetUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="hotelType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Accommodations" Relationship="DreamBirdModel.FK_Accommodation_Hotel" FromRole="Hotel" ToRole="Accommodation" />
-          <NavigationProperty Name="CustomPackages" Relationship="DreamBirdModel.FK_CustomPackage_Hotel" FromRole="Hotel" ToRole="CustomPackage" />
-          <NavigationProperty Name="CustomPackages1" Relationship="DreamBirdModel.FK_CustomPackage_Hotel1" FromRole="Hotel" ToRole="CustomPackage" />
           <NavigationProperty Name="HotelFacilities" Relationship="DreamBirdModel.FK_HotelFacility_Hotel" FromRole="Hotel" ToRole="HotelFacility" />
           <NavigationProperty Name="HotelImages" Relationship="DreamBirdModel.FK_HotelImage_Hotel" FromRole="Hotel" ToRole="HotelImage" />
           <NavigationProperty Name="PackageDetails" Relationship="DreamBirdModel.FK_PackageDetail_HotelMadina" FromRole="Hotel" ToRole="PackageDetail" />
@@ -4341,7 +4218,7 @@
           <NavigationProperty Name="PackageItenryDetails" Relationship="DreamBirdModel.FK_PackageItenryDetail_Hotel" FromRole="Hotel" ToRole="PackageItenryDetail" />
           <NavigationProperty Name="MediaItem" Relationship="DreamBirdModel.FK_Hotel_MediaItems" FromRole="Hotel" ToRole="MediaItem" />
           <NavigationProperty Name="AspNetUser" Relationship="DreamBirdModel.FK__Hotel__AspNetUse__603D47BB" FromRole="Hotel" ToRole="AspNetUser" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="HotelFacility">
           <Key>
             <PropertyRef Name="id" />
@@ -4446,54 +4323,6 @@
             </Principal>
             <Dependent Role="Accommodation">
               <PropertyRef Name="hotelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Accommodation">
-          <End Type="DreamBirdModel.Accommodation" Role="Accommodation" Multiplicity="1" />
-          <End Type="DreamBirdModel.CustomPackage" Role="CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Accommodation">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="roomMakkahID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Accommodation1">
-          <End Type="DreamBirdModel.Accommodation" Role="Accommodation" Multiplicity="1" />
-          <End Type="DreamBirdModel.CustomPackage" Role="CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Accommodation">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="roomMadinaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Hotel">
-          <End Type="DreamBirdModel.Hotel" Role="Hotel" Multiplicity="1" />
-          <End Type="DreamBirdModel.CustomPackage" Role="CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hotel">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="hotelMakkahID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Hotel1">
-          <End Type="DreamBirdModel.Hotel" Role="Hotel" Multiplicity="1" />
-          <End Type="DreamBirdModel.CustomPackage" Role="CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hotel">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="hotelMadinaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6504,10 +6333,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AspNetUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CustomPackages" Relationship="DreamBirdModel.FK_CustomPackage_AirLine" FromRole="AirLine" ToRole="CustomPackage" />
-          <NavigationProperty Name="CustomPackages1" Relationship="DreamBirdModel.FK_CustomPackage_AirLine1" FromRole="AirLine" ToRole="CustomPackage" />
           <NavigationProperty Name="Flights" Relationship="DreamBirdModel.FK_Flight_AirLine" FromRole="AirLine" ToRole="Flight" />
           <NavigationProperty Name="AspNetUser" Relationship="DreamBirdModel.FK__AirLine__AspNetU__44952D46" FromRole="AirLine" ToRole="AspNetUser" />
+          <NavigationProperty Name="CustomFlightConfigurations" Relationship="DreamBirdModel.FK_CustomFlightConfiguration_AirLine" FromRole="AirLine" ToRole="CustomFlightConfiguration" />
         </EntityType>
         <EntityType Name="Flight">
           <Key>
@@ -6523,8 +6351,6 @@
           <Property Name="flightType" Type="Int32" Nullable="false" />
           <Property Name="airLineID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AirLine" Relationship="DreamBirdModel.FK_Flight_AirLine" FromRole="Flight" ToRole="AirLine" />
-          <NavigationProperty Name="CustomPackages" Relationship="DreamBirdModel.FK_CustomPackage_Flight" FromRole="Flight" ToRole="CustomPackage" />
-          <NavigationProperty Name="CustomPackages1" Relationship="DreamBirdModel.FK_CustomPackage_Flight1" FromRole="Flight" ToRole="CustomPackage" />
           <NavigationProperty Name="PackageDetails" Relationship="DreamBirdModel.FK_PackageDetail_Flight" FromRole="Flight" ToRole="PackageDetail" />
           <NavigationProperty Name="PackageDetails1" Relationship="DreamBirdModel.FK_PackageDetail_Flight1" FromRole="Flight" ToRole="PackageDetail" />
         </EntityType>
@@ -6541,30 +6367,6 @@
           <NavigationProperty Name="PackageDetails" Relationship="DreamBirdModel.FK_PackageDetail_VisaPackages" FromRole="VisaPackage" ToRole="PackageDetail" />
           <NavigationProperty Name="AspNetUser" Relationship="DreamBirdModel.FK__VisaPacka__AspNe__5006DFF2" FromRole="VisaPackage" ToRole="AspNetUser" />
         </EntityType>
-        <Association Name="FK_CustomPackage_AirLine">
-          <End Type="DreamBirdModel.AirLine" Role="AirLine" Multiplicity="1" />
-          <End Type="DreamBirdModel.CustomPackage" Role="CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AirLine">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="returnAirLineID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_AirLine1">
-          <End Type="DreamBirdModel.AirLine" Role="AirLine" Multiplicity="1" />
-          <End Type="DreamBirdModel.CustomPackage" Role="CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AirLine">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="departureAirLineID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Flight_AirLine">
           <End Type="DreamBirdModel.AirLine" Role="AirLine" Multiplicity="1" />
           <End Type="DreamBirdModel.Flight" Role="Flight" Multiplicity="*" />
@@ -6574,30 +6376,6 @@
             </Principal>
             <Dependent Role="Flight">
               <PropertyRef Name="airLineID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Flight">
-          <End Type="DreamBirdModel.Flight" Role="Flight" Multiplicity="1" />
-          <End Type="DreamBirdModel.CustomPackage" Role="CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Flight">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="depFlightID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CustomPackage_Flight1">
-          <End Type="DreamBirdModel.Flight" Role="Flight" Multiplicity="1" />
-          <End Type="DreamBirdModel.CustomPackage" Role="CustomPackage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Flight">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CustomPackage">
-              <PropertyRef Name="retFlightID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7276,32 +7054,88 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CustomFlightConfiguration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AirLineID" Type="Int32" Nullable="false" />
+          <Property Name="Class" Type="Int32" Nullable="false" />
+          <Property Name="EstimatedPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Month" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AirLine" Relationship="DreamBirdModel.FK_CustomFlightConfiguration_AirLine" FromRole="CustomFlightConfiguration" ToRole="AirLine" />
+          <Property Name="IsRoundTrip" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CustomFlightConfiguration_AirLine">
+          <End Type="DreamBirdModel.AirLine" Role="AirLine" Multiplicity="1" />
+          <End Type="DreamBirdModel.CustomFlightConfiguration" Role="CustomFlightConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AirLine">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CustomFlightConfiguration">
+              <PropertyRef Name="AirLineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CustomHotelConfiguration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="AccommodationType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Distance" Type="Int64" Nullable="false" />
+          <Property Name="EstimatedPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Month" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HotelCity" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CustomPackage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="month" Type="Int32" Nullable="false" />
+          <Property Name="MakkahRating" Type="Int32" Nullable="false" />
+          <Property Name="nightsMakkah" Type="Int32" Nullable="false" />
+          <Property Name="MadinaRating" Type="Int32" Nullable="false" />
+          <Property Name="nightsMadina" Type="Int32" Nullable="false" />
+          <Property Name="isRoundTrip" Type="Boolean" Nullable="false" />
+          <Property Name="MakkahDistance" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MadinaDistance" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MakkahAccom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MadinaAccom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="airlineID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AlharmainUserPackages" Relationship="DreamBirdModel.FK_AlharmainUserPackage_CustomPackage" FromRole="CustomPackage" ToRole="AlharmainUserPackage" />
+        </EntityType>
         <EntityType Name="AlharmainUserPackage">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userID" Type="Int32" />
-          <Property Name="packageDetailID" Type="Int32" Nullable="false" />
+          <Property Name="packageDetailID" Type="Int32" />
           <Property Name="isCustomPackage" Type="Boolean" Nullable="false" />
           <Property Name="discountID" Type="Int32" />
-          <Property Name="AccomMakkahID" Type="Int32" Nullable="false" />
-          <Property Name="AccomMadinaID" Type="Int32" Nullable="false" />
+          <Property Name="AccomMakkahID" Type="Int32" />
+          <Property Name="AccomMadinaID" Type="Int32" />
           <Property Name="adults" Type="Int32" Nullable="false" />
           <Property Name="children" Type="Int32" Nullable="false" />
           <Property Name="infants" Type="Int32" Nullable="false" />
           <Property Name="trackingID" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Accommodation" Relationship="DreamBirdModel.FK__Alharmain__Accom__436BFEE3" FromRole="AlharmainUserPackage" ToRole="Accommodation" />
-          <NavigationProperty Name="Accommodation1" Relationship="DreamBirdModel.FK__Alharmain__Accom__4460231C" FromRole="AlharmainUserPackage" ToRole="Accommodation" />
-          <NavigationProperty Name="AlharmainUser" Relationship="DreamBirdModel.FK_AlharmainUserPackage_AlharmainUser1" FromRole="AlharmainUserPackage" ToRole="AlharmainUser" />
-          <NavigationProperty Name="DiscountPackage" Relationship="DreamBirdModel.FK_AlharmainUserPackage_DiscountPackage" FromRole="AlharmainUserPackage" ToRole="DiscountPackage" />
-          <NavigationProperty Name="PackageDetail" Relationship="DreamBirdModel.FK_AlharmainUserPackage_PackageDetail" FromRole="AlharmainUserPackage" ToRole="PackageDetail" />
           <Property Name="IsAmountRecieved" Type="Boolean" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomPackageId" Type="Int32" />
+          <NavigationProperty Name="Accommodation" Relationship="DreamBirdModel.FK__Alharmain__Accom__436BFEE3" FromRole="AlharmainUserPackage" ToRole="Accommodation" />
+          <NavigationProperty Name="Accommodation1" Relationship="DreamBirdModel.FK__Alharmain__Accom__4460231C" FromRole="AlharmainUserPackage" ToRole="Accommodation" />
+          <NavigationProperty Name="AlharmainUser" Relationship="DreamBirdModel.FK_AlharmainUserPackage_AlharmainUser1" FromRole="AlharmainUserPackage" ToRole="AlharmainUser" />
+          <NavigationProperty Name="CustomPackage" Relationship="DreamBirdModel.FK_AlharmainUserPackage_CustomPackage" FromRole="AlharmainUserPackage" ToRole="CustomPackage" />
+          <NavigationProperty Name="DiscountPackage" Relationship="DreamBirdModel.FK_AlharmainUserPackage_DiscountPackage" FromRole="AlharmainUserPackage" ToRole="DiscountPackage" />
+          <NavigationProperty Name="PackageDetail" Relationship="DreamBirdModel.FK_AlharmainUserPackage_PackageDetail" FromRole="AlharmainUserPackage" ToRole="PackageDetail" />
         </EntityType>
         <Association Name="FK__Alharmain__Accom__436BFEE3">
-          <End Type="DreamBirdModel.Accommodation" Role="Accommodation" Multiplicity="1" />
+          <End Type="DreamBirdModel.Accommodation" Role="Accommodation" Multiplicity="0..1" />
           <End Type="DreamBirdModel.AlharmainUserPackage" Role="AlharmainUserPackage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Accommodation">
@@ -7313,7 +7147,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Alharmain__Accom__4460231C">
-          <End Type="DreamBirdModel.Accommodation" Role="Accommodation" Multiplicity="1" />
+          <End Type="DreamBirdModel.Accommodation" Role="Accommodation" Multiplicity="0..1" />
           <End Type="DreamBirdModel.AlharmainUserPackage" Role="AlharmainUserPackage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Accommodation">
@@ -7336,6 +7170,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AlharmainUserPackage_CustomPackage">
+          <End Type="DreamBirdModel.CustomPackage" Role="CustomPackage" Multiplicity="0..1" />
+          <End Type="DreamBirdModel.AlharmainUserPackage" Role="AlharmainUserPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomPackage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AlharmainUserPackage">
+              <PropertyRef Name="CustomPackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_AlharmainUserPackage_DiscountPackage">
           <End Type="DreamBirdModel.DiscountPackage" Role="DiscountPackage" Multiplicity="0..1" />
           <End Type="DreamBirdModel.AlharmainUserPackage" Role="AlharmainUserPackage" Multiplicity="*" />
@@ -7349,7 +7195,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AlharmainUserPackage_PackageDetail">
-          <End Type="DreamBirdModel.PackageDetail" Role="PackageDetail" Multiplicity="1" />
+          <End Type="DreamBirdModel.PackageDetail" Role="PackageDetail" Multiplicity="0..1" />
           <End Type="DreamBirdModel.AlharmainUserPackage" Role="AlharmainUserPackage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PackageDetail">
@@ -7383,25 +7229,6 @@
                 <ScalarProperty Name="functionName" ColumnName="functionName" />
                 <ScalarProperty Name="answer" ColumnName="answer" />
                 <ScalarProperty Name="question" ColumnName="question" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CustomPackages">
-            <EntityTypeMapping TypeName="DreamBirdModel.CustomPackage">
-              <MappingFragment StoreEntitySet="CustomPackage">
-                <ScalarProperty Name="retFlightID" ColumnName="retFlightID" />
-                <ScalarProperty Name="depFlightID" ColumnName="depFlightID" />
-                <ScalarProperty Name="roomMadinaID" ColumnName="roomMadinaID" />
-                <ScalarProperty Name="roomMakkahID" ColumnName="roomMakkahID" />
-                <ScalarProperty Name="departureAirLineID" ColumnName="departureAirLineID" />
-                <ScalarProperty Name="returnAirLineID" ColumnName="returnAirLineID" />
-                <ScalarProperty Name="isRoundTrip" ColumnName="isRoundTrip" />
-                <ScalarProperty Name="nightsMadina" ColumnName="nightsMadina" />
-                <ScalarProperty Name="hotelMadinaID" ColumnName="hotelMadinaID" />
-                <ScalarProperty Name="nightsMakkah" ColumnName="nightsMakkah" />
-                <ScalarProperty Name="hotelMakkahID" ColumnName="hotelMakkahID" />
-                <ScalarProperty Name="month" ColumnName="month" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -8360,9 +8187,53 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CustomFlightConfigurations">
+            <EntityTypeMapping TypeName="DreamBirdModel.CustomFlightConfiguration">
+              <MappingFragment StoreEntitySet="CustomFlightConfiguration">
+                <ScalarProperty Name="IsRoundTrip" ColumnName="IsRoundTrip" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="EstimatedPrice" ColumnName="EstimatedPrice" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="AirLineID" ColumnName="AirLineID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomHotelConfigurations">
+            <EntityTypeMapping TypeName="DreamBirdModel.CustomHotelConfiguration">
+              <MappingFragment StoreEntitySet="CustomHotelConfiguration">
+                <ScalarProperty Name="HotelCity" ColumnName="HotelCity" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="EstimatedPrice" ColumnName="EstimatedPrice" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="AccommodationType" ColumnName="AccommodationType" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomPackages">
+            <EntityTypeMapping TypeName="DreamBirdModel.CustomPackage">
+              <MappingFragment StoreEntitySet="CustomPackage">
+                <ScalarProperty Name="airlineID" ColumnName="airlineID" />
+                <ScalarProperty Name="MadinaAccom" ColumnName="MadinaAccom" />
+                <ScalarProperty Name="MakkahAccom" ColumnName="MakkahAccom" />
+                <ScalarProperty Name="MadinaDistance" ColumnName="MadinaDistance" />
+                <ScalarProperty Name="MakkahDistance" ColumnName="MakkahDistance" />
+                <ScalarProperty Name="isRoundTrip" ColumnName="isRoundTrip" />
+                <ScalarProperty Name="nightsMadina" ColumnName="nightsMadina" />
+                <ScalarProperty Name="MadinaRating" ColumnName="MadinaRating" />
+                <ScalarProperty Name="nightsMakkah" ColumnName="nightsMakkah" />
+                <ScalarProperty Name="MakkahRating" ColumnName="MakkahRating" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="AlharmainUserPackages">
             <EntityTypeMapping TypeName="DreamBirdModel.AlharmainUserPackage">
               <MappingFragment StoreEntitySet="AlharmainUserPackage">
+                <ScalarProperty Name="CustomPackageId" ColumnName="CustomPackageId" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="IsAmountRecieved" ColumnName="IsAmountRecieved" />

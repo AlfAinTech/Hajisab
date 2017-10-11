@@ -181,7 +181,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
             PackageDetail pd = db.PackageDetails.Where(q => q.id == pkgId).First();
             double price = pd.getPriceWithout_accommodation + ((madina!=null? madina.price:0)*(pd.nightsInMadina)) + (makkah.price*pd.nightsInMakkah);
             Label lb = (Label)ri.FindControl("price");
-            lb.Text = price.ToString();
+            lb.Text = price.ToString("#,##0");
         }
         int selectedPage = int.Parse(ViewState["PageNumber"].ToString());
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "highlite_menu", "$('#PagingList').children('li[id=" + '"' + selectedPage + '"' + "]').addClass('active');", true);

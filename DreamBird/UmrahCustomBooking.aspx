@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UmrahBookingPage.aspx.cs" Inherits="UmrahBookingPage" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UmrahCustomBooking.aspx.cs" Inherits="UmrahCustomBooking" %>
 <%@ Register Src="~/UmrahComponents/headerFooter/Packageheader.ascx" TagPrefix="uc1" TagName="Packageheader" %>
 <%@ Register Src="~/UmrahComponents/headerFooter/PackageFooter.ascx" TagPrefix="uc1" TagName="PackageFooter" %>
 <%@ Register Src="~/UmrahComponents/headerFooter/BookingFormHeader.ascx" TagPrefix="uc1" TagName="BookingFormHeader" %>
 <%@ Register Src="~/UmrahComponents/PackageComponent/BookingForm.ascx" TagPrefix="uc1" TagName="BookingForm" %>
+<%@ Register Src="~/UmrahComponents/PackageComponent/CustomBookingUC.ascx" TagPrefix="uc1" TagName="CustomBookingUC" %>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!DOCTYPE html>
@@ -43,7 +44,7 @@
      <script src='<%= ResolveUrl("~/chat/contents/js/jquery.quicksearch.js") %>'></script>
     <script src='<%= ResolveUrl("~/UmrahComponents/Contents/js/bootstrap.js") %>'></script></asp:PlaceHolder>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,700,900" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,700,900" rel="stylesheet">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
      <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 
@@ -66,7 +67,7 @@
                                 <uc1:Packageheader runat="server" ID="Packageheader1" />
                                 <uc1:BookingFormHeader runat="server" ID="BookingFormHeader1" />
 
-                                <uc1:BookingForm runat="server" ID="BookingForm" />
+                                <uc1:CustomBookingUC runat="server" ID="CustomBookingUC" />
                         </div>
                             <div  class="col-md-12" runat="server">
                                  <uc1:PackageFooter runat="server" ID="PackageFooter1" />
