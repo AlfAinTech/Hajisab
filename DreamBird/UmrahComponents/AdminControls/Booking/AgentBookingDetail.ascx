@@ -29,7 +29,8 @@
 </table>
 </div>
 <div class="Booking-detail"  visible="false" runat="server" id="booking_detail">
-    <div  class=" " style="background-color:white; box-shadow:2px 2px 2px 2px #464646;">
+
+    <div  class="row" style="background-color:white; box-shadow:2px 2px 2px 2px #464646;">
 <div class="bookingContainer" id="bookingContainer" runat="server"  style="background-color:white;">
     <h3 style="text-align:center;">Booking Information</h3>
      <div class="col-md-12" id="booking_form">

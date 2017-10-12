@@ -122,7 +122,15 @@
                     <asp:Image ID="hotelMadina_img" runat="server" Width="100%" />
                 </div>
             </div>
+
+           
         </div>
+
+        <div class="" style="margin:20px; margin-top:-10px">
+                                <div class="row">
+                                    <asp:Button runat="server"  ID="OpenCustomPackage" OnClick="OpenCustomPackage_Click"  CssClass="btn btn-primary" style="width:auto; float:right;" Text="Customize Package"/>
+                                </div>
+                            </div>
     </div>
 
     <div class="col-md-7" style="border-left: 1px solid #e6e6e6;">

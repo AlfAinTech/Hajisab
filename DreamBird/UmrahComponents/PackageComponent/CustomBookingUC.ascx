@@ -93,7 +93,7 @@
                             <h5>No. of Nights : </h5>
                         </div>
                         <div class="col-md-8 detail_package_detail">
-                            <h5><asp:Label ID="totelNights" runat="server"></asp:Label></h5>
+                            <h5><asp:Label ID="totelNights" runat="server"></asp:Label> Night(s)</h5>
                         </div>
                     </div>
                 </div>

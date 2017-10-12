@@ -334,5 +334,14 @@ public void ComputePrice(int makkahAccom_id, int madinaAccom_id)
         }
     }
 
+
+    protected void OpenCustomPackage_Click(object sender, EventArgs e)
+    {
+       string dreamName =   DreamUtil.getDreamNameFromURL(Request.RawUrl);
+        DreamBirdEntities db = new DreamBirdEntities();
+        PackageDetail pd =  db.PackageDetails.Where(q => q.Dream.DreamName == dreamName).FirstOrDefault();
+        if(pd != null)
+            Response.Redirect("~/UmrahCustomPackage.aspx?PackageId="+pd.id);
+    }
 }
 
