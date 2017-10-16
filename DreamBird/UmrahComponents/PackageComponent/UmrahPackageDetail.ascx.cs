@@ -95,9 +95,9 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
                 discountPanel.Visible = true;
                 discountValue.Text = dp.discountPercent.ToString();
                 Session["discount_id"] = dp.id.ToString();
-                //Paneldiscount.Visible = true;
+                Paneldiscount.Visible = true;
                 bookPackage.Text = "Book Now for " + dp.discountPercent.ToString() + "% off";
-              //  Computed_amount.Attributes.Add("style", "text-decoration:line-through");
+              Computed_amount.Attributes.Add("style", "text-decoration:line-through");
             }
         }
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);

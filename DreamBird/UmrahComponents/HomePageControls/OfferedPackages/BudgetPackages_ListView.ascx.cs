@@ -60,11 +60,11 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
     {
         if(hiddenBudgetType.Value != "")
         {
-            string PackaType = hiddenBudgetType.ToString();
+            string PackaType = hiddenBudgetType.Value.ToString();
             DreamBirdEntities db = new DreamBirdEntities();
             PackageDetail pd = db.PackageDetails.Where(q => q.packageType == PackaType).ToList().OrderBy(q => q.minRange).First();
             string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-            Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter?minPrice=" + pd.minAmount);
+            Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter?Type=" + pd.packageType.ToString());
         }
     }
    

@@ -29,8 +29,20 @@
         AccommodationScript = function () {
             // alert("here");
             $('#makkahAccommodation_list input').change(function () {
-                //  alert("here")
-                var makkahID = $(this).val();
+                ManageAccomodation();
+            });
+
+
+
+            $('#madinaAccommodation_list input').change(function () {
+                ManageAccomodation();
+            });
+
+        }
+
+        ManageAccomodation = function () {
+            //  alert("here")
+            var makkahID = $('#makkahAccommodation_list input:checked').val();
                 var madinaID = $('#madinaAccommodation_list input:checked').val();
                 var makkahAccom = $.grep(MakkahAccommodations, function (n, i) {
                     return (n.id == makkahID);
@@ -43,7 +55,7 @@
                 nightsInMadina = $("#nights_inMadina")[0].innerText;
                 price += (nightsInMakkah * makkahAccom[0].price) + (nightsInMadina * madinaAccom[0].price);
                 //  alert(price)
-                $("#Computed_amount")[0].innerText = price;
+                $("#Computed_amount")[0].innerText = price.toLocaleString();
                 document.getElementById('<%=hiddenprice.ClientID %>').value = price;
                 // alert( document.getElementById('<%=hiddenprice.ClientID %>').value)
                 //discount calculation
@@ -52,46 +64,14 @@
                 if (textBoxDiscount != undefined) {
                     discountPercent = textBoxDiscount.innerText;
                     discount = price - ((price * discountPercent) / 100);
-                    $("#DiscountAmount")[0].innerText = discount;
+                    discountText = discount.toLocaleString();
+                    $("#DiscountAmount")[0].innerText = discountText;
                     document.getElementById('<%=hiddenprice.ClientID %>').value = discount;
                 }
                 // alert(discount)
-            });
-
-
-
-            $('#madinaAccommodation_list input').change(function () {
-                //  alert("here");
-                var madinaID = $(this).val();
-                // alert(madinaID)
-                var makkahID = $('#makkahAccommodation_list input:checked').val();
-                var makkahAccom = $.grep(MakkahAccommodations, function (n, i) {
-                    return (n.id == makkahID);
-                });
-                var madinaAccom = $.grep(MadinaAccommodations, function (n, i) {
-                    return (n.id == madinaID);
-                });
-                price = PriceWithoutAccom;
-                // alert(price);
-                nightsInMakkah = $("#nights_inMakkah")[0].innerText;
-                nightsInMadina = $("#nights_inMadina")[0].innerText;
-                price = price + (nightsInMakkah * makkahAccom[0].price) + (nightsInMadina * madinaAccom[0].price);
-                $("#Computed_amount")[0].innerText = price;
-                document.getElementById('<%=hiddenprice.ClientID %>').value = price;
-                // alert(makkahAccom[0].price);
-                //discount calculation
-                discountPercent = 0;
-                textBoxDiscount = $("#discountValue")[0];
-                if (textBoxDiscount != undefined) {
-                    discountPercent = textBoxDiscount.innerText;
-                    discount = price - ((price * discountPercent) / 100);
-                    $("#DiscountAmount")[0].innerText = discount;
-                    document.getElementById('<%=hiddenprice.ClientID %>').value = discount;
-                }
-                // alert(discount)
-            });
-
         }
+
+
         BindItenryScript = function () {
             //$("#myModal").addClass("in");
             //$("#myModal").css({ 'display': 'block' });

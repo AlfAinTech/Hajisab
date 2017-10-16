@@ -40,11 +40,11 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
 
             }
 
-            if (Request.QueryString["minPrice"] != null )
+            if (Request.QueryString["Type"] != null )
             {
-                control1.Text = Request.QueryString["minPrice"].ToString();
-                
-                price_range_TextChanged(sender, e);
+                control1.Text = Request.QueryString["Type"].ToString();
+
+                search();
             }
             if (Request.QueryString["rating"] != null )
             {
@@ -211,6 +211,12 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
             float haramDistance = float.Parse(control6.Text);
             data = data.Where(q => q.Hotel1.distance <= haramDistance).ToList();
 
+        }
+        if (Request.QueryString["Type"] != null)
+        {
+            string type = Request.QueryString["Type"].ToString();
+
+            data = data.Where(q => q.packageType == type).ToList();
         }
         EventArgPackageSearch evt = new EventArgPackageSearch();
         foundRecord.Text = data.Count().ToString()+ " Records Found";

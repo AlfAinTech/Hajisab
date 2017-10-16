@@ -200,11 +200,13 @@
         </div>
 <script type="text/javascript">
  
-
+    var hiddenID = "#<%= hiddenBudgetType.ClientID %>";
+        
     function LoadScript(type) {
-       // alert("here i m start");
+        console.log(hiddenID);
         data = jsondata;
         console.log(data);
+        $(hiddenID).val(type);
         var x = $.grep(data, function (n, i) {
             return ( n.packageType == type);
         }).slice(0,3);
