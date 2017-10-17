@@ -26,9 +26,9 @@
         $(".finalContainer").show();
     }
     </script>
-<div  class="container " style="background-color:white; box-shadow:2px 2px 2px 2px #464646;min-height:650px">
+<div  class="container search_result" style="background-color:white; box-shadow:2px 2px 2px 2px #717171; margin-top:50px; margin-bottom:50px; min-height:650px">
 <div class="bookingContainer" id="bookingContainer" runat="server"  style="background-color:white;">
-    <h3 style="text-align:center;">Booking Information</h3>
+    <h2 style="text-align:center; font-family: 'Heebo', sans-serif;">Booking Information</h2>
      <div class="col-md-12" id="booking_form">
       <div class="col-md-6">
          
@@ -81,7 +81,7 @@
                
    <%-- Booking Package Detail --%> 
     <div class="col-md-6">
-              <h4 style="text-align:center;">Package Detail</h4>
+              <h4 style="text-align:center; color:#871ec3; font-weight:800;">Package Detail</h4>
               <div class="col-md-10" style="margin-right:auto; margin-left:auto; float:none; border:2px solid #e6e6e6; padding:15px;">
                 <div class="row">
                     <div class="col-md-12">
