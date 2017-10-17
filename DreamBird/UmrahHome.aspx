@@ -60,8 +60,6 @@
        function executeCurrentCommand() {
            location.href = currentCommand;
        }
-      
-
     </script>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
@@ -74,14 +72,14 @@
 
       <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
        
-        <div class="row">
+        <div class="col-md-12">
           
             
         <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
             <ContentTemplate>--%>
     
           
-                        <div id="body_content" class="col-md-12" runat="server">
+                        <div id="body_content" class="row" runat="server">
                            
                         </div>
     
