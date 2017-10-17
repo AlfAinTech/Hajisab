@@ -54,7 +54,8 @@
                 nightsInMakkah = $("#nights_inMakkah")[0].innerText;
                 nightsInMadina = $("#nights_inMadina")[0].innerText;
                 price += (nightsInMakkah * makkahAccom[0].price) + (nightsInMadina * madinaAccom[0].price);
-                //  alert(price)
+            //  alert(price)
+                price = Math.round(price);
                 $("#Computed_amount")[0].innerText = price.toLocaleString();
                 document.getElementById('<%=hiddenprice.ClientID %>').value = price;
                 // alert( document.getElementById('<%=hiddenprice.ClientID %>').value)
@@ -63,7 +64,7 @@
                 textBoxDiscount = $("#discountValue")[0];
                 if (textBoxDiscount != undefined) {
                     discountPercent = textBoxDiscount.innerText;
-                    discount = price - ((price * discountPercent) / 100);
+                    discount = Math.round( price - ((price * discountPercent) / 100));
                     discountText = discount.toLocaleString();
                     $("#DiscountAmount")[0].innerText = discountText;
                     document.getElementById('<%=hiddenprice.ClientID %>').value = discount;
@@ -102,15 +103,12 @@
                     <asp:Image ID="hotelMadina_img" runat="server" Width="100%" />
                 </div>
             </div>
-
-           
         </div>
-
-        <div class="" style="margin:20px; margin-top:-10px">
+        <%-- <div class="" style="margin:20px; margin-top:-10px">
                                 <div class="row">
                                     <asp:Button runat="server"  ID="OpenCustomPackage" OnClick="OpenCustomPackage_Click"  CssClass="btn btn-primary" style="width:auto; float:right;" Text="Customize Package"/>
                                 </div>
-                            </div>
+                            </div>--%>
     </div>
 
     <div class="col-md-7" style="border-left: 1px solid #e6e6e6;">
@@ -130,7 +128,7 @@
                             </div>
                             <div class="col-xs-3" style="position:absolute; right:0px; bottom:20px;">
                                 <div class="row">
-                                    <asp:Button runat="server" ID="bookPackage" class="btn btn-primary" Text="Book Now" Style="width:auto; float:right;" OnClick="bookPackage_Click" ValidationGroup="bookInput" />
+                                    <asp:Button runat="server" ID="bookPackage" class="btn btn-primary" Text="Book now for 25% off" Style="width:auto; float:right;" OnClick="bookPackage_Click" ValidationGroup="bookInput" />
                                 </div>
                             </div>
                         </div>

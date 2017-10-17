@@ -132,9 +132,10 @@ html, body {
 }
 
 .search_bar {
-    background-color: rgba(96, 7, 125, 0.5);
-    height: 160px;
-    margin-top: 80px;
+    background-color: rgb(65, 33, 95);
+        height: 168px;
+    margin-top: 70px;
+    padding-top: 15px;
 }
 
 input[type=range] {
@@ -236,20 +237,31 @@ input[type=range] {
         background: #a971a9;
     }
 
+.search_items {
+    padding-bottom: 15px;
+    border-right: 2px solid rgba(132, 82, 160, 0.9);
+}
+
+.search_items_last {
+    padding-bottom: 15px;
+}
+
 output {
     position: absolute;
-    background-color: #36194c;
-    width: 40px;
-    height: 25px;
+    background-color: #8a2aa2;
+    width: auto;
+    height: auto;
     padding-top: 0;
     text-align: center;
     color: white;
-    border-radius: 10px;
+    border-radius: 4px;
     display: inline-block;
     font-weight: 600;
-    bottom: 175%;
-    left: 0;
-    margin-left: -1%;
+    top: 30%;
+    padding: 3px 6px;
+    min-width: 40px;
+    min-height: 25px;
+    box-shadow: 0px 0px 2px 1px #333333;
 }
 
     output:after {
@@ -257,7 +269,8 @@ output {
         position: absolute;
         width: 0;
         height: 0;
-        border-top: 10px solid #36194c;
+        border-top: 10px solid #8a2aa2;
+        ;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         top: 100%;
@@ -267,10 +280,12 @@ output {
 
 .search_bar h5 {
     text-align: center;
-    color: white;
-    font-weight: 500;
-    margin-top: 15px;
+    color: #f2dbff;
+    font-weight: 800;
+    margin-top: 5px;
     margin-bottom: 25px;
+    font-size: 16px;
+    text-shadow: 0px 0px 3px;
 }
 
 .tags {
@@ -285,9 +300,10 @@ output {
     }
 
 .tag {
-    background: #eee;
-    border-radius: 3px 0 0 3px;
-    color: #999;
+    background: rgba(132, 82, 160, 0.9) !important;
+    border-radius: 3px;
+    color: #340352;
+    font-weight: 600;
     display: inline-block;
     height: 26px;
     line-height: 26px;
@@ -307,7 +323,7 @@ output {
         top: 0px;
     }
 
-    .tag::after {
+    /*.tag::after {
         background: rgba(96, 7, 125, 1);
         border-bottom: 13px solid transparent;
         border-left: 10px solid #eee;
@@ -316,11 +332,11 @@ output {
         position: absolute;
         right: 0;
         top: 0;
-    }
+    }*/
 
     .tag:hover {
-        background-color: crimson;
-        color: white;
+        background: rgba(132, 82, 160, 0.9) !important;
+        color: #340352;
     }
 
         .tag:hover::after {
@@ -329,10 +345,10 @@ output {
 
 .affix {
     position: fixed;
-    background-color: rgba(96, 7, 125, 0.85) !important;
+    background-color: rgb(65, 33, 95) !important;
     top: -78px;
     width: 100%;
-    z-index: 1000;
+    z-index: 1005;
     -webkit-transition: width 0.3s;
 }
 
@@ -360,6 +376,8 @@ output {
 
 .search_result {
     background-color: white;
+    box-shadow:3px 4px 5px 1px #a5a5a5;
+
 }
 
 .clientsb {
@@ -384,6 +402,13 @@ output {
     background-image: url(../img/overlay.png);
     height: 480px;
     background-repeat: repeat;
+    padding-top: 115px;
+}
+
+#slider_overlay_booking {
+    background-image: url(../img/overlay.png);
+    height: 210px;
+    background-repeat: repeat;
     padding-top: 65px;
 }
 
@@ -407,7 +432,7 @@ output {
 .search_bar .form-control {
     border-radius: 4px !important;
     border: 0 !important;
-    background-color: rgba(0, 0, 0, 0.6) !important;
+    background-color: rgba(132, 82, 160, 0.9) !important;
     color: white;
 }
 
@@ -420,6 +445,7 @@ output {
     background-color: #871ec3;
     background-image: none;
     border: none;
+    box-shadow: 0px 0px 5px 2px #222222;
 }
 
 #slider_wrapper .btn-success {
@@ -518,22 +544,37 @@ output {
 }
 
 .banner {
-    background-color: #cda4e4;
-    width: calc(100% - 20px);
+    background-color: #871ec3;
+    width: 110px;
+    position: absolute;
+    top: 0;
+    right: 10px;
     padding: 10px;
-    margin-left: -15px;
-    height:40px;
 }
 
 .banner_bottom {
+    position: absolute;
+    top: 88px;
+    right: 10px;
     width: 0;
     height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 30px solid #cda4e4;
-    position:absolute;
-    top:0px;
-    right:20px;
+    border-style: solid;
+    border-width: 30px 55px 0 55px;
+    border-color: #871ec3 transparent transparent transparent;
+}
+
+.banner h5 {
+    color: white;
+    text-align: center;
+    vertical-align: bottom;
+    margin-bottom: 0px;
+}
+
+.banner h2 {
+    text-align: left;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
 .banner_top {
@@ -542,9 +583,9 @@ output {
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
     border-left: 30px solid white;
-    position:absolute;
-    top:0px;
-    left:0px
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 .banner h6 {
@@ -605,8 +646,8 @@ output {
     background-image: none;
     border: none;
     width: 100%;
-        padding: 10px 24px;
-        font-size:16px;
+    padding: 10px 24px;
+    font-size: 16px;
 }
 
 .primary_packages {
@@ -698,6 +739,14 @@ output {
     bottom: 20px;
 }
 
+#search_result_filter > .nav-tabs {
+        border-bottom: none;
+    position: absolute;
+    z-index: 1000;
+    left: 15px;
+    top: 10px;
+}
+
 #booking_form h5 {
     text-align: left;
 }
@@ -718,7 +767,20 @@ output {
     margin-top: 3px;
 }
 
+#search_result_filter > .nav > li > a {
+    padding: 1px 8px;
+    border: none;
+    border-radius: 15px;
+    margin-top: 3px;
+}
+
 #search_result_hotel > .nav-tabs > li > a {
+    background-color: #957ba4;
+    color: white;
+    font-weight: 600;
+}
+
+#search_result_filter > .nav-tabs > li > a {
     background-color: #957ba4;
     color: white;
     font-weight: 600;
@@ -726,14 +788,15 @@ output {
 
 .detail_package_name h5 {
     text-align: right;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0px;
 }
 
 
 .detail_package_detail h5 {
     text-align: left;
     font-weight: 800;
+    margin-bottom:0px;
+    margin-top:0px;
 }
 
 .detail_package_detail .glyphicon {
@@ -741,6 +804,10 @@ output {
 }
 
 #search_result_hotel > .nav-tabs > .active > a {
+    background-color: #5a2778;
+}
+
+#search_result_filter > .nav-tabs > .active > a {
     background-color: #5a2778;
 }
 

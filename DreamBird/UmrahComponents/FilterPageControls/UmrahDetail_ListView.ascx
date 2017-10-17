@@ -42,10 +42,10 @@
                         <asp:UpdatePanel ID="packageUpdatePanel" runat="server">
                             <ContentTemplate>
                                 <div class="col-md-12 search_result" style="margin-top: 15px; margin-bottom: 10px; padding: 0;">
-                                    <div id="search_result_hotel">
+                                    <div id="search_result_filter">
 
                                         <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs" role="tablist">
+                                        <ul class="nav nav-tabs nav-stacked" role="tablist">
                                             <li role="presentation" class="active"><a href='<%# "#makkah"+Eval("id") %>' aria-controls="makkah" role="tab" data-toggle="tab">Makkah Hotel</a></li>
                                             <li role="presentation"><a href='<%# "#madina"+Eval("id") %>' aria-controls="madina" role="tab" data-toggle="tab">Madina Hotel</a></li>
                                         </ul>
@@ -70,7 +70,7 @@
                                                                 <div class="col-md-12" style="border-bottom: 1px solid #a6a6a6;">
                                                                     <h3>
                                                                         <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><asp:LinkButton ID="LinkButton1" runat="server"><div class="arrow-down"></div></asp:LinkButton>--%>
-                                                                        <asp:DropDownList ID="makkahAccom" CssClass="form-control" runat="server" DataSource='<%# Eval("Hotel1.Accommodations") %>' DataValueField="id" DataTextField="Name" AutoPostBack="True" OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
+                                                                        <asp:DropDownList ID="makkahAccom" CssClass="form-control" Style="background-color: #f6f6f6; border-radius: 0px;" runat="server" DataSource='<%# Eval("Hotel1.Accommodations") %>' DataValueField="id" DataTextField="Name" AutoPostBack="True" OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
                                                                     <h5>Accommodation Makkah</h5>
                                                                 </div>
                                                             </div>
@@ -94,17 +94,18 @@
                                                         </div>
                                                         <div class="col-md-5 search_detail">
                                                             <div class="row">
-                                                                <div class="col-md-12">
+                                                                <div class="col-md-12" style="border-bottom: 1px solid #a6a6a6;">
                                                                     <h3><%# Eval("Hotel.distance")+" Meter" %></h3>
                                                                     <h5>From Masjid Nabvi</h5>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-md-12">
+                                                                <div class="col-md-12" style="border-bottom: 1px solid #a6a6a6;">
                                                                     <h3>
-                                                                        <asp:DropDownList ID='madinaAccom' CssClass="form-control" runat="server" DataSource='<%# Eval("Hotel.Accommodations") %>' DataValueField="id" DataTextField="Name" AutoPostBack="True" OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
+                                                                        <asp:DropDownList ID='madinaAccom' CssClass="form-control" Style="background-color: #f6f6f6; border-radius: 0px;" runat="server" DataSource='<%# Eval("Hotel.Accommodations") %>' DataValueField="id" DataTextField="Name" AutoPostBack="True" OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
                                                                     </h3>
-                                        <h5>Accommodation Madina</h5>
+                                       
+                                                                    <h5>Accommodation Madina</h5>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -209,10 +210,11 @@
                                         <div class="row" style="border-left: 3px solid #a6a6a6;">
                                             <h5>Starting From</h5>
                                             <h2>
-                                                <asp:Label ID="price" runat="server" Text='<%# Convert.ToDecimal(Eval("minRange")).ToString("#,##0")+" " %>'></asp:Label>
+                                                <asp:Label ID="price" runat="server" Text='<%# Eval("minRange")+" " %>'></asp:Label>
                                                 PKR</h2>
                                             <div class="col-md-8" style="margin-right: auto; margin-left: auto; float: none;">
                                                 ‏‏ 
+                                               
                                                 <asp:Button runat="server" CommandArgument='<%# Eval("id") %>' Text="Book Now" ID="bookNow" class="btn btn-primary" OnClick="bookNowClicked" />
                                             </div>
                                         </div>
@@ -260,6 +262,7 @@
 
                 </
 </
+           
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
