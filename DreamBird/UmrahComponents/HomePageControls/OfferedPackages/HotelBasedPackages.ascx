@@ -24,9 +24,9 @@
                      
                         <ul class="nav nav-tabs nav-stacked" role="tablist" id="hotelPackagesList">
                            
-                                   <li role="presentation" id="1"><asp:LinkButton   runat="server" id="Package_id"  OnClientClick="return HotelTypeSelected('1')" ><h2>Economy</h2></asp:LinkButton></li>
-                                 <li role="presentation" id="2"><asp:LinkButton   runat="server" id="LinkButton1"  OnClientClick="return HotelTypeSelected('2')"  ><h2>Budget</h2></asp:LinkButton></li>
-                               <li role="presentation" id="3"><asp:LinkButton   runat="server" id="LinkButton2"  OnClientClick="return HotelTypeSelected('3')" ><h2>Star</h2></asp:LinkButton></li>
+                                   <li role="presentation" id="1"><asp:LinkButton   runat="server" id="Package_id"  OnClientClick="return HotelTypeSelected('1')" ><h2>Economy</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
+                                 <li role="presentation" id="2"><asp:LinkButton   runat="server" id="LinkButton1"  OnClientClick="return HotelTypeSelected('2')"  ><h2>Budget</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
+                               <li role="presentation" id="3"><asp:LinkButton   runat="server" id="LinkButton2"  OnClientClick="return HotelTypeSelected('3')" ><h2>Star</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
                                   
                         </ul>
                       
@@ -166,7 +166,7 @@
                             </div>
                                 </ItemTemplate></asp:Repeater>--%>
                             <div class="col-md-12">
-                                <div class="col-md-4" style="padding-top: 20px; margin-right: auto; margin-left: auto; float: none;">
+                                <div class="col-md-4" style="padding-top: 20px; margin-right: auto; margin-top:25px; margin-left: auto; float: none;">
                                     <asp:Button Text="Browse Packages" runat="server" ID="Explore"  OnClick="Explore_ButtonClicked" class="btn btn-primary" />
                                 </div>
                             </div>

@@ -21,9 +21,9 @@
                       <!-- Nav tabs -->
                      
                       <ul class="nav nav-tabs nav-stacked" role="tablist" id="nightPackagesList">
-                                   <li role="presentation" id="10"><asp:LinkButton   runat="server" id="Package_id"  OnClientClick="return setNightPackage('10')" ><h2>10 Nights</h2></asp:LinkButton></li>
-                           <li role="presentation" id="20"><asp:LinkButton   runat="server" id="LinkButton1" OnClientClick="return setNightPackage('20')"  ><h2>20 Nights</h2></asp:LinkButton></li>
-                          <li role="presentation" id="30"><asp:LinkButton   runat="server" id="LinkButton2" OnClientClick="return setNightPackage('30')"  ><h2>30 Nights</h2></asp:LinkButton></li>
+                                   <li role="presentation" id="10"><asp:LinkButton   runat="server" id="Package_id"  OnClientClick="return setNightPackage('10')" ><h2>10 Nights</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
+                           <li role="presentation" id="20"><asp:LinkButton   runat="server" id="LinkButton1" OnClientClick="return setNightPackage('20')"  ><h2>20 Nights</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
+                          <li role="presentation" id="30"><asp:LinkButton   runat="server" id="LinkButton2" OnClientClick="return setNightPackage('30')"  ><h2>30 Nights</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
                               </ul>
                       
                      
@@ -101,7 +101,7 @@
                             </div>
                           
                             <div class="col-md-12">
-                                <div class="col-md-4" style="padding-top: 20px; margin-right: auto; margin-left: auto; float: none;">
+                                <div class="col-md-4" style="padding-top: 20px; margin-right: auto; margin-top:25px; margin-left: auto; float: none;">
                                     <asp:Button Text="Browse Packages" runat="server" ID="Explore"  OnClick="Explore_ButtonClicked" class="btn btn-primary" />
                                 </div>
                             </div>

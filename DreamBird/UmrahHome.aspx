@@ -63,7 +63,8 @@
     </script>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,700,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Heebo:900" rel="stylesheet" />
     
 </head>
 <body>

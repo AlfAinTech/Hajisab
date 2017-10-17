@@ -119,9 +119,9 @@
                         <div class="row">
                             <div class="col-xs-9">
                                 <div class="row">
-                                    <h2 style="text-align: left;">
+                                    <h3 style="text-align: left; font-weight:800;">
                                         <asp:Literal ID="totelNights" runat="server"></asp:Literal>
-                                        Night(s) Package</h2>
+                                        Night(s) Package</h3>
                                     <h5 style="text-align: left;">
                                         <asp:Label ID="package_name" runat="server"></asp:Label></h5>
                                 </div>
