@@ -3,7 +3,7 @@
 <table class="table table-condensed table-hover">
     <thead>
         <tr>
-             <th>Package</th>
+             <th  runat="server" id="PackageNameHeader">Package</th>
             <th>Name</th>
             <th>Contact</th>
             <th></th>
@@ -11,10 +11,10 @@
             <th></th>
         </tr>
     </thead>
-    <asp:repeater id="rptAlharmainBooking" runat="server" onitemcommand="rptAlharmainBooking_ItemCommand">
+    <asp:repeater id="rptAlharmainBooking" runat="server" onitemcommand="rptAlharmainBooking_ItemCommand" OnItemDataBound="rptAlharmainBooking_ItemDataBound">
         <itemtemplate>
             <tr>
-                <td><%# Eval("PackageDetail.Dream.DreamName")%></td>
+                <td runat="server" id="PackageName"><%# Eval("PackageDetail.Dream.DreamName")%></td>
                 <td><%# Eval("AlharmainUser.Name") %></td>
                 <td><%# Eval("AlharmainUser.mobileNo") %></td>
                 

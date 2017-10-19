@@ -256,7 +256,7 @@ public partial class UmrahComponents_PackageComponent_CustomPackageAdd : System.
                 Session["AIDMadina"] = CustHotelMadina.id.ToString();
                 Session["AIDMakkah"] = CustHotelMakkah.id.ToString();
                 Session["grandTotel"] = price.ToString();
-            PriceResult = price.ToString();
+            PriceResult = price.ToString("#,##0");
         }
         else
         {

@@ -8,11 +8,19 @@ using System.Web.UI.WebControls;
 
 public partial class UmrahComponents_AdminControls_Booking_AgentBookingDetail : System.Web.UI.UserControl
 {
+   public Boolean ShowCustomPackage
+    {
+        get;set;
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
         if(!Page.IsPostBack)
         {
             BindData();
+            if(ShowCustomPackage)
+            {
+                
+            }
         }
     }
 
@@ -20,7 +28,11 @@ public partial class UmrahComponents_AdminControls_Booking_AgentBookingDetail : 
     {
         DreamBirdEntities db = new DreamBirdEntities();
         String uid = HttpContext.Current.User.Identity.GetUserId();
-        rptAlharmainBooking.DataSource = db.AlharmainUserPackages.Where(q => q.PackageDetail.Dream.AspNetUserID == uid).ToList();
+        if(!ShowCustomPackage)
+            rptAlharmainBooking.DataSource = db.AlharmainUserPackages.Where(q => q.PackageDetail.Dream.AspNetUserID == uid && q.isCustomPackage==ShowCustomPackage ).ToList();
+        else
+            rptAlharmainBooking.DataSource = db.AlharmainUserPackages.Where(q => q.isCustomPackage == ShowCustomPackage).ToList();
+
         rptAlharmainBooking.DataBind();
     }
 
@@ -44,4 +56,14 @@ public partial class UmrahComponents_AdminControls_Booking_AgentBookingDetail : 
             booking_detail.Visible = true;
         }
             }
+
+    protected void rptAlharmainBooking_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if(ShowCustomPackage)
+        {
+            e.Item.FindControl("PackageName").Visible = false;
+         PackageNameHeader.Visible = false;
+        }
+       
+    }
 }

@@ -84,7 +84,7 @@
 
 
 <div class="col-md-12 search_result" style="margin-top: 35px; margin-bottom: 35px; box-shadow: 3px 3px 12px 0px #666666; padding: 0;">
-    <div id="search_result_hotel" class="big_detail col-md-5 row">
+    <div id="search_result_hotel" runat="server" class="big_detail col-md-5 row">
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">

@@ -41,7 +41,8 @@
                                 <li><a href="~/UmrahComponents/AdminPages/VisaPackages/VisaPackage" runat="server" name="visapackages">VisaPackages</a></li>
                                 <li><a href="~/UmrahComponents/AdminPages/Package/PackageDiscount" runat="server" name="discount">Discounts</a></li>
                                 <li><a href="~/UmrahComponents/AdminPages/BookingConfirmation/BookingDetail"  name="booking" runat="server">Booking</a></li>
-                            
+                                <li><a href="~/UmrahComponents/AdminPages/CustomConfiguration/HotelCustomConfiguration"  name="hotel" runat="server">Custom Configuration</a></li>
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

@@ -1,15 +1,15 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin.master" CodeFile="BookingConfirmation.master.cs" Inherits="UmrahComponents_AdminMasterPages_BookingConfirmation" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="CustomConfiguration.master.cs" MasterPageFile="~/Admin.master" Inherits="UmrahComponents_AdminMasterPages_CustomConfiguration" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 
      <script>
-         e = document.getElementsByName('booking');
+         e = document.getElementsByName('HotelConfiguration');
          $(e).parent().addClass("active");
 
     selectedItem = function(data)
     {
        // alert("here");
-        name = "Packages_" + data;
+        name =  data;
         console.log($("#" + name + ""));
         e = document.getElementsByName(name);
         console.log(e);
@@ -33,7 +33,6 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <%--<uc1:AirLineList runat="server" ID="AirLineList" OnAirLineCllicked="AirLineClicked" OnAddClicked="adbtn_clicked" />--%>
             </ContentTemplate>
         </asp:UpdatePanel>
 	</div>
@@ -47,13 +46,10 @@
         <div id="myTabs">
             <ul class="nav nav-tabs"  runat="server" ID="Ul1" >
                 <li role="presentation">
-                    <asp:LinkButton  ID="Packages_booking" name="Packages_booking" OnClick="BookedPackages_Clicked" runat="server"  class="Booked" CausesValidation="False" >Booked Packages</asp:LinkButton></li>
-                 <li role="presentation" runat="server" visible="false" id="CustomBooking">
-                    <asp:LinkButton  ID="CustomPackages_booking" name="Packages_bookingcustom" OnClick="CustomPackages_booking_Click" runat="server"  class="CustomBooked" CausesValidation="False" >Custom Booked Packages</asp:LinkButton></li>
-                <li role="presentation" >
-                    <asp:LinkButton ID="Packages_confirmation" name="Packages_confirmation"  OnClick="PaymentConfirmation_Clicked" class="BasicInfo" runat="server" CausesValidation="False">Payment Confirmation</asp:LinkButton></li>
+                    <asp:LinkButton  ID="HotelConfiguration" name="HotelConfiguration" OnClick="HotelConfiguration_Click" runat="server"  class="hotel" CausesValidation="False" >Hotel Configuration</asp:LinkButton></li>
+               
                 <li role="presentation">
-                    <asp:LinkButton  ID="packages_reminder" name="Packages_reminder" OnClick="EmailReminder_Clicked" runat="server"  class="Flight" CausesValidation="False" >Email Reminder</asp:LinkButton></li>
+                    <asp:LinkButton  ID="FlightConfiguration" name="FlightConfiguration" OnClick="FlightConfiguration_Click" runat="server"  class="Flight" CausesValidation="False" >Flight Configuration</asp:LinkButton></li>
                 
              </ul>
 

@@ -297,7 +297,7 @@ public void ComputePrice(int makkahAccom_id, int madinaAccom_id)
     else { price = pd.minAmount; }
     Session["grandTotel"] = price.ToString();
         hiddenprice.Value = price.ToString("#,##0");
-    Computed_amount.Text = Math.Round(price, 2).ToString("#,##0");
+    Computed_amount.Text = Math.Round(price).ToString("#,##0");
     DateTime today = System.DateTime.Today;
     List<DiscountPackage> discounts = db.DiscountPackages.Where(q => q.packageDetailID == pd.id && (q.availableFrom <= today && q.availableTill >= today)).OrderByDescending(q => q.discountPercent).ToList();
         double total = price;
