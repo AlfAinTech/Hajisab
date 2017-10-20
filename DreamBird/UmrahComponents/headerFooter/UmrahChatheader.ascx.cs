@@ -38,4 +38,13 @@ public partial class UmrahComponents_headerFooter_UmrahChatheader : System.Web.U
         string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
         Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter");
     }
+
+    protected void openCustomWizard_Click(object sender, EventArgs e)
+    {
+        
+        DreamBirdEntities db = new DreamBirdEntities();
+        PackageDetail pd = db.PackageDetails.FirstOrDefault();
+        if (pd != null)
+            Response.Redirect("~/UmrahCustomPackage.aspx?PackageId=" + pd.id);
+    }
 }

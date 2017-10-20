@@ -12,7 +12,20 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
     public Boolean isActiveFlag;
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+       if(Request.QueryString["UserID"]!=null)
+        {
+            int uid = int.Parse(Request.QueryString["UserID"].ToString());
+            DreamBirdEntities db = new DreamBirdEntities();
+           AlharmainUserPackage d = db.AlharmainUserPackages.Where(q => q.userID == uid).FirstOrDefault();
+            if(d !=null)
+            {
+                myDaTAbIND(d);
+                bookPackage.Visible = false;
+                ComputePrice(d.AccomMakkahID.Value, d.AccomMadinaID.Value);
+            }
+        }
+        else
+        { 
         Page.Header.DataBind();
         var scriptManager = ScriptManager.GetCurrent(Page);
         Boolean flag = scriptManager.IsInAsyncPostBack;
@@ -31,17 +44,23 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
             }
             ComputePrice(makkahAccom_id, madinaAccom_id);
         }
-        ScriptManager.RegisterStartupScript(Page, typeof(Page), "startAccom", " ManageAccomodation();", true);
-       
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "startAccom", " ManageAccomodation();", true);
+
+        }
+
     }
 
-    public void myDaTAbIND()
+    public void myDaTAbIND(AlharmainUserPackage userPackage =null)
     {
         DreamBirdEntities db = new DreamBirdEntities();
-
-    String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-    Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
-    var data = db.PackageDetails.Where(q => q.dreamID == d.id).ToList();
+        List<PackageDetail> data;
+        if(userPackage == null) {
+            String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
+            int id = db.Dreams.Where(q => q.DreamName == dreamName).Select(q=>q.id).First();
+            data = db.PackageDetails.Where(q => q.dreamID == id).ToList();
+        }
+    else
+            data = db.PackageDetails.Where(q => q.id == userPackage.packageDetailID).ToList();
         double PriceWithoutAccom = 0;
         if (data.Count != 0)
         {
@@ -56,9 +75,25 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
             hotelMadina_img.ImageUrl = pd.Hotel.MediaItem.Path500;
             hotelName_madina.Text = pd.Hotel.hotelName;
             nights_inMadina.Text = pd.nightsInMadina.ToString();
-            bindMadina_accommodation(pd.Hotel.id);
-            bindMakkah_accommodation(pd.Hotel1.id);
-            package_name.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pd.Dream.DreamName.ToLower());// pd.Dream.DreamName.ToUpper(;
+            if(userPackage!=null)
+            {
+                bindMadina_accommodation(pd.Hotel.id,userPackage.AccomMadinaID.Value);
+                bindMakkah_accommodation(pd.Hotel1.id,userPackage.AccomMakkahID.Value);
+            }
+            else if(Request.QueryString["AccomMadinaID"] != null && Request.QueryString["AccomMakkahID"]!=null)
+            {
+                int makkahAccomID = int.Parse(Request.QueryString["AccomMakkahID"]);
+                int madinaAccomId = int.Parse(Request.QueryString["AccomMadinaID"]);
+                bindMadina_accommodation(pd.Hotel.id, makkahAccomID);
+                bindMakkah_accommodation(pd.Hotel1.id, madinaAccomId);
+            }
+            else
+            {
+                bindMadina_accommodation(pd.Hotel.id);
+                bindMakkah_accommodation(pd.Hotel1.id);
+            }
+
+                package_name.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pd.Dream.DreamName.ToLower());// pd.Dream.DreamName.ToUpper(;
             if (pd.Hotel.rating > 2)
             {
                 hotelRating_madina.Attributes.Add("data-rating", pd.Hotel.rating.ToString());
@@ -108,16 +143,16 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
     }
 
   
-    public void bindMadina_accommodation(int hotelmadinaID)
+    public void bindMadina_accommodation(int hotelmadinaID,int AccomMadinaID=0)
 {
         DreamBirdEntities db = new DreamBirdEntities();
         var accom = db.Accommodations.Where(q => q.hotelID == hotelmadinaID && q.availability == true).ToList();
         madinaAccommodation_list.DataSource = accom;
         madinaAccommodation_list.DataBind();
 
-        if (Request.QueryString["AccomMadinaID"] != null)
+        if (AccomMadinaID != 0)
         {
-            madinaAccommodation_list.SelectedValue = Request.QueryString["AccomMadinaID"].ToString();
+            madinaAccommodation_list.SelectedValue = AccomMadinaID.ToString();
         }
         else
         {
@@ -134,15 +169,15 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
 
     
     }
-public void bindMakkah_accommodation(int hotelmakkahID)
+public void bindMakkah_accommodation(int hotelmakkahID,int AccomMakkahID=0)
 {
         DreamBirdEntities db = new DreamBirdEntities();
         var accom = db.Accommodations.Where(q => q.hotelID == hotelmakkahID && q.availability == true).ToList();
         makkahAccommodation_list.DataSource = accom;
         makkahAccommodation_list.DataBind();
-        if (Request.QueryString["AccomMakkahID"] != null)
+        if (AccomMakkahID != 0)
         {
-            makkahAccommodation_list.SelectedValue = Request.QueryString["AccomMakkahID"].ToString();
+            makkahAccommodation_list.SelectedValue = AccomMakkahID.ToString();
         }
         else
         {
@@ -158,29 +193,6 @@ public void bindMakkah_accommodation(int hotelmakkahID)
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "makkahAccom", "var MakkahAccommodations = " + result + ";", true);
 
 
-        //DreamBirdEntities db = new DreamBirdEntities();
-        //makkahAccommodation_list.DataSource = db.Accommodations.Where(q => q.hotelID == hotelmakkahID && q.availability == true).ToList();
-        //makkahAccommodation_list.DataBind();
-        //if (makkahAccommodation_list.DataSource != null)
-        //{
-        //    if (Request.QueryString["AccomMakkahID"] != null)
-        //    {
-        //        string id = Request.QueryString["AccomMakkahID"].ToString();
-        //        foreach (RepeaterItem item1 in makkahAccommodation_list.Items)
-        //        {
-        //            Label lb = (Label)item1.FindControl("id_makkahAccom");
-        //            if (lb.Text == id) { RadioButton rb = (RadioButton)item1.FindControl("makkah_chk"); rb.Checked = true; }
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        RepeaterItem item = makkahAccommodation_list.Items[0];
-        //        RadioButton rb = (RadioButton)item.FindControl("makkah_chk");
-        //        rb.Checked = true;
-        //    }
-
-        //}
     }
 
 public void BindData()
@@ -219,60 +231,60 @@ protected void bookPackage_Click(object sender, EventArgs e)
     }
 }
 
-protected void changeDataMadina_clicked(object sender, EventArgs e)
-{
-    RadioButton radio = (RadioButton)sender;
-    int makkahID = 0;
-    foreach (RepeaterItem item in makkahAccommodation_list.Items)
-    {
-        RadioButton rb = (RadioButton)item.FindControl("makkah_chk");
-        if (rb.Checked)
-        {
-            Label lb = (Label)item.FindControl("id_makkahAccom");
-            makkahID = int.Parse(lb.Text);
-        }
-    }
-    foreach (RepeaterItem item in madinaAccommodation_list.Items)
-    {
-        RadioButton rb = (RadioButton)item.FindControl("madina_chk");
-        if (rb == radio)
-        {
-            Label lb = (Label)item.FindControl("id_madinaAccom");
-            int madinaID = int.Parse(lb.Text);
-            ComputePrice(makkahID, madinaID);
-        }
-        else { rb.Checked = false; }
-    }
+//protected void changeDataMadina_clicked(object sender, EventArgs e)
+//{
+//    RadioButton radio = (RadioButton)sender;
+//    int makkahID = 0;
+//    foreach (RepeaterItem item in makkahAccommodation_list.Items)
+//    {
+//        RadioButton rb = (RadioButton)item.FindControl("makkah_chk");
+//        if (rb.Checked)
+//        {
+//            Label lb = (Label)item.FindControl("id_makkahAccom");
+//            makkahID = int.Parse(lb.Text);
+//        }
+//    }
+//    foreach (RepeaterItem item in madinaAccommodation_list.Items)
+//    {
+//        RadioButton rb = (RadioButton)item.FindControl("madina_chk");
+//        if (rb == radio)
+//        {
+//            Label lb = (Label)item.FindControl("id_madinaAccom");
+//            int madinaID = int.Parse(lb.Text);
+//            ComputePrice(makkahID, madinaID);
+//        }
+//        else { rb.Checked = false; }
+//    }
 
 
-}
-protected void changeDataMakkah_clicked(object sender, EventArgs e)
-{
-    RadioButton radio = (RadioButton)sender;
-    int madinaID = 0;
-    foreach (RepeaterItem item in madinaAccommodation_list.Items)
-    {
-        RadioButton rb = (RadioButton)item.FindControl("madina_chk");
-        if (rb.Checked)
-        {
-            Label lb = (Label)item.FindControl("id_madinaAccom");
-            madinaID = int.Parse(lb.Text);
-        }
-    }
-    foreach (RepeaterItem item in makkahAccommodation_list.Items)
-    {
-        RadioButton rb = (RadioButton)item.FindControl("makkah_chk");
-        if (rb == radio)
-        {
-            Label lb = (Label)item.FindControl("id_makkahAccom");
-            int makkahID = int.Parse(lb.Text);
-            ComputePrice(makkahID, madinaID);
-        }
-            else { rb.Checked = false; }
-        }
+//}
+//protected void changeDataMakkah_clicked(object sender, EventArgs e)
+//{
+//    RadioButton radio = (RadioButton)sender;
+//    int madinaID = 0;
+//    foreach (RepeaterItem item in madinaAccommodation_list.Items)
+//    {
+//        RadioButton rb = (RadioButton)item.FindControl("madina_chk");
+//        if (rb.Checked)
+//        {
+//            Label lb = (Label)item.FindControl("id_madinaAccom");
+//            madinaID = int.Parse(lb.Text);
+//        }
+//    }
+//    foreach (RepeaterItem item in makkahAccommodation_list.Items)
+//    {
+//        RadioButton rb = (RadioButton)item.FindControl("makkah_chk");
+//        if (rb == radio)
+//        {
+//            Label lb = (Label)item.FindControl("id_makkahAccom");
+//            int makkahID = int.Parse(lb.Text);
+//            ComputePrice(makkahID, madinaID);
+//        }
+//            else { rb.Checked = false; }
+//        }
 
 
-}
+//}
 public void ComputePrice(int makkahAccom_id, int madinaAccom_id)
 {
     DreamBirdEntities db = new DreamBirdEntities();
@@ -312,6 +324,8 @@ public void ComputePrice(int makkahAccom_id, int madinaAccom_id)
 
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
 }
+
+    //itenry Package Detail
     protected void closeItenrtDetail(object sender, EventArgs e)
     {
         ModalPopupExtender1.Hide();
@@ -335,13 +349,6 @@ public void ComputePrice(int makkahAccom_id, int madinaAccom_id)
     }
 
 
-    protected void OpenCustomPackage_Click(object sender, EventArgs e)
-    {
-       string dreamName =   DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        DreamBirdEntities db = new DreamBirdEntities();
-        PackageDetail pd =  db.PackageDetails.Where(q => q.Dream.DreamName == dreamName).FirstOrDefault();
-        if(pd != null)
-            Response.Redirect("~/UmrahCustomPackage.aspx?PackageId="+pd.id);
-    }
+   
 }
 

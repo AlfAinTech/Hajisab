@@ -100,7 +100,7 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
             mailMessage.Subject = "DreamBird e-mail test";
             mailMessage.IsBodyHtml = true;
             string Body = System.IO.File.ReadAllText(Server.MapPath("~/UmrahComponents/PackageComponent/BookingEmail.html"));
-            Body = Body.Replace("{DynamicContent_link}", DreamUtil.ServerUrl + "/UmrahDetailPage/" + package.PackageDetail.Dream.DreamName + "/UmrahDetail").Replace("{DynamicContent_id}", package.trackingID).Replace("DynamicContent_nights", package.PackageDetail.getTotelNights.ToString());
+            Body = Body.Replace("{DynamicContent_link}", DreamUtil.ServerUrl + "/UmrahDetailPage/" + package.PackageDetail.Dream.DreamName + "/UmrahDetail?UserID="+package.userID).Replace("{DynamicContent_id}", package.trackingID).Replace("DynamicContent_nights", package.PackageDetail.getTotelNights.ToString());
             mailMessage.Body = Body;
             SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
             smtpClient.Credentials = new System.Net.NetworkCredential("dreambirdapp@gmail.com", "dogar1949");

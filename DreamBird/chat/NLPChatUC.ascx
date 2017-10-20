@@ -36,7 +36,7 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css">
-    <link rel="stylesheet" href='<%= ResolveUrl("~/chat/contents/css/liquid-slider.css") %>'>
+    <link rel="stylesheetloc" href='<%= ResolveUrl("~/chat/contents/css/liquid-slider.css") %>'>
     <link rel="stylesheet" href='<%= ResolveUrl("~/chat/contents/css/bootstrap-theme.css") %>'>
     <link rel="stylesheet" href='<%= ResolveUrl("~/chat/contents/css/style.css") %>' />
     <%--<script src="https://code.jquery.com/jquery-3.1.0.js"></script>--%>

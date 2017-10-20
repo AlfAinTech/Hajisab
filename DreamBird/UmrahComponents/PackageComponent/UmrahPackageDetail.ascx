@@ -128,7 +128,7 @@
                             </div>
                             <div class="col-xs-3" style="position:absolute; right:0px; bottom:20px;">
                                 <div class="row">
-                                    <asp:Button runat="server" ID="bookPackage" class="btn btn-primary" Text="Book now for 25% off" Style="width:auto; float:right;" OnClick="bookPackage_Click" ValidationGroup="bookInput" />
+                                    <asp:Button runat="server" ID="bookPackage" class="btn btn-primary" Text="Book now" Style="width:auto; float:right;" OnClick="bookPackage_Click" ValidationGroup="bookInput" />
                                 </div>
                             </div>
                         </div>
