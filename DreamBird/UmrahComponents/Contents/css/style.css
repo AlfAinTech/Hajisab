@@ -133,7 +133,7 @@ html, body {
 
 .search_bar {
     background-color: rgb(65, 33, 95);
-        height: 168px;
+    height: 168px;
     margin-top: 70px;
     padding-top: 15px;
 }
@@ -376,8 +376,7 @@ output {
 
 .search_result {
     background-color: white;
-    box-shadow:3px 4px 5px 1px #a5a5a5;
-
+    box-shadow: 3px 4px 5px 1px #a5a5a5;
 }
 
 .clientsb {
@@ -427,6 +426,7 @@ output {
     font-weight: 800;
     color: white;
     font-size: 4em;
+    font-family: 'Heebo', sans-serif;
 }
 
 .search_bar .form-control {
@@ -462,12 +462,42 @@ output {
     color: white;
 }
 
+.carousel-control .glyphicon-chevron-left, carousel-control .glyphicon-chevron-right {
+    margin-left: -10px;
+    font-size: 22px;
+    font-weight: 200;
+    padding: 5px;
+    height: 35px;
+    box-shadow: 1px 1px 1px 1px #8a8a8a;
+    width: 35px;
+    border-radius: 50%;
+    color: white;
+    background-color: #871ec3;
+}
+
+.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next {
+    margin-right: -10px;
+    font-size: 22px;
+    font-weight: 200;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    box-shadow: 1px 1px 1px 1px #8a8a8a;
+    border-radius: 50%;
+    color: white;
+    background-color: #871ec3;
+}
+
+.carousel-control {
+    top: -20px;
+}
+
 #special_package_wrapper {
-    background-color: #e6e6e6;
-    height: 225px;
+    background-color: #f3f3f3;
+    height: 255px;
     padding-top: 15px;
     padding-bottom: 15px;
-    box-shadow: 4px 3px 6px 0px #464646;
+    box-shadow: 4px 3px 6px 0px #7d7d7d;
 }
 
     #special_package_wrapper h3 {
@@ -476,6 +506,14 @@ output {
         font-weight: 600;
         margin-bottom: 15px;
     }
+
+#carousal_body > .col-md-4:nth-child(1) {
+    border-right: 2px solid #bdbdbd;
+}
+
+#carousal_body > .col-md-4:nth-child(3) {
+    border-left: 2px solid #bdbdbd;
+}
 
 .carousel-control {
     background-color: transparent;
@@ -487,7 +525,7 @@ output {
 }
 
 .slider_item {
-    background-color: white;
+    background-color: #f3f3f3;
     height: 150px;
     padding: 15px;
     padding-top: 20px;
@@ -523,24 +561,27 @@ output {
 }
 
 #primary_package_wrapper {
-    margin-top: 4px;
-    height: 350px;
+    margin-top: 50px;
+    height: 400px;
     background-color: white;
 }
 
     #primary_package_wrapper h2 {
         text-align: center;
         font-weight: 800;
+        font-family: 'Heebo', sans-serif;
     }
 
     #primary_package_wrapper h4 {
         text-align: center;
         font-weight: 300;
+        margin-bottom: 30px;
     }
 
 .search_result h2 {
     text-align: center;
     font-weight: 800;
+    font-family: 'Heebo', sans-serif;
 }
 
 .banner {
@@ -656,7 +697,7 @@ output {
     background: -webkit-linear-gradient(-45deg, #d13eea 0%,#671a94 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(135deg, #d13eea 0%,#671a94 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d13eea', endColorstr='#671a94',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    height: 200px;
+    height: 225px;
     margin-top: 20px;
     transition: 0.5s;
 }
@@ -671,7 +712,7 @@ output {
 .primary_packages:hover {
     -webkit-transform: scale(1.15);
     transform: scale(1.15);
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .primary_packages h3 {
@@ -713,12 +754,14 @@ output {
     background-color: #622388;
     padding-top: 20px;
     padding-bottom: 10px;
+    height: 150px;
 }
 
     #what_we_offer h1 {
         text-align: center;
         font-weight: 800;
         color: white;
+        font-family: 'Heebo', sans-serif;
     }
 
     #what_we_offer h4 {
@@ -740,7 +783,7 @@ output {
 }
 
 #search_result_filter > .nav-tabs {
-        border-bottom: none;
+    border-bottom: none;
     position: absolute;
     z-index: 1000;
     left: 15px;
@@ -795,8 +838,8 @@ output {
 .detail_package_detail h5 {
     text-align: left;
     font-weight: 800;
-    margin-bottom:0px;
-    margin-top:0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .detail_package_detail .glyphicon {
@@ -816,45 +859,64 @@ output {
 }
 
 
+
+#what_we_offer_tabs h2 {
+    font-family: 'Heebo', sans-serif;
+    font-size:36px;
+}
+
+#what_we_offer_tabs_inner h2 {
+    font-family: 'Heebo', sans-serif;
+    text-transform: uppercase;
+    font-size:30px;
+    margin-bottom: 13px;
+}
+
+#what_we_offer_tabs_inner h4 {
+    font-family: 'Heebo', sans-serif;
+    text-transform: uppercase;
+    color:#b885cc;
+}
+
 #what_we_offer_tabs > .nav-tabs {
     background-image: url(../img/nav_image.jpg);
     background-position: center;
 }
 
     #what_we_offer_tabs > .nav-tabs.nav-justified > li > a {
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(98, 35, 136, 0.3);
         color: white;
         font-weight: 600;
     }
 
     #what_we_offer_tabs > .nav-tabs.nav-justified > .active {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(98, 35, 136, 0.5);
     }
 
         #what_we_offer_tabs > .nav-tabs.nav-justified > .active > a {
             border: 0;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(98, 35, 136, 0.5);
             border: 0;
             color: white;
             font-weight: 600;
         }
 
             #what_we_offer_tabs > .nav-tabs.nav-justified > .active > a:hover {
-                background-color: rgba(0, 0, 0, 0.5);
+                background-color: rgba(98, 35, 136, 0.6);
                 border: 0;
                 color: white;
                 font-weight: 600;
             }
 
     #what_we_offer_tabs > .nav-tabs.nav-justified > li > a:hover {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(98, 35, 136, 0.6);
         border: 0;
         color: white;
         font-weight: 600;
     }
 
 #what_we_offer_tabs > .tab-content > .tab-pane > #what_we_offer_tabs_inner > div > .nav > li > a {
-    padding: 20px 15px;
+    padding: 10px 15px;
     text-align: center;
     color: black;
     background-color: #f6f6f6;
@@ -864,10 +926,11 @@ output {
     background-color: #871ec3;
     color: white;
 }
-
 #what_we_offer_tabs > .tab-content > .tab-pane > #what_we_offer_tabs_inner > div > .tab-content > .tab-pane {
-    height: 315px;
+    height: 425px;
     background-color: white;
+    padding-top: 50px;
+    padding-bottom: 25px;
 }
 
 .what_we_offer_item {

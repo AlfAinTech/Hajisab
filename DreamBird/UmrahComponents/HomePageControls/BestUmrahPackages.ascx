@@ -18,7 +18,7 @@
                   <asp:Repeater ID="BetsPackages_list" runat="server" >
                        
                       <ItemTemplate>
-                           <%#  Container.ItemIndex == 0 ?  "<div class='item active'>  <div class='container'> <div class='col-md-12'>" :" " %>
+                           <%#  Container.ItemIndex == 0 ?  "<div class='item active'>  <div class='container'> <div class='col-md-12' id='carousal_body'>" :" " %>
                         
                               <%#  Container.ItemIndex % 3 == 0 &&  Container.ItemIndex != 0 ?  "</div>  </div> </div><div class='item'>  <div class='container'> <div class='col-md-12'>":""
                               
