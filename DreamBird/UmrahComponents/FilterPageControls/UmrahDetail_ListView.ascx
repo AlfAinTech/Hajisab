@@ -1,35 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="UmrahDetail_ListView.ascx.cs" Inherits="UmrahComponents_FilterPageControls_UmrahDetail_ListView" %>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 <script>
-    $.fn.stars = function () {
-        return $(this).each(function () {
-
-            var rating = $(this).data("rating");
-
-            var numStars = $(this).data("numStars");
-
-            var fullStar = new Array(Math.floor(rating + 1)).join('<i class="fa fa-star" style="color: #ff9900;"></i>');
-
-            var halfStar = ((rating % 1) !== 0) ? '<i class="fa fa-star-half-empty"></i>' : '';
-
-            var noStar = new Array(Math.floor(numStars + 1 - rating)).join('<i class="fa fa-star-o"></i>');
-
-            $(this).html(fullStar + halfStar + noStar);
-
-        });
-    }
-
-    $('.stars').stars();
-    ActivateListItem = function () {
-        $("#PagingList")
-    }
+   
 </script>
 
 <div class="content_wrap">
     <div class="container">
         <h4>
             <asp:Label ID="package_found" runat="server"></asp:Label></h4>
-        <asp:UpdatePanel ID="WholeUpdatePanel" runat="server">
+        <asp:UpdatePanel ID="WholeUpdatePanel" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
             <ContentTemplate>
                 <asp:Panel runat="server" ID="Empty_Panel" Visible="false">
                     <div class="col-md-12 search_result" style="text-align: center; margin-top: 15px; margin-bottom: 10px; padding: 0;">
@@ -37,10 +16,11 @@
                             <asp:Label runat="server" ID="EmptyMsg">No Package Found According to your search Criteria. </asp:Label></h4>
                     </div>
                 </asp:Panel>
-                <asp:Repeater runat="server" ID="package_list">
+                <asp:Repeater runat="server" ID="package_list" OnItemDataBound="package_list_ItemDataBound">
                     <ItemTemplate>
-                        <asp:UpdatePanel ID="packageUpdatePanel" runat="server">
-                            <ContentTemplate>
+                        <asp:UpdatePanel ID="packageUpdatePanel" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="true" >
+                             
+                             <ContentTemplate>
                                 <div class="col-md-12 search_result" style="margin-top: 15px; margin-bottom: 10px; padding: 0;">
                                     <div id="search_result_filter">
 
@@ -70,7 +50,7 @@
                                                                 <div class="col-md-12" style="border-bottom: 1px solid #a6a6a6;">
                                                                     <h3>
                                                                         <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><asp:LinkButton ID="LinkButton1" runat="server"><div class="arrow-down"></div></asp:LinkButton>--%>
-                                                                        <asp:DropDownList ID="makkahAccom" CssClass="form-control" Style="background-color: #f6f6f6; border-radius: 0px;" runat="server" DataSource='<%# Eval("Hotel1.Accommodations") %>' DataValueField="id" DataTextField="Name" AutoPostBack="True" OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
+                                                                        <asp:DropDownList ID="makkahAccom" CssClass="form-control" Style="background-color: #f6f6f6; border-radius: 0px;" runat="server" DataSource='<%# Eval("Hotel1.Accommodations") %>' DataValueField="id" DataTextField="Name" AutoPostBack="True" ClientIDMode="AutoID"  OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
                                                                     <h5>Accommodation Makkah</h5>
                                                                 </div>
                                                             </div>
@@ -102,7 +82,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-12" style="border-bottom: 1px solid #a6a6a6;">
                                                                     <h3>
-                                                                        <asp:DropDownList ID='madinaAccom' CssClass="form-control" Style="background-color: #f6f6f6; border-radius: 0px;" runat="server" DataSource='<%# Eval("Hotel.Accommodations") %>' DataValueField="id" DataTextField="Name" AutoPostBack="True" OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
+                                                                        <asp:DropDownList ID='madinaAccom' CssClass="form-control" Style="background-color: #f6f6f6; border-radius: 0px;" runat="server" DataSource='<%# Eval("Hotel.Accommodations") %>' DataValueField="id" DataTextField="Name" ClientIDMode="AutoID"   OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
                                                                     </h3>
                                        
                                                                     <h5>Accommodation Madina</h5>
@@ -210,7 +190,7 @@
                                         <div class="row" style="border-left: 3px solid #a6a6a6;">
                                             <h5>Starting From</h5>
                                             <h2>
-                                                <asp:Label ID="price" runat="server" Text='<%# Eval("minRange")+" " %>'></asp:Label>
+                                                <asp:Label ID="price" runat="server" Text='<%# decimal.Parse(Eval("minRange").ToString()).ToString("#,##0")+" " %>'></asp:Label>
                                                 PKR</h2>
                                             <div class="col-md-8" style="margin-right: auto; margin-left: auto; float: none;">
                                                 ‏‏ 
@@ -229,16 +209,19 @@
                 </asp:Repeater>
 
                 <div class="col-md-12">
-                    <div class="col-md-4" style="margin-right: auto; margin-left: auto; float: none;">
+                    <div class="col-md-5" style="margin-right: auto; margin-left: auto; float: none;">
                         <asp:UpdatePanel ID="update_forPAging" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination" id="PagingList">
                                         <asp:Repeater ID="rptPaging" runat="server" OnItemCommand="rptPaging_ItemCommand" OnItemDataBound="rptPaging_ItemDataBound">
                                             <HeaderTemplate>
-                                                <li>
+                                             <li>
                                                     <asp:LinkButton ID="prevButton" OnClick="OnNextBack_clicked" CommandArgument="-1" runat="server" Font-Bold="True"><span aria-hidden="true">&laquo;</span></asp:LinkButton></li>
-                                            </HeaderTemplate>
+                                                  <li>
+                                                    <asp:LinkButton ID="FirstButton" OnClick="FirstButton_Click" CommandArgument="-1" runat="server" Font-Bold="True"><span aria-hidden="true">First</span></asp:LinkButton></li>
+                                           
+                                                    </HeaderTemplate>
                                             <ItemTemplate>
                                                 <li id='<%# Container.DataItem %>'>
                                                     <asp:LinkButton ID="lnkPage"
@@ -247,9 +230,12 @@
                                                     </asp:LinkButton></li>
                                             </ItemTemplate>
                                             <FooterTemplate>
+                                                
                                                 <li>
+                                                    <asp:LinkButton ID="LastButton" OnClick="LastButton_Click" ClientIDMode="AutoID" runat="server" CommandArgument="1" Font-Bold="True"><span aria-hidden="true">Last</span></asp:LinkButton></li>
+                                            <li>
                                                     <asp:LinkButton ID="nextButton" OnClick="OnNextBack_clicked" ClientIDMode="AutoID" runat="server" CommandArgument="1" Font-Bold="True"><span aria-hidden="true">&raquo;</span></asp:LinkButton></li>
-                                            </FooterTemplate>
+                                                 </FooterTemplate>
                                         </asp:Repeater>
 
                                     </ul>
@@ -259,10 +245,6 @@
                     </div>
                 </div>
 
-
-                </
-</
-           
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>

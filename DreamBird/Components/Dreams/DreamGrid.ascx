@@ -83,7 +83,7 @@
                             </li>
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <li class='<%# Convert.ToBoolean(Eval("Enabled"))? "enabled" : "disabled" %>'>
+                    <li class='<%# Convert.ToBoolean(Eval("Enabled"))? "enabled" : "active" %>'>
                         <asp:LinkButton ID="LinkButton2" runat="server" CommandName='<%# Eval("Value") %>' Text='<%# Eval("Value") %>' OnClick="LinkButton2_Click" CausesValidation="false"></asp:LinkButton>
                     </li>
                 </ItemTemplate>

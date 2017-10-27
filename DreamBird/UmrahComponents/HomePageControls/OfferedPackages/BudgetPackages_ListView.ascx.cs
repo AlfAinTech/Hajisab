@@ -29,8 +29,9 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
     protected void BindData(string PackageType)
     {
         DreamBirdEntities db = new DreamBirdEntities();
-       // Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.packageType.ToLower() == PackageType.ToLower()).Take(3).ToList();
-       // Packages_DetailList.DataBind();
+        // Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.packageType.ToLower() == PackageType.ToLower()).Take(3).ToList();
+        // Packages_DetailList.DataBind();
+      var data=   db.PackageDetails.Select(q=>new { q.minRange, q.packageType }).GroupBy(q => q.packageType).ToList();
 
     }
     protected void BookNowClicked(object sender, EventArgs e)

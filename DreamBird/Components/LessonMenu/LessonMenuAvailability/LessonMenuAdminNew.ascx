@@ -10,13 +10,7 @@
 <%@ Register Src="~/Components/PageTemplate/ControlsList.ascx" TagPrefix="uc1" TagName="ControlsList" %>
 <%@ Register Src="~/Components/LessonMenu/MenuOrder.ascx" TagPrefix="uc1" TagName="MenuOrder" %>
 
-
-
-
-
-
 <%@ Register Src="~/Components/LessonMenu/EditMenuDetails.ascx" TagPrefix="uc1" TagName="EditMenuDetails" %>
-
 <%@ Register Src="~/Components/LessonMenu/LessonMenuList.ascx" TagPrefix="uc1" TagName="LessonMenuList" %>
 
 

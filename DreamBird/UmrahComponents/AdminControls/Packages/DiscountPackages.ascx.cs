@@ -75,6 +75,8 @@ public partial class UmrahComponents_AdminControls_Packages_DiscountPackages : S
     }
     protected void AddNewDiscountPackages_Clicked(object sender, EventArgs e)
     {
+        LinkButton bt = (LinkButton)sender;
+        string command = bt.CommandArgument;
         if (Page.IsValid)
         {   
             if (Request.QueryString["packageID"] != null ) {

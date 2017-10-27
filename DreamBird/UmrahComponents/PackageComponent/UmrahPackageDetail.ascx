@@ -43,7 +43,8 @@
         ManageAccomodation = function () {
             //  alert("here")
             var makkahID = $('#makkahAccommodation_list input:checked').val();
-                var madinaID = $('#madinaAccommodation_list input:checked').val();
+            var madinaID = $('#madinaAccommodation_list input:checked').val();
+            console.log(makkahID);
                 var makkahAccom = $.grep(MakkahAccommodations, function (n, i) {
                     return (n.id == makkahID);
                 });

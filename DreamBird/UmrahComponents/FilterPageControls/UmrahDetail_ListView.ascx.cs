@@ -11,6 +11,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
 {
     static public List<PackageDetail> wholeData;
     static public int NoOfPages;
+    static public int PageDisplayNo;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -52,11 +53,6 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
     protected void sortingList_SelectedIndexChanged(object sender, EventArgs e)
     {
         package_found.Text = wholeData.Count().ToString() + " packages Found. ";
-        // packageDisplay.Text = " Currently Displaying ";
-        //if (!(wholeData.Count() > 10)) { packageDisplay.Text += wholeData.Count().ToString(); } else { packageDisplay.Text += "10"; }
-        //var pi = typeof(PackageDetail).GetProperty(sortingList.SelectedValue);
-        //// var orderByAddress = items.OrderBy(x => pi.GetValue(x, null));
-        //List<PackageDetail> data_packages = wholeData.OrderBy(x => pi.GetValue(x, null)).ToList();
         ViewState.Clear();
         bindData(wholeData);
     }
@@ -73,6 +69,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
         }
             PagedDataSource pageds = new PagedDataSource();
         wholeData = data;
+        
         pageds.DataSource = wholeData;
         pageds.AllowPaging = true;
         pageds.PageSize = 8;
@@ -90,7 +87,13 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
             for (int i = 0; i < pageds.PageCount; i++)
                 pages.Add((i + 1).ToString());
             NoOfPages =  pages.Count;
-            rptPaging.DataSource = pages;
+
+            PagedDataSource ListOfPages = new PagedDataSource();
+            ListOfPages.DataSource = pages;
+            ListOfPages.AllowPaging = true;
+            ListOfPages.PageSize = 5;
+            ListOfPages.CurrentPageIndex = ((pageds.CurrentPageIndex) / 5);
+            rptPaging.DataSource = ListOfPages;//pages;
             rptPaging.DataBind();
          
         }
@@ -115,6 +118,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
             if (page <= NoOfPages && page > 0)
             { ViewState["PageNumber"] = page; }
             bindData(wholeData);
+            WholeUpdatePanel.Update();
         }
 
     }
@@ -125,7 +129,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
        
        
         //DreamBirdEntities db = new DreamBirdEntities()
-        bindData(wholeData);
+        bindData(wholeData); WholeUpdatePanel.Update();
     }
     protected void bookNowClicked(object sender, EventArgs e)
     {
@@ -166,6 +170,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
         RepeaterItem ri = dl.NamingContainer as RepeaterItem;
         if(ri != null)
         {
+            UpdatePanel panel = (UpdatePanel)ri.FindControl("packageUpdatePanel");
             DropDownList dl_madina=   (DropDownList)ri.FindControl("madinaAccom");
             DropDownList dl_makkah = (DropDownList)ri.FindControl("makkahAccom");
             Button bt = (Button)ri.FindControl("bookNow");
@@ -182,10 +187,10 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
             double price = pd.getPriceWithout_accommodation + ((madina!=null? madina.price:0)*(pd.nightsInMadina)) + (makkah.price*pd.nightsInMakkah);
             Label lb = (Label)ri.FindControl("price");
             lb.Text = price.ToString("#,##0");
-        }
+        
         int selectedPage = int.Parse(ViewState["PageNumber"].ToString());
-        ScriptManager.RegisterStartupScript(Page, typeof(Page), "highlite_menu", "$('#PagingList').children('li[id=" + '"' + selectedPage + '"' + "]').addClass('active');", true);
-
+        ScriptManager.RegisterStartupScript(panel, panel.GetType(), "highlite_menu", "$('#PagingList').children('li[id=" + '"' + selectedPage + '"' + "]').addClass('active');", true);
+        }
 
 
     }
@@ -207,17 +212,67 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
 
     protected void rptPaging_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
-     int currentPage =    int.Parse(ViewState["PageNumber"].ToString());
-        LinkButton lb = e.Item.FindControl("nextButton") as LinkButton;
-        LinkButton prev = e.Item.FindControl("prevButton") as LinkButton;
-        if (lb!= null) { 
-            if(currentPage == NoOfPages) { lb.Enabled = false; }
-        ScriptManager.GetCurrent(Page).RegisterAsyncPostBackControl(lb);
-        }
-        if (prev != null)
+     //int currentPage =    int.Parse(ViewState["PageNumber"].ToString());
+     //   LinkButton lb = e.Item.FindControl("nextButton") as LinkButton;
+     //   LinkButton prev = e.Item.FindControl("prevButton") as LinkButton;
+     //   if (lb!= null) { 
+     //       if(currentPage == NoOfPages) { lb.Enabled = false; }
+     //   ScriptManager.GetCurrent(Page).RegisterAsyncPostBackControl(lb);
+     //   }
+     //   if (prev != null)
+     //   {
+     //       if (currentPage == 1) { prev.Enabled = false; }
+     //       ScriptManager.GetCurrent(Page).RegisterAsyncPostBackControl(prev);
+     //   }
+    }
+
+    protected void package_list_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        //ScriptManager sp = (ScriptManager) Page.FindControl("ScriptManager1");
+        //UpdatePanel up = (UpdatePanel)e.Item.FindControl("packageUpdatePanel");
+        ////sp.RegisterAsyncPostBackControl((e.Item.FindControl("madinaAccom") as DropDownList));
+        ////sp.RegisterAsyncPostBackControl((e.Item.FindControl("makkahAccom") as DropDownList));
+        //if (e.Item.FindControl("madinaAccom") != null)
+        //{
+        //    AsyncPostBackTrigger apbt = new AsyncPostBackTrigger();
+        //    apbt.ControlID = e.Item.FindControl("madinaAccom").UniqueID;
+        //    apbt.EventName = "SelectedIndexChanged";
+        //    up.Triggers.Add(apbt);
+        //}
+        //if (e.Item.FindControl("makkahAccom") != null)
+        //{
+        //    AsyncPostBackTrigger apbt = new AsyncPostBackTrigger();
+        //    apbt.ControlID = e.Item.FindControl("makkahAccom").UniqueID;
+        //    apbt.EventName = "SelectedIndexChanged";
+        //    up.Triggers.Add(apbt);
+        //}
+
+    }
+
+    protected void LastButton_Click(object sender, EventArgs e)
+    {
+        LinkButton lb = (LinkButton)sender;
+        if (lb.ID == "LastButton" )
         {
-            if (currentPage == 1) { prev.Enabled = false; }
-            ScriptManager.GetCurrent(Page).RegisterAsyncPostBackControl(prev);
+           
+            { ViewState["PageNumber"] = NoOfPages; }
+            bindData(wholeData);
+            WholeUpdatePanel.Update();
+        }
+        
+    }
+
+    protected void FirstButton_Click(object sender, EventArgs e)
+    {
+
+
+        LinkButton lb = (LinkButton)sender;
+        if (lb.ID == "FirstButton")
+        {
+
+            { ViewState["PageNumber"] = 1; }
+            bindData(wholeData);
+            WholeUpdatePanel.Update();
         }
     }
 }

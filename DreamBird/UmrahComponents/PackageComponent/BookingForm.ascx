@@ -35,13 +35,13 @@
         <h4>Customer Detail</h4>
         <div class="col-md-12">
           <h5>Name</h5>
-                   <asp:TextBox  runat="server" ID="name_txt" class="form-control" name="" type="text"   onkeypress="this.value=this.value.replace(/[\d]/,'')" onkeyup="this.value=this.value.replace(/[\d]/,'')" />
+                   <asp:TextBox  runat="server" ID="name_txt" class="form-control only-text" name="" type="text"    />
                        <asp:RequiredFieldValidator ID="name_required" ValidationGroup="saveBooking" runat="server" ErrorMessage="*" ControlToValidate="name_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
 
         </div>
         <div class="col-md-12">
                         <h5>Mobile Number</h5>
-                        <asp:TextBox  runat="server" ID="mobile_txt" class="form-control " name=""  placeholder="0312-123-1234" />
+                        <asp:TextBox  runat="server" ID="mobile_txt" class="form-control numeric" name=""  placeholder="03121231234" />
                        <asp:RequiredFieldValidator ValidationGroup="saveBooking" ID="name_required0" runat="server" ErrorMessage="*" ControlToValidate="mobile_txt" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
               <asp:RegularExpressionValidator ValidationGroup="saveBooking" ID="RegularExpressionValidator4" runat="server"
                    ControlToValidate="mobile_txt" ValidationExpression="\(?\d{4}\)?-? *\d{3}-? *-?\d{4}"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
@@ -165,10 +165,10 @@
           <div class="col-md-12">
           <div class="col-md-4">
           <h5>Adults</h5>
-                   <asp:TextBox type="number" runat="server" ID="adults_no" class="form-control" name="" Text="0"/>
+                   <asp:TextBox type="number" runat="server" ID="adults_no" class="form-control" name="" Text="1"/>
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="adults_no" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                   ControlToValidate="adults_no" ValidationExpression="^[0-9]\d*$"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
+                   ControlToValidate="adults_no" ValidationExpression="^(?:[1-9]|\d\d\d*)$" ValidationGroup="saveBooking"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
 
         </div>
          <div class="col-md-4">

@@ -8,6 +8,13 @@ using Microsoft.AspNet.Identity;
 
 public partial class UmrahHome : UmrahHomeCore
 {
+    override protected void OnInit(EventArgs e)
+    {
+        ScriptManager1.SupportsPartialRendering = true;
+        base.OnInit(e);
+
+
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -16,7 +23,7 @@ public partial class UmrahHome : UmrahHomeCore
             //Page.Header.DataBind();
             //ScriptManager.RegisterStartupScript(Page, typeof(Page), "showError", "Initialize();", true);
             RedirectDefault();
-
+           
         }
 
 

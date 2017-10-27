@@ -62,7 +62,7 @@
     <tr>
                     <td>
                         <div class="col-md-12" style="padding:0;">
-                            <asp:LinkButton runat="server" ID="AddNewVisaPackages_btn"  ValidationGroup="addButtonValidGroup" OnClick="AddNewDiscountPackages_Clicked" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="AddNewVisaPackages_btn"  ValidationGroup="addButtonValidGroup" OnClick="AddNewDiscountPackages_Clicked" CommandArgument="add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></asp:LinkButton>
                         </div>
                     </td>
                     <td>

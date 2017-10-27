@@ -84,8 +84,8 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
             {
                 int makkahAccomID = int.Parse(Request.QueryString["AccomMakkahID"]);
                 int madinaAccomId = int.Parse(Request.QueryString["AccomMadinaID"]);
-                bindMadina_accommodation(pd.Hotel.id, makkahAccomID);
-                bindMakkah_accommodation(pd.Hotel1.id, madinaAccomId);
+                bindMadina_accommodation(pd.Hotel.id, madinaAccomId);
+                bindMakkah_accommodation(pd.Hotel1.id, makkahAccomID);
             }
             else
             {

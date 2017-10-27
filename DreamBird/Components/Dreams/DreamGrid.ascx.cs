@@ -66,10 +66,10 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
                     dreamTagList = db.DreamTags.Where(w => taglist.Contains(w.Tag_id)).Select<DreamTag, int?>(s => s.Dream_id).ToList();
                 }
             }
-            if (DreamList.Any(a => a.DreamName.ToLower().Contains(searched_text)) || DreamList.Any(a => a.Description.ToLower().Contains(searched_text)) || db.DreamTags.Any(a => taglist.Contains(a.Tag_id)))
-            {
+            //if (DreamList.Any(a => a.DreamName.ToLower().Contains(searched_text)) || DreamList.Any(a => a.Description.ToLower().Contains(searched_text)) || db.DreamTags.Any(a => taglist.Contains(a.Tag_id)))
+            //{
                 DreamList = DreamList.Where(w =>  ((w.DreamName.ToLower().Contains(searched_text)) || (w.Description.ToLower().Contains(searched_text)) || dreamTagList.Contains(w.id))).ToList();
-            }
+            //}
 
         }
         if (DreamList.Count == 0)
@@ -218,6 +218,7 @@ public partial class Components_Dreams_DreamGrid : System.Web.UI.UserControl
         if (CurrentPageNumber + 1 < TotalItems)
         {
             ViewState["PageNo"] = CurrentPageNumber + 1;
+           
         }
         string Keyword = dream_keyword.Text;
         if (Keyword == "")
