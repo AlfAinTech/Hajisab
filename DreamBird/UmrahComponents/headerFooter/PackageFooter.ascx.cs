@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_headerFooter_PackageFooter : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_headerFooter_PackageFooter : System.Web.UI.UserControl,ICorePackageControl
 {
     public void BindData()
     {
@@ -22,7 +22,7 @@ public partial class UmrahComponents_headerFooter_PackageFooter : System.Web.UI.
       //  throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
       //  throw new NotImplementedException();
     }

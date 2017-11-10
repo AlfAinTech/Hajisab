@@ -39,9 +39,9 @@
                     <div class="col-md-3" style="padding:0;">
                       <!-- Nav tabs -->
                       <ul class="nav nav-tabs nav-stacked" role="tablist" id="BudgetPackagesList"><%--CommandArgument="bronze" OnClick="PackageType_clicked" --%>
-                          <li role="presentation" id="bronze"><asp:LinkButton   runat="server" id="Package_id"   OnClientClick="return LoadScript('bronze')"><h2>Bronze</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
-                            <li role="presentation" id="silver"><asp:LinkButton   runat="server" id="LinkButton1"  OnClientClick="return LoadScript('silver')" ><h2>Silver</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
-                            <li role="presentation" id="gold"><asp:LinkButton   runat="server" id="LinkButton2"  OnClientClick="return LoadScript('gold')"  ><h2>Gold</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
+                          <li role="presentation" id="bronze"><asp:LinkButton   runat="server" id="Package_id"   OnClientClick="return LoadScript('bronze')"><h2>Bronze</h2><h6>Starting From</h6><h4>Rs <asp:Literal ID="bronzePrcie" runat="server"></asp:Literal></h4></asp:LinkButton></li>
+                            <li role="presentation" id="silver"><asp:LinkButton   runat="server" id="LinkButton1"  OnClientClick="return LoadScript('silver')" ><h2>Silver</h2><h6>Starting From</h6><h4>Rs <asp:Literal ID="silverPrice" runat="server"></asp:Literal></h4></asp:LinkButton></li>
+                            <li role="presentation" id="gold"><asp:LinkButton   runat="server" id="LinkButton2"  OnClientClick="return LoadScript('gold')"  ><h2>Gold</h2><h6>Starting From</h6><h4>Rs <asp:Literal ID="goldPrice" runat="server"></asp:Literal></h4></asp:LinkButton></li>
 
                           </ul>
                         <%--  <asp:Repeater  runat="server" ID="budgetTypes_list">

@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomBookingDetail.aspx.cs" MasterPageFile="~/UmrahComponents/AdminMasterPages/BookingConfirmation.master" Inherits="UmrahComponents_AdminPages_CustomBookingDetail" %>
 
-<%@ Register Src="~/Components/Dreams/BookedPackages.ascx" TagPrefix="uc1" TagName="BookedPackages" %>
+<%@ Register Src="~/Components/Packages/BookedPackages.ascx" TagPrefix="uc1" TagName="BookedPackages" %>
 <%@ Register Src="~/UmrahComponents/AdminControls/Booking/AgentBookingDetail.ascx" TagPrefix="uc1" TagName="AgentBookingDetail" %>
 
 

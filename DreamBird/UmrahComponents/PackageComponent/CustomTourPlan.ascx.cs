@@ -16,7 +16,7 @@ public partial class UmrahComponents_PackageComponent_CustomTourPlan : System.We
 
     public void BindInitialData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
 
        
         var datasource = db.AirLines.ToList();
@@ -56,7 +56,7 @@ public partial class UmrahComponents_PackageComponent_CustomTourPlan : System.We
 
     protected void saveCustomTour_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         
         //CustomPackage pd = new CustomPackage();
         //DateTime dt = DateTime.Parse(month_txt.Text);

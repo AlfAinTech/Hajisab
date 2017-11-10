@@ -5,14 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_PackageComponent_AccommodationsMakkah : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_PackageComponent_AccommodationsMakkah : System.Web.UI.UserControl,ICorePackageControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
-        String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
-        var data = db.PackageDetails.Where(q => q.dreamID == d.id).ToList();
+        PackageEntities db = new PackageEntities();
+        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+        Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
+        var data = db.PackageDetails.Where(q => q.PackageID == d.id).ToList();
         if (data.Count() != 0)
         {
             PackageDetail pd = data[0];
@@ -21,7 +21,7 @@ public partial class UmrahComponents_PackageComponent_AccommodationsMakkah : Sys
     }
     public void bindData(int hotelmakkahID)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         accommodation_list.DataSource = db.Accommodations.Where(q => q.hotelID == hotelmakkahID && q.availability == true).ToList();
         accommodation_list.DataBind();
         if(accommodation_list.DataSource!=null)
@@ -71,7 +71,7 @@ public partial class UmrahComponents_PackageComponent_AccommodationsMakkah : Sys
       
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
        
     }

@@ -1,5 +1,9 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Admin" MasterPageFile="~/AdminBlank.master" %>
 
+ <asp:Content ContentPlaceHolderID="head2" runat="server">
+       <asp:ContentPlaceHolder ID="Header" runat="server">
+    </asp:ContentPlaceHolder>
+    </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="header-wrapper">
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -12,9 +16,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                   <%-- <asp:LinkButton ID="DreamHome" PostBackUrl="~/Admin/DreamHome.aspx" CssClass="navbar-brand" runat="server">
-                        <asp:Image ID="Image1" runat="server" ImageUrl="~/Admin/Content/img/dreambird-logo.png" Width="100px" />
-                    </asp:LinkButton>--%>
+                 
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -34,14 +36,14 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="main-menu">
                         <%--<li><a href="~/Admin/Default" runat="server">Dashboard</a></li>--%>
-                        <li><a href="~/Admin/DreamHome" runat="server" name="packages">Packages</a></li>
+                        <li><a href="~/Admin/PackageHome" runat="server" class="packages" name="packages">Packages</a></li>
                         
                                 <li><a href="~/UmrahComponents/AdminPages/Hotel/HotelBasicInfo" name="hotels" runat="server">Hotels</a></li>
                                 <li><a href="~/UmrahComponents/AdminPages/Flight/AirLineBasicInfo" runat="server" name="flights">Flights</a></li>
                                 <li><a href="~/UmrahComponents/AdminPages/VisaPackages/VisaPackage" runat="server" name="visapackages">VisaPackages</a></li>
                                 <li><a href="~/UmrahComponents/AdminPages/Package/PackageDiscount" runat="server" name="discount">Discounts</a></li>
                                 <li><a href="~/UmrahComponents/AdminPages/BookingConfirmation/BookingDetail"  name="booking" runat="server">Booking</a></li>
-                                <li><a href="~/UmrahComponents/AdminPages/CustomConfiguration/HotelCustomConfiguration"  name="hotel" runat="server">Custom Configuration</a></li>
+                                <li><a href="~/UmrahComponents/AdminPages/CustomConfiguration/HotelCustomConfiguration"  name="HotelConfiguration" runat="server">Custom Configuration</a></li>
 
                     </ul>
                 </div>

@@ -24,7 +24,7 @@ public class EmailJob: IJob
     {
         try
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             //  DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add(UserMail);
@@ -32,7 +32,7 @@ public class EmailJob: IJob
             mailMessage.Subject = "DreamBird e-mail test";
             mailMessage.IsBodyHtml = true;
             string Body =  System.IO.File.ReadAllText("UmrahComponents/PackageComponent/BookingEmail.html");
-            Body = Body.Replace("{DynamicContent_link}", DreamUtil.ServerUrl + "/"+package.PackageDetail.Dream.DreamName + "/UmrahDetail").Replace("{DynamicContent_id}", package.trackingID); ;
+            Body = Body.Replace("{DynamicContent_link}", PackageUtil.ServerUrl + "/"+package.PackageDetail.Package.PackageName + "/UmrahDetail").Replace("{DynamicContent_id}", package.trackingID); ;
             mailMessage.Body = Body;
             SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
             smtpClient.Credentials = new System.Net.NetworkCredential("dreambirdapp@gmail.com", "dogar1949");

@@ -12,7 +12,7 @@ using ImageProcessor;
 using System.Drawing;
 using ImageProcessor.Imaging;
 
-public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserControl, ICoreDreamControl
+public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserControl, ICorePackageControl
 {
 
     // Event Handlers
@@ -118,7 +118,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
         if (!Page.IsPostBack)
         {
 
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             // Binding Category Lists, One for sorting and secong for selection of media item
             var categorylist = db.MediaCategories.ToList();
             ddl_cat.DataSource = categorylist;
@@ -208,7 +208,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
     {
         Repeater1.DataSource = null;
         Repeater1.DataBind();
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PagedDataSource pds = new PagedDataSource();
        var medialist = db.MediaItems.Where(img => allowedMediaTypes.Contains(img.mediaType)).OrderBy(ddl_sort.SelectedItem.Value).ToList();
         foreach (var mediaitem in medialist)
@@ -276,7 +276,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
     public void setMediaItem(int id)
     {
         MediaItem icon = new MediaItem();
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         icon = db.MediaItems.Where(img => img.id == id).First();
         SelectedMediaItem = icon;
         if (MediaSelectedEvent != null)
@@ -324,7 +324,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
     {
         int id = int.Parse(ddlImages.SelectedItem.Value);
         MediaItem icon = new MediaItem();
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         icon = (MediaItem)db.MediaItems.Where(img => img.id == id).First();
 
         SelectedMediaItem = icon;
@@ -353,7 +353,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
             //Panel2.Style.Add("height", "80%");
             string ImageName = CommandName;
 
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
 
             var item = db.MediaItems.Where(w => w.name == ImageName).First();
             Label1.Text = item.name;
@@ -408,7 +408,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
 
 
         details.Visible = true;
@@ -566,7 +566,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         MediaItem mi = db.MediaItems.Where(u => u.name == Label1.Text).First();
         mi.MediaCategory_id = Convert.ToInt32(ddl_cat1.SelectedItem.Value);
         db.SaveChanges();
@@ -581,7 +581,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
         string mediaName = Label1.Text; // This Label shows the Name of the Media File that is being used as Query paremeter below
         MediaItem icon = new MediaItem();
         string resOption = null; // 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         icon = db.MediaItems.Where(img => img.name == mediaName).First();
         if (icon.mediaType.Equals("image") || icon.mediaType.Equals("Image"))
         {
@@ -713,7 +713,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
 
     protected void btn_filter_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         //string text = Text1.Text;
         List<string> newstring = TagControl.GetTags();
         var tags = db.Tags.Where(w => newstring.Contains(w.Name)).Select<Tag, int?>(s => s.id).ToList();
@@ -759,7 +759,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
 
     protected void btn_addtag_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         string text = "ASD";
         if (text != null || !(text.Equals("")))
         {
@@ -778,7 +778,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
 
     protected void Add_row_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         TextBox tb = (TextBox)grid_categories.FooterRow.FindControl("txt_categoryname");
         if (tb != null && !tb.Text.Equals(""))
         {
@@ -819,7 +819,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
 
     protected void Add_row_Click1(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         TextBox tb = (TextBox)grid_tags.FooterRow.FindControl("txt_Name");
         if (tb != null && !tb.Text.Equals(""))
         {
@@ -975,7 +975,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
         //ScriptManager.RegisterStartupScript(UpdatePanel_Gallery, UpdatePanel_Gallery.GetType(), "a_keyu", "<script type='text/javascript'>Sys.Application.add_load(SelectToolbar);</script>", false);
         //ImageButton img = (ImageButton)sender;
         //string ImageName = img.CommandName;
-        //DreamBirdEntities db = new DreamBirdEntities();
+        //PackageEntities db = new PackageEntities();
         //Panel2.Style.Add("width", "90%");
         //var item = db.MediaItems.Where(w => w.name == ImageName).First();
         //var mediatags = db.MediaTags.Where(w => w.MediaItem_id == item.id).Select(s => s.Tag_id).ToList();
@@ -1021,7 +1021,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
         TextBox timestamp = (TextBox)gw_transcript.FooterRow.FindControl("txt_timeStamp");
         TextBox text = (TextBox)gw_transcript.FooterRow.FindControl("txt_text");
         string ItemName = Label1.Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var mediaItem = db.MediaItems.Where(w => w.name == ItemName).First();
         if (!(timestamp.Text.Equals("") && text.Text.Equals("")))
         {
@@ -1046,7 +1046,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
     protected void btn_saveTranscript_Click1(object sender, EventArgs e)
     {
         //string ItemName = Label1.Text;
-        //DreamBirdEntities db = new DreamBirdEntities();
+        //PackageEntities db = new PackageEntities();
         //var mediaItem = db.MediaItems.Where(w => w.name == ItemName).First();
 
 
@@ -1117,7 +1117,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
             MyEvents(this, EventArgs.Empty);
         }
         string medianame = Label1.Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         MediaItem item = db.MediaItems.Where(w => w.name == medianame).First();
         if(item.mediaType == "Image")
         {
@@ -1141,7 +1141,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
                         .FindControl("Label2")).Text);
         string Name = ((TextBox)grid_categories.Rows[e.RowIndex]
                             .FindControl("TextBox1")).Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var category = db.MediaCategories.Where(w => w.id == ID).First();
         category.CategoryName = Name;
         db.SaveChanges();
@@ -1171,7 +1171,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
 
     protected void BindData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         grid_categories.DataSource = db.MediaCategories.ToList();
         grid_categories.DataBind();
     }
@@ -1185,7 +1185,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
             MyEvents(this, EventArgs.Empty);
         }
         string medianame = Label1.Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         MediaItem item = db.MediaItems.Where(w => w.name == medianame).First();
         if (item.mediaType == "Image")
         {
@@ -1207,7 +1207,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
     {
         int ID = Convert.ToInt32(((Label)grid_categories.Rows[e.RowIndex]
                         .FindControl("Label_id")).Text);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var instance = db.MediaCategories.Where(w => w.id == ID).First();
         db.MediaCategories.Remove(instance);
         db.SaveChanges();
@@ -1238,7 +1238,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
     {
         int ID = Convert.ToInt32(((Label)grid_tags.Rows[e.RowIndex]
                         .FindControl("Label_tags")).Text);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var instance = db.Tags.Where(w => w.id == ID).First();
         db.Tags.Remove(instance);
         db.SaveChanges();
@@ -1274,7 +1274,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
             MyEvents(this, EventArgs.Empty);
         }
         string medianame = Label1.Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         MediaItem item = db.MediaItems.Where(w => w.name == medianame).First();
         if (item.mediaType == "Image")
         {
@@ -1298,7 +1298,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
                         .FindControl("label_tagid")).Text);
         string Name = ((TextBox)grid_tags.Rows[e.RowIndex]
                             .FindControl("txt_tagName")).Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var category = db.Tags.Where(w => w.id == ID).First();
         category.Name = Name;
         db.SaveChanges();
@@ -1335,7 +1335,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
             MyEvents(this, EventArgs.Empty);
         }
         string medianame = Label1.Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         MediaItem item = db.MediaItems.Where(w => w.name == medianame).First();
         if (item.mediaType == "Image")
         {
@@ -1355,14 +1355,14 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
 
     protected void BindDataTags()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         grid_tags.DataSource = db.Tags.ToList();
         grid_tags.DataBind();
     }
 
     protected void BindDataTranscript()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         gw_transcript.DataSource = db.VideoTranscripts.ToList();
         gw_transcript.DataBind();
     }
@@ -1375,7 +1375,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
                             .FindControl("txt_etimestamp")).Text;
         string text = ((TextBox)gw_transcript.Rows[e.RowIndex]
                             .FindControl("txt_etext")).Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var vt = db.VideoTranscripts.Where(w => w.id == ID).First();
         vt.TimeStamp = Convert.ToDecimal(TimeStamp);
         vt.Text = text;
@@ -1411,7 +1411,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
     {
         int ID = Convert.ToInt32(((Label)gw_transcript.Rows[e.RowIndex]
                         .FindControl("Label1")).Text);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var instance = db.VideoTranscripts.Where(w => w.id == ID).First();
         db.VideoTranscripts.Remove(instance);
         db.SaveChanges();
@@ -1433,7 +1433,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
         gw_transcript.EditIndex = -1;
         BindDataTranscript();
         string ItemName = Label1.Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var mediaItem = db.MediaItems.Where(w => w.name == ItemName).First();
         AddTranscriptDetail(mediaItem);
         if (MyEvents != null)
@@ -1450,7 +1450,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
         gw_transcript.EditIndex = e.NewEditIndex;
         BindDataTranscript();
         string ItemName = Label1.Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var mediaItem = db.MediaItems.Where(w => w.name == ItemName).First();
         AddTranscriptDetail(mediaItem);
         if (MyEvents != null)
@@ -1468,7 +1468,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
         }
     }
 
-    void ICoreDreamControl.BindData()
+    void ICorePackageControl.BindData()
     {
         //throw new NotImplementedException();
     }
@@ -1483,7 +1483,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
         //throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         //throw new NotImplementedException();
     }
@@ -1525,7 +1525,7 @@ public partial class Components_MediaBank_MediaBankControl : System.Web.UI.UserC
             html.InnerText = "Your Browser Does Not Support Video Player";
             html.Controls.Add(source);
             preview.Controls.AddAt(0, html);
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             var trans = db.VideoTranscripts.Where(w => w.MediaItem_id == item.id).ToList();
             if (trans.Count == 0)
             {

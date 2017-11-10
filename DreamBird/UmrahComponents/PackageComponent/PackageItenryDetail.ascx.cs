@@ -19,13 +19,13 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
 
     protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
        
                 if (e.Item.ItemType == ListItemType.Footer)
                 {
             DropDownList dl = (DropDownList)e.Item.FindControl("cityList_add");
-            string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-            Dream dream = db.Dreams.Where(q => q.DreamName == dreamName).FirstOrDefault();
+            string PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            Package dream = db.Packages.Where(q => q.PackageName == PackageName).FirstOrDefault();
             var data = db.Hotels.Select(q => new { q.id, q.hotelName, q.hotelType }).ToList();
             if (dream != null)
                 data = db.Hotels.Where(q=>q.AspNetUserID == dream.AspNetUserID).Select(q => new { q.id, q.hotelName, q.hotelType }).ToList();
@@ -53,7 +53,7 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
         }
       ((RangeValidator)sender).MinimumValue = min;
         ((RangeValidator)sender).MaximumValue = max;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
     
     }
     protected void itenry_list_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -61,14 +61,14 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
       
         if (Page.IsValid)
         {
-            string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-            DreamBirdEntities db = new DreamBirdEntities();
+            string PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            PackageEntities db = new PackageEntities();
             PackageDetail pd = null;
-            var data = db.Dreams.Where(q => q.DreamName == dreamName).ToList();
+            var data = db.Packages.Where(q => q.PackageName == PackageName).ToList();
             if (data.Count != 0)
             {
-                Dream d = data[0];
-                var packageData = db.PackageDetails.Where(q => q.dreamID == d.id).ToList();
+                Package d = data[0];
+                var packageData = db.PackageDetails.Where(q => q.PackageID == d.id).ToList();
                 if (packageData.Count != 0)
                 { pd = packageData[0]; }
             }
@@ -129,7 +129,7 @@ public partial class UmrahComponents_PackageComponent_PackageItenryDetail : Syst
     public void bindItenryData(int pkgID)
     {
         
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == pkgID).First();
         
         totalnights.Text = pd.getTotelNights.ToString();

@@ -9,7 +9,7 @@ public class AddTranscript : IHttpHandler {
     public void ProcessRequest (HttpContext context) {
         string TranscriptText = context.Request.Form[0];
         decimal TimeStamp = Convert.ToDecimal(context.Request.Form[1]);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         VideoTranscript transcript = new VideoTranscript();
 
         transcript.Text = TranscriptText;

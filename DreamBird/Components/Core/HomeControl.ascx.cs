@@ -18,21 +18,21 @@ public partial class Components_Core_HomeControl : System.Web.UI.UserControl, IH
 
     public void SetControls(Control layoutControl, string PageSize)
     {
-        List<IBaseDreamControl> lst = new List<IBaseDreamControl>();
+        List<IBasePackageControl> lst = new List<IBasePackageControl>();
         foreach (Control control in layoutControl.Controls)
         {
             Type type = control.GetType();
-            if (type.Name == "components_core_basedreamcontrol_ascx")
+            if (type.Name == "components_core_BasePackageControl_ascx")
             {
-                IBaseDreamControl Control = control as IBaseDreamControl;
+                IBasePackageControl Control = control as IBasePackageControl;
                 lst.Add(Control);
             }
         }
         string URL = Request.RawUrl;
-        string DreamName = DreamUtil.getDreamNameFromURL(URL);
-        string PageName = DreamUtil.getPageNameFromURL(URL);
+        string PackageName = PackageUtil.getPackageNameFromURL(URL);
+        string PageName = PackageUtil.getPageNameFromURL(URL);
         List<int> SeperatorIndex = new List<int>();
-        lst.Where(w => w.GetDefaultDreamControlName() == "~/Components/Seperator.ascx").ToList().ForEach(s => SeperatorIndex.Add(lst.IndexOf(s)));
+        lst.Where(w => w.GetDefaultPackageControlName() == "~/Components/Seperator.ascx").ToList().ForEach(s => SeperatorIndex.Add(lst.IndexOf(s)));
         if (SeperatorIndex.Count == 0 || PageSize == "FullPage")
         {
             if (HomePlace != null)
@@ -49,7 +49,7 @@ public partial class Components_Core_HomeControl : System.Web.UI.UserControl, IH
             List<string> ArrayList = new List<string>();
             for (int i = 0; i < TotalPages; i++)
             {
-                ArrayList.Add("../../dreamhome/" + DreamName + "/" + PageName + "?PageNumber=" + (i + 1));
+                ArrayList.Add("../../dreamhome/" + PackageName + "/" + PageName + "?PageNumber=" + (i + 1));
             }
             ScriptManager.RegisterStartupScript(Page, typeof(Page), "Script_add_array", "var MyArray = " + new JavaScriptSerializer().Serialize(ArrayList) + ";", true);
             if (!(CurrentPage > TotalPages))
@@ -88,8 +88,8 @@ public partial class Components_Core_HomeControl : System.Web.UI.UserControl, IH
                 HomePlace.Controls.Add(layoutControl);
             }
         }
-        DreamBirdEntities db = new DreamBirdEntities();
-        var page = db.DreamLayouts.Where(w => w.Page == PageName && w.Dream.DreamName == DreamName).First();
+        PackageEntities db = new PackageEntities();
+        var page = db.DreamLayouts.Where(w => w.Page == PageName && w.Package.PackageName == PackageName).First();
         if(Convert.ToBoolean(page.IsActive))
         {
             Content_area.Attributes.Add("class", "Mask");

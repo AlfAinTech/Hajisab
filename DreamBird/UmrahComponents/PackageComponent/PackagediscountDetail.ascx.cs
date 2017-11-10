@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_PackageComponent_PackagediscountDetail : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_PackageComponent_PackagediscountDetail : System.Web.UI.UserControl,ICorePackageControl
 {
     public Boolean isCustomPackage
     { get; set; }
@@ -15,10 +15,10 @@ public partial class UmrahComponents_PackageComponent_PackagediscountDetail : Sy
     }
     public void bindData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
-        String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
-        PackageDetail pd = db.PackageDetails.Where(q => q.dreamID == d.id).First();
+        PackageEntities db = new PackageEntities();
+        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+        Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
+        PackageDetail pd = db.PackageDetails.Where(q => q.PackageID == d.id).First();
             package_panel.Visible = !isCustomPackage;
             customPackge_panel.Visible = isCustomPackage;
             totalAmount_txt.Text = getTotelPrice(pd).ToString();
@@ -26,7 +26,7 @@ public partial class UmrahComponents_PackageComponent_PackagediscountDetail : Sy
             {
                 discount_list.DataSource = db.DiscountPackages.Where(q => q.packageDetailID == pd.id).ToList();
                 discount_list.DataBind();
-                var data = db.PackageDetails.Where(q => q.dreamID == pd.id).ToList();
+                var data = db.PackageDetails.Where(q => q.PackageID == pd.id).ToList();
             }
             else
             {
@@ -71,10 +71,10 @@ public partial class UmrahComponents_PackageComponent_PackagediscountDetail : Sy
         double total = 0;
         if (id != 0) { 
         ViewState["selectedID"] = id.ToString();
-        DreamBirdEntities db = new DreamBirdEntities();
-        String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
-        var data = db.PackageDetails.Where(q => q.dreamID == d.id).ToList();
+        PackageEntities db = new PackageEntities();
+        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
+        var data = db.PackageDetails.Where(q => q.PackageID == d.id).ToList();
             if(data.Count() !=0)
             {
                 PackageDetail pd = data[0];
@@ -102,7 +102,7 @@ public partial class UmrahComponents_PackageComponent_PackagediscountDetail : Sy
        // throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
        // throw new NotImplementedException();
     }
@@ -111,17 +111,17 @@ public partial class UmrahComponents_PackageComponent_PackagediscountDetail : Sy
     {
         if (ViewState["selectedID"] != null) {
             int id = int.Parse(ViewState["selectedID"].ToString());
-            DreamBirdEntities db = new DreamBirdEntities();
-        String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
-        PackageDetail pd = db.PackageDetails.Where(q => q.dreamID == d.id).First();
+            PackageEntities db = new PackageEntities();
+        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
+        PackageDetail pd = db.PackageDetails.Where(q => q.PackageID == d.id).First();
         var dl = db.DreamLayouts.Where(q => q.DreamID == d.id && q.Page == "BookingForm").ToList();
         if (dl.Count()!=0)
         {
             DreamLayout dll = dl[0];
                 
                 Session["discountPkgID"] = id.ToString();
-                Response.Redirect("~/DreamHome/" + d.DreamName + "/" + dll.Page);
+                Response.Redirect("~/DreamHome/" + d.PackageName + "/" + dll.Page);
             }
         }
         else
@@ -137,7 +137,7 @@ public partial class UmrahComponents_PackageComponent_PackagediscountDetail : Sy
 
     public double getTotelPrice(PackageDetail pd)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         double result = 0;
         if (pd.isAirLineAvailable) { if (pd.returnFlight) { result += pd.Flight1.price; } else { result += pd.Flight1.price + pd.Flight.price; } }
         if (pd.isVisaAvailable) { result += pd.VisaPackage.amount; }

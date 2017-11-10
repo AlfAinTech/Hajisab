@@ -18,7 +18,7 @@ public partial class UmrahComponents_AdminPages_Package_PackageBasicInfo : Syste
             if (Request.QueryString["packageID"] != null)
             {
                 int package_id = int.Parse(Request.QueryString["packageID"]);
-                PackageInfo.EditDataBind(package_id);
+                //PackageInfo.EditDataBind(package_id);
             }
         }
 

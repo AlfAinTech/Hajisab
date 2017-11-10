@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_headerFooter_UmrahChatheader : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_headerFooter_UmrahChatheader : System.Web.UI.UserControl,ICorePackageControl
 {
     public void BindData()
     {
@@ -22,7 +22,7 @@ public partial class UmrahComponents_headerFooter_UmrahChatheader : System.Web.U
         //throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
        // throw new NotImplementedException();
     }
@@ -34,15 +34,15 @@ public partial class UmrahComponents_headerFooter_UmrahChatheader : System.Web.U
 
     protected void learn_moreClicked(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
-        string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter");
+        PackageEntities db = new PackageEntities();
+        string PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+        Response.Redirect("/Umrahhome/" + PackageName + "/SearchFilter");
     }
 
     protected void openCustomWizard_Click(object sender, EventArgs e)
     {
         
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.FirstOrDefault();
         if (pd != null)
             Response.Redirect("~/UmrahCustomPackage.aspx?PackageId=" + pd.id);

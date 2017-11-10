@@ -19,8 +19,8 @@ public partial class Components_MultimediaBank_MultimediaBankHome : System.Web.U
 
     protected void MultimediaList_ItemClicked(object sender, EventArgs e)
     {
-        EventArgDreamEdit evt = e as EventArgDreamEdit;
-        int bankID = evt.DreamEditID;
+        EventArgPackageEdit evt = e as EventArgPackageEdit;
+        int bankID = evt.PackageEditID;
         MultimediaBasicInfo.BindData(bankID);
     }
 }

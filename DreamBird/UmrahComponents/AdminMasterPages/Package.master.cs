@@ -32,8 +32,8 @@ public partial class UmrahComponents_AdminMasterPages_Package : System.Web.UI.Ma
     }
     protected void packageClicked_packageClick(object sender, EventArgs e)
     {
-        EventArgDreamEdit evt = (EventArgDreamEdit)e;
-        int did = evt.DreamEditID;
+        EventArgPackageEdit evt = (EventArgPackageEdit)e;
+        int did = evt.PackageEditID;
         
             Response.Redirect("~/UmrahComponents/AdminPages/Package/PackageDiscount?packageID=" + did);
 

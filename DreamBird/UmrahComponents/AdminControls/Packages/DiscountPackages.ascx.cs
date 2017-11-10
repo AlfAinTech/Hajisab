@@ -16,10 +16,10 @@ public partial class UmrahComponents_AdminControls_Packages_DiscountPackages : S
     }
     public void dataBind()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if(Request.QueryString["packageID"] != null) {
             int package_id = int.Parse(Request.QueryString["packageID"].ToString());
-        packages_list.DataSource = db.DiscountPackages.Where(q=>q.PackageDetail.dreamID==package_id).ToList();
+        packages_list.DataSource = db.DiscountPackages.Where(q=>q.PackageDetail.PackageID == package_id).ToList();
         packages_list.DataBind();
         }
         // ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "a_keys", "OpenTab('Accommodations')", true);
@@ -41,7 +41,7 @@ public partial class UmrahComponents_AdminControls_Packages_DiscountPackages : S
        
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         DiscountPackage vp = db.DiscountPackages.Where(q => q.id == id).First();
         db.DiscountPackages.Remove(vp);
         db.SaveChanges();
@@ -51,7 +51,7 @@ public partial class UmrahComponents_AdminControls_Packages_DiscountPackages : S
     protected void updatebutton_clicked(object sender, EventArgs e)
     {
         if (Page.IsValid) { 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
         RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
@@ -81,14 +81,14 @@ public partial class UmrahComponents_AdminControls_Packages_DiscountPackages : S
         {   
             if (Request.QueryString["packageID"] != null ) {
                 int package_id = int.Parse(Request.QueryString["packageID"].ToString());
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
                 DateTime from = DateTime.Parse(AddavailableFrom_txt.Text);
                 DateTime till = DateTime.Parse(AddavailableTill_txt.Text);
                 if (from > till) { ShowError("invalid Date Limit"); return; }
                 float value = float.Parse(addpercent_txt.Text);
-                if (db.PackageDetails.Any(q => q.dreamID == package_id))
+                if (db.PackageDetails.Any(q => q.PackageID == package_id))
                 {
-                    int detailId = db.PackageDetails.FirstOrDefault(q => q.dreamID == package_id).id;
+                    int detailId = db.PackageDetails.FirstOrDefault(q => q.PackageID == package_id).id;
                     if (db.DiscountPackages.Where(q => q.name == addTitle_txt.Text).Count() == 0)
                     {
                         DiscountPackage ac = new DiscountPackage

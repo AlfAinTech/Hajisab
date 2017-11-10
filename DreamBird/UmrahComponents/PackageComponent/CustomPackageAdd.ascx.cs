@@ -26,13 +26,13 @@ public partial class UmrahComponents_PackageComponent_CustomPackageAdd : System.
 
     public void  bindData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         ddlAirLine.DataSource = db.CustomFlightConfigurations.Select(q=>q.AirLine).ToList();
         ddlAirLine.DataBind();
     }
     public void BindPAckageDetail(int PackageID)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.FirstOrDefault(q => q.id == PackageID);
         double PriceWithoutAccom = 0;
         if (pd!=null)
@@ -80,7 +80,7 @@ public partial class UmrahComponents_PackageComponent_CustomPackageAdd : System.
 
     public void bindMadina_accommodation(int hotelmadinaID)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var accom = db.Accommodations.Where(q => q.hotelID == hotelmadinaID && q.availability == true).ToList();
         madinaAccommodation_list.DataSource = accom;
         madinaAccommodation_list.DataBind();
@@ -99,7 +99,7 @@ public partial class UmrahComponents_PackageComponent_CustomPackageAdd : System.
     }
     public void bindMakkah_accommodation(int hotelmakkahID)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var accom = db.Accommodations.Where(q => q.hotelID == hotelmakkahID && q.availability == true).ToList();
         makkahAccommodation_list.DataSource = accom;
         makkahAccommodation_list.DataBind();
@@ -184,7 +184,7 @@ public partial class UmrahComponents_PackageComponent_CustomPackageAdd : System.
 
     public void SetAccommodations()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (!string.IsNullOrWhiteSpace(hotelRating_makkah.Text))
         {
             int distance = int.Parse(hotelDistance_makkah.Text);
@@ -233,7 +233,7 @@ public partial class UmrahComponents_PackageComponent_CustomPackageAdd : System.
     public void ComputePrice()
     {
         
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int totalNights = int.Parse(totelNights.Text);
         int DistanceMakkah = hotelDistance_makkah.Text != ""?int.Parse(hotelDistance_makkah.Text):0;
         int DistanceMadina = hotelDistance_madina.Text != "" ? int.Parse(hotelDistance_madina.Text) : 0;
@@ -271,7 +271,7 @@ public partial class UmrahComponents_PackageComponent_CustomPackageAdd : System.
     protected void bookPackage_Click(object sender, EventArgs e)
     {
 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         CustomPackage custPackage = new CustomPackage();
        
         custPackage.MakkahDistance= hotelDistance_makkah.Text != "" ? int.Parse(hotelDistance_makkah.Text) : 0;

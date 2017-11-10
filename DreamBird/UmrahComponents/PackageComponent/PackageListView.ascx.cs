@@ -5,19 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_PackageComponent_PackageListView : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_PackageComponent_PackageListView : System.Web.UI.UserControl,ICorePackageControl
 {
     static public List<PackageDetail> wholeData;
     protected void Page_Load(object sender, EventArgs e)
     {
-        ISearch searchBox = DreamUtil.SearchInterface;
+        ISearch searchBox = PackageUtil.SearchInterface;
         if (searchBox != null)
         {
             searchBox.DoSearch += PkgSearched_pkgSearch;
         }
         if (!IsPostBack)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             bindData(db.PackageDetails.ToList());
             ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
         }
@@ -55,13 +55,13 @@ public partial class UmrahComponents_PackageComponent_PackageListView : System.W
     {
         Button b = (Button)sender;
         int id = int.Parse(b.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        var data= db.DreamLayouts.Where(q => q.DreamID == pd.dreamID && q.Page == "umrahDetail").ToList();
+        var data= db.DreamLayouts.Where(q => q.DreamID == pd.PackageID && q.Page == "umrahDetail").ToList();
         if(data.Count() != 0)
         {
             DreamLayout dl = data[0];
-            Response.Redirect("~/DreamHome/"+pd.Dream.DreamName+"/"+dl.Page);
+            Response.Redirect("~/DreamHome/"+pd.Package.PackageName + "/"+dl.Page);
         }
         
     }
@@ -86,7 +86,7 @@ public partial class UmrahComponents_PackageComponent_PackageListView : System.W
         
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
       
     }

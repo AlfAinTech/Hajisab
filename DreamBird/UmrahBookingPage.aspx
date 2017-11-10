@@ -8,10 +8,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
  
 
-
-  
-
-
         <asp:ScriptManager ID="ScriptManager2" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
 
         <div class="row">
@@ -25,7 +21,7 @@
                 <div class="col-md-12" runat="server">
                     <uc1:Packageheader runat="server" ID="Packageheader1" />
                     <uc1:BookingFormHeader runat="server" ID="BookingFormHeader1" />
-
+                     
                     <uc1:BookingForm runat="server" ID="BookingForm" />
                 </div>
                 <div class="col-md-12" runat="server">

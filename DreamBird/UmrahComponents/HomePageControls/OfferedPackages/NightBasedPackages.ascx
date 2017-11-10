@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="NightBasedPackages.ascx.cs" Inherits="UmrahComponents_PackageComponent_OfferedPackages_NightBasedPackages" %>
 <script>
+     hiddenNights = "#<%= hiddenNights.ClientID%>";
     setNightClass = function (value)
     {
         $("#nights").addClass("active");
@@ -9,6 +10,7 @@
         //$("#BudgetPackagesList li:first-child").addClass("active");
         //$("#hotelPackagesList li:first-child").addClass("active");
         //console.log("here come");
+        $(hiddenNights).val(value);
     }
     setFirstElementNight = function () {
         $("#nightPackagesList li:first-child").addClass("active");
@@ -21,9 +23,9 @@
                       <!-- Nav tabs -->
                      
                       <ul class="nav nav-tabs nav-stacked" role="tablist" id="nightPackagesList">
-                                   <li role="presentation" id="10"><asp:LinkButton   runat="server" id="Package_id"  OnClientClick="return setNightPackage('10')" ><h2>10 Nights</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
-                           <li role="presentation" id="20"><asp:LinkButton   runat="server" id="LinkButton1" OnClientClick="return setNightPackage('20')"  ><h2>20 Nights</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
-                          <li role="presentation" id="30"><asp:LinkButton   runat="server" id="LinkButton2" OnClientClick="return setNightPackage('30')"  ><h2>30 Nights</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
+                                   <li role="presentation" id="10"><asp:LinkButton   runat="server" id="Package_id"  OnClientClick="return setNightPackage('10')" ><h2>10 Nights</h2><h6>Starting From</h6><h4>Rs <asp:Literal ID="TenNightPrice" runat="server"></asp:Literal></h4></asp:LinkButton></li>
+                           <li role="presentation" id="20"><asp:LinkButton   runat="server" id="LinkButton1" OnClientClick="return setNightPackage('20')"  ><h2>20 Nights</h2><h6>Starting From</h6><h4>Rs <asp:Literal ID="TwentyNightPrice" runat="server"></asp:Literal></h4></asp:LinkButton></li>
+                          <li role="presentation" id="30"><asp:LinkButton   runat="server" id="LinkButton2" OnClientClick="return setNightPackage('30')"  ><h2>30 Nights</h2><h6>Starting From</h6><h4>Rs <asp:Literal ID="ThirtyNightPrice" runat="server"></asp:Literal></h4></asp:LinkButton></li>
                               </ul>
                       
                      
@@ -129,6 +131,7 @@
     }
     function setNightPackage(type)
     {
+       
         LoadNightScript(type);
         setNightClass(type);
         return false;

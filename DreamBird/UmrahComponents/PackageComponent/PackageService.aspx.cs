@@ -19,8 +19,8 @@ public partial class UmrahComponents_PackageComponent_PackageService : System.We
     {
        
         string result="";
-        DreamBirdEntities db = new DreamBirdEntities();
-        var data1 = db.PackageDetails.Select(q=> new { q.Dream.DreamName, abc= q.GetDetails(), q.duration,q.isAirLineAvailable,q.isVisaAvailable,q.VisaPackage.visaTitle }).ToArray();
+        PackageEntities db = new PackageEntities();
+        var data1 = db.PackageDetails.Select(q=> new { q.Package.PackageName, abc= q.GetDetails(), q.duration,q.isAirLineAvailable,q.isVisaAvailable,q.VisaPackage.visaTitle }).ToArray();
         JsonConvert.SerializeObject(data1);
         var serializer = new JavaScriptSerializer();
         return serializer.Serialize(data1);

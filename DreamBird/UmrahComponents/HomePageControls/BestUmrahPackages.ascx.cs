@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_PackageComponent_BestUmrahPackages : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_PackageComponent_BestUmrahPackages : System.Web.UI.UserControl,ICorePackageControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -17,8 +17,8 @@ public partial class UmrahComponents_PackageComponent_BestUmrahPackages : System
     }
     public void Databind()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
-        BetsPackages_list.DataSource = db.PackageDetails.Where(q => q.Dream.IsFeatured).ToList();
+        PackageEntities db = new PackageEntities();
+        BetsPackages_list.DataSource = db.PackageDetails.Where(q => q.Package.IsFeatured).ToList();
         BetsPackages_list.DataBind();
        // ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
     }
@@ -26,9 +26,9 @@ public partial class UmrahComponents_PackageComponent_BestUmrahPackages : System
     {
         Button b = (Button)sender;
         int id = int.Parse(b.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        Response.Redirect("~/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
+        Response.Redirect("~/UmrahDetailPage/" + pd.Package.PackageName + "/UmrahDetail");
     }
 
     public void BindData()
@@ -46,7 +46,7 @@ public partial class UmrahComponents_PackageComponent_BestUmrahPackages : System
         // throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         // throw new NotImplementedException();
     }

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_headerFooter_BookingFormHeader : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_headerFooter_BookingFormHeader : System.Web.UI.UserControl,ICorePackageControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -26,7 +26,7 @@ public partial class UmrahComponents_headerFooter_BookingFormHeader : System.Web
         // throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         // throw new NotImplementedException();
     }

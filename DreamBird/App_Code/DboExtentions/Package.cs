@@ -4,38 +4,53 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for Package
+/// Summary description for Dream
 /// </summary>
-public partial class Package
+public partial class  Package
 {
-    public PackageDetail PackageDetail
+    private Boolean isNotLikedByLoginUser;
+    private Boolean isMediaItemImage;
+    private Boolean isMediaItemVideo;
+
+
+
+    public bool IsMediaItemImage
     {
         get
         {
-            PackageDetail pd = new PackageDetail();
-            DreamBirdEntities db = new DreamBirdEntities();
-            var data =db.PackageDetails.Where(q => q.dreamID == this.id).ToList();
-            if(data.Count()!=0)
+            PackageEntities db;
+            db = new PackageEntities();
+            int count = db.Packages.Where(q => q.id == this.id && q.MediaItem.mediaType == "image").Count();
+            if (count != 0)
             {
-                 pd= data[0];
+                return true;
             }
-            return pd;
+            return false;
         }
-        set { PackageDetail = value; }
+
+        set
+        {
+            isMediaItemImage = value;
+        }
     }
-    public Boolean IsDetailavailable
+
+    public bool IsMediaItemVideo
     {
         get
         {
-            Boolean result = false;
-            DreamBirdEntities db = new DreamBirdEntities();
-            var data = db.PackageDetails.Where(q => q.dreamID == this.id).ToList();
-            if (data.Count() != 0)
+            PackageEntities db;
+            db = new PackageEntities();
+            int count = db.Packages.Where(q => q.id == this.id && q.MediaItem.mediaType == "video").Count();
+            if (count != 0)
             {
-                result = true;
+                return true;
             }
-            return result;
+            return false;
         }
-        set { IsDetailavailable = value; }
+
+        set
+        {
+            isMediaItemVideo = value;
+        }
     }
 }

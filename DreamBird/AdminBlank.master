@@ -17,8 +17,30 @@
     <%--<script src="../Admin/Content/js/bootstrap.min.js"></script>--%>
 
     <script src="<%# Server.MapPath("~/") %>/Admin/Content/js/myScript.js"></script>
-
+    <script>
+      
+        var somethingChanged = false;
+        $(function () {
+            $('#form1 input').change(function () {
+                
+                somethingChanged = true;
+            });
+       
+        $("input[type='submit']").click(function () {
+            somethingChanged = false;
+        });
+        });
+    window.onbeforeunload = confirmExit;
+    function confirmExit(){
+            if(somethingChanged)
+                return "You made some changes and it's not saved?";
+            else 
+                e=null; // i.e; if form state change show warning box, else don't show it.
+        };
+        </script>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+     <asp:ContentPlaceHolder id="head2" runat="server">
+    </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">

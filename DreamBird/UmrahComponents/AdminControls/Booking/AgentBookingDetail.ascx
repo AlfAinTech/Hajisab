@@ -14,7 +14,7 @@
     <asp:repeater id="rptAlharmainBooking" runat="server" onitemcommand="rptAlharmainBooking_ItemCommand" OnItemDataBound="rptAlharmainBooking_ItemDataBound">
         <itemtemplate>
             <tr>
-                <td runat="server" id="PackageName"><%# Eval("PackageDetail.Dream.DreamName")%></td>
+                <td runat="server" id="PackageName"><%# Eval("PackageDetail.Package.PackageName")%></td>
                 <td><%# Eval("AlharmainUser.Name") %></td>
                 <td><%# Eval("AlharmainUser.mobileNo") %></td>
                 

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Components_Header_LoginRegisterHeader : System.Web.UI.UserControl,ICoreDreamControl
+public partial class Components_Header_LoginRegisterHeader : System.Web.UI.UserControl,ICorePackageControl
 {
     
     protected void Page_Load(object sender, EventArgs e)
@@ -39,7 +39,7 @@ public partial class Components_Header_LoginRegisterHeader : System.Web.UI.UserC
       
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
        
     }

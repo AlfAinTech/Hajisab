@@ -14,7 +14,7 @@ public partial class Components_Account_InviteshareAdminPage : System.Web.UI.Pag
             if (Request.QueryString["LayoutID"] != null)
             {
                 int layoutID = int.Parse(Request.QueryString["LayoutID"]);
-                DreamBirdEntities db = new DreamBirdEntities();
+                PackageEntities db = new PackageEntities();
                 List<InviteSharePage> page = db.InviteSharePages.Where(q => q.LayoutID == layoutID).ToList();
                 if (page.Count != 0)
                 {
@@ -33,7 +33,7 @@ public partial class Components_Account_InviteshareAdminPage : System.Web.UI.Pag
 
     protected void save_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if(Page_id.Text != null) { 
         InviteSharePage t = new InviteSharePage
         {

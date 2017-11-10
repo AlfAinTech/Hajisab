@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_AdminControls_Packages_PackageDetail : System.Web.UI.UserControl , IDreamTypeCore
+public partial class UmrahComponents_AdminControls_Packages_PackageDetail : System.Web.UI.UserControl , IPackageTypeCore
 {
     static public int DreamID;
     public event EventHandler SaveClicked;
@@ -26,9 +26,9 @@ public partial class UmrahComponents_AdminControls_Packages_PackageDetail : Syst
     {
         String uid = HttpContext.Current.User.Identity.GetUserId();
         DreamID = dreamID;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
 
-            var data = db.PackageDetails.Where(q => q.dreamID == dreamID).ToList();
+            var data = db.PackageDetails.Where(q => q.PackageID == dreamID).ToList();
             //bind data to lists
             makkahHotel_list.DataSource = db.Hotels.Where(q=> q.hotelType == "makkah").ToList();  
             hotelMadina_list.DataSource = db.Hotels.Where(q => q.hotelType == "madina").ToList();
@@ -131,10 +131,10 @@ public partial class UmrahComponents_AdminControls_Packages_PackageDetail : Syst
     {
         if (Page.IsValid && Validated()) {
             
-            DreamBirdEntities db = new DreamBirdEntities();
-            Dream pkg = db.Dreams.Where(q => q.id == DreamID).First();
+            PackageEntities db = new PackageEntities();
+            Package pkg = db.Packages.Where(q => q.id == DreamID).First();
             int totalNights = int.Parse(nightInMakkah_txt.Text) + int.Parse(nightsInMadina_txt.Text);
-            var data = db.PackageDetails.Where(q => q.dreamID == DreamID).ToList();
+            var data = db.PackageDetails.Where(q => q.PackageID == DreamID).ToList();
             PackageDetail pd;
             if (data.Count()!=0)
             {
@@ -184,7 +184,7 @@ public partial class UmrahComponents_AdminControls_Packages_PackageDetail : Syst
                 pd.isVisaAvailable = isVisa_chk.Checked;
                 pd.isTransportAvailable = isTranspost_chk.Checked;
                 pd.isZiaratAvailable = isZiarat_chk.Checked;
-                pd.dreamID = DreamID;
+                pd.PackageID = DreamID;
                 pd.startDate = DateTime.Parse(startDate.Text);
                 pd.packageType = packageType.SelectedValue;
             
@@ -230,7 +230,7 @@ public partial class UmrahComponents_AdminControls_Packages_PackageDetail : Syst
 
             }
             db.SaveChanges(); 
-            PackageDetail p = db.PackageDetails.Where(q => q.dreamID == DreamID).First();
+            PackageDetail p = db.PackageDetails.Where(q => q.PackageID == DreamID).First();
             p.minRange = p.minAmount;
             p.maxRange = p.maxAmount;
             db.SaveChanges();
@@ -289,7 +289,7 @@ public partial class UmrahComponents_AdminControls_Packages_PackageDetail : Syst
     //public Boolean checkFlights()
     //{
     //    Boolean result = true;
-    //    DreamBirdEntities db = new DreamBirdEntities();
+    //    PackageEntities db = new PackageEntities();
     //    if (oneWay_chk.Checked) {
 
     //        int returnID = int.Parse(flightReturn_list.SelectedValue);

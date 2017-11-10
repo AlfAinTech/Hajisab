@@ -20,14 +20,14 @@ public partial class UmrahComponents_AdminControls_Hotel_Images : System.Web.UI.
     }
     public void bindData(int hid)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
 
        hotelImages_list.DataSource= db.HotelImages.Where(q => q.hotelID == hid).ToList();
         hotelImages_list.DataBind();
     }
     protected void addImage_clicked(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (Page.IsValid)
         {
             int id = int.Parse(hotelImg_id.Text);
@@ -59,7 +59,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Images : System.Web.UI.
     {
         EventArgMediaSelection evt = (EventArgMediaSelection)e;
         int media_id = evt.SelectedMedia;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
 
         MediaItem media_item = db.MediaItems.Where(q => q.id == media_id).First();
 
@@ -94,7 +94,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Images : System.Web.UI.
     {
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         HotelImage hf = db.HotelImages.Where(q => q.id == id).First();
         db.HotelImages.Remove(hf);
         db.SaveChanges();

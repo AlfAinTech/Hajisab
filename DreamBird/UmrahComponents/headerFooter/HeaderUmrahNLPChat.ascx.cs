@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_headerFooter_HeaderUmrahNLPChat : System.Web.UI.UserControl, ICoreDreamControl
+public partial class UmrahComponents_headerFooter_HeaderUmrahNLPChat : System.Web.UI.UserControl, ICorePackageControl
 {
     public void BindData()
     {
@@ -22,7 +22,7 @@ public partial class UmrahComponents_headerFooter_HeaderUmrahNLPChat : System.We
         //throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         // throw new NotImplementedException();
     }
@@ -34,8 +34,8 @@ public partial class UmrahComponents_headerFooter_HeaderUmrahNLPChat : System.We
 
     protected void learn_moreClicked(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
-        string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter");
+        PackageEntities db = new PackageEntities();
+        string PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+        Response.Redirect("/Umrahhome/" + PackageName + "/SearchFilter");
     }
 }

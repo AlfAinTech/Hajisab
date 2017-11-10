@@ -42,20 +42,15 @@ public partial class Account_RegisterExternalLogin : System.Web.UI.UserControl
 
         var loginInfo = Context.GetOwinContext().Authentication.GetExternalLoginInfo();
         var manager = new UserManager();
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var user = new ApplicationUser() { UserName = userName.Text, Email= Email_txt.Text};
         IdentityResult result = manager.Create(user);
         if (result.Succeeded)
         {
-            var t = new DreamUserProfile
-            {
-                AspNetUserId = user.Id,
-
-            };
-            db.DreamUserProfiles.Add(t);
+            
             manager.AddToRole(user.Id, "RegisteredUser");
             db.SaveChanges();
-            send_mail(user.Id);
+            //send_mail(user.Id);
             if (loginInfo == null)
             {
                 Response.Redirect("~/Components/Account/LoginSetting.aspx");
@@ -88,40 +83,40 @@ public partial class Account_RegisterExternalLogin : System.Web.UI.UserControl
         }
     }
 
-    protected string send_mail(string currentuser_id)
-    {
-        try
-        {
-            DreamBirdEntities db = new DreamBirdEntities();
-            DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
-            MailMessage mailMessage = new MailMessage();
-            mailMessage.To.Add(dup.AspNetUser.Email);
-            mailMessage.From = new MailAddress("dreambirdapp@gmail.com");
-            mailMessage.Subject = "DreamBird e-mail test";
+    //protected string send_mail(string currentuser_id)
+    //{
+    //    try
+    //    {
+    //        PackageEntities db = new PackageEntities();
+    //        DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
+    //        MailMessage mailMessage = new MailMessage();
+    //        mailMessage.To.Add(dup.AspNetUser.Email);
+    //        mailMessage.From = new MailAddress("dreambirdapp@gmail.com");
+    //        mailMessage.Subject = "DreamBird e-mail test";
 
-            mailMessage.IsBodyHtml = true;
-            string Body = System.IO.File.ReadAllText(Server.MapPath("~/Components/Account/Emailconformation.html"));
-            Body = Body.Replace("{DynamicContent}", DreamUtil.ServerUrl+"/Components/Account/EmailVerifier.aspx?verificationID=" + currentuser_id + "");
-            mailMessage.Body = Body;//"http://localhost:64671/Components/Account/EmailVerifier?verificationID="+ currentuser_id + "";
-            SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
-            smtpClient.Credentials = new System.Net.NetworkCredential("dreambirdapp@gmail.com", "dogar1949");
-            smtpClient.EnableSsl = true;
-            smtpClient.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-            ServicePointManager.ServerCertificateValidationCallback =
-         delegate (object s, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors) { return true; };
-            smtpClient.Send(mailMessage);
-            return "E-mail sent!";
-        }
-        catch (Exception ex)
-        {
-            Response.Write("Could not send the e-mail - error: " + ex.Message);
-            return ex.Message;
-        }
-    }
+    //        mailMessage.IsBodyHtml = true;
+    //        string Body = System.IO.File.ReadAllText(Server.MapPath("~/Components/Account/Emailconformation.html"));
+    //        Body = Body.Replace("{DynamicContent}", PackageUtil.ServerUrl+"/Components/Account/EmailVerifier.aspx?verificationID=" + currentuser_id + "");
+    //        mailMessage.Body = Body;//"http://localhost:64671/Components/Account/EmailVerifier?verificationID="+ currentuser_id + "";
+    //        SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
+    //        smtpClient.Credentials = new System.Net.NetworkCredential("dreambirdapp@gmail.com", "dogar1949");
+    //        smtpClient.EnableSsl = true;
+    //        smtpClient.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+    //        ServicePointManager.ServerCertificateValidationCallback =
+    //     delegate (object s, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors) { return true; };
+    //        smtpClient.Send(mailMessage);
+    //        return "E-mail sent!";
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Response.Write("Could not send the e-mail - error: " + ex.Message);
+    //        return ex.Message;
+    //    }
+    //}
 
     public void getLogin()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         // Process the result from an auth provider in the request
         ProviderName = IdentityHelper.GetProviderNameFromRequest(Request);
         if (String.IsNullOrEmpty(ProviderName))
@@ -162,15 +157,10 @@ public partial class Account_RegisterExternalLogin : System.Web.UI.UserControl
                var result = manager.AddLogin(UserId, verifiedloginInfo.Login);
                 if (result.Succeeded)
                 {
-                    var t = new DreamUserProfile
-                    {
-                        AspNetUserId = UserId,
-
-                    };
-                    db.DreamUserProfiles.Add(t);
+                   
                     db.SaveChanges();
                     manager.AddToRole(UserId, "DreamUser");
-                    send_mail(UserId);
+                    //send_mail(UserId);
                     Response.Redirect("~/DreamUsers/Default.aspx");
                     DreamUserLogedIn(this, EventArgs.Empty);
                     // IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);

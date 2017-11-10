@@ -19,7 +19,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     {
         if(!Page.IsPostBack)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             bot = db.BotConversations.OrderBy(q=>q.id).ToList();
         }
     }
@@ -28,7 +28,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     {
         var jsonObj = new { };
         dynamic dd = new ExpandoObject();
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         //get user state
         int index = 1;
         if (HttpContext.Current.Session["State"] != null)
@@ -90,7 +90,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
         dynamic jdata = new { };
         if (msg == "no") { HttpContext.Current.Session["State"] = 13; }
         
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var context = string.Join(",", db.PackageDetails.Select(q => q.id).ToList());
         return context.ToString();
     }
@@ -105,7 +105,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
         var value = propertyInfo.GetValue(strMonth_Month, null);
         int val = Convert.ToInt32(value);
         dynamic jdata =new { };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
        List<PackageDetail> packages =  db.PackageDetails.Where(q => q.startDate.Value.Month == val).ToList();
         HttpContext.Current.Session["month"] = val;
         if (packages.Count() != 0)
@@ -133,7 +133,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     {
         double price = double.Parse(budget);
         dynamic jdata = new { };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if(HttpContext.Current.Session["month"] != null) {
             int month = int.Parse(HttpContext.Current.Session["month"].ToString());
         List<PackageDetail> packages = db.PackageDetails.Where(q => q.startDate.Value.Month == month && q.minRange <= price).ToList();
@@ -159,7 +159,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     {
         int night = int.Parse(nights);
         dynamic jdata = new { };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (HttpContext.Current.Session["month"] != null && HttpContext.Current.Session["get_budget"] != null)
         {
             int month = int.Parse(HttpContext.Current.Session["month"].ToString());
@@ -193,7 +193,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
         int val = Convert.ToInt32(value);
         int ratings = Convert.ToInt32(val);
         dynamic jdata = new { };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (HttpContext.Current.Session["month"] != null && HttpContext.Current.Session["get_budget"] != null && HttpContext.Current.Session["get_nights"] != null)
         {
             int month = int.Parse(HttpContext.Current.Session["month"].ToString());
@@ -229,7 +229,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     {
         
         dynamic jdata = new { };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (HttpContext.Current.Session["month"] != null && HttpContext.Current.Session["get_budget"] != null && HttpContext.Current.Session["get_nights"] != null && HttpContext.Current.Session["get_ratings"]!= null )
         {
             int month = int.Parse(HttpContext.Current.Session["month"].ToString());
@@ -264,7 +264,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
         var value = propertyInfo.GetValue(visaData, null);
         Boolean visamsg = Convert.ToBoolean(value);
         dynamic jdata = new { };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (HttpContext.Current.Session["month"] != null && HttpContext.Current.Session["get_budget"] != null && HttpContext.Current.Session["get_nights"] != null && HttpContext.Current.Session["get_ratings"] != null && HttpContext.Current.Session["get_nights"] != null && HttpContext.Current.Session["get_rooms"] != null)
         {
             int month = int.Parse(HttpContext.Current.Session["month"].ToString());
@@ -301,7 +301,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
         var value = propertyInfo.GetValue(ticketData, null);
         Boolean ticketmsg = Convert.ToBoolean(value);
         dynamic jdata = new { };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (HttpContext.Current.Session["month"] != null && HttpContext.Current.Session["get_budget"] != null && HttpContext.Current.Session["get_nights"] != null && HttpContext.Current.Session["get_ratings"] != null && HttpContext.Current.Session["get_nights"] != null && HttpContext.Current.Session["get_rooms"] != null && HttpContext.Current.Session["get_visa"] != null)
         {
             int month = int.Parse(HttpContext.Current.Session["month"].ToString());
@@ -332,7 +332,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     {
         
         dynamic jdata = new { };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (HttpContext.Current.Session["month"] != null && HttpContext.Current.Session["get_budget"] != null && HttpContext.Current.Session["get_nights"] != null && HttpContext.Current.Session["get_ratings"] != null && HttpContext.Current.Session["get_nights"] != null && HttpContext.Current.Session["get_rooms"] != null && HttpContext.Current.Session["get_visa"] != null && HttpContext.Current.Session["get_airlineChk"] != null)
         {
             int month = int.Parse(HttpContext.Current.Session["month"].ToString());
@@ -369,7 +369,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     public static string setMonth()
     {
         List<string> monthData = new List<string> { "", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         List<int> packages = db.PackageDetails.Select(q => q.startDate.Value.Month).Distinct().ToList();
         List<string> data = new List<string>();
         foreach (int i in packages) { data.Add( monthData[i]); }
@@ -378,7 +378,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     }
     public static string setBudget()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int month = int.Parse(HttpContext.Current.Session["month"].ToString());
         List<PackageDetail> packages = db.PackageDetails.Where(q => q.startDate.Value.Month == month).ToList();
         double min = packages.Select(q => q.minRange).Min();
@@ -389,7 +389,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     }
     public static string setNight()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int month = int.Parse(HttpContext.Current.Session["month"].ToString());
         double budget = double.Parse(HttpContext.Current.Session["get_budget"].ToString());
         List<PackageDetail> packages = db.PackageDetails.Where(q => q.startDate.Value.Month == month && (q.minRange <= budget)).ToList();
@@ -398,7 +398,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     public static string setRating()
     {
         List<string> ratingData = new List<string> { "", "economy", "budget", "Three_Star", "Four_Star", "Five_Star" };
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int month = int.Parse(HttpContext.Current.Session["month"].ToString());
         double budget = int.Parse(HttpContext.Current.Session["get_budget"].ToString());
         double nights = int.Parse(HttpContext.Current.Session["get_nights"].ToString());
@@ -409,7 +409,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     }
     public static string setRoom()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int month = int.Parse(HttpContext.Current.Session["month"].ToString());
         double budget = double.Parse(HttpContext.Current.Session["get_budget"].ToString());
         double nights = int.Parse(HttpContext.Current.Session["get_nights"].ToString());
@@ -420,7 +420,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     }
     public static string setVisa()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int month = int.Parse(HttpContext.Current.Session["month"].ToString());
         double budget = double.Parse(HttpContext.Current.Session["get_budget"].ToString());
         double nights = int.Parse(HttpContext.Current.Session["get_nights"].ToString());
@@ -434,7 +434,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     }
     public static string setAirlineChk()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int month = int.Parse(HttpContext.Current.Session["month"].ToString());
         double budget = double.Parse(HttpContext.Current.Session["get_budget"].ToString());
         double nights = int.Parse(HttpContext.Current.Session["get_nights"].ToString());
@@ -450,7 +450,7 @@ public partial class chat_ChatServices : System.Web.UI.Page
     }
     public static string setAirline()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int month = int.Parse(HttpContext.Current.Session["month"].ToString());
         double budget = double.Parse(HttpContext.Current.Session["get_budget"].ToString());
         double nights = int.Parse(HttpContext.Current.Session["get_nights"].ToString());

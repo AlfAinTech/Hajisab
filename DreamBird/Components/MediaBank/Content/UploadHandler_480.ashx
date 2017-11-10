@@ -14,7 +14,7 @@ public class UploadHandler : IHttpHandler
 
     public void ProcessRequest(HttpContext context)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (context.Request.Files.Count > 0)
         {
             HttpFileCollection files = context.Request.Files;

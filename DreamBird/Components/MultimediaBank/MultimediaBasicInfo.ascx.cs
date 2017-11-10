@@ -18,7 +18,7 @@ public partial class Components_MultimediaBank_MultimediaBasicInfo : System.Web.
 
     protected void save_multimedia_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if(mmbank_id.Value.Equals("0"))
         {
             Multimediabank bank = new Multimediabank();
@@ -111,7 +111,7 @@ public partial class Components_MultimediaBank_MultimediaBasicInfo : System.Web.
 
     public void BindData(int id)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var MultimediaBank = db.Multimediabanks.Where(w => w.id == id).First();
         mmbank_id.Value = MultimediaBank.id.ToString();
         mmbank_name.Text = MultimediaBank.Name;

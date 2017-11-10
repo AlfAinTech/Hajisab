@@ -53,7 +53,7 @@ public partial class Components_Tags_TagControl : System.Web.UI.UserControl
     }
     public void LoadScripts()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         List<string> tempString = new List<string>();
         var list = db.Tags.ToList();
         foreach (var lst in list)

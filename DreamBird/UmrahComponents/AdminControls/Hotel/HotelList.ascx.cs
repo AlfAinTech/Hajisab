@@ -25,9 +25,9 @@ public partial class UmrahComponents_AdminControls_Hotel_HotelList : System.Web.
     public void BindData()
     {
         //  String url = string.Format("{0}", Page.Request.Url.PathAndQuery);
-        // String dream_name = DreamUtil.getDreamNameFromURL(url).ToString();
+        // String dream_name = PackageUtil.getPackageNameFromURL(url).ToString();
 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
        
         //  int dream_id = db.Dreams.Where(dream => dream.DreamName == dream_name).First().id;
         String uid = HttpContext.Current.User.Identity.GetUserId();
@@ -62,7 +62,7 @@ public partial class UmrahComponents_AdminControls_Hotel_HotelList : System.Web.
 
     protected void hotelSearch_hotelSearchrd(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
 
         //  int dream_id = db.Dreams.Where(dream => dream.DreamName == dream_name).First().id;
         EventArgHotelSearch evt = (EventArgHotelSearch)e;

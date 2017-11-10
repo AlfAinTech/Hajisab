@@ -21,10 +21,10 @@ public partial class Components_Account_ForgetPassword : System.Web.UI.UserContr
         {
             string Body = System.IO.File.ReadAllText(Server.MapPath("../../Components/Account/PasswordRecovery.html"));
             Body =  Body.Replace("{DynamicContent}", "http://localhost:64671/Components/Account/ResetPassword?verificationID=" + currentuser_id + "");
-            DreamBirdEntities db = new DreamBirdEntities();
-            DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
+            PackageEntities db = new PackageEntities();
+            //DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
             MailMessage mailMessage = new MailMessage();
-            mailMessage.To.Add(dup.AspNetUser.Email);
+            //mailMessage.To.Add(dup.AspNetUser.Email);
             mailMessage.From = new MailAddress("dreambirdapp@gmail.com");
             mailMessage.Subject = "DreamBird e-mail test";
             mailMessage.IsBodyHtml = true;
@@ -47,7 +47,7 @@ public partial class Components_Account_ForgetPassword : System.Web.UI.UserContr
 
     protected void send_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var user = db.AspNetUsers.Where(q => q.Email == Email.Text);
         if (user.Count() != 0)
         {

@@ -14,14 +14,14 @@ public partial class UmrahComponents_AdminControls_Booking_BookingConfirmation :
 
     protected void submit_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         BindDetailData(TrackingId.Text);
 
 
     }
     public void BindDetailData(string trackingId)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         
         var data = db.AlharmainUserPackages.Where(q => q.trackingID == trackingId).ToList();
         if (data.Count() != 0)
@@ -70,7 +70,7 @@ public partial class UmrahComponents_AdminControls_Booking_BookingConfirmation :
     }
     public double ComputePrice(int makkahAccom_id, int madinaAccom_id,PackageDetail pd)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         
         double price = 0;
         //Get Makkah madina Accommodation
@@ -97,7 +97,7 @@ public partial class UmrahComponents_AdminControls_Booking_BookingConfirmation :
 
     protected void saveUser_Click(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
        var result = db.AlharmainUserPackages.Where(q => q.trackingID == TrackingId.Text).ToList();
         if(result.Count() > 0)
         {

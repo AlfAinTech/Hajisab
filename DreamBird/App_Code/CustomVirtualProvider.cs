@@ -39,14 +39,14 @@ public class CustomVirtualProvider : VirtualPathProvider
         {
             viewName = viewName.Replace(".ascx", "");
 
-            String dreamName = DreamUtil.getDreamNameFromControlName(viewName);
-            String pageName = DreamUtil.getPageNameFromControlName(viewName);
+            String PackageName = PackageUtil.getPackageNameFromControlName(viewName);
+            String pageName = PackageUtil.getPageNameFromControlName(viewName);
             //if (pageName.Contains("?"))
             //{
-            //    pageName = DreamUtil.getCleanPageWithoutQueryString(pageName);
+            //    pageName = PackageUtil.getCleanPageWithoutQueryString(pageName);
             //}
-            DreamBirdEntities db = new DreamBirdEntities();
-            var PageLayout = db.DreamLayouts.Where(q => q.Dream.DreamName == dreamName && q.Page == pageName).ToList();
+            PackageEntities db = new PackageEntities();
+            var PageLayout = db.DreamLayouts.Where(q => q.Package.PackageName == PackageName && q.Page == pageName).ToList();
             if (PageLayout.Count() != 0)
             {
                 DreamLayout page = PageLayout.First();
@@ -66,11 +66,11 @@ public class CustomVirtualProvider : VirtualPathProvider
                     page = getDreamLayout(viewName);
 
                     //Remove File from Array so the cache get reset.
-                    String dreamName = DreamUtil.getDreamNameFromControlName(viewName);
+                    String PackageName = PackageUtil.getPackageNameFromControlName(viewName);
                     ArrayList files = (ArrayList)HttpContext.Current.Application["recompilation_layouts"];
                     if (files != null)
                     {
-                        files.Remove(dreamName);
+                        files.Remove(PackageName);
                     }
                     HttpContext.Current.Application["recompilation_layouts"] = files;
 
@@ -107,49 +107,31 @@ public class CustomVirtualProvider : VirtualPathProvider
             }
         }
 
-        private Boolean isAuthorizedUser(DreamLayout page)
-        {
+        //private Boolean isAuthorizedUser(DreamLayout page)
+        //{
 
-            // for annonymous user;
-            if (HttpContext.Current.User.Identity.IsAuthenticated == false)
-            {
-                if (page.DreamPageAuthorizations.Any(auth => auth.PageRole == "AnonymousUser" && auth.isAllowed == true))
-                {
+        //    //// for annonymous user;
+        //    //if (HttpContext.Current.User.Identity.IsAuthenticated == false)
+        //    //{
+        //    //    if (page.Any(auth => auth.PageRole == "AnonymousUser" && auth.isAllowed == true))
+        //    //    {
 
-                    return true;
-                }
+        //    //        return true;
+        //    //    }
 
 
-            }
+        //    //}
 
-            // for admin user;
-            if (HttpContext.Current.User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("Admin"))
-            {
-                return true;
-            }
-            // for enrolled user
+        //    //// for admin user;
+        //    //if (HttpContext.Current.User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("Admin"))
+        //    //{
+        //    //    return true;
+        //    //}
+            
 
-            if (HttpContext.Current.User.Identity.IsAuthenticated && page.Dream.DreamEnrollments.Any(de => de.AspNetUserID == HttpContext.Current.User.Identity.GetUserId()))
-            {
-                if (page.DreamPageAuthorizations.Any(auth => auth.PageRole == "EnrolledUser" && auth.isAllowed == true))
-                {
-                    return true;
-                }
+        //    //return false;
 
-            }
-            // for register user {login user}
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                if (page.DreamPageAuthorizations.Any(auth => auth.PageRole == "RegisteredUser" && auth.isAllowed == true))
-                {
-                    return true;
-                }
-
-            }
-
-            return false;
-
-        }
+        //}
         public override CacheDependency GetCacheDependency(string virtualPath, System.Collections.IEnumerable virtualPathDependencies, DateTime utcStart)
         {
             return null;
@@ -175,8 +157,8 @@ public class CustomVirtualProvider : VirtualPathProvider
             if (virtualPath.Contains("LayoutControl"))
             {
                 ArrayList files = (ArrayList)HttpContext.Current.Application["recompilation_layouts"];
-                String dreamName = DreamUtil.getDreamNameFromControlName(virtualPath);
-                if (files != null && files.Contains(dreamName))
+                String PackageName = PackageUtil.getPackageNameFromControlName(virtualPath);
+                if (files != null && files.Contains(PackageName))
                 {
 
                     return true;

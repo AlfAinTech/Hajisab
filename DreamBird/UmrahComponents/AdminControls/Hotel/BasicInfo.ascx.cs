@@ -27,8 +27,8 @@ public partial class UmrahComponents_AdminControls_Hotel_BasicInfo : System.Web.
     {
         if (Page.IsValid)
         {
-            DreamBirdEntities db;
-            db = new DreamBirdEntities();
+            PackageEntities db;
+            db = new PackageEntities();
             Hotel d;
             String uid = HttpContext.Current.User.Identity.GetUserId();
             if (ViewState["SelectedhotelID"] == null)
@@ -107,7 +107,7 @@ public partial class UmrahComponents_AdminControls_Hotel_BasicInfo : System.Web.
 
     public void EditDataBind(int id)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         Hotel dr = db.Hotels.Where(q => q.id == id).First();
         hotelName_txt.Text = dr.hotelName;
         description_txt.InnerText = dr.description;
@@ -160,7 +160,7 @@ public partial class UmrahComponents_AdminControls_Hotel_BasicInfo : System.Web.
     {
         EventArgMediaSelection evt = (EventArgMediaSelection)e;
         int media_id = evt.SelectedMedia;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         
         MediaItem media_item = db.MediaItems.Where(q=>q.id == media_id).First();
         if (media_item.mediaType.ToLower() == "image" || media_item.mediaType.ToLower() == "image")

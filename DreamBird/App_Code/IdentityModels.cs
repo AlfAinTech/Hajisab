@@ -4,6 +4,7 @@ using Microsoft.Owin.Security;
 using System.Web;
 using System;
 using DreamBird;
+using System.Data.Entity;
 
 namespace DreamBird
 {
@@ -17,6 +18,16 @@ namespace DreamBird
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<AspNetUser>().ToTable("AspNetUser", schemaName: "Jahanzaib");
+            //modelBuilder.Entity<AspNetRole>().ToTable("AspNetRole", schemaName: "Jahanzaib");
+            //modelBuilder.Entity<AspNetUserClaim>().ToTable("AspNetUserClaim", schemaName: "Jahanzaib");
+            //modelBuilder.Entity<AspNetUserLogin>().ToTable("AspNetUserLogin", schemaName: "Jahanzaib");
+            Database.SetInitializer<ApplicationDbContext>(null);
+            modelBuilder.HasDefaultSchema("Jahanzaib");
+            base.OnModelCreating(modelBuilder);
         }
     }
 

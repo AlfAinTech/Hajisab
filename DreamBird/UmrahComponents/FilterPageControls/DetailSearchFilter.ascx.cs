@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : System.Web.UI.UserControl, ISearch, ICoreDreamControl
+public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : System.Web.UI.UserControl, ISearch, ICorePackageControl
 {
      public event EventHandler DoSearch;
     protected void Page_Load(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
-        DreamUtil.SearchInterface = (ISearch)this;
+        PackageEntities db = new PackageEntities();
+        PackageUtil.SearchInterface = (ISearch)this;
         DoSearch += sudo_searcher;
         if (!IsPostBack)
         {
@@ -63,14 +63,14 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
     }
     public int getminPrice()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var data = db.PackageDetails.ToList();
         return int.Parse( data.Min(q => q.minAmount).ToString());
 
     }
     public int getmaxPrice()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var data = db.PackageDetails.ToList();
         return int.Parse(data.Max(q => q.minAmount).ToString());
 
@@ -179,7 +179,7 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
     }
     protected void search()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         List<PackageDetail> data = db.PackageDetails.ToList();
         if (panel1.Visible)
         { int budget = int.Parse(control1.Text);
@@ -258,7 +258,7 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
        // throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         //throw new NotImplementedException();
     }

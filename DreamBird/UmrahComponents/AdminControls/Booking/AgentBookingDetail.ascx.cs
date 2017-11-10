@@ -26,10 +26,10 @@ public partial class UmrahComponents_AdminControls_Booking_AgentBookingDetail : 
 
     private void BindData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         String uid = HttpContext.Current.User.Identity.GetUserId();
         if(!ShowCustomPackage)
-            rptAlharmainBooking.DataSource = db.AlharmainUserPackages.Where(q => q.PackageDetail.Dream.AspNetUserID == uid && q.isCustomPackage==ShowCustomPackage ).ToList();
+            rptAlharmainBooking.DataSource = db.AlharmainUserPackages.Where(q => q.PackageDetail.Package.AspNetUserID == uid && q.isCustomPackage==ShowCustomPackage ).ToList();
         else
             rptAlharmainBooking.DataSource = db.AlharmainUserPackages.Where(q => q.isCustomPackage == ShowCustomPackage).ToList();
 
@@ -39,7 +39,7 @@ public partial class UmrahComponents_AdminControls_Booking_AgentBookingDetail : 
     protected void rptAlharmainBooking_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         int RecordID = int.Parse(e.CommandArgument.ToString());
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         AlharmainUserPackage userPackage = db.AlharmainUserPackages.Single(id => id.id == RecordID);
 
         if (userPackage != null)

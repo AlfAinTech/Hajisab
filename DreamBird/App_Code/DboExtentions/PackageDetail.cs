@@ -165,7 +165,7 @@ public partial class PackageDetail
         set { }
         get
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             DateTime dt = this.startDate.Value;
             string month = dt.ToString("MMM", CultureInfo.InvariantCulture).ToLower();
             return month;
@@ -176,7 +176,7 @@ public partial class PackageDetail
         set { }
         get
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             if (this.isAirLineAvailable)
             {
                 return this.Flight1.AirLine.Name;
@@ -197,7 +197,7 @@ public partial class PackageDetail
         set { }
         get
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             DateTime today = System.DateTime.Today;
             List<DiscountPackage> discounts = db.DiscountPackages.Where(q => q.packageDetailID == this.id && (q.availableFrom <= today && q.availableTill >= today)).OrderByDescending(q => q.discountPercent).ToList();
             if (discounts.Count() != 0)
@@ -217,7 +217,7 @@ public partial class PackageDetail
         set { }
         get
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             DateTime today = System.DateTime.Today;
             List<DiscountPackage> discounts = db.DiscountPackages.Where(q => q.packageDetailID == this.id && (q.availableFrom <= today && q.availableTill >= today)).OrderByDescending(q => q.discountPercent).ToList();
             if (discounts.Count() != 0)

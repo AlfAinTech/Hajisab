@@ -19,7 +19,7 @@ public class RenderExternalMedia : IHttpHandler
         DateTime DateAdded = Convert.ToDateTime(context.Request.QueryString["DateAdded"].ToString());
         int Current = Convert.ToInt32(CurrentPage);
         int Skip = 10 * (Current - 1);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         List<MediaItemMarkup> MediaItems = new List<MediaItemMarkup>();
         var MediaItem = db.MediaItems.Where(w => w.name.Contains(MediaName) && w.mediaType.Contains(MediaType) && w.DateAdded >= DateAdded && w.MediumType == "External").ToList().OrderBy(o => o.name).Skip(Skip).Take(10);
         foreach (var item in MediaItem)

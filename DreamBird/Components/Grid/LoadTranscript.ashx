@@ -12,7 +12,7 @@ public class LoadTranscript : IHttpHandler {
         int Id = 0;
         if(context.Request.Form.Count != 0)
             Id = Convert.ToInt32(context.Request.Form[0]);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var Transcripts = db.VideoTranscripts.Where(w => w.MediaItem_id == Id).ToList();
         List<Transcript> list = new List<Transcript>();
         foreach(var Transcript in Transcripts)

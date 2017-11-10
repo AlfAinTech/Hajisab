@@ -12,7 +12,7 @@
             var data;
             var count = -1;
             bindMyScript = function (data) {
-                console.log(data);
+                console.log(data+"jlkjn");
                 //$(this).attr("CommandArgument", data);
                 //$(this).attr("CssClass", data);
                 // $(this).Click();

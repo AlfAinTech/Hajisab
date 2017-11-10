@@ -5,188 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="df001a0320234154bd8d41d8be9f4656" Name="Dream" ZoomLevel="73">
-        <EntityTypeShape EntityType="DreamBirdModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.AdminsettingsNewsFeed" Width="1.5" PointX="2.75" PointY="4.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.AssignmentBank" Width="1.5" PointX="13.5" PointY="69" />
-        <EntityTypeShape EntityType="DreamBirdModel.AssignmentCategory" Width="1.5" PointX="11.25" PointY="69.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.AssignmentResponse" Width="1.5" PointX="15.75" PointY="69.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.BloomsTaxonomy" Width="1.5" PointX="4.75" PointY="4.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.ChatAdmin" Width="1.5" PointX="9.75" PointY="89.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.ClientLayout" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.ClientPage" Width="1.5" PointX="7.5" PointY="30.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.ControlCategory" Width="1.5" PointX="11.25" PointY="30.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.HTMLControl" Width="1.5" PointX="13.5" PointY="29.5" />
-        <EntityTypeShape EntityType="DreamBirdModel.DreamLayout" Width="1.5" PointX="7.5" PointY="47.625" />
-        <EntityTypeShape EntityType="DreamBirdModel.DreamMessage" Width="1.5" PointX="7.5" PointY="70.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.DreamPageAuthorization" Width="1.5" PointX="9.75" PointY="77.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.DreamPageControl" Width="1.5" PointX="15.75" PointY="49.5" />
-        <EntityTypeShape EntityType="DreamBirdModel.DreamTag" Width="1.5" PointX="15.75" PointY="39" />
-        <EntityTypeShape EntityType="DreamBirdModel.DreamType" Width="1.5" PointX="3" PointY="46" />
-        <EntityTypeShape EntityType="DreamBirdModel.DreamUserLike" Width="1.5" PointX="7.5" PointY="39.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.DreamUserProfile" Width="1.5" PointX="5.25" PointY="70" />
-        <EntityTypeShape EntityType="DreamBirdModel.DynamicLayout" Width="1.5" PointX="6.75" PointY="3.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.FIBOption" Width="1.5" PointX="9.75" PointY="60" />
-        <EntityTypeShape EntityType="DreamBirdModel.FileCategory" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.GroupQuestion" Width="1.5" PointX="9.75" PointY="57.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.LayoutTextBank" Width="1.5" PointX="15.75" PointY="45.5" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonAssignment" Width="1.5" PointX="15.75" PointY="53.625" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonMenu" Width="1.5" PointX="9.75" PointY="79.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonMenuAvailability" Width="1.5" PointX="12" PointY="86" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonMenuPreRequisite" Width="1.5" PointX="12" PointY="83.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonMultimedia" Width="1.5" PointX="12.75" PointY="45.625" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonProgressControl" Width="1.5" PointX="12" PointY="65.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonProgressDashBoard" Width="1.5" PointX="9.75" PointY="50.5" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonQuestion" Width="1.5" PointX="9.75" PointY="53.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonQuiz" Width="1.5" PointX="9.75" PointY="95.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.LessonVideo" Width="1.5" PointX="9.75" PointY="86.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.MCQOption" Width="1.5" PointX="6.75" PointY="6.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.MediaGroup" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.MultiFIBComponent" Width="1.5" PointX="9.75" PointY="65.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.MultiFIBMarkup" Width="1.5" PointX="9.75" PointY="62.5" />
-        <EntityTypeShape EntityType="DreamBirdModel.Multimediabank" Width="1.5" PointX="10.5" PointY="35.625" />
-        <EntityTypeShape EntityType="DreamBirdModel.Navigation" Width="1.5" PointX="9.75" PointY="39.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.News" Width="1.5" PointX="5.25" PointY="47.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.NewsDreamNew" Width="1.5" PointX="7.5" PointY="42.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.NewsRelatedNew" Width="1.5" PointX="7.5" PointY="36.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.QuestionBank" Width="1.5" PointX="7.5" PointY="56.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.QuestionCategory" Width="1.5" PointX="5.25" PointY="60.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.QuestionExplanation" Width="1.5" PointX="9.75" PointY="43.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.QuestionHint" Width="1.5" PointX="9.75" PointY="72.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.QuestionSubCategory" Width="1.5" PointX="5.25" PointY="55" />
-        <EntityTypeShape EntityType="DreamBirdModel.QuestionType" Width="1.5" PointX="5.25" PointY="58.125" />
-        <EntityTypeShape EntityType="DreamBirdModel.QuizBank" Width="1.5" PointX="7.5" PointY="73.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.QuizBankQuestion" Width="1.5" PointX="14.75" PointY="65.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.QuizCategory" Width="1.5" PointX="5.25" PointY="75.25" />
         <EntityTypeShape EntityType="DreamBirdModel.sysdiagram" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.Tag" Width="1.5" PointX="13.5" PointY="38.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.TextBank" Width="1.5" PointX="13.5" PointY="41.625" />
-        <EntityTypeShape EntityType="DreamBirdModel.TextBankTag" Width="1.5" PointX="15.75" PointY="41.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.UserHintStatu" Width="1.5" PointX="12.75" PointY="53.625" />
-        <EntityTypeShape EntityType="DreamBirdModel.UserLessonProgress" Width="1.5" PointX="12" PointY="61.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.UserQuizStatu" Width="1.5" PointX="9.75" PointY="46.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.UserResponse" Width="1.5" PointX="12.75" PointY="49.25" />
-        <EntityTypeShape EntityType="DreamBirdModel.VideoTranscript" Width="1.5" PointX="8.75" PointY="3.75" />
-        <AssociationConnector Association="DreamBirdModel.FK__Assignmen__Assig__640DD89F" />
-        <AssociationConnector Association="DreamBirdModel.FK__Assignmen__Assig__6501FCD8" />
-        <AssociationConnector Association="DreamBirdModel.FK__Assignmen__Assig__65F62111" />
-        <AssociationConnector Association="DreamBirdModel.FK__Assignmen__Categ__3DE82FB7" />
-        <AssociationConnector Association="DreamBirdModel.FK__Assignmen__Categ__3EDC53F0" />
-        <AssociationConnector Association="DreamBirdModel.FK__Assignmen__Categ__3FD07829" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonAss__Assig__2F650636" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonAss__Assig__30592A6F" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonAss__Assig__314D4EA8" />
-        <AssociationConnector Association="DreamBirdModel.FK_ChatAdmin_DreamLayouts" />
-        <AssociationConnector Association="DreamBirdModel.FK__Controls__Contro__6ABAD62E" />
-        <AssociationConnector Association="DreamBirdModel.FK__Controls__Contro__6BAEFA67" />
-        <AssociationConnector Association="DreamBirdModel.FK__Controls__Contro__6CA31EA0" />
-        <AssociationConnector Association="DreamBirdModel.FK__DreamPage__Compo__3EA749C6" />
-        <AssociationConnector Association="DreamBirdModel.FK__DreamPage__Compo__3F9B6DFF" />
-        <AssociationConnector Association="DreamBirdModel.FK__DreamPage__Compo__408F9238" />
-        <AssociationConnector Association="DreamBirdModel.FK__DreamPage__Dream__1CBC4616" />
-        <AssociationConnector Association="DreamBirdModel.FK__DreamPage__Layou__54CB950F" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonAss__Layou__30C33EC3" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonMul__Layou__4589517F" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonPro__Layou__5C6CB6D7" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonQue__Layou__4B7734FF" />
-        <AssociationConnector Association="DreamBirdModel.FK__UserHintSt__Page__314D4EA8" />
-        <AssociationConnector Association="DreamBirdModel.FK__UserQuizSt__Page__29E1370A" />
-        <AssociationConnector Association="DreamBirdModel.FK__UserRespon__Page__46B27FE2" />
-        <AssociationConnector Association="DreamBirdModel.FK_LayoutTextBank_DreamLayouts" />
-        <AssociationConnector Association="DreamBirdModel.FK_LessonMenu_DreamLayouts" />
-        <AssociationConnector Association="DreamBirdModel.FK_LessonMenu_DreamLayouts1" />
-        <AssociationConnector Association="DreamBirdModel.FK_LessonProgressDashBoard_DreamLayouts" />
-        <AssociationConnector Association="DreamBirdModel.FK_LessonVideo_DreamLayouts1" />
-        <AssociationConnector Association="DreamBirdModel.FK_Navigations_DreamLayoutsnew" />
-        <AssociationConnector Association="DreamBirdModel.FK_DreamMessages_DreamUserProfile" />
-        <AssociationConnector Association="DreamBirdModel.FK_DreamMessages_DreamUserProfile1" />
-        <AssociationConnector Association="DreamBirdModel.FK_Tag" />
-        <AssociationConnector Association="DreamBirdModel.FK__FIBOption__Quest__2B0A656D" />
-        <AssociationConnector Association="DreamBirdModel.FK__GroupQues__Prima__79FD19BE" />
-        <AssociationConnector Association="DreamBirdModel.FK__GroupQues__Secon__7AF13DF7" />
-        <AssociationConnector Association="DreamBirdModel.FK_LayoutTextBank_TextBank" />
-        <AssociationConnector Association="DreamBirdModel.FK_LayoutTextBank_TextBank1" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonMen__menu___2704CA5F" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonMen__pre_r__2610A626" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonPro__MenuI__5B78929E" />
-        <AssociationConnector Association="DreamBirdModel.FK_LessonMenu_LessonMenu" />
-        <AssociationConnector Association="DreamBirdModel.FK_LessonMenuAvailability_LessonMenu" />
-        <AssociationConnector Association="DreamBirdModel.FK_UserLessonProgress_LessonMenu" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonMul__Multi__2C88998B" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonMul__Multi__2D7CBDC4" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonMul__Multi__2E70E1FD" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonQue__Quest__3587F3E0" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonQui__QuizI__00AA174D" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonQui__QuizI__019E3B86" />
-        <AssociationConnector Association="DreamBirdModel.FK__LessonQui__QuizI__7FB5F314" />
-        <AssociationConnector Association="DreamBirdModel.FK__MultiFIBC__Quest__0169315C" />
-        <AssociationConnector Association="DreamBirdModel.FK__MultiFIBM__Quest__02925FBF" />
-        <AssociationConnector Association="DreamBirdModel.FK__MultiFIBM__Quest__038683F8" />
-        <AssociationConnector Association="DreamBirdModel.FK__MultiFIBM__Quest__047AA831" />
-        <AssociationConnector Association="DreamBirdModel.FK_NewsDreamNews_News" />
-        <AssociationConnector Association="DreamBirdModel.FK_NewsRelatedNews_News" />
-        <AssociationConnector Association="DreamBirdModel.FK_NewsRelatedNews_News1" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuestionB__Categ__42E1EEFE" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuestionB__SubCa__43D61337" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuestionB__TypeI__44CA3770" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuestionE__Quest__12C8C788" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuestionH__Quest__436BFEE3" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuizBankQ__Quest__489AC854" />
-        <AssociationConnector Association="DreamBirdModel.FK__UserHintS__Quest__30592A6F" />
-        <AssociationConnector Association="DreamBirdModel.FK__UserQuizS__Quest__4E53A1AA" />
-        <AssociationConnector Association="DreamBirdModel.FK__UserRespo__Quest__51300E55" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuestionS__Categ__4959E263" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuestionS__Categ__4A4E069C" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuestionS__Categ__4B422AD5" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuizBank__Catego__56B3DD81" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuizBank__Catego__57A801BA" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuizBank__Catego__589C25F3" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuizBankQ__QuizI__0EF836A4" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuizBankQ__QuizI__0FEC5ADD" />
-        <AssociationConnector Association="DreamBirdModel.FK__QuizBankQ__QuizI__10E07F16" />
-        <AssociationConnector Association="DreamBirdModel.FK__UserQuizS__QuizI__1A69E950" />
-        <AssociationConnector Association="DreamBirdModel.FK__UserQuizS__QuizI__1B5E0D89" />
-        <AssociationConnector Association="DreamBirdModel.FK__UserQuizS__QuizI__1C5231C2" />
-        <AssociationConnector Association="DreamBirdModel.FK_TextBankTag_Tags" />
-        <AssociationConnector Association="DreamBirdModel.FK_TextBankTag_TextBank" />
-        <EntityTypeShape EntityType="DreamBirdModel.XFile" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="DreamBirdModel.InviteSharePage" Width="1.5" PointX="9.75" PointY="27.875" />
-        <AssociationConnector Association="DreamBirdModel.FK_InviteSharePage_DreamLayouts" />
-        <AssociationConnector Association="DreamBirdModel.FK__Files__FileCateg__3A179ED3" />
-        <AssociationConnector Association="DreamBirdModel.FK__Files__FileCateg__3B0BC30C" />
-        <AssociationConnector Association="DreamBirdModel.FK__Files__FileCateg__3BFFE745" />
         <EntityTypeShape EntityType="DreamBirdModel.AspNetRole" Width="1.5" PointX="0.75" PointY="50.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="44.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="41.125" />
-        <EntityTypeShape EntityType="DreamBirdModel.AspNetUser" Width="1.5" PointX="3" PointY="48.875" />
-        <EntityTypeShape EntityType="DreamBirdModel.DreamEnrollment" Width="1.5" PointX="13.5" PointY="35.25" />
+        <EntityTypeShape EntityType="DreamBirdModel.AspNetUserClaim" Width="1.5" PointX="5.625" PointY="49.25" />
+        <EntityTypeShape EntityType="DreamBirdModel.AspNetUser" Width="1.5" PointX="3.375" PointY="49.25" />
+        <EntityTypeShape EntityType="DreamBirdModel.ChatAdmin" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="DreamBirdModel.DreamLayout" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="DreamBirdModel.InviteSharePage" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DreamBirdModel.Multimediabank" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DreamBirdModel.Tag" Width="1.5" PointX="3.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DreamBirdModel.VideoTranscript" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DreamBirdModel.AspNetUserLogin" Width="1.5" PointX="5.625" PointY="52" />
         <AssociationConnector Association="DreamBirdModel.FK_Jahanzaib_AspNetUserClaims_Jahanzaib_AspNetUsers_UserId" />
         <AssociationConnector Association="DreamBirdModel.FK_Jahanzaib_AspNetUserLogins_Jahanzaib_AspNetUsers_UserId" />
-        <AssociationConnector Association="DreamBirdModel.FK_DreamEnrollment_AspNetUsers" />
-        <AssociationConnector Association="DreamBirdModel.FK_DreamUserLikes_AspNetUsers" />
-        <AssociationConnector Association="DreamBirdModel.FK_DreamUserProfile_AspNetUsers" />
-        <AssociationConnector Association="DreamBirdModel.FK_UserLessonProgress_AspNetUsers" />
+        <AssociationConnector Association="DreamBirdModel.FK_ChatAdmin_DreamLayouts" />
+        <AssociationConnector Association="DreamBirdModel.FK_InviteSharePage_DreamLayouts" />
         <AssociationConnector Association="DreamBirdModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="DreamBirdModel.Dream" Width="1.5" PointX="14.25" PointY="57.375" />
-        <AssociationConnector Association="DreamBirdModel.FK__Dreams__AspNetUs__66EA454A" />
-        <AssociationConnector Association="DreamBirdModel.FK__ClientPag__Dream__73501C2F" />
-        <AssociationConnector Association="DreamBirdModel.FK__ClientPag__Dream__74444068" />
-        <AssociationConnector Association="DreamBirdModel.FK__ClientPag__Dream__753864A1" />
-        <AssociationConnector Association="DreamBirdModel.FK_DreamEnrollment_Dreams" />
-        <AssociationConnector Association="DreamBirdModel.FK_DreamLayouts_Dreams" />
-        <AssociationConnector Association="DreamBirdModel.FK_Dreams_DreamType" />
-        <AssociationConnector Association="DreamBirdModel.FK_DreamUserLikes_Dreams" />
-        <AssociationConnector Association="DreamBirdModel.FK_NewsDreamNews_Dreams" />
         </Diagram>
       <Diagram DiagramId="90e053de41484fc893d91b3ddd48a67a" Name="MediaBank" ZoomLevel="48" >
-        <EntityTypeShape EntityType="DreamBirdModel.MediaCategory" Width="1.5" PointX="0.75" PointY="3.375" />
-        <EntityTypeShape EntityType="DreamBirdModel.MediaItem" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="DreamBirdModel.MediaTag" Width="1.5" PointX="5.25" PointY="3.125" />
+        <EntityTypeShape EntityType="DreamBirdModel.MediaCategory" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="DreamBirdModel.MediaGroup" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DreamBirdModel.MediaItem" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="DreamBirdModel.MediaTag" Width="1.5" PointX="5.25" PointY="2.125" />
         <AssociationConnector Association="DreamBirdModel.FK_MediaItems_MediaCategories" />
         <AssociationConnector Association="DreamBirdModel.FK_MediaTags_MediaItems" />
-      </Diagram>
-      <Diagram DiagramId="fc373e5988cb4e77a82f1bd8fbcb6cf4" Name="TextBank" >
-      </Diagram>
-      <Diagram DiagramId="73cd98c172eb4770b7c36affce4b6847" Name="DreamEnrollment" >
       </Diagram>
       <Diagram DiagramId="625a1184ed4b443794f0578baf1f00a2" Name="UmrahComponent" ZoomLevel="66" >
         <EntityTypeShape EntityType="DreamBirdModel.Accommodation" Width="1.5" PointX="3" PointY="20" />
@@ -195,29 +37,18 @@
         <EntityTypeShape EntityType="DreamBirdModel.Hotel" Width="1.5" PointX="0.75" PointY="11.5" />
         <EntityTypeShape EntityType="DreamBirdModel.HotelFacility" Width="1.5" PointX="3" PointY="17" />
         <EntityTypeShape EntityType="DreamBirdModel.HotelImage" Width="1.5" PointX="3" PointY="23.625" />
-        <EntityTypeShape EntityType="DreamBirdModel.Package" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="DreamBirdModel.PackageDetail" Width="1.5" PointX="3" PointY="9" />
         <EntityTypeShape EntityType="DreamBirdModel.PackageItenryDetail" Width="1.5" PointX="8.25" PointY="10.125" />
         <EntityTypeShape EntityType="DreamBirdModel.Ziarat" Width="1.5" PointX="0.75" PointY="8" />
         <AssociationConnector Association="DreamBirdModel.FK_Accommodation_Hotel" />
-        <AssociationConnector Association="DreamBirdModel.FK_DiscountPackage_PackageDetail" />
         <AssociationConnector Association="DreamBirdModel.FK_HotelFacility_Hotel" />
         <AssociationConnector Association="DreamBirdModel.FK_HotelImage_Hotel" />
-        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_HotelMadina" />
-        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_HotelMakkah" />
         <AssociationConnector Association="DreamBirdModel.FK_PackageItenryDetail_Hotel" />
-        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_Ziarat" />
-        <AssociationConnector Association="DreamBirdModel.FK_PackageItenryDetail_PackageDetail" />
         <EntityTypeShape EntityType="DreamBirdModel.TransPort" Width="1.5" PointX="0.75" PointY="16.75" />
-        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_TransPort" />
         <AssociationConnector Association="DreamBirdModel.FK_transportID" />
         <EntityTypeShape EntityType="DreamBirdModel.AirLine" Width="1.5" PointX="5.375" PointY="1.75" />
         <EntityTypeShape EntityType="DreamBirdModel.Flight" Width="1.5" PointX="7.625" PointY="1" />
         <EntityTypeShape EntityType="DreamBirdModel.VisaPackage" Width="1.5" PointX="0.75" PointY="19.5" />
         <AssociationConnector Association="DreamBirdModel.FK_Flight_AirLine" />
-        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_Flight" />
-        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_Flight1" />
-        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_VisaPackages" />
         <EntityTypeShape EntityType="DreamBirdModel.AlharmainUser" Width="1.5" PointX="5.375" PointY="6" />
         <EntityTypeShape EntityType="DreamBirdModel.CustomFlightConfiguration" Width="1.5" PointX="7.625" PointY="14.75" />
         <AssociationConnector Association="DreamBirdModel.FK_CustomFlightConfiguration_AirLine" />
@@ -229,7 +60,22 @@
         <AssociationConnector Association="DreamBirdModel.FK_AlharmainUserPackage_AlharmainUser1" />
         <AssociationConnector Association="DreamBirdModel.FK_AlharmainUserPackage_CustomPackage" />
         <AssociationConnector Association="DreamBirdModel.FK_AlharmainUserPackage_DiscountPackage" />
+        <EntityTypeShape EntityType="DreamBirdModel.PackageType" Width="1.5" PointX="12.75" PointY="2.375" />
+        <EntityTypeShape EntityType="DreamBirdModel.PackageTag" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DreamBirdModel.Package" Width="1.5" PointX="15" PointY="1" />
+        <AssociationConnector Association="DreamBirdModel.FK_Dreams_DreamType" />
+        <EntityTypeShape EntityType="DreamBirdModel.PackageDetail" Width="1.5" PointX="17.25" PointY="7.875" />
         <AssociationConnector Association="DreamBirdModel.FK_AlharmainUserPackage_PackageDetail" />
+        <AssociationConnector Association="DreamBirdModel.FK_DiscountPackage_PackageDetail" />
+        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_Flight" />
+        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_Flight1" />
+        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_HotelMadina" />
+        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_HotelMakkah" />
+        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_Dreams" />
+        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_TransPort" />
+        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_VisaPackages" />
+        <AssociationConnector Association="DreamBirdModel.FK_PackageDetail_Ziarat" />
+        <AssociationConnector Association="DreamBirdModel.FK_PackageItenryDetail_PackageDetail" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

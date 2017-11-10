@@ -11,10 +11,10 @@ using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
-public partial class DreamBirdEntities : DbContext
+public partial class PackageEntities : DbContext
 {
-    public DreamBirdEntities()
-        : base("name=DreamBirdEntities")
+    public PackageEntities()
+        : base("name=PackageEntities")
     {
     }
 
@@ -29,89 +29,34 @@ public partial class DreamBirdEntities : DbContext
     public virtual DbSet<Hotel> Hotels { get; set; }
     public virtual DbSet<HotelFacility> HotelFacilities { get; set; }
     public virtual DbSet<HotelImage> HotelImages { get; set; }
-    public virtual DbSet<Package> Packages { get; set; }
-    public virtual DbSet<PackageDetail> PackageDetails { get; set; }
     public virtual DbSet<PackageItenryDetail> PackageItenryDetails { get; set; }
     public virtual DbSet<Ziarat> Ziarats { get; set; }
-    public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-    public virtual DbSet<AdminsettingsNewsFeed> AdminsettingsNewsFeeds { get; set; }
-    public virtual DbSet<AssignmentBank> AssignmentBanks { get; set; }
-    public virtual DbSet<AssignmentCategory> AssignmentCategories { get; set; }
-    public virtual DbSet<AssignmentResponse> AssignmentResponses { get; set; }
-    public virtual DbSet<BloomsTaxonomy> BloomsTaxonomies { get; set; }
-    public virtual DbSet<ChatAdmin> ChatAdmins { get; set; }
-    public virtual DbSet<ClientLayout> ClientLayouts { get; set; }
-    public virtual DbSet<ClientPage> ClientPages { get; set; }
-    public virtual DbSet<ControlCategory> ControlCategories { get; set; }
-    public virtual DbSet<HTMLControl> HTMLControls { get; set; }
-    public virtual DbSet<DreamLayout> DreamLayouts { get; set; }
-    public virtual DbSet<DreamMessage> DreamMessages { get; set; }
-    public virtual DbSet<DreamPageAuthorization> DreamPageAuthorizations { get; set; }
-    public virtual DbSet<DreamPageControl> DreamPageControls { get; set; }
-    public virtual DbSet<DreamTag> DreamTags { get; set; }
-    public virtual DbSet<DreamType> DreamTypes { get; set; }
-    public virtual DbSet<DreamUserLike> DreamUserLikes { get; set; }
-    public virtual DbSet<DreamUserProfile> DreamUserProfiles { get; set; }
-    public virtual DbSet<DynamicLayout> DynamicLayouts { get; set; }
-    public virtual DbSet<FIBOption> FIBOptions { get; set; }
-    public virtual DbSet<FileCategory> FileCategories { get; set; }
-    public virtual DbSet<GroupQuestion> GroupQuestions { get; set; }
-    public virtual DbSet<LayoutTextBank> LayoutTextBanks { get; set; }
-    public virtual DbSet<LessonAssignment> LessonAssignments { get; set; }
-    public virtual DbSet<LessonMenu> LessonMenus { get; set; }
-    public virtual DbSet<LessonMenuAvailability> LessonMenuAvailabilities { get; set; }
-    public virtual DbSet<LessonMenuPreRequisite> LessonMenuPreRequisites { get; set; }
-    public virtual DbSet<LessonMultimedia> LessonMultimedias { get; set; }
-    public virtual DbSet<LessonProgressControl> LessonProgressControls { get; set; }
-    public virtual DbSet<LessonProgressDashBoard> LessonProgressDashBoards { get; set; }
-    public virtual DbSet<LessonQuestion> LessonQuestions { get; set; }
-    public virtual DbSet<LessonQuiz> LessonQuizs { get; set; }
-    public virtual DbSet<LessonVideo> LessonVideos { get; set; }
-    public virtual DbSet<MCQOption> MCQOptions { get; set; }
-    public virtual DbSet<MediaGroup> MediaGroups { get; set; }
-    public virtual DbSet<MultiFIBComponent> MultiFIBComponents { get; set; }
-    public virtual DbSet<MultiFIBMarkup> MultiFIBMarkups { get; set; }
-    public virtual DbSet<Multimediabank> Multimediabanks { get; set; }
-    public virtual DbSet<Navigation> Navigations { get; set; }
-    public virtual DbSet<News> News { get; set; }
-    public virtual DbSet<NewsDreamNew> NewsDreamNews { get; set; }
-    public virtual DbSet<NewsRelatedNew> NewsRelatedNews { get; set; }
-    public virtual DbSet<QuestionBank> QuestionBanks { get; set; }
-    public virtual DbSet<QuestionCategory> QuestionCategories { get; set; }
-    public virtual DbSet<QuestionExplanation> QuestionExplanations { get; set; }
-    public virtual DbSet<QuestionHint> QuestionHints { get; set; }
-    public virtual DbSet<QuestionSubCategory> QuestionSubCategories { get; set; }
-    public virtual DbSet<QuestionType> QuestionTypes { get; set; }
-    public virtual DbSet<QuizBank> QuizBanks { get; set; }
-    public virtual DbSet<QuizBankQuestion> QuizBankQuestions { get; set; }
-    public virtual DbSet<QuizCategory> QuizCategories { get; set; }
     public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-    public virtual DbSet<Tag> Tags { get; set; }
-    public virtual DbSet<TextBank> TextBanks { get; set; }
-    public virtual DbSet<TextBankTag> TextBankTags { get; set; }
-    public virtual DbSet<UserHintStatu> UserHintStatus { get; set; }
-    public virtual DbSet<UserLessonProgress> UserLessonProgresses { get; set; }
-    public virtual DbSet<UserQuizStatu> UserQuizStatus { get; set; }
-    public virtual DbSet<UserResponse> UserResponses { get; set; }
-    public virtual DbSet<VideoTranscript> VideoTranscripts { get; set; }
     public virtual DbSet<TransPort> TransPorts { get; set; }
-    public virtual DbSet<XFile> XFiles { get; set; }
-    public virtual DbSet<InviteSharePage> InviteSharePages { get; set; }
     public virtual DbSet<AirLine> AirLines { get; set; }
     public virtual DbSet<Flight> Flights { get; set; }
     public virtual DbSet<VisaPackage> VisaPackages { get; set; }
-    public virtual DbSet<MediaCategory> MediaCategories { get; set; }
-    public virtual DbSet<MediaItem> MediaItems { get; set; }
-    public virtual DbSet<MediaTag> MediaTags { get; set; }
     public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-    public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-    public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-    public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-    public virtual DbSet<DreamEnrollment> DreamEnrollments { get; set; }
     public virtual DbSet<AlharmainUser> AlharmainUsers { get; set; }
-    public virtual DbSet<Dream> Dreams { get; set; }
     public virtual DbSet<CustomFlightConfiguration> CustomFlightConfigurations { get; set; }
     public virtual DbSet<CustomHotelConfiguration> CustomHotelConfigurations { get; set; }
     public virtual DbSet<CustomPackage> CustomPackages { get; set; }
     public virtual DbSet<AlharmainUserPackage> AlharmainUserPackages { get; set; }
+    public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+    public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+    public virtual DbSet<ChatAdmin> ChatAdmins { get; set; }
+    public virtual DbSet<DreamLayout> DreamLayouts { get; set; }
+    public virtual DbSet<InviteSharePage> InviteSharePages { get; set; }
+    public virtual DbSet<Multimediabank> Multimediabanks { get; set; }
+    public virtual DbSet<Tag> Tags { get; set; }
+    public virtual DbSet<VideoTranscript> VideoTranscripts { get; set; }
+    public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+    public virtual DbSet<PackageType> PackageTypes { get; set; }
+    public virtual DbSet<PackageTag> PackageTags { get; set; }
+    public virtual DbSet<Package> Packages { get; set; }
+    public virtual DbSet<MediaCategory> MediaCategories { get; set; }
+    public virtual DbSet<MediaGroup> MediaGroups { get; set; }
+    public virtual DbSet<MediaItem> MediaItems { get; set; }
+    public virtual DbSet<MediaTag> MediaTags { get; set; }
+    public virtual DbSet<PackageDetail> PackageDetails { get; set; }
 }

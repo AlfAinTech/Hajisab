@@ -18,7 +18,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomFli
     public void dataBind()
     {
         
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         AirLineListAdd.DataSource = db.AirLines.ToList();
         AirLineListAdd.DataBind();
         CustomHotel_List.DataSource = db.CustomFlightConfigurations.ToList();
@@ -28,7 +28,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomFli
     }
     protected void editbutton_clicked(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
         CustomFlightConfiguration ac = db.CustomFlightConfigurations.Where(q => q.id == id).First();
@@ -43,7 +43,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomFli
     {
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         CustomFlightConfiguration ac = db.CustomFlightConfigurations.Where(q => q.id == id).First();
         // int hotel_id = ac.;
         db.CustomFlightConfigurations.Remove(ac);
@@ -55,7 +55,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomFli
     {
         if (Page.IsValid)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             LinkButton lk = (LinkButton)sender;
             int id = int.Parse(lk.CommandArgument);
             RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
@@ -82,7 +82,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomFli
     {
         if (Page.IsValid)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
 
             CustomFlightConfiguration ac = new CustomFlightConfiguration
             {
@@ -134,7 +134,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomFli
             DropDownList dp = (DropDownList)e.Item.FindControl("AirLineList");
             DropDownList city = (DropDownList)e.Item.FindControl("ClassList");
             CustomFlightConfiguration ch = (CustomFlightConfiguration)e.Item.DataItem;
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             dp.DataSource = db.AirLines.ToList();
             dp.DataBind();
             dp.SelectedValue = ch.AirLineID.ToString();

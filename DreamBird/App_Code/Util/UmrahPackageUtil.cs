@@ -21,7 +21,7 @@ public class UmrahPackageUtil
     {
         try
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             //  DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add(package.AlharmainUser.email);
@@ -49,13 +49,13 @@ public class UmrahPackageUtil
     public static string GenerateEmailBody(AlharmainUserPackage package)
     {
         string Body = "";
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         double lastUPdate =  (System.DateTime.Today - package.ModifiedDate).TotalHours;
         double packageCreated = (System.DateTime.Today - package.CreatedDate).TotalHours;
         if ((packageCreated >= 24 && packageCreated < 48) && (lastUPdate >= 24) && package.IsAmountRecieved == false)
         { 
             Body = System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("~/UmrahComponents/PackageComponent/BookingEmail.html"));
-            Body = Body.Replace("{DynamicContent_link}", DreamUtil.ServerUrl + "/UmrahDetailPage/" + package.PackageDetail.Dream.DreamName + "/UmrahDetail").Replace("{DynamicContent_id}", package.trackingID).Replace("DynamicContent_nights", package.PackageDetail.getTotelNights.ToString());
+            Body = Body.Replace("{DynamicContent_link}", PackageUtil.ServerUrl + "/UmrahDetailPage/" + package.PackageDetail.Package.PackageName + "/UmrahDetail").Replace("{DynamicContent_id}", package.trackingID).Replace("DynamicContent_nights", package.PackageDetail.getTotelNights.ToString());
             package.ModifiedDate = System.DateTime.Today;
         }
         else
@@ -63,7 +63,7 @@ public class UmrahPackageUtil
             if ((packageCreated >= 48) && package.IsAmountRecieved == false)
             {
                 Body = System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("~/UmrahComponents/PackageComponent/BookingCancellation.html"));
-                Body = Body.Replace("{DynamicContent_link}", DreamUtil.ServerUrl + "").Replace("DynamicContent_nights", package.PackageDetail.getTotelNights.ToString());
+                Body = Body.Replace("{DynamicContent_link}", PackageUtil.ServerUrl + "").Replace("DynamicContent_nights", package.PackageDetail.getTotelNights.ToString());
                AlharmainUserPackage pkg =  db.AlharmainUserPackages.Where(q => q.id == package.id).FirstOrDefault();
                 db.AlharmainUserPackages.Remove(pkg);
 

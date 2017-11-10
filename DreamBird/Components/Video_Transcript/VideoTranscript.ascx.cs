@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Components_MediaBank_VideoTranscript : CoreDreamControlAdapter, IVideoTranscript, ICoreDreamControl
+public partial class Components_MediaBank_VideoTranscript : CorePackageControlAdapter, IVideoTranscript, ICorePackageControl
 {
     private int mediaItemID = 49;
     private bool showTranscript = true;
@@ -46,7 +46,7 @@ public partial class Components_MediaBank_VideoTranscript : CoreDreamControlAdap
         if (!IsPostBack)
         {
             AddScripts();
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             
             if(db.MediaItems.Where(a => a.id == MediaItemID).Count()!=0)
             {
@@ -73,7 +73,7 @@ public partial class Components_MediaBank_VideoTranscript : CoreDreamControlAdap
     {
         video.Controls.Clear();
         video.ClientIDMode = ClientIDMode.Static;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         System.Web.UI.HtmlControls.HtmlGenericControl VideoSource = new System.Web.UI.HtmlControls.HtmlGenericControl("SOURCE");
         string filepath = null;
         if (File.Exists(Server.MapPath("~/") + item.path + "/480p/" + item.name))
@@ -103,7 +103,7 @@ public partial class Components_MediaBank_VideoTranscript : CoreDreamControlAdap
     {
         transcript.Controls.Clear();
         transcript.ClientIDMode = ClientIDMode.Static;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (item.mediaType == "video")
         {
             var TranscriptText = db.VideoTranscripts.Where(w => w.MediaItem_id == item.id).ToList();

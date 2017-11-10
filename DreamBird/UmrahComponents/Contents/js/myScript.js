@@ -98,6 +98,40 @@ jQuery(document).ready(function ($) {
 	    //console.log(totelPrice)
 	    totel_price.html(totelPrice);
 	})
+
+    // Regular Expression to Check for Alphabets.
+	var regexText = new RegExp("^[a-zA-Z]+$");
+	var regexNumeric = new RegExp("^[0-9]+$");
+
+	$('.only-text').keypress(function (event) {
+	    //window.alert("gfvc")
+	    var value = $(this).val();
+
+	    var str = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	    if (event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
+	        return true;
+	    }
+	    if (!regexText.test(str)) {
+	        event.preventDefault();
+	        return false;
+	    }
+
+	}); // End of 'keydown keyup' method.
+	$('.numeric').keypress(function (event) {
+	    //window.alert("gfvc")
+	    var value = $(this).val();
+
+	    var str = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	    if (event.keyCode == 8 || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
+	        return true;
+	    }
+	    if (!regexNumeric.test(str)) {
+	        event.preventDefault();
+	        return false;
+	    }
+
+	}); // End of 'keydown keyup' method.
+
 	
 });
 

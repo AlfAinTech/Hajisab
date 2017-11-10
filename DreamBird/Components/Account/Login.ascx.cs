@@ -31,7 +31,7 @@ public partial class Account_Login : System.Web.UI.UserControl
             }
             else if (manager.IsInRole(user.Id, "Admin") || manager.IsInRole(user.Id, "UmrahAdmin"))
             {
-                Response.Redirect("~/Admin/DreamHome.aspx");
+                Response.Redirect("~/Admin/PackageHome.aspx");
             }
             else { 
                 if(manager.IsInRole(user.Id,"Dreamuser"))

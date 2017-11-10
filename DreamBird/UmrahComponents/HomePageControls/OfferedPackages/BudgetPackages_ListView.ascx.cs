@@ -15,8 +15,8 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
         {
             string type = "bronze";
             hiddenBudgetType.Value = type;
-          //  BindData(type);
-           
+            //  BindData(type);
+             bindInitialPrice();
             ScriptManager.RegisterStartupScript(Page, typeof(Page), "setClass", "setClass('"+type+ "');LoadScript('" + type + "');", true);
       //      ScriptManager.RegisterStartupScript(Page, typeof(Page), "mystar", "$('.stars').stars();", true);
         }
@@ -25,10 +25,20 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
     }
 
    
+    protected void bindInitialPrice()
+    {
+        PackageEntities db = new PackageEntities();
+        var data =  db.PackageDetails.Select(q => new { q.packageType, q.minRange }).GroupBy(q => q.packageType).ToList();
 
+        bronzePrcie.Text = data.Where(q => q.Key.ToLower() == "bronze").Select(group => group.Min(x => x.minRange)).FirstOrDefault().ToString("#,##0");
+        silverPrice.Text = data.Where(q => q.Key.ToLower() == "silver").Select(group => group.Min(x => x.minRange)).FirstOrDefault().ToString("#,##0");
+        goldPrice.Text = data.Where(q => q.Key.ToLower() == "gold").Select(group => group.Min(x => x.minRange)).FirstOrDefault().ToString("#,##0");
+
+
+    }
     protected void BindData(string PackageType)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         // Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.packageType.ToLower() == PackageType.ToLower()).Take(3).ToList();
         // Packages_DetailList.DataBind();
       var data=   db.PackageDetails.Select(q=>new { q.minRange, q.packageType }).GroupBy(q => q.packageType).ToList();
@@ -38,9 +48,9 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
     {
         Button bt = (Button)sender;
         int id = int.Parse( Request["__EVENTARGUMENT"]); 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        Response.Redirect("/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
+        Response.Redirect("/UmrahDetailPage/" + pd.Package.PackageName + "/UmrahDetail");
         //ScriptManager.RegisterStartupScript(Page, typeof(Page), "setClass", "setClass(' bronze');LoadScript('bronze ');", true);
     }
     
@@ -62,10 +72,10 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_BudgetPack
         if(hiddenBudgetType.Value != "")
         {
             string PackaType = hiddenBudgetType.Value.ToString();
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             PackageDetail pd = db.PackageDetails.Where(q => q.packageType == PackaType).ToList().OrderBy(q => q.minRange).First();
-            string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-            Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter?Type=" + pd.packageType.ToString());
+          //  string dreamName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            Response.Redirect("/UmrahSearchFilter?Type=" + pd.packageType.ToString());
         }
     }
    

@@ -8,7 +8,6 @@
 
     selectedItem = function(data)
     {
-       // alert("here");
         name =  data;
         console.log($("#" + name + ""));
         e = document.getElementsByName(name);

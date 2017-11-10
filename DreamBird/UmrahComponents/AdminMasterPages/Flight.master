@@ -14,7 +14,6 @@
 
     selectedFlight = function(data)
     {
-       // alert("here");
         name = "AirLineButton_" + data;
         console.log($("#" + name + ""));
         e = document.getElementsByName(name);

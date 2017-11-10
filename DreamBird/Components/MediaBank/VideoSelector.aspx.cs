@@ -24,7 +24,7 @@ public partial class Components_MediaBank_VideoSelector : System.Web.UI.Page
 
         //}
         EventArgMediaSelection evt = e as EventArgMediaSelection;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var MediaItem = db.MediaItems.Where(w => w.id == evt.SelectedMedia).First();
         String path = MediaItem.path+"/"+MediaItem.name;
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "Script_videoURL", "AddLink('"+path+"');", true);

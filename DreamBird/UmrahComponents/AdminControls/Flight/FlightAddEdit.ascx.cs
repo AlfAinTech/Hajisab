@@ -28,7 +28,7 @@ public partial class UmrahComponents_AdminControls_Flight_FlightAddEdit : System
     }
     public void bindData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if(Request.QueryString["flightID"] != null)
         {
             int flight_id = int.Parse(Request.QueryString["flightID"].ToString());
@@ -54,7 +54,7 @@ public partial class UmrahComponents_AdminControls_Flight_FlightAddEdit : System
     protected void save_Click(object sender, EventArgs e)
     {
         if (Page.IsValid) {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             int chk = 0;
             if (one_way_chk.Checked)
                 { chk = 1; }

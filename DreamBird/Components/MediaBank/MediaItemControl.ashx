@@ -14,7 +14,7 @@ public class MediaItemControl : IHttpHandler
     public void ProcessRequest(HttpContext context)
     {
         int MediaItemID = Convert.ToInt32(context.Request.QueryString["MIID"].ToString());
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var MediaItem = db.MediaItems.Where(w => w.id == MediaItemID).First();
         MediaItemSingle Item = new MediaItemSingle();
         Item.MediaItemID = MediaItem.id;

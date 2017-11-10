@@ -18,7 +18,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomHot
     public void dataBind()
     {
 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         CustomHotel_List.DataSource = db.CustomHotelConfigurations.ToList();
         CustomHotel_List.DataBind();
         //ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "a_keys", "OpenTab('Accommodations');", true);
@@ -26,7 +26,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomHot
     }
     protected void editbutton_clicked(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
         CustomHotelConfiguration ac = db.CustomHotelConfigurations.Where(q => q.id == id).First();
@@ -41,7 +41,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomHot
     {
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         CustomHotelConfiguration ac = db.CustomHotelConfigurations.Where(q => q.id == id).First();
         // int hotel_id = ac.;
         db.CustomHotelConfigurations.Remove(ac);
@@ -53,7 +53,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomHot
     {
         if (Page.IsValid)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             LinkButton lk = (LinkButton)sender;
             int id = int.Parse(lk.CommandArgument);
             RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
@@ -82,7 +82,7 @@ public partial class UmrahComponents_AdminControls_CustomConfiguration_CustomHot
     {
         if (Page.IsValid)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
 
             CustomHotelConfiguration ac = new CustomHotelConfiguration
             {

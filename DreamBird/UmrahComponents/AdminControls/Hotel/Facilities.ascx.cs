@@ -9,7 +9,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
      
         
     }
@@ -25,7 +25,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
     {
         MediaItem media_item;
         EventArgMediaSelection evt = (EventArgMediaSelection)e;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int media_id = evt.SelectedMedia;
         media_item = db.MediaItems.Where(q => q.id == media_id).First();
         if ( media_item.mediaType == "image")
@@ -66,7 +66,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
     {
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         HotelFacility hf = db.HotelFacilities.Where(q => q.id == id).First();
         int hotel_id = hf.hotelID;
         db.HotelFacilities.Remove(hf);
@@ -78,7 +78,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
     {
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         HotelFacility hf = db.HotelFacilities.Where(q => q.id == id).First();
         addName_txt.Text = hf.Name;
         Addavailable_chk.Checked = hf.availability;
@@ -110,7 +110,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
         if(Page.IsValid)
         {
             
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             if (ViewState["SelectedFacility"] != null ) {
                 int id = int.Parse(ViewState["SelectedFacility"].ToString());
               HotelFacility hf =  db.HotelFacilities.Where(q => q.id == id).First();
@@ -158,7 +158,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Facilities : System.Web
     public void bindData(int hotel_id)
     {
         ViewState["SelectedhotelID"] = hotel_id;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         facility_list.DataSource = db.HotelFacilities.Where(q => q.hotelID == hotel_id).ToList();
         facility_list.DataBind();
         //ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "a_keys", "OpenTab(Facilities);", true);

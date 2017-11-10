@@ -22,7 +22,7 @@ public partial class UmrahComponents_AdminControls_Flight_AirLineBasicInfo : Sys
         {
             String uid = HttpContext.Current.User.Identity.GetUserId();
             int aid = int.Parse(Request.QueryString["airLineID"].ToString());
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             AirLine aa = db.AirLines.Where(q => q.id == aid ).First();
             name_txt.Text = aa.Name;
         }
@@ -30,7 +30,7 @@ public partial class UmrahComponents_AdminControls_Flight_AirLineBasicInfo : Sys
     protected void save_Click(object sender, EventArgs e)
     {
         if (Page.IsValid) { 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         AirLine a = new AirLine();
             String uid = HttpContext.Current.User.Identity.GetUserId();
             var duplicateData = db.AirLines.Where(q => q.Name == name_txt.Text).ToList();

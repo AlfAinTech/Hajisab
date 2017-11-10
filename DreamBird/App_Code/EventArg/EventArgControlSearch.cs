@@ -27,11 +27,11 @@ public class EventArgControlSearch : EventArgs
         set;
     }
 
-    public HTMLControl control
-    {
-        get;
-        set;
-    }
+    //public HTMLControl control
+    //{
+    //    get;
+    //    set;
+    //}
 
     public string SearchKeyword
     {

@@ -132,7 +132,7 @@ public partial class Components_MediaBank_MediaSelection : System.Web.UI.UserCon
 
     protected void MediaBind()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PagedDataSource pds = new PagedDataSource();
         var medialist = db.MediaItems.Where(img => allowedMediaTypes.Contains(img.mediaType)).OrderBy(ddl_sort.SelectedItem.Value).ToList();
         foreach (var mediaitem in medialist)
@@ -204,7 +204,7 @@ public partial class Components_MediaBank_MediaSelection : System.Web.UI.UserCon
     private void bindMedia()
     {
 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PagedDataSource pds = new PagedDataSource();
         var medialist = db.MediaItems.Where(img => allowedMediaTypes.Contains(img.mediaType)).OrderBy(ddl_sort.SelectedItem.Value).ToList();
         foreach (var mediaitem in medialist)

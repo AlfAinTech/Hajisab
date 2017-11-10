@@ -18,7 +18,7 @@ public partial class UmrahComponents_AdminControls_VisaPackages_VisaPackage : Sy
     public void dataBind()
     {
         String uid = HttpContext.Current.User.Identity.GetUserId();
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         visa_list.DataSource = db.VisaPackages.ToList();
         if (HttpContext.Current.User.IsInRole("UmrahAdmin"))
         {
@@ -47,7 +47,7 @@ public partial class UmrahComponents_AdminControls_VisaPackages_VisaPackage : Sy
     {
         if (Page.IsValid) { 
         String uid = HttpContext.Current.User.Identity.GetUserId();
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         List<VisaPackage> data = db.VisaPackages.ToList();
         if (HttpContext.Current.User.IsInRole("UmrahAdmin")) { data.Where(q => q.AspNetUserID == uid); }
         if (fd != "")
@@ -82,7 +82,7 @@ public partial class UmrahComponents_AdminControls_VisaPackages_VisaPackage : Sy
     {
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
        VisaPackage vp = db.VisaPackages.Where(q => q.id == id).First();
         db.VisaPackages.Remove(vp);
         db.SaveChanges();
@@ -92,7 +92,7 @@ public partial class UmrahComponents_AdminControls_VisaPackages_VisaPackage : Sy
     protected void updatebutton_clicked(object sender, EventArgs e)
     {
         if (Page.IsValid) { 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
         RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
@@ -139,7 +139,7 @@ public partial class UmrahComponents_AdminControls_VisaPackages_VisaPackage : Sy
                 return;
             }
             String uid = HttpContext.Current.User.Identity.GetUserId();
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             if (db.VisaPackages.Where(q=>q.visaTitle == addTitle_txt.Text && q.AspNetUserID==uid).Count() == 0) { 
                 VisaPackage ac = new VisaPackage
             {

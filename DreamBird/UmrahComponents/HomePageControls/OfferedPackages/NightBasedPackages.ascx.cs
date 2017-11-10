@@ -14,7 +14,7 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_NightBased
             int type = 10;
             hiddenNights.Value = type.ToString();
             ScriptManager.RegisterStartupScript(Page, typeof(Page), "setNight", "LoadNightScript('" + type.ToString() + "'); setFirstElementNight();", true);
-            
+            bindInitialPrice();
 
 
         }
@@ -22,18 +22,28 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_NightBased
 
     protected void BindData(int PackageType)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         //Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.nightsInMadina+q.nightsInMakkah <= PackageType && q.nightsInMadina + q.nightsInMakkah > (PackageType-10)).Take(3).ToList();
         //Packages_DetailList.DataBind();
+
+    }
+    protected void bindInitialPrice()
+    {
+        PackageEntities db = new PackageEntities();
+
+        TenNightPrice.Text = (db.PackageDetails.Where(q => (q.nightsInMadina + q.nightsInMakkah) <= 10).Select(q => q.minRange).ToList().DefaultIfEmpty(0)).Min().ToString("#,##0");
+        TwentyNightPrice.Text = (db.PackageDetails.Where(q => (q.nightsInMadina + q.nightsInMakkah) <= 20 && (q.nightsInMadina+q.nightsInMakkah) > 10).Select(q => q.minRange).ToList().DefaultIfEmpty(0)).Min().ToString("#,##0");
+        ThirtyNightPrice.Text = (db.PackageDetails.Where(q => (q.nightsInMadina + q.nightsInMakkah) <= 30 && (q.nightsInMadina + q.nightsInMakkah) > 20).Select(q => q.minRange).ToList().DefaultIfEmpty(0)).Min().ToString("#,##0");
+
 
     }
     protected void BookNowClicked(object sender, EventArgs e)
     {
         Button bt = (Button)sender;
         int id = int.Parse(Request["__EVENTARGUMENT"]);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        Response.Redirect("/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
+        Response.Redirect("/UmrahDetailPage/" + pd.Package.PackageName + "/UmrahDetail");
     }
 
     protected void PackageType_clicked(object sender, EventArgs e)
@@ -50,9 +60,9 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_NightBased
         if (hiddenNights.Value != "")
         {
             string nightType = hiddenNights.Value.ToString();
-            DreamBirdEntities db = new DreamBirdEntities();
-            string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-            Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter?totelNights=" + nightType);
+            PackageEntities db = new PackageEntities();
+          
+            Response.Redirect("/UmrahSearchFilter?totelNights=" + nightType);
         }
     }
 }

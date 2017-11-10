@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.UI.WebControls;
 
 /// <summary>
-/// Summary description for BaseDreamControlAdapter
+/// Summary description for BasePackageControlAdapter
 /// </summary>
-public class CoreDreamControlAdapter : System.Web.UI.UserControl,ICoreDreamControl
+public class CorePackageControlAdapter : System.Web.UI.UserControl,ICorePackageControl
 {
-    public String BaseDreamControl_ClientID;
-    public String BaseDreamControl_ServerID;
+    public String BasePackageControl_ClientID;
+    public String BasePackageControl_ServerID;
     private Boolean isShowAdminControls;
   
     public bool IsShowAdminControls
@@ -25,7 +25,7 @@ public class CoreDreamControlAdapter : System.Web.UI.UserControl,ICoreDreamContr
             isShowAdminControls = value;
         }
     }
-    public CoreDreamControlAdapter()
+    public CorePackageControlAdapter()
     
     {
         //
@@ -45,19 +45,16 @@ public class CoreDreamControlAdapter : System.Web.UI.UserControl,ICoreDreamContr
 
     }
 
-    public virtual void BindData3(List<News> list)
-    {
-
-    }
+  
 
     public virtual void OnHideAdminEvent(object sender, EventArgs e)
     {
         
     }
 
-    public virtual void SetBaseDreamControl(IBaseDreamControl baseDreamControl) {
-        this.BaseDreamControl_ClientID = baseDreamControl.getBaseDreamClientID();
-        this.BaseDreamControl_ServerID = baseDreamControl.getBaseDreamServerID();
+    public virtual void SetBasePackageControl(IBasePackageControl BasePackageControl) {
+        this.BasePackageControl_ClientID = BasePackageControl.getBasePackageClientID();
+        this.BasePackageControl_ServerID = BasePackageControl.getBasePackageServerID();
     }
 
    

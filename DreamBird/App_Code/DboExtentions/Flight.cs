@@ -13,8 +13,8 @@ public partial class Flight
     {
         get
         {
-            DreamBirdEntities db;
-            db = new DreamBirdEntities();
+            PackageEntities db;
+            db = new PackageEntities();
             
             if (this.flightType == 1)
             {
@@ -33,8 +33,8 @@ public partial class Flight
     {
         get
         {
-            DreamBirdEntities db;
-            db = new DreamBirdEntities();
+            PackageEntities db;
+            db = new PackageEntities();
 
             if (this.flightType == 2)
             {

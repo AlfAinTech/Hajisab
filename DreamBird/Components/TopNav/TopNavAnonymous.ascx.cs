@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Components_TopNav_TopNavAnonymous : System.Web.UI.UserControl,ICoreDreamControl
+public partial class Components_TopNav_TopNavAnonymous : System.Web.UI.UserControl,ICorePackageControl
 {
     public void BindData()
     {
@@ -22,7 +22,7 @@ public partial class Components_TopNav_TopNavAnonymous : System.Web.UI.UserContr
         
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
        
     }

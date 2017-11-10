@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : System.Web.UI.UserControl, ICoreDreamControl
+public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : System.Web.UI.UserControl, ICorePackageControl
 {
     public Boolean isActiveFlag;
     protected void Page_Load(object sender, EventArgs e)
@@ -15,7 +15,7 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
        if(Request.QueryString["UserID"]!=null)
         {
             int uid = int.Parse(Request.QueryString["UserID"].ToString());
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
            AlharmainUserPackage d = db.AlharmainUserPackages.Where(q => q.userID == uid).FirstOrDefault();
             if(d !=null)
             {
@@ -52,12 +52,12 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
 
     public void myDaTAbIND(AlharmainUserPackage userPackage =null)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         List<PackageDetail> data;
         if(userPackage == null) {
-            String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-            int id = db.Dreams.Where(q => q.DreamName == dreamName).Select(q=>q.id).First();
-            data = db.PackageDetails.Where(q => q.dreamID == id).ToList();
+            String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            int id = db.Packages.Where(q => q.PackageName == PackageName).Select(q=>q.id).First();
+            data = db.PackageDetails.Where(q => q.PackageID == id).ToList();
         }
     else
             data = db.PackageDetails.Where(q => q.id == userPackage.packageDetailID).ToList();
@@ -66,7 +66,7 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
         {
             PackageDetail pd = data[0];
             
-            PackageItenryDetail.bindItenryData(pd.id);
+            //PackageItenryDetail.bindItenryData(pd.id);
             totelNights.Text = (pd.nightsInMakkah + pd.nightsInMadina).ToString();
             bookPackage.CommandArgument = pd.id.ToString();
             hotelMakkah_img.ImageUrl = pd.Hotel1.MediaItem.Path500;
@@ -93,7 +93,7 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
                 bindMakkah_accommodation(pd.Hotel1.id);
             }
 
-                package_name.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pd.Dream.DreamName.ToLower());// pd.Dream.DreamName.ToUpper(;
+                package_name.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pd.Package.PackageName.ToLower());// pd.Dream.DreamName.ToUpper(;
             if (pd.Hotel.rating > 2)
             {
                 hotelRating_madina.Attributes.Add("data-rating", pd.Hotel.rating.ToString());
@@ -145,7 +145,7 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
   
     public void bindMadina_accommodation(int hotelmadinaID,int AccomMadinaID=0)
 {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var accom = db.Accommodations.Where(q => q.hotelID == hotelmadinaID && q.availability == true).ToList();
         madinaAccommodation_list.DataSource = accom;
         madinaAccommodation_list.DataBind();
@@ -171,7 +171,7 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
     }
 public void bindMakkah_accommodation(int hotelmakkahID,int AccomMakkahID=0)
 {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var accom = db.Accommodations.Where(q => q.hotelID == hotelmakkahID && q.availability == true).ToList();
         makkahAccommodation_list.DataSource = accom;
         makkahAccommodation_list.DataBind();
@@ -210,7 +210,7 @@ public void OnHideAdminEvent(object sender, EventArgs e)
     // throw new NotImplementedException();
 }
 
-public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+public void SetBasePackageControl(IBasePackageControl BasePackageControl)
 {
     //  throw new NotImplementedException();
 }
@@ -219,14 +219,14 @@ protected void bookPackage_Click(object sender, EventArgs e)
 {
     if (Page.IsValid)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
-        String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
+        PackageEntities db = new PackageEntities();
+        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+        Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
         Session["AIDMadina"] = madinaAccommodation_list.SelectedValue;
         Session["AIDMakkah"] = makkahAccommodation_list.SelectedValue;
             Session["grandTotel"] = LabelProperty;//Computed_amount//.Text.ToString();
         
-            Response.Redirect("~/UmrahBookingPage/" + dreamName + "/BookingForm");
+            Response.Redirect("~/UmrahBookingPage/" + PackageName + "/BookingForm");
             
     }
 }
@@ -287,10 +287,10 @@ protected void bookPackage_Click(object sender, EventArgs e)
 //}
 public void ComputePrice(int makkahAccom_id, int madinaAccom_id)
 {
-    DreamBirdEntities db = new DreamBirdEntities();
-    String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-    Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
-    PackageDetail pd = db.PackageDetails.Where(q => q.dreamID == d.id).First();
+    PackageEntities db = new PackageEntities();
+    String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+    Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
+    PackageDetail pd = db.PackageDetails.Where(q => q.PackageID == d.id).First();
     //int makkahAccom_id = 0;
     //int madinaAccom_id = 0;
     double price = 0;

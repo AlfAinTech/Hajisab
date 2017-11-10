@@ -31,7 +31,7 @@ public partial class UmrahComponents_AdminControls_Hotel_HotelSearch : System.We
         //throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         //throw new NotImplementedException();
     }

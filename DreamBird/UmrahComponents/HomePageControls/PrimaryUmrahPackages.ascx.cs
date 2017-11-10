@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_PackageComponent_PrimaryUmrahPackages : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_PackageComponent_PrimaryUmrahPackages : System.Web.UI.UserControl,ICorePackageControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -13,7 +13,7 @@ public partial class UmrahComponents_PackageComponent_PrimaryUmrahPackages : Sys
     }
     public void BindData()
     {
-       DreamBirdEntities db = new DreamBirdEntities();
+       PackageEntities db = new PackageEntities();
          List<PackageDetail> pd = db.PackageDetails.ToList();
         primaryPkg_list.DataSource = db.PackageDetails.GroupBy(x => x.packageType).Select(group =>  group.Where(x => x.minRange == group.Min(y => y.minRange)).FirstOrDefault()).ToList();
         primaryPkg_list.DataBind();
@@ -31,7 +31,7 @@ public partial class UmrahComponents_PackageComponent_PrimaryUmrahPackages : Sys
        // throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         //throw new NotImplementedException();
     }
@@ -39,12 +39,12 @@ public partial class UmrahComponents_PackageComponent_PrimaryUmrahPackages : Sys
     {
         Button bt = (Button)sender;
         int id = int.Parse(bt.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
+        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+        Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
 
-        Response.Redirect("/UmrahHome/" + d.DreamName + "/SearchFilter?minPrice="+pd.minAmount);
+        Response.Redirect("/UmrahSearchFilter?minPrice=" + pd.minAmount);
         
     }
 

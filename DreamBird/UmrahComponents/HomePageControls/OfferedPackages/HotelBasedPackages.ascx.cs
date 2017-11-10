@@ -13,20 +13,29 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_HotelBased
         int Type = 1;
         if (!IsPostBack)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             var list =   db.Hotels.GroupBy(q => q.rating).Select(key => key).ToList();
             ScriptManager.RegisterStartupScript(Page, typeof(Page), "setHotel", "LoadHotelScript('" + Type.ToString() + "'); setFirstElementHotel();", true);
             hiddentRatingType.Value = Type.ToString();
             //BindData(Type);
-           
+            bindInitialPrice();
         }
         
 
     }
+    protected void bindInitialPrice()
+    {
+        PackageEntities db = new PackageEntities();
+       
+        EconomyPrice.Text = (db.PackageDetails.Where(q=>q.Hotel1.rating == 1).Select(q=>q.minRange).ToList().DefaultIfEmpty(0)).Min().ToString("#,##0");
+        budgetPrcie.Text = (db.PackageDetails.Where(q => q.Hotel1.rating == 2).Select(q => q.minRange).ToList().DefaultIfEmpty(0)).Min().ToString("#,##0");
+        starPrcie.Text = (db.PackageDetails.Where(q => q.Hotel1.rating > 2).Select(q => q.minRange).ToList().DefaultIfEmpty(0)).Min().ToString("#,##0");
 
+
+    }
     protected void BindData(int ratingType)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         //if (ratingType == 3) { Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.Hotel1.rating >= ratingType).Take(3).ToList(); }
         //else { Packages_DetailList.DataSource = db.PackageDetails.Where(q => q.Hotel1.rating == ratingType).Take(3).ToList(); }
         //Packages_DetailList.DataBind();
@@ -36,9 +45,9 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_HotelBased
     {
         Button bt = (Button)sender;
         int id  = int.Parse( Request["__EVENTARGUMENT"]); ;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        Response.Redirect("/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
+        Response.Redirect("/UmrahDetailPage/" + pd.Package.PackageName + "/UmrahDetail");
     }
 
     protected void PackageType_clicked(object sender, EventArgs e)
@@ -57,8 +66,9 @@ public partial class UmrahComponents_PackageComponent_OfferedPackages_HotelBased
         if (rating != "")
         {
             int ratingType = int.Parse(rating.ToString());
-            string dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-            Response.Redirect("/Umrahhome/" + dreamName + "/SearchFilter?rating=" + ratingType);
+
+            Response.Redirect("/UmrahSearchFilter?rating=" + ratingType+"");
+            
         }
     }
 }

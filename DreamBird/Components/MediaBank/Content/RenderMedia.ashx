@@ -19,7 +19,7 @@ public class RenderMedia : IHttpHandler
         DateTime DateAdded = Convert.ToDateTime(context.Request.QueryString["DateAdded"].ToString());
         int Current = Convert.ToInt32(CurrentPage);
         int Skip = 18 * (Current - 1);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (MediaType.Equals("All"))
         {
             MediaType = "";

@@ -13,7 +13,7 @@
                 Nights in makkah
             </h5>
             <asp:TextBox type="number" class="form-control" placeholder="Enter Nights" name="" min="0" runat="server" ID="nightInMakkah_txt"></asp:TextBox>
-      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup ="validateDetail" runat="server" ControlToValidate="nightInMakkah_txt" ErrorMessage="Required" ForeColor="Red" Font-Bold="False" Font-Size="Medium"></asp:RequiredFieldValidator>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup ="validateDetail" runat="server" ControlToValidate="nightInMakkah_txt" ErrorMessage="Required" ForeColor="Red" Font-Bold="true"></asp:RequiredFieldValidator>
 </div>
             </div>
             </div>
@@ -28,7 +28,7 @@
                 Nights in Madina
             </h5>
             <asp:TextBox runat="server" ID="nightsInMadina_txt" type="number" min="0" class="form-control" placeholder="Enter Nights" name=""></asp:TextBox>
-      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup ="validateDetail" runat="server" ControlToValidate="nightsInMadina_txt" ErrorMessage="Required" ForeColor="Red" Font-Size="Medium"></asp:RequiredFieldValidator>
+      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup ="validateDetail" runat="server" ControlToValidate="nightsInMadina_txt" ErrorMessage="Required" ForeColor="Red"  Font-Bold="True"></asp:RequiredFieldValidator>
    </div>
 </div> 
         </div>
@@ -102,23 +102,28 @@
   </div>
 </div>
             </div> 
+
+    <div class="col-md-12" style="padding:0;">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title"> Start Date</h3>
+                          </div>
+                          <div class="panel-body">
+                               <asp:TextBox runat="server" type="date" ID="startDate" class="form-control" name=""></asp:TextBox>
+                              <asp:RequiredFieldValidator ID="Requiredstartdate" runat="server" ValidationGroup="validateDetail" ControlToValidate="startDate"
+                ErrorMessage="Required" Display="Dynamic" SetFocusOnError="true"  ForeColor="Red"  Font-Bold="True"></asp:RequiredFieldValidator>
+                               </div>
+
+                        </div>
+
+              </div>
+
             </div>
             
 
             </div>
              <div class="col-md-4" style="margin-top: 10px;">
-                  <div class="col-md-12" style="padding:0;">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title"> Start Date</h3>
-              </div>
-              <div class="panel-body">
-                   <asp:TextBox runat="server" type="date" ID="startDate" class="form-control" name=""></asp:TextBox>
-                  </div>
-
-            </div>
-
-              </div>
+                  
               <div class="col-md-12" style="padding:0;">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -126,11 +131,15 @@
               </div>
               <div class="panel-body">
                   <asp:DropDownList ID="packageType" runat="server" CssClass="form-control">
-                      <asp:ListItem Value="gold" Selected="True">Gold</asp:ListItem>
+                      <asp:ListItem Value="-1" Selected="True">--Select--</asp:ListItem>
+                        <asp:ListItem Value="bronze">Bronze</asp:ListItem>
                       <asp:ListItem Value="silver">Silver</asp:ListItem>
-                       <asp:ListItem Value="bronze">Bronze</asp:ListItem>
+                       <asp:ListItem Value="gold" >Gold</asp:ListItem>
                   </asp:DropDownList>
-                  </div>
+                                           <asp:CompareValidator ID="cmpElevel" runat="server" ControlToValidate="packageType"
+                                                Display="Dynamic" ErrorMessage="Required" Operator="NotEqual" Style="position: static" ValidationGroup="validateDetail"
+                                                ValueToCompare="-1"  Font-Bold="True"  ForeColor="Red" ></asp:CompareValidator>
+                    </div>
 
             </div>
 
@@ -159,9 +168,9 @@
                 <h4>
                Additional Price
             </h4>
-            <asp:TextBox runat="server"  ID="additionalExp_txt" class="form-control" name="" placeholder="Additional Amount">0</asp:TextBox>
+            <asp:TextBox runat="server"  ID="additionalExp_txt" class="form-control numeric" name="" placeholder="Additional Amount">0</asp:TextBox>
              <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                   ControlToValidate="additionalExp_txt" ValidationExpression="^[1-9]\d*$"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
+                   ControlToValidate="additionalExp_txt" ValidationExpression="^[0-9]\d*$" ValidationGroup ="validateDetail"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
                 </div>
                  <div class="col-md-12" style="padding:0;">
                 <h5>Detail of Additional Expenses</h5>

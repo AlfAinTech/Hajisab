@@ -2,7 +2,7 @@
 
 
 <div id="special_package_wrapper">
-    <h3 style="margin-top:10px; margin-bottom:20px;">Our Best Packages</h3>
+    <h3 style="margin-top:10px;color:black; margin-bottom:20px;">Our Best Packages</h3>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
     <%--  <ol class="carousel-indicators">
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="col-md-9" style="padding:0">
                                         <h6>
-                                            <asp:Label   runat="server" ID="hotel_rating" Text='<% # int.Parse(Eval("Hotel1.rating").ToString())>2? Eval("Hotel1.rating").ToString()+" Star":"Economy" %>'></asp:Label>
+                                            <asp:Label   runat="server" ID="hotel_rating" Text='<% # int.Parse(Eval("Hotel1.rating").ToString())>2? " "+Eval("Hotel1.rating").ToString()+" Star":"Economy" %>'></asp:Label>
                                        <asp:Label   runat="server" ID="hotelMakkah" Text='<% # Eval("Hotel1.distance").ToString()+ " m" %>'></asp:Label>
                                              </h6>
 
@@ -80,7 +80,7 @@
                                         <img src="/UmrahComponents/Contents/img/madina-hotel-icon.png" width="100%">
                                     </div>
                                     <div class="col-md-9" style="padding:0">
-                                        <h6><asp:Label   runat="server" ID="madinaRating" Text='<% # int.Parse(Eval("Hotel.rating").ToString())>2? Eval("Hotel.rating").ToString()+" Star":"Economy" %>'></asp:Label>
+                                        <h6><asp:Label   runat="server" ID="madinaRating" Text='<% # int.Parse(Eval("Hotel.rating").ToString())>2? " "+Eval("Hotel.rating").ToString()+" Star":" Economy" %>'></asp:Label>
 
                                         <asp:Label   runat="server" ID="hotelMadina" Text='<%# Eval("Hotel.distance").ToString()+" m" %>'></asp:Label></h6>
                                     </div>
@@ -89,7 +89,7 @@
                             <div class="row">
                                 <div class="col-md-12" style="padding:0; margin-top: 10px;">
                                     <div class="col-md-7">
-                                        <h3><asp:Label   runat="server" ID="startPrice" Text='<%# Convert.ToDecimal( Eval("minAmount")).ToString("#,##0")+" PKR" %>'></asp:Label></h3>
+                                        <h3 style="color:black;"><asp:Label   runat="server" ID="startPrice" Text='<%# Convert.ToDecimal( Eval("minAmount")).ToString("#,##0")+" PKR" %>'></asp:Label></h3>
                                     </div>
                                     <div class="col-md-5">
                                         <asp:Button runat="server" ID="bookNow"  CommandArgument='<%# Eval("id") %>'  class="btn btn-primary" Text="Book Now" OnClick="bookNowClick" />

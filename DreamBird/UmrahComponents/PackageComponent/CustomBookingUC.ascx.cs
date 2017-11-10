@@ -28,7 +28,7 @@ public partial class UmrahComponents_PackageComponent_CustomBookingUC : System.W
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             result = new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             int count = db.AlharmainUserPackages.Where(q => q.trackingID == result).Count();
             flag = count != 0;
         }
@@ -37,7 +37,7 @@ public partial class UmrahComponents_PackageComponent_CustomBookingUC : System.W
     protected void saveUser_Click(object sender, EventArgs e)
     {
 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         
         int id = int.Parse(Session["CustomPackageID"].ToString());
 
@@ -90,7 +90,7 @@ public partial class UmrahComponents_PackageComponent_CustomBookingUC : System.W
     {
         try
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             package = db.AlharmainUserPackages.Where(q => q.id == package.id).FirstOrDefault();
             //  DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
             MailMessage mailMessage = new MailMessage();
@@ -121,7 +121,7 @@ public partial class UmrahComponents_PackageComponent_CustomBookingUC : System.W
 
     public void BindDetailData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int id = int.Parse(Session["CustomPackageID"].ToString());
         var data = db.CustomPackages.Where(q => q.id == id).ToList();
         if (data.Count() != 0)
@@ -174,7 +174,7 @@ public partial class UmrahComponents_PackageComponent_CustomBookingUC : System.W
         // throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         //  throw new NotImplementedException();
     }

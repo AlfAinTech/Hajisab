@@ -12,7 +12,7 @@ public partial class Components_MediaBank_MediaBank : System.Web.UI.UserControl
     {
         if(!IsPostBack)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             ddl_mediaType.DataSource = db.MediaItems.Select(s => s.mediaType).Distinct().ToList();
             ddl_mediaType.DataBind();
             //Eddl_mediaType.DataSource = db.MediaItems.Select(s => s.mediaType).Distinct().ToList();
@@ -48,7 +48,7 @@ public partial class Components_MediaBank_MediaBank : System.Web.UI.UserControl
     {
         var MediaIDS = group_items_ids.Value.Split('|');
         string GroupName = new_group_name.Text;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if(db.MediaCategories.Any(a => a.CategoryName == GroupName))
         {
             int MediaCategoryID = db.MediaCategories.Where(w => w.CategoryName == GroupName).Select(s => s.id).First();
@@ -96,7 +96,7 @@ public partial class Components_MediaBank_MediaBank : System.Web.UI.UserControl
         item.MediumType = "External";
         item.MediaCategory_id = 1;
         item.DateAdded = System.DateTime.Now;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         db.MediaItems.Add(item);
         db.SaveChanges();
     }
@@ -112,7 +112,7 @@ public partial class Components_MediaBank_MediaBank : System.Web.UI.UserControl
         item.MediumType = "External";
         item.MediaCategory_id = 1;
         item.DateAdded = System.DateTime.Now;
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         db.MediaItems.Add(item);
         db.SaveChanges();
     }

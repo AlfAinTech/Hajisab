@@ -8,6 +8,7 @@ using System.Web;
 /// </summary>
 public class EventArgPackageSearch:EventArgs
 {
+    private String searchPackageName;
     public EventArgPackageSearch()
     {
         //
@@ -23,5 +24,30 @@ public class EventArgPackageSearch:EventArgs
     {
         get;
         set;
+    }
+    public String SearchPackageName
+    {
+        get
+        {
+            return searchPackageName;
+        }
+
+        set
+        {
+            searchPackageName = value;
+        }
+    }
+
+    private List<string> tags = new List<string>();
+    public List<string> Tags
+    {
+        get
+        {
+            return tags;
+        }
+        set
+        {
+            tags = value;
+        }
     }
 }

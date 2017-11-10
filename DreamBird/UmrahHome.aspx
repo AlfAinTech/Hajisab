@@ -1,5 +1,18 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UmrahHome.aspx.cs" Inherits="UmrahHome" EnableEventValidation="false" ValidateRequest="false"  %>
 
+<%@ Register Src="~/UmrahComponents/headerFooter/Packageheader.ascx" TagPrefix="uc1" TagName="Packageheader" %>
+<%@ Register Src="~/UmrahComponents/headerFooter/PackageFooter.ascx" TagPrefix="uc1" TagName="PackageFooter" %>
+<%@ Register Src="~/UmrahComponents/headerFooter/UmrahChatheader.ascx" TagPrefix="uc1" TagName="UmrahChatheader" %>
+<%@ Register Src="~/UmrahComponents/HomePageControls/BestUmrahPackages.ascx" TagPrefix="uc1" TagName="BestUmrahPackages" %>
+<%@ Register Src="~/UmrahComponents/HomePageControls/PrimaryUmrahPackages.ascx" TagPrefix="uc1" TagName="PrimaryUmrahPackages" %>
+<%@ Register Src="~/UmrahComponents/HomePageControls/OfferedPackages.ascx" TagPrefix="uc1" TagName="OfferedPackages" %>
+
+
+
+
+
+
+
 
 
 
@@ -103,7 +116,14 @@
     
           
                         <div id="body_content" class="row" runat="server">
-                           
+                            <uc1:Packageheader runat="server" ID="Packageheader" />
+                            <uc1:UmrahChatheader runat="server" ID="UmrahChatheader" />
+                            <uc1:BestUmrahPackages runat="server" ID="BestUmrahPackages" />
+                            <uc1:PrimaryUmrahPackages runat="server" ID="PrimaryUmrahPackages" />
+                            <uc1:OfferedPackages runat="server" ID="OfferedPackages" />
+                            <div id="sortable-5" class="col-md-12" style="">
+                            <uc1:PackageFooter runat="server" ID="PackageFooter" />
+                                </div>
                         </div>
     
            <%-- </ContentTemplate>

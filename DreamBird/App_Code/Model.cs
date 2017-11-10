@@ -32,13 +32,6 @@ public partial class Accommodation
     public virtual ICollection<AlharmainUserPackage> AlharmainUserPackages1 { get; set; }
 }
 
-public partial class AdminsettingsNewsFeed
-{
-    public bool is_horizontal { get; set; }
-    public bool is_featured_news { get; set; }
-    public int id { get; set; }
-}
-
 public partial class AirLine
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -54,9 +47,9 @@ public partial class AirLine
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Flight> Flights { get; set; }
-    public virtual AspNetUser AspNetUser { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<CustomFlightConfiguration> CustomFlightConfigurations { get; set; }
+    public virtual AspNetUser AspNetUser { get; set; }
 }
 
 public partial class AlharmainUser
@@ -127,15 +120,11 @@ public partial class AspNetUser
     {
         this.AirLines = new HashSet<AirLine>();
         this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
-        this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
         this.Hotels = new HashSet<Hotel>();
         this.VisaPackages = new HashSet<VisaPackage>();
-        this.DreamEnrollments = new HashSet<DreamEnrollment>();
-        this.DreamUserLikes = new HashSet<DreamUserLike>();
-        this.DreamUserProfiles = new HashSet<DreamUserProfile>();
-        this.UserLessonProgresses = new HashSet<UserLessonProgress>();
+        this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
         this.AspNetRoles = new HashSet<AspNetRole>();
-        this.Dreams = new HashSet<Dream>();
+        this.Packages = new HashSet<Package>();
     }
 
     public string Id { get; set; }
@@ -156,23 +145,15 @@ public partial class AspNetUser
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Hotel> Hotels { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<VisaPackage> VisaPackages { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamEnrollment> DreamEnrollments { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamUserLike> DreamUserLikes { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamUserProfile> DreamUserProfiles { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserLessonProgress> UserLessonProgresses { get; set; }
+    public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Dream> Dreams { get; set; }
+    public virtual ICollection<Package> Packages { get; set; }
 }
 
 public partial class AspNetUserClaim
@@ -194,99 +175,12 @@ public partial class AspNetUserLogin
     public virtual AspNetUser AspNetUser { get; set; }
 }
 
-public partial class AssignmentBank
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public AssignmentBank()
-    {
-        this.AssignmentResponses = new HashSet<AssignmentResponse>();
-        this.AssignmentResponses1 = new HashSet<AssignmentResponse>();
-        this.AssignmentResponses2 = new HashSet<AssignmentResponse>();
-        this.LessonAssignments = new HashSet<LessonAssignment>();
-        this.LessonAssignments1 = new HashSet<LessonAssignment>();
-        this.LessonAssignments2 = new HashSet<LessonAssignment>();
-    }
-
-    public int id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public string FileStorageDirectory { get; set; }
-    public int CategoryID { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<AssignmentResponse> AssignmentResponses { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<AssignmentResponse> AssignmentResponses1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<AssignmentResponse> AssignmentResponses2 { get; set; }
-    public virtual AssignmentCategory AssignmentCategory { get; set; }
-    public virtual AssignmentCategory AssignmentCategory1 { get; set; }
-    public virtual AssignmentCategory AssignmentCategory2 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonAssignment> LessonAssignments { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonAssignment> LessonAssignments1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonAssignment> LessonAssignments2 { get; set; }
-}
-
-public partial class AssignmentCategory
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public AssignmentCategory()
-    {
-        this.AssignmentBanks = new HashSet<AssignmentBank>();
-        this.AssignmentBanks1 = new HashSet<AssignmentBank>();
-        this.AssignmentBanks2 = new HashSet<AssignmentBank>();
-    }
-
-    public int id { get; set; }
-    public string CategoryName { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<AssignmentBank> AssignmentBanks { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<AssignmentBank> AssignmentBanks1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<AssignmentBank> AssignmentBanks2 { get; set; }
-}
-
-public partial class AssignmentResponse
-{
-    public int id { get; set; }
-    public int AssignmentID { get; set; }
-    public string UserID { get; set; }
-    public int Page { get; set; }
-    public bool isSubmitted { get; set; }
-    public string UploadedFilePath { get; set; }
-    public string UploadedFileType { get; set; }
-    public Nullable<decimal> AssignmentResult { get; set; }
-
-    public virtual AssignmentBank AssignmentBank { get; set; }
-    public virtual AssignmentBank AssignmentBank1 { get; set; }
-    public virtual AssignmentBank AssignmentBank2 { get; set; }
-}
-
-public partial class BloomsTaxonomy
-{
-    public int id { get; set; }
-    public string TaxonomyName { get; set; }
-}
-
 public partial class BotConversation
 {
     public int id { get; set; }
     public string question { get; set; }
     public string answer { get; set; }
     public string functionName { get; set; }
-}
-
-public partial class C__MigrationHistory
-{
-    public string MigrationId { get; set; }
-    public string ContextKey { get; set; }
-    public byte[] Model { get; set; }
-    public string ProductVersion { get; set; }
 }
 
 public partial class ChatAdmin
@@ -297,47 +191,6 @@ public partial class ChatAdmin
     public int layoutID { get; set; }
 
     public virtual DreamLayout DreamLayout { get; set; }
-}
-
-public partial class ClientLayout
-{
-    public int id { get; set; }
-    public string layoutName { get; set; }
-    public string layoutContent { get; set; }
-}
-
-public partial class ClientPage
-{
-    public int id { get; set; }
-    public Nullable<int> DreamLayout_id { get; set; }
-    public string Page { get; set; }
-    public string pageContent { get; set; }
-
-    public virtual Dream Dream { get; set; }
-    public virtual Dream Dream1 { get; set; }
-    public virtual Dream Dream2 { get; set; }
-}
-
-public partial class ControlCategory
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public ControlCategory()
-    {
-        this.Controls = new HashSet<HTMLControl>();
-        this.Controls1 = new HashSet<HTMLControl>();
-        this.Controls2 = new HashSet<HTMLControl>();
-    }
-
-    public int id { get; set; }
-    public string Name { get; set; }
-    public string remarks { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<HTMLControl> Controls { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<HTMLControl> Controls1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<HTMLControl> Controls2 { get; set; }
 }
 
 public partial class CustomFlightConfiguration
@@ -403,70 +256,9 @@ public partial class DiscountPackage
     public int packageDetailID { get; set; }
     public double discountPercent { get; set; }
 
-    public virtual PackageDetail PackageDetail { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<AlharmainUserPackage> AlharmainUserPackages { get; set; }
-}
-
-public partial class Dream
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Dream()
-    {
-        this.ClientPages = new HashSet<ClientPage>();
-        this.ClientPages1 = new HashSet<ClientPage>();
-        this.ClientPages2 = new HashSet<ClientPage>();
-        this.DreamEnrollments = new HashSet<DreamEnrollment>();
-        this.DreamLayouts = new HashSet<DreamLayout>();
-        this.DreamUserLikes = new HashSet<DreamUserLike>();
-        this.NewsDreamNews = new HashSet<NewsDreamNew>();
-        this.PackageDetails = new HashSet<PackageDetail>();
-    }
-
-    public int id { get; set; }
-    public string DreamName { get; set; }
-    public Nullable<int> MediaItem_id { get; set; }
-    public string Description { get; set; }
-    public bool IsFeatured { get; set; }
-    public bool IsDefault { get; set; }
-    public bool IsPublished { get; set; }
-    public Nullable<int> LikeSeed { get; set; }
-    public Nullable<int> dreamTypeID { get; set; }
-    public string AspNetUserID { get; set; }
-    public Nullable<System.DateTime> CreatedOn { get; set; }
-    public string EditedBy { get; set; }
-    public Nullable<System.DateTime> EditedOn { get; set; }
-
-    public virtual AspNetUser AspNetUser { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<ClientPage> ClientPages { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<ClientPage> ClientPages1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<ClientPage> ClientPages2 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamEnrollment> DreamEnrollments { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamLayout> DreamLayouts { get; set; }
-    public virtual DreamType DreamType { get; set; }
-    public virtual MediaItem MediaItem { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamUserLike> DreamUserLikes { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<NewsDreamNew> NewsDreamNews { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<PackageDetail> PackageDetails { get; set; }
-}
-
-public partial class DreamEnrollment
-{
-    public int id { get; set; }
-    public int dreamID { get; set; }
-    public string AspNetUserID { get; set; }
-    public System.DateTime enroll_Date { get; set; }
-
-    public virtual AspNetUser AspNetUser { get; set; }
-    public virtual Dream Dream { get; set; }
+    public virtual PackageDetail PackageDetail { get; set; }
 }
 
 public partial class DreamLayout
@@ -475,21 +267,6 @@ public partial class DreamLayout
     public DreamLayout()
     {
         this.ChatAdmins = new HashSet<ChatAdmin>();
-        this.DreamPageAuthorizations = new HashSet<DreamPageAuthorization>();
-        this.DreamPageControls = new HashSet<DreamPageControl>();
-        this.LessonAssignments = new HashSet<LessonAssignment>();
-        this.LessonMultimedias = new HashSet<LessonMultimedia>();
-        this.LessonProgressControls = new HashSet<LessonProgressControl>();
-        this.LessonQuestions = new HashSet<LessonQuestion>();
-        this.UserHintStatus = new HashSet<UserHintStatu>();
-        this.UserQuizStatus = new HashSet<UserQuizStatu>();
-        this.UserResponses = new HashSet<UserResponse>();
-        this.LayoutTextBanks = new HashSet<LayoutTextBank>();
-        this.LessonMenus = new HashSet<LessonMenu>();
-        this.LessonMenus1 = new HashSet<LessonMenu>();
-        this.LessonProgressDashBoards = new HashSet<LessonProgressDashBoard>();
-        this.LessonVideos = new HashSet<LessonVideo>();
-        this.Navigations = new HashSet<Navigation>();
         this.InviteSharePages = new HashSet<InviteSharePage>();
     }
 
@@ -507,171 +284,8 @@ public partial class DreamLayout
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<ChatAdmin> ChatAdmins { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamPageAuthorization> DreamPageAuthorizations { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamPageControl> DreamPageControls { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonAssignment> LessonAssignments { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMultimedia> LessonMultimedias { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonProgressControl> LessonProgressControls { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonQuestion> LessonQuestions { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserHintStatu> UserHintStatus { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserQuizStatu> UserQuizStatus { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserResponse> UserResponses { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LayoutTextBank> LayoutTextBanks { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMenu> LessonMenus { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMenu> LessonMenus1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonProgressDashBoard> LessonProgressDashBoards { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonVideo> LessonVideos { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Navigation> Navigations { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<InviteSharePage> InviteSharePages { get; set; }
-    public virtual Dream Dream { get; set; }
-}
-
-public partial class DreamMessage
-{
-    public int id { get; set; }
-    public int SenderId { get; set; }
-    public int ReceiverId { get; set; }
-    public string Message { get; set; }
-
-    public virtual DreamUserProfile DreamUserProfile { get; set; }
-    public virtual DreamUserProfile DreamUserProfile1 { get; set; }
-}
-
-public partial class DreamPageAuthorization
-{
-    public int id { get; set; }
-    public Nullable<int> DreamLayout_id { get; set; }
-    public string PageRole { get; set; }
-    public Nullable<bool> isAllowed { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-}
-
-public partial class DreamPageControl
-{
-    public int id { get; set; }
-    public int Layout_ID { get; set; }
-    public int Component_ID { get; set; }
-    public string BaseDreamServer_ID { get; set; }
-    public Nullable<decimal> TotalProgress { get; set; }
-
-    public virtual HTMLControl Control { get; set; }
-    public virtual HTMLControl Control1 { get; set; }
-    public virtual HTMLControl Control2 { get; set; }
-    public virtual DreamLayout DreamLayout { get; set; }
-}
-
-public partial class DreamTag
-{
-    public int id { get; set; }
-    public Nullable<int> Dream_id { get; set; }
-    public Nullable<int> Tag_id { get; set; }
-
-    public virtual Tag Tag { get; set; }
-}
-
-public partial class DreamType
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public DreamType()
-    {
-        this.Dreams = new HashSet<Dream>();
-    }
-
-    public int id { get; set; }
-    public string Name { get; set; }
-    public string DetailPath { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Dream> Dreams { get; set; }
-}
-
-public partial class DreamUserLike
-{
-    public int id { get; set; }
-    public int DreamId { get; set; }
-    public string AspNetUserId { get; set; }
-
-    public virtual AspNetUser AspNetUser { get; set; }
-    public virtual Dream Dream { get; set; }
-}
-
-public partial class DreamUserProfile
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public DreamUserProfile()
-    {
-        this.DreamMessages = new HashSet<DreamMessage>();
-        this.DreamMessages1 = new HashSet<DreamMessage>();
-    }
-
-    public int id { get; set; }
-    public string AspNetUserId { get; set; }
-    public string Name { get; set; }
-    public string Education { get; set; }
-    public Nullable<System.DateTime> DateOfBirth { get; set; }
-    public string ProfilePicture { get; set; }
-    public bool IsActivated { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamMessage> DreamMessages { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamMessage> DreamMessages1 { get; set; }
-    public virtual AspNetUser AspNetUser { get; set; }
-}
-
-public partial class DynamicLayout
-{
-    public int id { get; set; }
-    public string Name { get; set; }
-    public bool Header { get; set; }
-    public bool Footer { get; set; }
-    public string ContentRatio { get; set; }
-}
-
-public partial class FIBOption
-{
-    public int id { get; set; }
-    public int QuestionID { get; set; }
-    public string OptionText { get; set; }
-
-    public virtual QuestionBank QuestionBank { get; set; }
-}
-
-public partial class FileCategory
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public FileCategory()
-    {
-        this.Files = new HashSet<XFile>();
-        this.Files1 = new HashSet<XFile>();
-        this.Files2 = new HashSet<XFile>();
-    }
-
-    public int id { get; set; }
-    public string CategoryName { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<XFile> Files { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<XFile> Files1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<XFile> Files2 { get; set; }
+    public virtual Package Package { get; set; }
 }
 
 public partial class Flight
@@ -700,16 +314,6 @@ public partial class Flight
     public virtual ICollection<PackageDetail> PackageDetails1 { get; set; }
 }
 
-public partial class GroupQuestion
-{
-    public int id { get; set; }
-    public int PrimaryQuestionID { get; set; }
-    public int SecondaryQuestionID { get; set; }
-
-    public virtual QuestionBank QuestionBank { get; set; }
-    public virtual QuestionBank QuestionBank1 { get; set; }
-}
-
 public partial class Hotel
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -718,9 +322,9 @@ public partial class Hotel
         this.Accommodations = new HashSet<Accommodation>();
         this.HotelFacilities = new HashSet<HotelFacility>();
         this.HotelImages = new HashSet<HotelImage>();
+        this.PackageItenryDetails = new HashSet<PackageItenryDetail>();
         this.PackageDetails = new HashSet<PackageDetail>();
         this.PackageDetails1 = new HashSet<PackageDetail>();
-        this.PackageItenryDetails = new HashSet<PackageItenryDetail>();
     }
 
     public int id { get; set; }
@@ -739,13 +343,13 @@ public partial class Hotel
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<HotelImage> HotelImages { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<PackageItenryDetail> PackageItenryDetails { get; set; }
+    public virtual AspNetUser AspNetUser { get; set; }
+    public virtual MediaItem MediaItem { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<PackageDetail> PackageDetails { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<PackageDetail> PackageDetails1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<PackageItenryDetail> PackageItenryDetails { get; set; }
-    public virtual MediaItem MediaItem { get; set; }
-    public virtual AspNetUser AspNetUser { get; set; }
 }
 
 public partial class HotelFacility
@@ -770,41 +374,6 @@ public partial class HotelImage
     public virtual MediaItem MediaItem { get; set; }
 }
 
-public partial class HTMLControl
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public HTMLControl()
-    {
-        this.DreamPageControls = new HashSet<DreamPageControl>();
-        this.DreamPageControls1 = new HashSet<DreamPageControl>();
-        this.DreamPageControls2 = new HashSet<DreamPageControl>();
-    }
-
-    public int id { get; set; }
-    public Nullable<int> ControlCategory_id { get; set; }
-    public string Name { get; set; }
-    public Nullable<int> IconURL { get; set; }
-    public string NormalMarkup { get; set; }
-    public string DefautControlName { get; set; }
-    public string AdminControlPath { get; set; }
-    public Nullable<bool> isSeperateWindow { get; set; }
-    public string DeleteControlPath { get; set; }
-    public Nullable<bool> isProgress { get; set; }
-
-    public virtual ControlCategory ControlCategory { get; set; }
-    public virtual ControlCategory ControlCategory1 { get; set; }
-    public virtual ControlCategory ControlCategory2 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamPageControl> DreamPageControls { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamPageControl> DreamPageControls1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamPageControl> DreamPageControls2 { get; set; }
-    public virtual MediaItem MediaItem { get; set; }
-    public virtual MediaItem MediaItem1 { get; set; }
-    public virtual MediaItem MediaItem2 { get; set; }
-}
-
 public partial class InviteSharePage
 {
     public int id { get; set; }
@@ -813,190 +382,6 @@ public partial class InviteSharePage
     public string shareURL { get; set; }
 
     public virtual DreamLayout DreamLayout { get; set; }
-}
-
-public partial class LayoutTextBank
-{
-    public int id { get; set; }
-    public int LayoutID { get; set; }
-    public int TextID { get; set; }
-    public Nullable<int> SharedTextID { get; set; }
-    public string ControlName { get; set; }
-    public Nullable<bool> IsShared { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual TextBank TextBank { get; set; }
-    public virtual TextBank TextBank1 { get; set; }
-}
-
-public partial class LessonAssignment
-{
-    public int id { get; set; }
-    public int Layout_id { get; set; }
-    public string BaseControlID { get; set; }
-    public int Assignment_id { get; set; }
-
-    public virtual AssignmentBank AssignmentBank { get; set; }
-    public virtual AssignmentBank AssignmentBank1 { get; set; }
-    public virtual AssignmentBank AssignmentBank2 { get; set; }
-    public virtual DreamLayout DreamLayout { get; set; }
-}
-
-public partial class LessonMenu
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public LessonMenu()
-    {
-        this.LessonMenuPreRequisites = new HashSet<LessonMenuPreRequisite>();
-        this.LessonMenuPreRequisites1 = new HashSet<LessonMenuPreRequisite>();
-        this.LessonProgressControls = new HashSet<LessonProgressControl>();
-        this.LessonMenu1 = new HashSet<LessonMenu>();
-        this.LessonMenuAvailabilities = new HashSet<LessonMenuAvailability>();
-        this.UserLessonProgresses = new HashSet<UserLessonProgress>();
-    }
-
-    public int id { get; set; }
-    public string menuName { get; set; }
-    public bool IsContainer { get; set; }
-    public Nullable<int> parentMenu_id { get; set; }
-    public Nullable<int> ParentLayoutID { get; set; }
-    public Nullable<int> DreamLayoutID { get; set; }
-    public Nullable<int> previous_LayoutID { get; set; }
-    public Nullable<int> next_LayoutID { get; set; }
-    public string DisplayName { get; set; }
-    public string menuRight { get; set; }
-    public string menuType { get; set; }
-    public Nullable<bool> isActive { get; set; }
-    public Nullable<bool> isDefault { get; set; }
-    public Nullable<int> AppOrder { get; set; }
-    public Nullable<bool> isShowNP { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual DreamLayout DreamLayout1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMenuPreRequisite> LessonMenuPreRequisites { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMenuPreRequisite> LessonMenuPreRequisites1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonProgressControl> LessonProgressControls { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMenu> LessonMenu1 { get; set; }
-    public virtual LessonMenu LessonMenu2 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMenuAvailability> LessonMenuAvailabilities { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserLessonProgress> UserLessonProgresses { get; set; }
-}
-
-public partial class LessonMenuAvailability
-{
-    public int id { get; set; }
-    public int MenuID { get; set; }
-    public Nullable<System.DateTime> AvailableFrom { get; set; }
-    public Nullable<System.DateTime> DeadLine { get; set; }
-    public int TimeLimit { get; set; }
-
-    public virtual LessonMenu LessonMenu { get; set; }
-}
-
-public partial class LessonMenuPreRequisite
-{
-    public int id { get; set; }
-    public int menu_id { get; set; }
-    public int pre_req_menu_id { get; set; }
-
-    public virtual LessonMenu LessonMenu { get; set; }
-    public virtual LessonMenu LessonMenu1 { get; set; }
-}
-
-public partial class LessonMultimedia
-{
-    public int id { get; set; }
-    public int Layout_id { get; set; }
-    public string BaseControlID { get; set; }
-    public Nullable<int> MultimediaID { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual Multimediabank Multimediabank { get; set; }
-    public virtual Multimediabank Multimediabank1 { get; set; }
-    public virtual Multimediabank Multimediabank2 { get; set; }
-}
-
-public partial class LessonProgressControl
-{
-    public int id { get; set; }
-    public string BaseControlID { get; set; }
-    public Nullable<int> ResidingLayoutID { get; set; }
-    public int OriginalLayoutID { get; set; }
-    public int MenuID { get; set; }
-    public string ProgressType { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual LessonMenu LessonMenu { get; set; }
-}
-
-public partial class LessonProgressDashBoard
-{
-    public int id { get; set; }
-    public string BaseControlID { get; set; }
-    public bool ShowSiblingsProgress { get; set; }
-    public int LayoutID { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-}
-
-public partial class LessonQuestion
-{
-    public int id { get; set; }
-    public int Layout_id { get; set; }
-    public string BaseControlID { get; set; }
-    public Nullable<int> Question_id { get; set; }
-    public string HintOption { get; set; }
-    public Nullable<decimal> HintMarks { get; set; }
-    public Nullable<bool> ShowAnswer { get; set; }
-    public Nullable<int> TotalTime { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual QuestionBank QuestionBank { get; set; }
-}
-
-public partial class LessonQuiz
-{
-    public int id { get; set; }
-    public int Layout_id { get; set; }
-    public string BaseControlID { get; set; }
-    public Nullable<int> QuizID { get; set; }
-    public bool Graded { get; set; }
-    public Nullable<decimal> Marks { get; set; }
-    public bool TimeBased { get; set; }
-    public Nullable<int> TotalTime { get; set; }
-    public int visibleQuestions { get; set; }
-    public int QuestionsPerPage { get; set; }
-    public string HintOption { get; set; }
-
-    public virtual QuizBank QuizBank { get; set; }
-    public virtual QuizBank QuizBank1 { get; set; }
-    public virtual QuizBank QuizBank2 { get; set; }
-}
-
-public partial class LessonVideo
-{
-    public int id { get; set; }
-    public int Layout_id { get; set; }
-    public string BaseControlID { get; set; }
-    public Nullable<int> MediaItem_id { get; set; }
-    public bool showTranscript { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual MediaItem MediaItem { get; set; }
-}
-
-public partial class MCQOption
-{
-    public int id { get; set; }
-    public int QuestionID { get; set; }
-    public string OptionText { get; set; }
-    public bool isCorrect { get; set; }
 }
 
 public partial class MediaCategory
@@ -1025,24 +410,14 @@ public partial class MediaItem
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public MediaItem()
     {
-        this.Controls = new HashSet<HTMLControl>();
-        this.Controls1 = new HashSet<HTMLControl>();
-        this.Controls2 = new HashSet<HTMLControl>();
         this.Hotels = new HashSet<Hotel>();
         this.HotelFacilities = new HashSet<HotelFacility>();
         this.HotelImages = new HashSet<HotelImage>();
-        this.LessonVideos = new HashSet<LessonVideo>();
-        this.QuizBanks = new HashSet<QuizBank>();
-        this.QuizBanks1 = new HashSet<QuizBank>();
-        this.QuizBanks2 = new HashSet<QuizBank>();
         this.VideoTranscripts = new HashSet<VideoTranscript>();
         this.VideoTranscripts1 = new HashSet<VideoTranscript>();
         this.VideoTranscripts2 = new HashSet<VideoTranscript>();
-        this.MediaTags = new HashSet<MediaTag>();
-        this.Navigations = new HashSet<Navigation>();
-        this.News = new HashSet<News>();
         this.Packages = new HashSet<Package>();
-        this.Dreams = new HashSet<Dream>();
+        this.MediaTags = new HashSet<MediaTag>();
     }
 
     public int id { get; set; }
@@ -1054,26 +429,12 @@ public partial class MediaItem
     public string MediumType { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<HTMLControl> Controls { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<HTMLControl> Controls1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<HTMLControl> Controls2 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Hotel> Hotels { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<HotelFacility> HotelFacilities { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<HotelImage> HotelImages { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonVideo> LessonVideos { get; set; }
     public virtual MediaCategory MediaCategory { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBank> QuizBanks { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBank> QuizBanks1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBank> QuizBanks2 { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<VideoTranscript> VideoTranscripts { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -1081,15 +442,9 @@ public partial class MediaItem
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<VideoTranscript> VideoTranscripts2 { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<MediaTag> MediaTags { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Navigation> Navigations { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<News> News { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Package> Packages { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Dream> Dreams { get; set; }
+    public virtual ICollection<MediaTag> MediaTags { get; set; }
 }
 
 public partial class MediaTag
@@ -1102,128 +457,45 @@ public partial class MediaTag
     public virtual Tag Tag { get; set; }
 }
 
-public partial class MultiFIBComponent
-{
-    public int id { get; set; }
-    public int QuestionID { get; set; }
-    public string TextType { get; set; }
-    public string TextContent { get; set; }
-    public Nullable<decimal> Weightage { get; set; }
-    public Nullable<int> Sequence { get; set; }
-
-    public virtual QuestionBank QuestionBank { get; set; }
-}
-
-public partial class MultiFIBMarkup
-{
-    public int id { get; set; }
-    public int QuestionID { get; set; }
-    public string QuestionMarkup { get; set; }
-
-    public virtual QuestionBank QuestionBank { get; set; }
-    public virtual QuestionBank QuestionBank1 { get; set; }
-    public virtual QuestionBank QuestionBank2 { get; set; }
-}
-
 public partial class Multimediabank
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Multimediabank()
-    {
-        this.LessonMultimedias = new HashSet<LessonMultimedia>();
-        this.LessonMultimedias1 = new HashSet<LessonMultimedia>();
-        this.LessonMultimedias2 = new HashSet<LessonMultimedia>();
-    }
-
     public int id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public string DirectoryPath { get; set; }
     public string IndexFilePath { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMultimedia> LessonMultimedias { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMultimedia> LessonMultimedias1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonMultimedia> LessonMultimedias2 { get; set; }
-}
-
-public partial class Navigation
-{
-    public int id { get; set; }
-    public Nullable<int> MediaItem_id { get; set; }
-    public Nullable<int> Layout_id { get; set; }
-    public string Caption { get; set; }
-    public string Link { get; set; }
-    public Nullable<bool> IsPublished { get; set; }
-    public Nullable<int> LinkType { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual MediaItem MediaItem { get; set; }
-}
-
-public partial class News
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public News()
-    {
-        this.NewsDreamNews = new HashSet<NewsDreamNew>();
-        this.NewsRelatedNews = new HashSet<NewsRelatedNew>();
-        this.NewsRelatedNews1 = new HashSet<NewsRelatedNew>();
-    }
-
-    public int id { get; set; }
-    public string news_title { get; set; }
-    public string news_description { get; set; }
-    public Nullable<System.DateTime> from_date { get; set; }
-    public Nullable<System.DateTime> to_date { get; set; }
-    public Nullable<bool> is_latest_news { get; set; }
-    public Nullable<bool> is_feature_news { get; set; }
-    public Nullable<System.DateTime> created_date { get; set; }
-    public Nullable<bool> is_main_news { get; set; }
-    public Nullable<int> MediaItem_id { get; set; }
-    public string Category { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<NewsDreamNew> NewsDreamNews { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<NewsRelatedNew> NewsRelatedNews { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<NewsRelatedNew> NewsRelatedNews1 { get; set; }
-    public virtual MediaItem MediaItem { get; set; }
-}
-
-public partial class NewsDreamNew
-{
-    public int id { get; set; }
-    public int news_id { get; set; }
-    public int dream_id { get; set; }
-
-    public virtual News News { get; set; }
-    public virtual Dream Dream { get; set; }
-}
-
-public partial class NewsRelatedNew
-{
-    public int id { get; set; }
-    public int news_id { get; set; }
-    public int related_news_id { get; set; }
-
-    public virtual News News { get; set; }
-    public virtual News News1 { get; set; }
 }
 
 public partial class Package
 {
-    public int id { get; set; }
-    public string name { get; set; }
-    public string description { get; set; }
-    public System.DateTime startDate { get; set; }
-    public int duration { get; set; }
-    public int mediaID { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Package()
+    {
+        this.DreamLayouts = new HashSet<DreamLayout>();
+        this.PackageDetails = new HashSet<PackageDetail>();
+    }
 
+    public int id { get; set; }
+    public string PackageName { get; set; }
+    public Nullable<int> MediaItem_id { get; set; }
+    public string Description { get; set; }
+    public bool IsFeatured { get; set; }
+    public bool IsDefault { get; set; }
+    public bool IsPublished { get; set; }
+    public Nullable<int> LikeSeed { get; set; }
+    public Nullable<int> PackageTypeID { get; set; }
+    public string AspNetUserID { get; set; }
+    public Nullable<System.DateTime> CreatedOn { get; set; }
+    public string EditedBy { get; set; }
+    public Nullable<System.DateTime> EditedOn { get; set; }
+
+    public virtual AspNetUser AspNetUser { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<DreamLayout> DreamLayouts { get; set; }
+    public virtual PackageType PackageType { get; set; }
     public virtual MediaItem MediaItem { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<PackageDetail> PackageDetails { get; set; }
 }
 
 public partial class PackageDetail
@@ -1231,13 +503,13 @@ public partial class PackageDetail
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public PackageDetail()
     {
+        this.AlharmainUserPackages = new HashSet<AlharmainUserPackage>();
         this.DiscountPackages = new HashSet<DiscountPackage>();
         this.PackageItenryDetails = new HashSet<PackageItenryDetail>();
-        this.AlharmainUserPackages = new HashSet<AlharmainUserPackage>();
     }
 
     public int id { get; set; }
-    public int dreamID { get; set; }
+    public int PackageID { get; set; }
     public int hotelIDMakkah { get; set; }
     public int nightsInMakkah { get; set; }
     public int hotelIDMadina { get; set; }
@@ -1260,19 +532,19 @@ public partial class PackageDetail
     public double maxRange { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<AlharmainUserPackage> AlharmainUserPackages { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<DiscountPackage> DiscountPackages { get; set; }
+    public virtual Flight Flight { get; set; }
+    public virtual Flight Flight1 { get; set; }
     public virtual Hotel Hotel { get; set; }
     public virtual Hotel Hotel1 { get; set; }
+    public virtual Package Package { get; set; }
+    public virtual TransPort TransPort { get; set; }
+    public virtual VisaPackage VisaPackage { get; set; }
     public virtual Ziarat Ziarat { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<PackageItenryDetail> PackageItenryDetails { get; set; }
-    public virtual TransPort TransPort { get; set; }
-    public virtual Flight Flight { get; set; }
-    public virtual Flight Flight1 { get; set; }
-    public virtual VisaPackage VisaPackage { get; set; }
-    public virtual Dream Dream { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<AlharmainUserPackage> AlharmainUserPackages { get; set; }
 }
 
 public partial class PackageItenryDetail
@@ -1286,229 +558,33 @@ public partial class PackageItenryDetail
     public Nullable<int> transportID { get; set; }
 
     public virtual Hotel Hotel { get; set; }
-    public virtual PackageDetail PackageDetail { get; set; }
     public virtual TransPort TransPort { get; set; }
+    public virtual PackageDetail PackageDetail { get; set; }
 }
 
-public partial class QuestionBank
+public partial class PackageTag
+{
+    public int id { get; set; }
+    public Nullable<int> Package_id { get; set; }
+    public Nullable<int> Tag_id { get; set; }
+
+    public virtual Tag Tag { get; set; }
+}
+
+public partial class PackageType
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public QuestionBank()
+    public PackageType()
     {
-        this.FIBOptions = new HashSet<FIBOption>();
-        this.GroupQuestions = new HashSet<GroupQuestion>();
-        this.GroupQuestions1 = new HashSet<GroupQuestion>();
-        this.LessonQuestions = new HashSet<LessonQuestion>();
-        this.MultiFIBComponents = new HashSet<MultiFIBComponent>();
-        this.MultiFIBMarkups = new HashSet<MultiFIBMarkup>();
-        this.MultiFIBMarkups1 = new HashSet<MultiFIBMarkup>();
-        this.MultiFIBMarkups2 = new HashSet<MultiFIBMarkup>();
-        this.QuestionExplanations = new HashSet<QuestionExplanation>();
-        this.QuestionHints = new HashSet<QuestionHint>();
-        this.QuizBankQuestions = new HashSet<QuizBankQuestion>();
-        this.UserHintStatus = new HashSet<UserHintStatu>();
-        this.UserQuizStatus = new HashSet<UserQuizStatu>();
-        this.UserResponses = new HashSet<UserResponse>();
-    }
-
-    public int id { get; set; }
-    public int TypeID { get; set; }
-    public string QuestionText { get; set; }
-    public Nullable<int> Level { get; set; }
-    public Nullable<int> CategoryID { get; set; }
-    public Nullable<int> SubCategoryID { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<FIBOption> FIBOptions { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<GroupQuestion> GroupQuestions { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<GroupQuestion> GroupQuestions1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonQuestion> LessonQuestions { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<MultiFIBComponent> MultiFIBComponents { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<MultiFIBMarkup> MultiFIBMarkups { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<MultiFIBMarkup> MultiFIBMarkups1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<MultiFIBMarkup> MultiFIBMarkups2 { get; set; }
-    public virtual QuestionCategory QuestionCategory { get; set; }
-    public virtual QuestionSubCategory QuestionSubCategory { get; set; }
-    public virtual QuestionType QuestionType { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuestionExplanation> QuestionExplanations { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuestionHint> QuestionHints { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBankQuestion> QuizBankQuestions { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserHintStatu> UserHintStatus { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserQuizStatu> UserQuizStatus { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserResponse> UserResponses { get; set; }
-}
-
-public partial class QuestionCategory
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public QuestionCategory()
-    {
-        this.QuestionBanks = new HashSet<QuestionBank>();
-        this.QuestionSubCategories = new HashSet<QuestionSubCategory>();
-        this.QuestionSubCategories1 = new HashSet<QuestionSubCategory>();
-        this.QuestionSubCategories2 = new HashSet<QuestionSubCategory>();
-    }
-
-    public int id { get; set; }
-    public string CategoryName { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuestionBank> QuestionBanks { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuestionSubCategory> QuestionSubCategories { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuestionSubCategory> QuestionSubCategories1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuestionSubCategory> QuestionSubCategories2 { get; set; }
-}
-
-public partial class QuestionExplanation
-{
-    public int id { get; set; }
-    public int QuestionID { get; set; }
-    public string ExplanationText { get; set; }
-
-    public virtual QuestionBank QuestionBank { get; set; }
-}
-
-public partial class QuestionHint
-{
-    public int id { get; set; }
-    public int QuestionID { get; set; }
-    public string HintText { get; set; }
-
-    public virtual QuestionBank QuestionBank { get; set; }
-}
-
-public partial class QuestionSubCategory
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public QuestionSubCategory()
-    {
-        this.QuestionBanks = new HashSet<QuestionBank>();
-    }
-
-    public int id { get; set; }
-    public int CategoryID { get; set; }
-    public string SubCategoryName { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuestionBank> QuestionBanks { get; set; }
-    public virtual QuestionCategory QuestionCategory { get; set; }
-    public virtual QuestionCategory QuestionCategory1 { get; set; }
-    public virtual QuestionCategory QuestionCategory2 { get; set; }
-}
-
-public partial class QuestionType
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public QuestionType()
-    {
-        this.QuestionBanks = new HashSet<QuestionBank>();
-    }
-
-    public int id { get; set; }
-    public string QTypeName { get; set; }
-    public string EditTypeControl { get; set; }
-    public string ViewTypeControl { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuestionBank> QuestionBanks { get; set; }
-}
-
-public partial class QuizBank
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public QuizBank()
-    {
-        this.LessonQuizs = new HashSet<LessonQuiz>();
-        this.LessonQuizs1 = new HashSet<LessonQuiz>();
-        this.LessonQuizs2 = new HashSet<LessonQuiz>();
-        this.QuizBankQuestions = new HashSet<QuizBankQuestion>();
-        this.QuizBankQuestions1 = new HashSet<QuizBankQuestion>();
-        this.QuizBankQuestions2 = new HashSet<QuizBankQuestion>();
-        this.UserQuizStatus = new HashSet<UserQuizStatu>();
-        this.UserQuizStatus1 = new HashSet<UserQuizStatu>();
-        this.UserQuizStatus2 = new HashSet<UserQuizStatu>();
+        this.Packages = new HashSet<Package>();
     }
 
     public int id { get; set; }
     public string Name { get; set; }
-    public string Description { get; set; }
-    public int Categoryid { get; set; }
-    public int MediaItemID { get; set; }
+    public string DetailPath { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonQuiz> LessonQuizs { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonQuiz> LessonQuizs1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LessonQuiz> LessonQuizs2 { get; set; }
-    public virtual QuizCategory QuizCategory { get; set; }
-    public virtual QuizCategory QuizCategory1 { get; set; }
-    public virtual QuizCategory QuizCategory2 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBankQuestion> QuizBankQuestions { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBankQuestion> QuizBankQuestions1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBankQuestion> QuizBankQuestions2 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserQuizStatu> UserQuizStatus { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserQuizStatu> UserQuizStatus1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<UserQuizStatu> UserQuizStatus2 { get; set; }
-    public virtual MediaItem MediaItem { get; set; }
-    public virtual MediaItem MediaItem1 { get; set; }
-    public virtual MediaItem MediaItem2 { get; set; }
-}
-
-public partial class QuizBankQuestion
-{
-    public int id { get; set; }
-    public int QuizID { get; set; }
-    public int QuestionID { get; set; }
-    public Nullable<bool> isActive { get; set; }
-
-    public virtual QuestionBank QuestionBank { get; set; }
-    public virtual QuizBank QuizBank { get; set; }
-    public virtual QuizBank QuizBank1 { get; set; }
-    public virtual QuizBank QuizBank2 { get; set; }
-}
-
-public partial class QuizCategory
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public QuizCategory()
-    {
-        this.QuizBanks = new HashSet<QuizBank>();
-        this.QuizBanks1 = new HashSet<QuizBank>();
-        this.QuizBanks2 = new HashSet<QuizBank>();
-    }
-
-    public int id { get; set; }
-    public string CategoryName { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBank> QuizBanks { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBank> QuizBanks1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<QuizBank> QuizBanks2 { get; set; }
+    public virtual ICollection<Package> Packages { get; set; }
 }
 
 public partial class sysdiagram
@@ -1525,8 +601,7 @@ public partial class Tag
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public Tag()
     {
-        this.DreamTags = new HashSet<DreamTag>();
-        this.TextBankTags = new HashSet<TextBankTag>();
+        this.PackageTags = new HashSet<PackageTag>();
         this.MediaTags = new HashSet<MediaTag>();
     }
 
@@ -1534,44 +609,9 @@ public partial class Tag
     public string Name { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<DreamTag> DreamTags { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<TextBankTag> TextBankTags { get; set; }
+    public virtual ICollection<PackageTag> PackageTags { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<MediaTag> MediaTags { get; set; }
-}
-
-public partial class TextBank
-{
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public TextBank()
-    {
-        this.LayoutTextBanks = new HashSet<LayoutTextBank>();
-        this.LayoutTextBanks1 = new HashSet<LayoutTextBank>();
-        this.TextBankTags = new HashSet<TextBankTag>();
-    }
-
-    public int id { get; set; }
-    public string textdata { get; set; }
-    public Nullable<bool> IsShared { get; set; }
-    public string TextName { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LayoutTextBank> LayoutTextBanks { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<LayoutTextBank> LayoutTextBanks1 { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<TextBankTag> TextBankTags { get; set; }
-}
-
-public partial class TextBankTag
-{
-    public int id { get; set; }
-    public int TextID { get; set; }
-    public int TagID { get; set; }
-
-    public virtual Tag Tag { get; set; }
-    public virtual TextBank TextBank { get; set; }
 }
 
 public partial class TransPort
@@ -1579,73 +619,17 @@ public partial class TransPort
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public TransPort()
     {
-        this.PackageDetails = new HashSet<PackageDetail>();
         this.PackageItenryDetails = new HashSet<PackageItenryDetail>();
+        this.PackageDetails = new HashSet<PackageDetail>();
     }
 
     public int id { get; set; }
     public string Name { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<PackageDetail> PackageDetails { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<PackageItenryDetail> PackageItenryDetails { get; set; }
-}
-
-public partial class UserHintStatu
-{
-    public int id { get; set; }
-    public int QuestionID { get; set; }
-    public int Page { get; set; }
-    public string UserID { get; set; }
-    public string HintOption { get; set; }
-    public Nullable<decimal> HintMarks { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual QuestionBank QuestionBank { get; set; }
-}
-
-public partial class UserLessonProgress
-{
-    public int id { get; set; }
-    public int menu_id { get; set; }
-    public string AspNetUser_id { get; set; }
-    public decimal progress { get; set; }
-
-    public virtual LessonMenu LessonMenu { get; set; }
-    public virtual AspNetUser AspNetUser { get; set; }
-}
-
-public partial class UserQuizStatu
-{
-    public int id { get; set; }
-    public int QuizID { get; set; }
-    public int QuestionID { get; set; }
-    public bool QuestionStatus { get; set; }
-    public string UserID { get; set; }
-    public int Page { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual QuestionBank QuestionBank { get; set; }
-    public virtual QuizBank QuizBank { get; set; }
-    public virtual QuizBank QuizBank1 { get; set; }
-    public virtual QuizBank QuizBank2 { get; set; }
-}
-
-public partial class UserResponse
-{
-    public int id { get; set; }
-    public int QuestionID { get; set; }
-    public string UserID { get; set; }
-    public int Page { get; set; }
-    public bool UserPerformance { get; set; }
-    public string UserReply { get; set; }
-    public Nullable<int> quizID { get; set; }
-    public Nullable<decimal> AwardedMarks { get; set; }
-    public Nullable<int> ResponseTime { get; set; }
-
-    public virtual DreamLayout DreamLayout { get; set; }
-    public virtual QuestionBank QuestionBank { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<PackageDetail> PackageDetails { get; set; }
 }
 
 public partial class VideoTranscript
@@ -1675,23 +659,9 @@ public partial class VisaPackage
     public System.DateTime expireDate { get; set; }
     public string AspNetUserID { get; set; }
 
+    public virtual AspNetUser AspNetUser { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<PackageDetail> PackageDetails { get; set; }
-    public virtual AspNetUser AspNetUser { get; set; }
-}
-
-public partial class XFile
-{
-    public int id { get; set; }
-    public string name { get; set; }
-    public string path { get; set; }
-    public Nullable<int> FileCategory_ID { get; set; }
-    public string FileType { get; set; }
-    public Nullable<System.DateTime> DateAdded { get; set; }
-
-    public virtual FileCategory FileCategory { get; set; }
-    public virtual FileCategory FileCategory1 { get; set; }
-    public virtual FileCategory FileCategory2 { get; set; }
 }
 
 public partial class Ziarat

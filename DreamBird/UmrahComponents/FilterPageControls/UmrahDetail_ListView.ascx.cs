@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : System.Web.UI.UserControl,ICorePackageControl
 {
     static public List<PackageDetail> wholeData;
     static public int NoOfPages;
@@ -17,11 +17,11 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
 
         if (!IsPostBack)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             bindData(db.PackageDetails.ToList());
         }
         
-        ISearch searchBox = DreamUtil.SearchInterface;
+        ISearch searchBox = PackageUtil.SearchInterface;
         if (searchBox != null)
         {
             searchBox.DoSearch += PkgSearched_pkgSearch;
@@ -128,14 +128,14 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
         
        
        
-        //DreamBirdEntities db = new DreamBirdEntities()
+        //PackageEntities db = new PackageEntities()
         bindData(wholeData); WholeUpdatePanel.Update();
     }
     protected void bookNowClicked(object sender, EventArgs e)
     {
         Button b = (Button)sender;
         int id = int.Parse(b.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
        
             RepeaterItem ri = b.NamingContainer as RepeaterItem;
@@ -147,7 +147,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
                 queryString += "?AccomMakkahID=" + dl_makkah.SelectedValue;
                 queryString += "&AccomMadinaID=" + dl_madina.SelectedValue;
 
-            Response.Redirect("~/UmrahDetailPage/" + pd.Dream.DreamName + "/umrahDetail" + queryString);
+            Response.Redirect("~/UmrahDetailPage/" + pd.Package.PackageName + "/umrahDetail" + queryString);
         }
 
     }
@@ -165,7 +165,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
     public void AccommodationMakkah_Changed(object sender, EventArgs e)
     {
 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         DropDownList dl = (DropDownList)sender;
         RepeaterItem ri = dl.NamingContainer as RepeaterItem;
         if(ri != null)
@@ -205,7 +205,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
 
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
 
     }

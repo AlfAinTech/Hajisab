@@ -1,4 +1,7 @@
 jQuery(document).ready(function ($) {
+
+    
+
     $.expr[':'].Contains = function (a, i, m) {
         return jQuery(a).text().toUpperCase()
             .indexOf(m[3].toUpperCase()) >= 0;
@@ -112,7 +115,7 @@ jQuery(document).ready(function ($) {
                 return letter.toUpperCase();
             });
             $.ajax({
-                url: "../../Components/Dreams/PageSaver.ashx?DID=" + dreamID + "&&Page=" + PageName + "&&Published=undefined",
+                url: "../../Components/Packages/PageSaver.ashx?DID=" + dreamID + "&&Page=" + PageName + "&&Published=undefined",
                 type: "POST",
                 contentType: false,
                 processData: false,
@@ -156,7 +159,7 @@ jQuery(document).ready(function ($) {
     //    }
     //    else {
     //        $.ajax({
-    //            url: "../../Components/Dreams/PageSaver.ashx?DID=" + dreamID + "&&Page=" + PageName + "&&Published=undefined&&Type="+PageType,
+    //            url: "../../Components/Packages/PageSaver.ashx?DID=" + dreamID + "&&Page=" + PageName + "&&Published=undefined&&Type="+PageType,
     //            type: "POST",
     //            contentType: false,
     //            processData: false,
@@ -179,7 +182,7 @@ jQuery(document).ready(function ($) {
         alert(dreamID);
         var PageType = $("#Page_Type").val();
         $.ajax({
-            url: "../../Components/Dreams/PageSaver.ashx?DID=" + dreamID + "&&Page=" + PageName + "&&Published=" + Published + "&&Type=" + PageType,
+            url: "../../Components/Packages/PageSaver.ashx?DID=" + dreamID + "&&Page=" + PageName + "&&Published=" + Published + "&&Type=" + PageType,
             type: "POST",
             contentType: false,
             processData: false,
@@ -200,7 +203,7 @@ jQuery(document).ready(function ($) {
         var dreamID = $("#dream_id").val();
         var Checked = $(this).children().is(':checked');
         $.ajax({
-            url: "../../Components/Dreams/Content/PageAuthorizationUpdater.ashx?DID=" + dreamID + "&&Page=" + PageName + "&&RoleID=" + roleName + "&&Allowed=" + Checked,
+            url: "../../Components/Packages/Content/PageAuthorizationUpdater.ashx?DID=" + dreamID + "&&Page=" + PageName + "&&RoleID=" + roleName + "&&Allowed=" + Checked,
             type: "POST",
             contentType: false,
             processData: false,
@@ -213,6 +216,8 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+
+  
 });
 
 function ActivateModal(counter) {

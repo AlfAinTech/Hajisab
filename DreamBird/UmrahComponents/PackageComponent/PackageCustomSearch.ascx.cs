@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_PackageComponent_PackageCustomSearch : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_PackageComponent_PackageCustomSearch : System.Web.UI.UserControl,ICorePackageControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,7 +16,7 @@ public partial class UmrahComponents_PackageComponent_PackageCustomSearch : Syst
     }
     public void BindInitialData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (db.PackageDetails.Count() != 0) { 
         int max = int.Parse(db.PackageDetails.Max(q => q.maxAmount).ToString());
         int min = int.Parse(db.PackageDetails.Min(q => q.minAmount).ToString());
@@ -26,7 +26,7 @@ public partial class UmrahComponents_PackageComponent_PackageCustomSearch : Syst
         visa_list.DataBind();
         }
         // price_range.Attributes.Add("min", "" + min);
-        var data1 = db.PackageDetails.AsEnumerable().Select(q => new {q.dreamID, q.Dream.DreamName, q.duration, q.isAirLineText, q.getVisaID,  q.getVisaTitle, q.Hotel.rating, q.getDepCity }).ToArray();
+        var data1 = db.PackageDetails.AsEnumerable().Select(q => new {q.PackageID, q.Package.PackageName, q.duration, q.isAirLineText, q.getVisaID,  q.getVisaTitle, q.Hotel.rating, q.getDepCity }).ToArray();
 
        
         JsonConvert.SerializeObject(data1);
@@ -51,7 +51,7 @@ public partial class UmrahComponents_PackageComponent_PackageCustomSearch : Syst
         //throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         //throw new NotImplementedException();
     }

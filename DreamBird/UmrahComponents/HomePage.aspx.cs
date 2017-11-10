@@ -11,7 +11,7 @@ public partial class UmrahComponents_HomePage : System.Web.UI.Page
     {
         if(!IsPostBack)
         {
-            //DreamBirdEntities db = new DreamBirdEntities();
+            //PackageEntities db = new PackageEntities();
             //PackageListView.bindData(db.PackageDetails.ToList());
         }
     }

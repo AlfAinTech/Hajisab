@@ -12,14 +12,14 @@ public partial class Components_MultimediaBank_MultimediaList : System.Web.UI.Us
     {
         if(!IsPostBack)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             rptr_multimedia_list.DataSource = db.Multimediabanks.ToList();
             rptr_multimedia_list.DataBind();
         }
     }
     public void BindMedia(int id = 0)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if(id == 0)
         {
             rptr_multimedia_list.DataSource = db.Multimediabanks.ToList();
@@ -35,8 +35,8 @@ public partial class Components_MultimediaBank_MultimediaList : System.Web.UI.Us
     {
         LinkButton lb = sender as LinkButton;
         int itemID = Convert.ToInt32(lb.Attributes["data-mmid"].ToString());
-        EventArgDreamEdit evt = new EventArgDreamEdit();
-        evt.DreamEditID = itemID;
+        EventArgPackageEdit evt = new EventArgPackageEdit();
+        evt.PackageEditID = itemID;
         if (ItemClicked != null)
         {
             ItemClicked(this, evt);

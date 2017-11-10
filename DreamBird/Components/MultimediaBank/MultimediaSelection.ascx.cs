@@ -16,25 +16,13 @@ public partial class Components_MultimediaBank_MultimediaSelection : System.Web.
     {
         if (Request.QueryString["PID"] != null && Request.QueryString["CID"] != null && Request.QueryString["DID"] != null)
         {
-            EventArgDreamEdit evt = e as EventArgDreamEdit;
-            int multimediaID = evt.DreamEditID;
-            DreamBirdEntities db = new DreamBirdEntities();
+            EventArgPackageEdit evt = e as EventArgPackageEdit;
+            int multimediaID = evt.PackageEditID;
+            PackageEntities db = new PackageEntities();
             int pid = int.Parse(Request.QueryString["PID"].ToString());
             String cid = Request.QueryString["CID"].ToString();
             int did = int.Parse(Request.QueryString["DID"].ToString());
-            if (db.LessonMultimedias.Any(a => a.Layout_id == pid && a.BaseControlID == cid))
-            {
-                LessonMultimedia multimedia = db.LessonMultimedias.Where(w => w.Layout_id == pid && w.BaseControlID == cid).First();
-                multimedia.MultimediaID = multimediaID;
-            }
-            else
-            {
-                LessonMultimedia multimedia = new LessonMultimedia();
-                multimedia.Layout_id = pid;
-                multimedia.BaseControlID = cid;
-                multimedia.MultimediaID = multimediaID;
-                db.LessonMultimedias.Add(multimedia);
-            }
+          
             db.SaveChanges();
         }
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "script_close", "window.close();", true);

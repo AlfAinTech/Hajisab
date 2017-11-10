@@ -24,9 +24,9 @@
                      
                         <ul class="nav nav-tabs nav-stacked" role="tablist" id="hotelPackagesList">
                            
-                                   <li role="presentation" id="1"><asp:LinkButton   runat="server" id="Package_id"  OnClientClick="return HotelTypeSelected('1')" ><h2>Economy</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
-                                 <li role="presentation" id="2"><asp:LinkButton   runat="server" id="LinkButton1"  OnClientClick="return HotelTypeSelected('2')"  ><h2>Budget</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
-                               <li role="presentation" id="3"><asp:LinkButton   runat="server" id="LinkButton2"  OnClientClick="return HotelTypeSelected('3')" ><h2>Star</h2><h6>Starting From</h6><h4>Rs 20,000</h4></asp:LinkButton></li>
+                                   <li role="presentation" id="1"><asp:LinkButton   runat="server" id="Package_id"  OnClientClick="return HotelTypeSelected('1')" ><h2>Economy</h2><h6>Starting From</h6><h4>Rs <asp:Literal ID="EconomyPrice" runat="server"></asp:Literal></h4></asp:LinkButton></li>
+                                 <li role="presentation" id="2"><asp:LinkButton   runat="server" id="LinkButton1"  OnClientClick="return HotelTypeSelected('2')"  ><h2>Budget</h2><h6>Starting From</h6><h4>Rs <asp:Literal ID="budgetPrcie" runat="server"></asp:Literal></h4></asp:LinkButton></li>
+                               <li role="presentation" id="3"><asp:LinkButton   runat="server" id="LinkButton2"  OnClientClick="return HotelTypeSelected('3')" ><h2>Star</h2><h6>Starting From</h6><h4>Rs <asp:Literal ID="starPrcie" runat="server"></asp:Literal></h4></asp:LinkButton></li>
                                   
                         </ul>
                       
@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="col-md-12" style="margin-top: 5px;">
                                            
-                                            <asp:Button runat="server" id="book_bronze"  Text="Book Now" class="btn btn-default"  OnClick="BookNowClicked" OnClientClick="bindMyScript('${id}')" />
+                                            <asp:Button runat="server" id="book_bronze" CommandArgument="0"  Text="Book Now" class="btn btn-default"  OnClick="BookNowClicked" OnClientClick="return bindMyScript('${id}')" />
                                         </div>
                                     </div>
                                 </div>

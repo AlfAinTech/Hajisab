@@ -12,7 +12,6 @@
 
     selectedItem = function(data)
     {
-       // alert("here");
         name = "dreamButton_" + data;
         console.log($("#" + name + ""));
         e = document.getElementsByName(name);

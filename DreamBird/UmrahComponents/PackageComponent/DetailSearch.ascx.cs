@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_PackageComponent_DetailSearch : System.Web.UI.UserControl,ISearch,ICoreDreamControl
+public partial class UmrahComponents_PackageComponent_DetailSearch : System.Web.UI.UserControl,ISearch,ICorePackageControl
 {
     public event EventHandler DoSearch;
     protected void Page_Load(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (!IsPostBack)
         {
             monthInput.Value = System.DateTime.Now.Date.ToString("yyyy-MM");
@@ -27,19 +27,19 @@ public partial class UmrahComponents_PackageComponent_DetailSearch : System.Web.
                
             }
         }
-        DreamUtil.SearchInterface = (ISearch)this;
+        PackageUtil.SearchInterface = (ISearch)this;
         DoSearch += sudo_searcher;
     }
     public int getminPrice()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var data = db.PackageDetails.ToList();
         return int.Parse( data.Min(q => q.minAmount).ToString());
 
     }
     public int getmaxPrice()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var data = db.PackageDetails.ToList();
         return int.Parse(data.Max(q => q.minAmount).ToString());
 
@@ -112,7 +112,7 @@ public partial class UmrahComponents_PackageComponent_DetailSearch : System.Web.
     }
     protected void search()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         List<PackageDetail> data = db.PackageDetails.ToList();
         if (panel1.Visible)
         { int budget = int.Parse(price_range.Text);
@@ -178,7 +178,7 @@ public partial class UmrahComponents_PackageComponent_DetailSearch : System.Web.
        // throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
         //throw new NotImplementedException();
     }

@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.UI.UserControl,ICoreDreamControl
+public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.UI.UserControl,ICorePackageControl
 {
    
     protected void Page_Load(object sender, EventArgs e)
@@ -31,7 +31,7 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         result =  new string(Enumerable.Repeat(chars, length)
           .Select(s => s[random.Next(s.Length)]).ToArray());
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
            int count =  db.AlharmainUserPackages.Where(q => q.trackingID == result).Count();
             flag = count != 0;
          }
@@ -40,10 +40,10 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
     protected void saveUser_Click(object sender, EventArgs e)
     {
        
-        DreamBirdEntities db = new DreamBirdEntities();
-        String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
-        PackageDetail data = db.PackageDetails.Where(q => q.dreamID == d.id).First();
+        PackageEntities db = new PackageEntities();
+        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+        Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
+        PackageDetail data = db.PackageDetails.Where(q => q.PackageID == d.id).First();
         
             AlharmainUser user = new AlharmainUser();
             user.Name = name_txt.Text;
@@ -92,18 +92,18 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
     {
         try
         {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             //  DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add(UserMail);
-            mailMessage.From = new MailAddress("dreambirdapp@gmail.com");
-            mailMessage.Subject = "DreamBird e-mail test";
+            mailMessage.From = new MailAddress("Packageapp@gmail.com");
+            mailMessage.Subject = "Package e-mail test";
             mailMessage.IsBodyHtml = true;
             string Body = System.IO.File.ReadAllText(Server.MapPath("~/UmrahComponents/PackageComponent/BookingEmail.html"));
-            Body = Body.Replace("{DynamicContent_link}", DreamUtil.ServerUrl + "/UmrahDetailPage/" + package.PackageDetail.Dream.DreamName + "/UmrahDetail?UserID="+package.userID).Replace("{DynamicContent_id}", package.trackingID).Replace("DynamicContent_nights", package.PackageDetail.getTotelNights.ToString());
+            Body = Body.Replace("{DynamicContent_link}", PackageUtil.ServerUrl + "/UmrahDetailPage/" + package.PackageDetail.Package.PackageName + "/UmrahDetail?UserID="+package.userID).Replace("{DynamicContent_id}", package.trackingID).Replace("DynamicContent_nights", package.PackageDetail.getTotelNights.ToString());
             mailMessage.Body = Body;
             SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
-            smtpClient.Credentials = new System.Net.NetworkCredential("dreambirdapp@gmail.com", "dogar1949");
+            smtpClient.Credentials = new System.Net.NetworkCredential("Packageapp@gmail.com", "dogar1949");
             smtpClient.EnableSsl = true;
             smtpClient.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
             ServicePointManager.ServerCertificateValidationCallback =
@@ -123,11 +123,11 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
     
     public void BindDetailData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
 
-        String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-        Dream d = db.Dreams.Where(q => q.DreamName == dreamName).First();
-        var data = db.PackageDetails.Where(q => q.dreamID == d.id).ToList();
+        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+        Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
+        var data = db.PackageDetails.Where(q => q.PackageID == d.id).ToList();
         if (data.Count() != 0)
         {
             PackageDetail pd = data[0];
@@ -188,7 +188,7 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
        // throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
       //  throw new NotImplementedException();
     }

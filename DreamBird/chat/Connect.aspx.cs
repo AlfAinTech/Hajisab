@@ -20,7 +20,7 @@ public partial class Connect : System.Web.UI.Page
         if (Request.QueryString["PID"] != null)
         {
             int pid = int.Parse(Request.QueryString["PID"].ToString());
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
             var data = db.ChatAdmins.Where(q => q.layoutID == pid).ToList();
             if(data.Count()==0)
             {

@@ -12,7 +12,7 @@ public partial class PackageItenryDetail
     public string getDateLimit
     {
         get {
-            DreamBirdEntities db = new DreamBirdEntities();
+            PackageEntities db = new PackageEntities();
            int spendNights = db.PackageItenryDetails.Where(p => p.alharmainUserID == this.alharmainUserID && p.id<this.id).OrderBy(q => q.id).Select(q => q.nights).DefaultIfEmpty(0).Sum();
             DateTime start = (PackageDetail.startDate.Value.AddDays(spendNights));
             DateTime EndDate = start.AddDays(nights-1);

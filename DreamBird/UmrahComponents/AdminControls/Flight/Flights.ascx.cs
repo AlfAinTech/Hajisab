@@ -13,7 +13,7 @@ public partial class UmrahComponents_AdminControls_Flight_Flights : System.Web.U
     }
     public void bindData(int airLineID)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
        Flights_list.DataSource = db.Flights.Where(q => q.airLineID == airLineID).ToList();
         Flights_list.DataBind();
     }
@@ -29,7 +29,7 @@ public partial class UmrahComponents_AdminControls_Flight_Flights : System.Web.U
 
     protected void fromDate_TextChanged(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if(Request.QueryString["airLineID"] != null) { 
         int airLinID = int.Parse(Request.QueryString["airLineID"]);
             bindLimitedData(fromDate.Text, toDate.Text);
@@ -38,7 +38,7 @@ public partial class UmrahComponents_AdminControls_Flight_Flights : System.Web.U
 
     protected void toDate_TextChanged(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (Request.QueryString["airLineID"] != null)
         {
             int airLinID = int.Parse(Request.QueryString["airLineID"]);
@@ -48,7 +48,7 @@ public partial class UmrahComponents_AdminControls_Flight_Flights : System.Web.U
 
     protected void bindLimitedData(String fd , String td)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         int airLinID = int.Parse(Request.QueryString["airLineID"]);
         if (fd != "")
         {

@@ -29,7 +29,7 @@ public partial class Account_Login : Page
                 {
                     IdentityHelper.SignIn(manager, user, RememberMe.Checked);
                 //  IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                    Response.Redirect("~/DreamHome.aspx");
+                    Response.Redirect("~/PackageHome.aspx");
                 }
                 else
                 {

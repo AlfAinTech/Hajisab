@@ -14,7 +14,7 @@ public class UpdateTranscript : IHttpHandler
         int id = Convert.ToInt32(context.Request.Form[0]);
         string TranscriptText = context.Request.Form[1];
         decimal TimeStamp = Convert.ToDecimal(context.Request.Form[2]);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         VideoTranscript transcript = db.VideoTranscripts.Where(w => w.id == id).First();
         transcript.Text = TranscriptText;
         transcript.TimeStamp = TimeStamp;

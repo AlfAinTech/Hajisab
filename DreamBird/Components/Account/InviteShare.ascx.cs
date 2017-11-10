@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Components_Account_InviteShare : System.Web.UI.UserControl,ICoreDreamControl
+public partial class Components_Account_InviteShare : System.Web.UI.UserControl,ICorePackageControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -13,17 +13,17 @@ public partial class Components_Account_InviteShare : System.Web.UI.UserControl,
         {int LayoutID;
 
 
-            String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-            String pageName = DreamUtil.getPageNameFromURL(Request.RawUrl);
-            DreamBirdEntities db = new DreamBirdEntities();
-            DreamLayout Layout = db.DreamLayouts.Where(q => q.Dream.DreamName == dreamName && q.Page == pageName).First();
+            String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            String pageName = PackageUtil.getPageNameFromURL(Request.RawUrl);
+            PackageEntities db = new PackageEntities();
+            DreamLayout Layout = db.DreamLayouts.Where(q => q.Package.PackageName == PackageName && q.Page == pageName).First();
             LayoutID = Layout.id;
             bindData(LayoutID);
         }
     }
     public void bindData(int layoutID)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         List<InviteSharePage> page = db.InviteSharePages.Where(q => q.LayoutID == layoutID).ToList();
         if (page.Count != 0)
         {
@@ -50,7 +50,7 @@ public partial class Components_Account_InviteShare : System.Web.UI.UserControl,
        ;
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
        
     }

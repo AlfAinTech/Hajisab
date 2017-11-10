@@ -16,7 +16,7 @@ public partial class Components_Core_TagSrevices : System.Web.UI.Page
     [WebMethod]
     public static String GetTags(string q)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         var dt = db.Tags.ToList();
         String data;// = dt.ToString();
 

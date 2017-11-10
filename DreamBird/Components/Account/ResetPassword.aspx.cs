@@ -19,7 +19,7 @@ public partial class Components_Account_ResetPassword : System.Web.UI.Page
     {
         string verificationID = Request.QueryString["verificationID"];
         var manager = new UserManager();
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
        var user = db.AspNetUsers.Where(q => q.Id == verificationID);
         if(user.Count()!=0)
         {

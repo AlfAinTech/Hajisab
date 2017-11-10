@@ -8,7 +8,7 @@ public class DeleteTranscript : IHttpHandler {
 
     public void ProcessRequest (HttpContext context) {
         int id = Convert.ToInt32(context.Request.Form[0]);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         VideoTranscript transcript = db.VideoTranscripts.Where(w => w.id == id).First();
         db.VideoTranscripts.Remove(transcript);
         db.SaveChanges();

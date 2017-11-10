@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Components_Header_SearchWithHeader : CoreDreamControlAdapter, ISearch
+public partial class Components_Header_SearchWithHeader : CorePackageControlAdapter, ISearch
 {
     
     public event EventHandler DoSearch;
@@ -13,7 +13,7 @@ public partial class Components_Header_SearchWithHeader : CoreDreamControlAdapte
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        DreamUtil.SearchInterface = (ISearch)this;
+        PackageUtil.SearchInterface = (ISearch)this;
         DoSearch += sudo_searcher;
     }
 
@@ -25,9 +25,9 @@ public partial class Components_Header_SearchWithHeader : CoreDreamControlAdapte
     public void search_dream_Click(object sender, EventArgs e)
     {
         
-        String DreamName = SearchBox.Text;
-        EventArgDreamSearch evt = new EventArgDreamSearch();
-        evt.SearchDreamName = DreamName;
+        String PackageName = SearchBox.Text;
+        EventArgPackageSearch evt = new EventArgPackageSearch();
+        evt.SearchPackageName = PackageName;
         if(DoSearch != null)
         {
             DoSearch(this, evt);

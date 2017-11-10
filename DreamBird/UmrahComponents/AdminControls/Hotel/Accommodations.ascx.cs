@@ -18,7 +18,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Accommodations : System
     public void dataBind(int id)
     {
         ViewState["SelectedhotelID"] = id.ToString();
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         accommodation_list.DataSource = db.Accommodations.Where(q => q.hotelID == id).ToList();
         accommodation_list.DataBind();
         ScriptManager.RegisterStartupScript(UpdatePanel2, UpdatePanel2.GetType(), "a_keys", "OpenTab('Accommodations');", true);
@@ -26,7 +26,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Accommodations : System
     }
     protected void editbutton_clicked(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse( lk.CommandArgument);
         Accommodation ac = db.Accommodations.Where(q => q.id == id).First();
@@ -41,7 +41,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Accommodations : System
     {
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         Accommodation ac = db.Accommodations.Where(q => q.id == id).First();
         int hotel_id = ac.hotelID;
         db.Accommodations.Remove(ac);
@@ -52,7 +52,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Accommodations : System
     protected void updatebutton_clicked(object sender, EventArgs e)
     {
         if (Page.IsValid) { 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         LinkButton lk = (LinkButton)sender;
         int id = int.Parse(lk.CommandArgument);
         RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
@@ -80,7 +80,7 @@ public partial class UmrahComponents_AdminControls_Hotel_Accommodations : System
     protected void AddNewAccommodation_Clicked(object sender, EventArgs e)
     {
         if (Page.IsValid) { 
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (ViewState["SelectedhotelID"] != null)
         {
             int hotelID = int.Parse(ViewState["SelectedhotelID"].ToString());

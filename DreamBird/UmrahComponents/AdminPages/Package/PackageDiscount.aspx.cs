@@ -9,7 +9,7 @@ public partial class UmrahComponents_AdminPages_Package_PackageDiscount : System
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         if (Request.QueryString["packageID"] != null)
         {
             int package_id = int.Parse(Request.QueryString["packageID"].ToString());

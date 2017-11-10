@@ -1,6 +1,0 @@
-﻿jQuery(document).ready(function ($) {
-    
-    
-});
-
-

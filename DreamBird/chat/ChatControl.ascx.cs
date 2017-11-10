@@ -19,10 +19,10 @@ public partial class chat_ChatControl : System.Web.UI.UserControl
 
         if (Session["token"] == null || Session["pythonServer"] == null)
         {
-            DreamBirdEntities db = new DreamBirdEntities();
-            //String dreamName = DreamUtil.getDreamNameFromURL(Request.RawUrl);
-            //String pageName = DreamUtil.getPageNameFromURL(Request.RawUrl);
-            //Dream dream = db.Dreams.Where(dm => dm.DreamName == dreamName).First();
+            PackageEntities db = new PackageEntities();
+            //String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            //String pageName = PackageUtil.getPageNameFromURL(Request.RawUrl);
+            //Dream dream = db.Dreams.Where(dm => dm.PackageName == PackageName).First();
             //DreamLayout page = db.DreamLayouts.Where(dl => dl.Page == pageName).First();
             //var data = db.ChatAdmins.Where(q => q.layoutID == page.id).ToList();
             var data = db.ChatAdmins.ToList();
@@ -47,16 +47,16 @@ public partial class chat_ChatControl : System.Web.UI.UserControl
         Button bt = (Button)sender;
         string x = Request["__EVENTARGUMENT"];//bt.CommandArgument;
         int id = int.Parse(x);//int.Parse(bt.CommandArgument);
-        DreamBirdEntities db = new DreamBirdEntities();
+        PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        Response.Redirect("/UmrahDetailPage/" + pd.Dream.DreamName + "/UmrahDetail");
+        Response.Redirect("/UmrahDetailPage/" + pd.Package.PackageName + "/UmrahDetail");
         
     }
         
     public void BindData()
     {
-        DreamBirdEntities db = new DreamBirdEntities();
-        var data1 = db.PackageDetails.AsEnumerable().Select(q => new { q.id,q.maxRange, q.minRange, q.getMonth, q.dreamID, q.Dream.DreamName, q.duration, q.isAirLineText, q.getVisaID, q.getVisaTitle, q.Hotel1.rating, hotelMadina = q.Hotel.hotelName, hotelMakkah = q.Hotel1.hotelName, q.getDepCity, airLineName= q.getairLine, q.nightsInMadina, q.nightsInMakkah }).ToArray();
+        PackageEntities db = new PackageEntities();
+        var data1 = db.PackageDetails.AsEnumerable().Select(q => new { q.id,q.maxRange, q.minRange, q.getMonth, q.PackageID, q.Package.PackageName, q.duration, q.isAirLineText, q.getVisaID, q.getVisaTitle, q.Hotel1.rating, hotelMadina = q.Hotel.hotelName, hotelMakkah = q.Hotel1.hotelName, q.getDepCity, airLineName= q.getairLine, q.nightsInMadina, q.nightsInMakkah }).ToArray();
         JsonConvert.SerializeObject(data1);
         var serializer = new JavaScriptSerializer();
         String result = serializer.Serialize(data1);
@@ -74,7 +74,7 @@ public partial class chat_ChatControl : System.Web.UI.UserControl
        // throw new NotImplementedException();
     }
 
-    public void SetBaseDreamControl(IBaseDreamControl baseDreamControl)
+    public void SetBasePackageControl(IBasePackageControl BasePackageControl)
     {
        // throw new NotImplementedException();
     }

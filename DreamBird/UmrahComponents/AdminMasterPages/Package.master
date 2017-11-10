@@ -1,7 +1,8 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="~/Admin.master" CodeFile="Package.master.cs" Inherits="UmrahComponents_AdminMasterPages_Package" %>
 
-<%@ Register Src="~/UmrahComponents/AdminControls/Packages/PackageList.ascx" TagPrefix="uc1" TagName="PackageList" %>
-<%@ Register Src="~/Components/Dreams/DreamListView.ascx" TagPrefix="uc1" TagName="DreamListView" %>
+<%@ Register Src="~/Components/Packages/PackageListView.ascx" TagPrefix="uc1" TagName="PackageListView" %>
+
+
 
 
 
@@ -56,8 +57,7 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <%--<uc1:PackageList runat="server" ID="PackageList" OnpackageCllicked="packageClicked_packageClick"  OnAddClicked="adbtn_clicked" />--%>
-                <uc1:DreamListView runat="server" ID="DreamListView" OndreamCllicked="packageClicked_packageClick" DreamType="2"  />
+                <uc1:PackageListView runat="server" ID="PackageListView" OnpackageCllicked="packageClicked_packageClick"  PackageType="2"/>
             </ContentTemplate>
         </asp:UpdatePanel>
 	</div>
