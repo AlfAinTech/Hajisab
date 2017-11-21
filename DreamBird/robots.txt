@@ -1,4 +1,4 @@
 ﻿﻿User-agent: *
 Allow:
 
-Sitemap: http://www.deal-hound.net/Web.sitemap
+Sitemap: http://www.hajisab.com/Sitemap.xml

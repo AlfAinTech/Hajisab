@@ -41,8 +41,8 @@ public partial class UmrahComponents_PackageComponent_PrimaryUmrahPackages : Sys
         int id = int.Parse(bt.CommandArgument);
         PackageEntities db = new PackageEntities();
         PackageDetail pd = db.PackageDetails.Where(q => q.id == id).First();
-        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
-        Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
+        //String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+        //Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
 
         Response.Redirect("/UmrahSearchFilter?minPrice=" + pd.minAmount);
         

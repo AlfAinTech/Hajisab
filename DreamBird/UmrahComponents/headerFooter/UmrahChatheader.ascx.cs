@@ -36,7 +36,7 @@ public partial class UmrahComponents_headerFooter_UmrahChatheader : System.Web.U
     {
         PackageEntities db = new PackageEntities();
         string PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
-        Response.Redirect("/Umrahhome/" + PackageName + "/SearchFilter");
+        Response.Redirect("/UmrahSearchFilter");
     }
 
     protected void openCustomWizard_Click(object sender, EventArgs e)

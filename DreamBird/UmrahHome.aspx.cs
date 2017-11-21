@@ -23,7 +23,10 @@ public partial class UmrahHome : UmrahHomeCore
             //Page.Header.DataBind();
             //ScriptManager.RegisterStartupScript(Page, typeof(Page), "showError", "Initialize();", true);
             //RedirectDefault();
-           
+            PackageEntities db = new PackageEntities();
+            List<string> metaTags = db.Packages.Select(q => q.PackageName).ToList();
+            Page.MetaKeywords = string.Join(",", metaTags);
+            //Page.MetaDescription = db.Packages.Where(w => w. == dreamName).Select(s => s.Description).First();
         }
 
 

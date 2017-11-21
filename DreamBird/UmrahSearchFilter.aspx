@@ -12,7 +12,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+     <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109746703-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-109746703-1');
+    </script>
+
+    <title>Umrah Filter Page</title>
 	  <meta charset="utf-8" />
    
      <link rel="stylesheet" href='~/UmrahComponents/Contents/css/bootstrap.css' />

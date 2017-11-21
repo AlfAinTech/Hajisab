@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <url>
-<loc>http://www.deal-hound.net/DreamHome/TOEFL/Default</loc>
+<loc>http://www.hajsab.com/UmrahHome</loc>
 </url>
 <url>
 <loc>
-http://www.deal-hound.net/DreamHome.aspx/Test%20dream/Default
+  http://www.hajsab.com
 </loc>
 </url>
 <url>
 <loc>
-http://www.deal-hound.net//DreamHome/AdminTutorial/Default
+  http://www.hajsab.com/UmrahSearchFilter.aspx
 </loc>
 </url>
 <url>
 <loc>
-http://www.deal-hound.net/Components/Account/Loginsetting.aspx
+  http://www.hajsab.com/UmrahDetailPage.aspx
 </loc>
 </url>
 <url>
 <loc>
-http://www.deal-hound.net/Components/Account/Loginsetting.aspx?Page=register
+ http://www.hajsab.com/UmrahBookingPage.aspx
 </loc>
 </url>
 <url>
-<loc>http://www.deal-hound.net/News/Default</loc>
+<loc> http://www.hajsab.com/UmrahCustomPackage </loc>
 </url>
 </urlset>
