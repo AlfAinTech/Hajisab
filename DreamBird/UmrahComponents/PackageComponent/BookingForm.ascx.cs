@@ -39,12 +39,17 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
     }
     protected void saveUser_Click(object sender, EventArgs e)
     {
-       
-        PackageEntities db = new PackageEntities();
-        String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
-        Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
-        PackageDetail data = db.PackageDetails.Where(q => q.PackageID == d.id).First();
-        
+        //passenger detail
+        int adults = adults_no.Text == "" ? 0 : int.Parse(adults_no.Text);
+        int children = children_no.Text == "" ? 0 : int.Parse(children_no.Text);
+        int infants = infant_no.Text == "" ? 0 : int.Parse(infant_no.Text);
+        if ((adults + children + infants) != 0)
+        {
+            PackageEntities db = new PackageEntities();
+            String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            Package d = db.Packages.Where(q => q.PackageName == PackageName).First();
+            PackageDetail data = db.PackageDetails.Where(q => q.PackageID == d.id).First();
+
             AlharmainUser user = new AlharmainUser();
             user.Name = name_txt.Text;
             user.mobileNo = mobile_txt.Text;
@@ -58,30 +63,35 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
             up.packageDetailID = data.id;
             up.userID = user.id;
             up.isCustomPackage = false;
-            up.adults = int.Parse(adults_no.Text);
-            up.children= int.Parse(children_no.Text);
-            up.infants = int.Parse(infant_no.Text);
+            up.adults = adults_no.Text == "" ? 0 : int.Parse(adults_no.Text);
+            up.children = children_no.Text == "" ? 0 : int.Parse(children_no.Text);
+            up.infants = infant_no.Text == "" ? 0 : int.Parse(infant_no.Text);
             up.trackingID = RandomString(8);
             up.CreatedDate = up.ModifiedDate = System.DateTime.Today;
 
-        if (Session["AIDMakkah"] != null)
-            {up.AccomMakkahID= int.Parse(Session["AIDMakkah"].ToString());}
-            if(Session["AIDMadina"] != null) { up.AccomMadinaID = int.Parse(Session["AIDMadina"].ToString());  }
-            if(Session["discount_id"] != null) { up.discountID = int.Parse(Session["discount_id"].ToString()); }
+            if (Session["AIDMakkah"] != null)
+            { up.AccomMakkahID = int.Parse(Session["AIDMakkah"].ToString()); }
+            if (Session["AIDMadina"] != null) { up.AccomMadinaID = int.Parse(Session["AIDMadina"].ToString()); }
+            if (Session["discount_id"] != null) { up.discountID = int.Parse(Session["discount_id"].ToString()); }
             db.AlharmainUserPackages.Add(up);
             db.SaveChanges();
-           string Response = send_mail(user.email,up);
-            if(Response == "E-mail sent!")
+            string Response = send_mail(user.email, up);
+            if (Response == "E-mail sent!")
             {
-            txttrackingId.Text = up.trackingID;
-            txtfullnights.Text = up.PackageDetail.getTotelNights.ToString();
+                txttrackingId.Text = up.trackingID;
+                txtfullnights.Text = up.PackageDetail.getTotelNights.ToString();
                 ScriptManager.RegisterStartupScript(Page, typeof(Page), "packageBook", "openConfirmationForm();", true);
-            clearControl();
+                clearControl();
                 ShowSuccess("Your Umrah Package Booked Now. Tracking id Sent to your Email ID");
             }
             else
+            {
+                ShowError("Could not send the e - mail - error: " + Response);
+            }
+        }
+        else
         {
-            ShowError("Could not send the e - mail - error: "+Response);
+            ShowError("Add Passengers");
         }
             
 
@@ -103,7 +113,7 @@ public partial class UmrahComponents_PackageComponent_BookingForm : System.Web.U
             Body = Body.Replace("{DynamicContent_link}", PackageUtil.ServerUrl + "/UmrahDetailPage/" + package.PackageDetail.Package.PackageName + "/UmrahDetail?UserID="+package.userID).Replace("{DynamicContent_id}", package.trackingID).Replace("DynamicContent_nights", package.PackageDetail.getTotelNights.ToString());
             mailMessage.Body = Body;
             SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
-            smtpClient.Credentials = new System.Net.NetworkCredential("Packageapp@gmail.com", "dogar1949");
+            smtpClient.Credentials = new System.Net.NetworkCredential("Packageapp@gmail.com", "hajisab123");
             smtpClient.EnableSsl = true;
             smtpClient.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
             ServicePointManager.ServerCertificateValidationCallback =

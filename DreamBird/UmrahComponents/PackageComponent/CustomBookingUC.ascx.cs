@@ -36,50 +36,61 @@ public partial class UmrahComponents_PackageComponent_CustomBookingUC : System.W
     }
     protected void saveUser_Click(object sender, EventArgs e)
     {
-
-        PackageEntities db = new PackageEntities();
-        
-        int id = int.Parse(Session["CustomPackageID"].ToString());
-
-        AlharmainUser user = new AlharmainUser();
-        user.Name = name_txt.Text;
-        user.mobileNo = mobile_txt.Text;
-        user.contect = contect_txt.InnerText;
-        user.email = email_txt.Text;
-        user.city = "";//city_list.SelectedItem.Text;
-        user.province = "";// province_list.SelectedItem.Text;
-        db.AlharmainUsers.Add(user);
-        db.SaveChanges();
-        AlharmainUserPackage up = new AlharmainUserPackage();
-
-        up.CustomPackageId =  id;
-        up.userID = user.id;
-        up.isCustomPackage = true;
-        up.adults = int.Parse(adults_no.Text);
-        up.children = int.Parse(children_no.Text);
-        up.infants = int.Parse(infant_no.Text);
-        up.trackingID = RandomString(8);
-        up.CreatedDate = up.ModifiedDate = System.DateTime.Today;
-
-        //if (Session["AIDMakkah"] != null)
-        //{ up.AccomMakkahID = int.Parse(Session["AIDMakkah"].ToString()); }
-        //if (Session["AIDMadina"] != null) { up.AccomMadinaID = int.Parse(Session["AIDMadina"].ToString()); }
-        db.AlharmainUserPackages.Add(up);
-        db.SaveChanges();
-        db.SaveChanges();
-        db.Entry(up).Reference(c => c.CustomPackage).Load();
-        string Response = send_mail(user.email, up);
-        if (Response == "E-mail sent!")
+        //passenger detail
+        int adults = adults_no.Text == "" ? 0 : int.Parse(adults_no.Text);
+        int children = children_no.Text == "" ? 0 : int.Parse(children_no.Text);
+        int infants = infant_no.Text == "" ? 0 : int.Parse(infant_no.Text);
+        if ((adults + children + infants) != 0)
         {
-            txttrackingId.Text = up.trackingID;
-            txtfullnights.Text = (up.CustomPackage.nightsMadina+ up.CustomPackage.nightsMakkah).ToString();
-            ScriptManager.RegisterStartupScript(Page, typeof(Page), "packageBook", "openConfirmationForm();", true);
-            clearControl();
-            ShowSuccess("Your Umrah Package Booked Now. Tracking id Sent to your Email ID");
+
+            PackageEntities db = new PackageEntities();
+
+            int id = int.Parse(Session["CustomPackageID"].ToString());
+
+            AlharmainUser user = new AlharmainUser();
+            user.Name = name_txt.Text;
+            user.mobileNo = mobile_txt.Text;
+            user.contect = contect_txt.InnerText;
+            user.email = email_txt.Text;
+            user.city = "";//city_list.SelectedItem.Text;
+            user.province = "";// province_list.SelectedItem.Text;
+            db.AlharmainUsers.Add(user);
+            db.SaveChanges();
+            AlharmainUserPackage up = new AlharmainUserPackage();
+
+            up.CustomPackageId = id;
+            up.userID = user.id;
+            up.isCustomPackage = true;
+            up.adults = int.Parse(adults_no.Text);
+            up.children = int.Parse(children_no.Text);
+            up.infants = int.Parse(infant_no.Text);
+            up.trackingID = RandomString(8);
+            up.CreatedDate = up.ModifiedDate = System.DateTime.Today;
+
+            //if (Session["AIDMakkah"] != null)
+            //{ up.AccomMakkahID = int.Parse(Session["AIDMakkah"].ToString()); }
+            //if (Session["AIDMadina"] != null) { up.AccomMadinaID = int.Parse(Session["AIDMadina"].ToString()); }
+            db.AlharmainUserPackages.Add(up);
+            db.SaveChanges();
+            db.SaveChanges();
+            db.Entry(up).Reference(c => c.CustomPackage).Load();
+            string Response = send_mail(user.email, up);
+            if (Response == "E-mail sent!")
+            {
+                txttrackingId.Text = up.trackingID;
+                txtfullnights.Text = (up.CustomPackage.nightsMadina + up.CustomPackage.nightsMakkah).ToString();
+                ScriptManager.RegisterStartupScript(Page, typeof(Page), "packageBook", "openConfirmationForm();", true);
+                clearControl();
+                ShowSuccess("Your Umrah Package Booked Now. Tracking id Sent to your Email ID");
+            }
+            else
+            {
+                ShowError("Could not send the e - mail - error: " + Response);
+            }
         }
         else
         {
-            ShowError("Could not send the e - mail - error: " + Response);
+            ShowError("Add Passengers");
         }
 
 
@@ -95,14 +106,14 @@ public partial class UmrahComponents_PackageComponent_CustomBookingUC : System.W
             //  DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add(UserMail);
-            mailMessage.From = new MailAddress("dreambirdapp@gmail.com");
+            mailMessage.From = new MailAddress("hajisabweb@gmail.com");
             mailMessage.Subject = "DreamBird e-mail test";
             mailMessage.IsBodyHtml = true;
             string Body = System.IO.File.ReadAllText(Server.MapPath("~/UmrahComponents/PackageComponent/CustomBookingEmail.html"));
             Body = Body.Replace("{DynamicContent_id}", package.trackingID).Replace("{DynamicContent_nights}", (package.CustomPackage.nightsMadina+package.CustomPackage.nightsMakkah).ToString());
             mailMessage.Body = Body;
             SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
-            smtpClient.Credentials = new System.Net.NetworkCredential("dreambirdapp@gmail.com", "dogar1949");
+            smtpClient.Credentials = new System.Net.NetworkCredential("hajisabweb@gmail.com", "hajisab123");
             smtpClient.EnableSsl = true;
             smtpClient.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
             ServicePointManager.ServerCertificateValidationCallback =delegate (object s, X509Certificate certificate, X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors) { return true; };

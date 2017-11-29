@@ -105,13 +105,14 @@ public partial class Components_Package_PackageBasicInfo : System.Web.UI.UserCon
                     ScriptManager.RegisterStartupScript(Page, Page.GetType(), "a_key", "OpenMainsTabs();", true);
                 }
             }
-            if (ViewState["SelectedDreamID"] == null)
+            if (!(db.Packages.Any(w => w.PackageName.ToLower() == PackageName_txt.Text.ToLower())))
             {
-                if (!(db.Packages.Any(w => w.PackageName == PackageName_txt.Text)))
-                {
+                if (ViewState["SelectedDreamID"] == null)
+            {
+                
                     var d = new Package //Make sure you have a table called test in DB
                     {
-                        PackageName = PackageName_txt.Text.ToString(),
+                        PackageName = PackageName_txt.Text.Trim().ToString(),
                         MediaItem_id = int.Parse(dreamImg_id.Text),
                         Description = DereamDetail_txt.Text.ToString(),
                         IsFeatured = feature_chk.Checked,
@@ -125,46 +126,7 @@ public partial class Components_Package_PackageBasicInfo : System.Web.UI.UserCon
 
                     db.Packages.Add(d);
                     db.SaveChanges();
-                    //if(ddl_public_default.Items.Count != 0 && ddl_user_default.Items.Count != 0)
-                    //{
-                    //    int publicDefaultPage = Convert.ToInt32(ddl_public_default.SelectedValue);
-                    //    int userDefaultPage = Convert.ToInt32(ddl_user_default.SelectedValue);
-                    //    db.DreamLayouts.Where(w => w.DreamID == d.id && w.id != publicDefaultPage && w.IsPublicDefaultPage == true).ToList().ForEach(f => f.IsPublicDefaultPage = false);
-                    //    db.DreamLayouts.Where(w => w.DreamID == d.id && w.id == publicDefaultPage).First().IsPublicDefaultPage = true;
-                    //    db.DreamLayouts.Where(w => w.DreamID == d.id && w.id != userDefaultPage && w.IsUserDefaultPage == true).ToList().ForEach(f => f.IsUserDefaultPage = false);
-                    //    db.DreamLayouts.Where(w => w.DreamID == d.id && w.id == userDefaultPage).First().IsUserDefaultPage = true;
-                    //}
-                    //taglist = TagControl.GetTags();
-                    //if (taglist.Count > 0)
-                    //{
-                    //    List<int> tagidlist = new List<int>();
-                    //    foreach (string tag in taglist)
-                    //    {
-                    //        if (db.Tags.Any(w => w.Name == tag))
-                    //        {
-                    //            tagidlist.Add(db.Tags.Where(w => w.Name == tag).Select<Tag, int>(s => s.id).First());
-                    //        }
-                    //        else
-                    //        {
-                    //            Tag newtag = new Tag();
-                    //            newtag.Name = tag;
-                    //            db.Tags.Add(newtag);
-                    //            db.SaveChanges();
-                    //            tagidlist.Add(newtag.id);
-                    //        }
-                    //    }
-                    //    foreach (int i in tagidlist)
-                    //    {
-                    //        //if (!(db.PackageTags.Any(a => a.Tag_id == i)))
-                    //        //{
-                    //        PackageTag dt = new PackageTag();
-                    //        dt.Tag_id = i;
-                    //        dt.Package_id = d.id;
-                    //        db.PackageTags.Add(dt);
-                    //        db.SaveChanges();
-                    //        //}
-                    //    }
-                    //}
+                   
                     ViewState["SelectedDreamID"] = Convert.ToInt32(d.id);
                     this.clearControl();
                     if (PackageAdded != null)
@@ -173,12 +135,7 @@ public partial class Components_Package_PackageBasicInfo : System.Web.UI.UserCon
                         evt.PackageEditID = d.id;
                         PackageAdded(this, evt);
                     }
-                }
-                else
-                {
-                    ShowError("Dream Already Exist! Change the Name and try again");
-                    return;
-                }
+                
 
             }
             else
@@ -186,7 +143,7 @@ public partial class Components_Package_PackageBasicInfo : System.Web.UI.UserCon
 
                 selectedPackage = int.Parse(ViewState["SelectedDreamID"].ToString());
                 Package d = db.Packages.Where(q => q.id == selectedPackage).First();
-                d.PackageName = PackageName_txt.Text;
+                d.PackageName = PackageName_txt.Text.Trim();
                 d.Description = DereamDetail_txt.Text;
                 d.MediaItem_id = int.Parse(dreamImg_id.Text);
                 d.IsFeatured = feature_chk.Checked;
@@ -194,56 +151,9 @@ public partial class Components_Package_PackageBasicInfo : System.Web.UI.UserCon
                 d.IsPublished = isPublished_chk.Checked;
                 d.LikeSeed = Convert.ToInt32(LikeSeed.Text);
                 d.PackageTypeID = 2; //int.Parse(PackageType_list.SelectedValue);
-                //if (ddl_public_default.SelectedValue != "")
-                //{
-                //    int publicDefaultPage = Convert.ToInt32(ddl_public_default.SelectedValue);
-
-                //    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id != publicDefaultPage && w.IsPublicDefaultPage == true).ToList().ForEach(f => f.IsPublicDefaultPage = false);
-                //    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id == publicDefaultPage).First().IsPublicDefaultPage = true;
-
-                //}
-                //if(ddl_user_default.SelectedValue!="")
-                //{
-                //    int userDefaultPage = Convert.ToInt32(ddl_user_default.SelectedValue);
-                //    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id != userDefaultPage && w.IsUserDefaultPage == true).ToList().ForEach(f => f.IsUserDefaultPage = false);
-                //    db.DreamLayouts.Where(w => w.DreamID == selectedDream && w.id == userDefaultPage).First().IsUserDefaultPage = true;
-
-                //}
+               
                 db.SaveChanges();
 
-                //dreamname.Text = PackageName_txt.Text;
-                //dreamLink.NavigateUrl = "~/DreamHome.aspx/" + PackageName_txt;
-                //taglist = TagControl.GetTags();
-                //if (taglist.Count > 0)
-                //{
-                //    List<int> tagidlist = new List<int>();
-                //    foreach (string tag in taglist)
-                //    {
-                //        if (db.Tags.Any(w => w.Name == tag))
-                //        {
-                //            tagidlist.Add(db.Tags.Where(w => w.Name == tag).Select<Tag, int>(s => s.id).First());
-                //        }
-                //        else
-                //        {
-                //            Tag newtag = new Tag();
-                //            newtag.Name = tag;
-                //            db.Tags.Add(newtag);
-                //            db.SaveChanges();
-                //            tagidlist.Add(newtag.id);
-                //        }
-                //    }
-                //    foreach (int i in tagidlist)
-                //    {
-                //        //if (!(db.PackageTags.Any(a => a.Tag_id == i)))
-                //        //{
-                //        PackageTag dt = new PackageTag();
-                //        dt.Tag_id = i;
-                //        dt.Package_id = d.id;
-                //        db.PackageTags.Add(dt);
-                //        db.SaveChanges();
-                //        //}
-                //    }
-                //}
 
                 if(PackageAdded != null)
                 {
@@ -252,10 +162,14 @@ public partial class Components_Package_PackageBasicInfo : System.Web.UI.UserCon
                     PackageAdded(this, evt);
                 }
             }
-            //TagControl.LoadScripts();
-            //TagControl.SetTags(taglist);
+            }
+            else
+            {
+                ShowError("Dream Already Exist! Change the Name and try again");
+                return;
+            }
             ScriptManager.RegisterStartupScript(Page, typeof(Page), "refreshpage", "window.top.location.reload();", true);
-            //ModalPopupExtender1.Hide();
+         
 
         }
     }

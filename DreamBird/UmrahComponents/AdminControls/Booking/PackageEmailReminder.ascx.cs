@@ -16,7 +16,7 @@ public partial class UmrahComponents_AdminControls_Booking_PackageEmailReminder 
     protected void submit_Click(object sender, EventArgs e)
     {
         PackageEntities db = new PackageEntities();
-        var Packages =   db.AlharmainUserPackages.Where(q => q.IsAmountRecieved == false && (DbFunctions.DiffHours(q.CreatedDate, q.ModifiedDate).Value >= 24 || DbFunctions.DiffHours(q.ModifiedDate , System.DateTime.Today).Value >= 24)).ToList();
+        var Packages =   db.AlharmainUserPackages.Where(q => q.IsAmountRecieved == false && q.isCustomPackage==false && (DbFunctions.DiffHours(q.CreatedDate, q.ModifiedDate).Value >= 24 || DbFunctions.DiffHours(q.ModifiedDate , System.DateTime.Today).Value >= 24)).ToList();
         if(Packages.Count >0)
         {
             foreach(AlharmainUserPackage p in Packages)

@@ -105,12 +105,13 @@ public partial class UmrahComponents_AdminControls_Packages_DiscountPackages : S
                         clearControl();
                         dataBind();
                     }
+                    else
+                    {
+                        ShowError("Package Title Already Exist! Change the Name and try again");
+                        return;
+                    }
                 }
-                else
-                {
-                    ShowError("Package Title Already Exist! Change the Name and try again");
-                    return;
-                }
+                
             }
         }
         else

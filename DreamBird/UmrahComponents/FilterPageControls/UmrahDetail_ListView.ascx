@@ -82,7 +82,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-12" style="border-bottom: 1px solid #a6a6a6;">
                                                                     <h3>
-                                                                        <asp:DropDownList ID='madinaAccom' CssClass="form-control" Style="background-color: #f6f6f6; border-radius: 0px;" runat="server" DataSource='<%# Eval("Hotel.Accommodations") %>' DataValueField="id" DataTextField="Name" ClientIDMode="AutoID"   OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
+                                                                        <asp:DropDownList ID='madinaAccom' CssClass="form-control" Style="background-color: #f6f6f6; border-radius: 0px;" runat="server" DataSource='<%# Eval("Hotel.Accommodations") %>' DataValueField="id" DataTextField="Name" AutoPostBack="true" ClientIDMode="AutoID"   OnSelectedIndexChanged="AccommodationMakkah_Changed"></asp:DropDownList></h3>
                                                                     </h3>
                                        
                                                                     <h5>Accommodation Madina</h5>

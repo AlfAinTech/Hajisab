@@ -168,6 +168,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
         PackageEntities db = new PackageEntities();
         DropDownList dl = (DropDownList)sender;
         RepeaterItem ri = dl.NamingContainer as RepeaterItem;
+
         if(ri != null)
         {
             UpdatePanel panel = (UpdatePanel)ri.FindControl("packageUpdatePanel");
@@ -175,7 +176,7 @@ public partial class UmrahComponents_FilterPageControls_UmrahDetail_ListView : S
             DropDownList dl_makkah = (DropDownList)ri.FindControl("makkahAccom");
             Button bt = (Button)ri.FindControl("bookNow");
             int pkgId = int.Parse(bt.CommandArgument);
-            int accomID_makkah = int.Parse(dl_makkah.SelectedValue);
+              int accomID_makkah = int.Parse(dl_makkah.SelectedValue);
             Accommodation makkah = db.Accommodations.Where(q => q.id == accomID_makkah).First();
             Accommodation madina = new Accommodation();
             if (dl_madina.SelectedValue != "")

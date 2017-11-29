@@ -44,7 +44,7 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
             {
                 control1.Text = Request.QueryString["Type"].ToString();
 
-                search();
+                search(true);
             }
             if (Request.QueryString["rating"] != null )
             {
@@ -177,7 +177,7 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
         search();
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "bindData", "bindDataScript();", true);
     }
-    protected void search()
+    protected void search(Boolean flag=false)
     {
         PackageEntities db = new PackageEntities();
         List<PackageDetail> data = db.PackageDetails.ToList();
@@ -204,7 +204,7 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
         if(panel5.Visible)
         {
             int airLineID = int.Parse(control5.SelectedValue);
-            data = data.Where(q => q.Flight1.airLineID == airLineID).ToList();
+            data = data.Where(q => q.Flight1.airLineID == airLineID && q.isAirLineAvailable==true).ToList();
         }
         if(panel6.Visible)
         {
@@ -212,7 +212,7 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
             data = data.Where(q => q.Hotel1.distance <= haramDistance).ToList();
 
         }
-        if (Request.QueryString["Type"] != null)
+        if (Request.QueryString["Type"] != null &&flag==true)
         {
             string type = Request.QueryString["Type"].ToString();
 
@@ -265,6 +265,7 @@ public partial class UmrahComponents_FilterPageControls_DetailSearchFilter : Sys
 
     protected void searchBtn_Click(object sender, EventArgs e)
     {
+        
         search();
         ScriptManager.RegisterStartupScript(Page, typeof(Page), "bindData", "bindDataScript();", true);
     }

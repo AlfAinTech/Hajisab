@@ -23,7 +23,7 @@
                         <asp:LinkButton class="btn btn-default" ID="update_btn"  ValidationGroup="EditDataValid" CommandArgument='<%# Eval("id") %>' runat="server" OnClick="updatebutton_clicked" Visible="false"><span class="glyphicon glyphicon-pencil" ></span></asp:LinkButton>
                         <div class="col-md-6" style="padding:0;">
                             
-                            <asp:LinkButton class="btn btn-default" ID="edit_btn" CommandArgument='<%# Eval("id") %>' runat="server" OnClick="editbutton_clicked"><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
+                            <asp:LinkButton type="submit"  class="btn btn-default" ID="edit_btn" CommandArgument='<%# Eval("id") %>' runat="server" OnClick="editbutton_clicked"><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
                         </div>
                         <div class="col-md-6" style="padding:0;">
                             <asp:LinkButton runat="server" ID="delete_btn" data-toggle="tooltip" data-placement="top"  OnClientClick="return callModal(this);" CommandArgument='<%# Eval("id") %>' OnClick="deleteButton_clicked" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
@@ -62,7 +62,7 @@
     <tr>
                     <td>
                         <div class="col-md-12" style="padding:0;">
-                            <asp:LinkButton runat="server" ID="AddNewVisaPackages_btn"  ValidationGroup="addButtonValidGroup" OnClick="AddNewDiscountPackages_Clicked" CommandArgument="add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="AddNewVisaPackages_btn" type="submit"   ValidationGroup="addButtonValidGroup" OnClick="AddNewDiscountPackages_Clicked" CommandArgument="add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></asp:LinkButton>
                         </div>
                     </td>
                     <td>

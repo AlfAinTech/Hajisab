@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UmrahSearchFilter.aspx.cs" Inherits="UmrahSearchFilter" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UmrahSearchFilter.aspx.cs" enableEventValidation="false" Inherits="UmrahSearchFilter" %>
 <%@ Register Src="~/UmrahComponents/headerFooter/Packageheader.ascx" TagPrefix="uc1" TagName="Packageheader" %>
 <%@ Register Src="~/UmrahComponents/headerFooter/PackageFooter.ascx" TagPrefix="uc1" TagName="PackageFooter" %>
 <%@ Register Src="~/UmrahComponents/FilterPageControls/DetailSearchFilter.ascx" TagPrefix="uc1" TagName="DetailSearchFilter" %>

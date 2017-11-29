@@ -44,7 +44,7 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
             }
             ComputePrice(makkahAccom_id, madinaAccom_id);
         }
-            ScriptManager.RegisterStartupScript(Page, typeof(Page), "startAccom", " ManageAccomodation();", true);
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "startAccom", "document.getElementById('form1').reset(); ManageAccomodation();", true);
 
         }
 
@@ -53,13 +53,15 @@ public partial class UmrahComponents_PackageComponent_UmrahPackageDetail : Syste
     public void myDaTAbIND(AlharmainUserPackage userPackage =null)
     {
         PackageEntities db = new PackageEntities();
-        List<PackageDetail> data;
+        List<PackageDetail> data = new List<PackageDetail>();
         if(userPackage == null) {
             String PackageName = PackageUtil.getPackageNameFromURL(Request.RawUrl);
+            if (db.Packages.Where(q => q.PackageName == PackageName).Select(q => q.id).Any()) {
             int id = db.Packages.Where(q => q.PackageName == PackageName).Select(q=>q.id).First();
             data = db.PackageDetails.Where(q => q.PackageID == id).ToList();
+            }
         }
-    else
+        else
             data = db.PackageDetails.Where(q => q.id == userPackage.packageDetailID).ToList();
         double PriceWithoutAccom = 0;
         if (data.Count != 0)

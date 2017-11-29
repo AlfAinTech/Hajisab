@@ -28,14 +28,14 @@ public partial class Account_Register : System.Web.UI.UserControl
     //        //DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
     //        MailMessage mailMessage = new MailMessage();
     //        //mailMessage.To.Add(dup.AspNetUser.Email);
-    //        mailMessage.From = new MailAddress("dreambirdapp@gmail.com");
+    //        mailMessage.From = new MailAddress("hajisabweb@gmail.com");
     //        mailMessage.Subject = "DreamBird e-mail test";
     //        mailMessage.IsBodyHtml = true;
     //        string Body = System.IO.File.ReadAllText(Server.MapPath("~/Components/Account/Emailconformation.html"));
     //        Body = Body.Replace("{DynamicContent}", PackageUtil.ServerUrl+"/Components/Account/EmailVerifier.aspx?verificationID=" + currentuser_id + "");
     //        mailMessage.Body = Body;//"http://localhost:64671/Components/Account/EmailVerifier?verificationID="+ currentuser_id + "";
     //        SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
-    //        smtpClient.Credentials = new System.Net.NetworkCredential("dreambirdapp@gmail.com", "dogar1949");
+    //        smtpClient.Credentials = new System.Net.NetworkCredential("hajisabweb@gmail.com", "hajisab123");
     //        smtpClient.EnableSsl = true;
     //        smtpClient.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
     //        ServicePointManager.ServerCertificateValidationCallback =

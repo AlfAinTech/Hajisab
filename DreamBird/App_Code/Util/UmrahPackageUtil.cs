@@ -25,13 +25,13 @@ public class UmrahPackageUtil
             //  DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add(package.AlharmainUser.email);
-            mailMessage.From = new MailAddress("dreambirdapp@gmail.com");
+            mailMessage.From = new MailAddress("hajisabweb@gmail.com");
             mailMessage.Subject = "DreamBird e-mail test";
             mailMessage.IsBodyHtml = true;
             string Body = GenerateEmailBody(package);
             mailMessage.Body = Body;
             SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
-            smtpClient.Credentials = new System.Net.NetworkCredential("dreambirdapp@gmail.com", "dogar1949");
+            smtpClient.Credentials = new System.Net.NetworkCredential("hajisabweb@gmail.com", "hajisab123");
             smtpClient.EnableSsl = true;
             smtpClient.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
             ServicePointManager.ServerCertificateValidationCallback =

@@ -8,7 +8,7 @@
                 <!-- /.col-lg-6 -->
                 <div class="col-lg-12">
                     <asp:Panel DefaultButton="search_Package_button" runat="server" CssClass="input-group blogsearch">
-                        <asp:TextBox ID="Package_keyword" class="form-control" placeholder="Search Package" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="Package_keyword" class="form-control searchBar" placeholder="Search Package" runat="server"></asp:TextBox>
                         <span class="input-group-btn">
                             <asp:LinkButton  class="btn btn-primary" validationgroup="Searchpackage"  ID="search_Package_button" runat="server"  OnClick="search_Package_button_ServerClick">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>

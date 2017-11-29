@@ -166,24 +166,24 @@
           <div class="col-md-4">
           <h5>Adults</h5>
                    <asp:TextBox type="number" runat="server" ID="adults_no" class="form-control" name="" Text="1"/>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="adults_no" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
+                      <%-- <asp:RequiredFieldValidator ValidationGroup="saveBooking" ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="adults_no" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
-                   ControlToValidate="adults_no" ValidationExpression="^(?:[1-9]|\d\d\d*)$" ValidationGroup="saveBooking"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
+                   ControlToValidate="adults_no"  ValidationExpression="^(?:[1-9]|\d\d\d*)$" ValidationGroup="saveBooking"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     --%>
 
         </div>
          <div class="col-md-4">
           <h5>Children</h5>
                    <asp:TextBox type="number" runat="server" ID="children_no" class="form-control" name="" Text="0"/>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="children_no" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
+                      <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="children_no" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                   ControlToValidate="children_no" ValidationExpression="^[0-9]\d*$"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
+                   ControlToValidate="children_no" ValidationExpression="^[0-9]\d*$"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     --%>
         </div>
            <div class="col-md-4">
           <h5>Infants</h5>
                    <asp:TextBox type="number" runat="server" ID="infant_no" class="form-control" name="" Text="0"/>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="infant_no" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
+                      <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="infant_no" Font-Bold="True" Font-Size="Larger" ForeColor="Red"></asp:RequiredFieldValidator>
                  <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
-                   ControlToValidate="infant_no" ValidationExpression="^[0-9]\d*$"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     
+                   ControlToValidate="infant_no" ValidationExpression="^[0-9]\d*$"  Display="Dynamic" SetFocusOnError="true" ErrorMessage="invalid" Font-Bold="True"  ForeColor="Red" ></asp:RegularExpressionValidator>     --%>
         </div>
               </div>
         </div>

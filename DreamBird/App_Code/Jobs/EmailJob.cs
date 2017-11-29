@@ -28,14 +28,14 @@ public class EmailJob: IJob
             //  DreamUserProfile dup = db.DreamUserProfiles.Where(q => q.AspNetUserId == currentuser_id).First();
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add(UserMail);
-            mailMessage.From = new MailAddress("dreambirdapp@gmail.com");
+            mailMessage.From = new MailAddress("hajisabweb@gmail.com");
             mailMessage.Subject = "DreamBird e-mail test";
             mailMessage.IsBodyHtml = true;
             string Body =  System.IO.File.ReadAllText("UmrahComponents/PackageComponent/BookingEmail.html");
             Body = Body.Replace("{DynamicContent_link}", PackageUtil.ServerUrl + "/"+package.PackageDetail.Package.PackageName + "/UmrahDetail").Replace("{DynamicContent_id}", package.trackingID); ;
             mailMessage.Body = Body;
             SmtpClient smtpClient = new SmtpClient("74.125.206.108", 587);
-            smtpClient.Credentials = new System.Net.NetworkCredential("dreambirdapp@gmail.com", "dogar1949");
+            smtpClient.Credentials = new System.Net.NetworkCredential("hajisabweb@gmail.com", "hajisab123");
             smtpClient.EnableSsl = true;
             smtpClient.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
             ServicePointManager.ServerCertificateValidationCallback =

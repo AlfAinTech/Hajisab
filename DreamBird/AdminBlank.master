@@ -22,13 +22,17 @@
         var somethingChanged = false;
         $(function () {
             $('#form1 input').change(function () {
-                
-                somethingChanged = true;
+               
+                if (this.classList.contains("searchBar"))
+                {  }
+                else
+                { somethingChanged = true; }
             });
        
-        $("input[type='submit']").click(function () {
+            $("input[type='submit']").click(function () {
             somethingChanged = false;
         });
+       
         });
     window.onbeforeunload = confirmExit;
     function confirmExit(){
