@@ -10,28 +10,24 @@
 
         <asp:ScriptManager ID="ScriptManager2" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
 
-        <div class="row">
-
-
             <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
             <ContentTemplate>--%>
 
 
-            <div id="Div1" class="col-md-12" runat="server" style="background-color:#e6e6e6;">
-                <div class="col-md-12" runat="server">
+            <div id="Div1" runat="server" style="background-color:#e6e6e6;">
+                <div runat="server">
                     <uc1:Packageheader runat="server" ID="Packageheader1" />
                     <uc1:BookingFormHeader runat="server" ID="BookingFormHeader1" />
                      
                     <uc1:BookingForm runat="server" ID="BookingForm" />
                 </div>
-                <div class="col-md-12" runat="server">
+                <div runat="server">
                     <uc1:PackageFooter runat="server" ID="PackageFooter1" />
                 </div>
 
             </div>
             <%-- </ContentTemplate>
         </asp:UpdatePanel>--%>
-        </div>
 
 </asp:Content>
 

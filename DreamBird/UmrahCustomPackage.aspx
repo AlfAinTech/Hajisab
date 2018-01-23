@@ -6,7 +6,7 @@
 <%@ Register Src="~/UmrahComponents/PackageComponent/CustomPackageAdd.ascx" TagPrefix="uc1" TagName="CustomPackageAdd" %>
 
 
-  <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
 
 
@@ -20,38 +20,32 @@
 
 
 
-   
 
-      <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
-       
-        <div class="row">
-          
-            
-        <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
+
+
+    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="false">
             <ContentTemplate>--%>
-    
-          
-                        <div id="body_content" class="col-md-12" runat="server">
-                            <div  class="col-md-12" runat="server">
-                                <uc1:Packageheader runat="server" ID="Packageheader" />
-                                <uc1:DetailHeader runat="server" ID="DetailHeader" />
 
-                               
-                        </div>
-                        <div  class="content_wrap" runat="server">
-                             <div  class="container" runat="server">
-                                 <uc1:CustomPackageAdd runat="server" ID="CustomPackageAdd" />
-                            </div>
-                            </div>
-                            <div  class="col-md-12" runat="server">
-                                 <uc1:PackageFooter runat="server" ID="PackageFooter" />
-                            </div>
-                        
+
+    <div id="body_content" runat="server">
+        <div runat="server">
+            <uc1:Packageheader runat="server" ID="Packageheader" />
+            <uc1:DetailHeader runat="server" ID="DetailHeader" />
+
+
+        </div>
+        <div class="content_wrap" runat="server">
+            <div class="container" runat="server">
+                <uc1:CustomPackageAdd runat="server" ID="CustomPackageAdd" />
+            </div>
+        </div>
+        <div runat="server">
+            <uc1:PackageFooter runat="server" ID="PackageFooter" />
+        </div>
+
     </div>
-           <%-- </ContentTemplate>
+    <%-- </ContentTemplate>
         </asp:UpdatePanel>--%>
-
-        </div> 
-       
-     
-  </asp:Content>
+</asp:Content>

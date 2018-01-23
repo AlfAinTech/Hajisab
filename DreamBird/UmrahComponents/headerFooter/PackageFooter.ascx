@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="PackageFooter.ascx.cs" Inherits="UmrahComponents_headerFooter_PackageFooter" %>
- <%--<div id="footer_wrapper">--%>
-       <%-- <div id="upper_footer">
+<%--<div id="footer_wrapper">--%>
+<%-- <div id="upper_footer">
             <div class="container">
                 <div class="col-md-4">
                     <h3>
@@ -73,17 +73,14 @@
             </div>
         </div>
     </div>--%>
-    <div id="lower_footer">
-        <div class="">
-            <div class="col-md-12" style="padding-top: 0px; color: white;">
-
-            <div class="col-md-10">
-            <h5 >Copyrights &copy; Hajisb.com All Rights Reserved</h5>
-                </div>
-                <div class="col-md-2" style="text-align:right">
-                     <h5>info@hajisab.com</h5>
-                </div>
-          </div>
+<div id="lower_footer">
+    <div class="row">
+        <div class="col-md-9" style="text-align: left;">
+            Copyrights &copy; Hajisb.com All Rights Reserved
+        </div>
+        <div class="col-md-3" style="text-align: right;">
+            info@hajisab.com
         </div>
     </div>
+</div>
 <%--</div>--%>

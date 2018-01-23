@@ -260,7 +260,9 @@
                             </div>
                         </div>
                         <div class="col-md-9 detail_package_detail" style="padding-top: 5px;">
-                            <asp:RadioButtonList ID="makkahAccommodation_list" ClientIDMode="Static" runat="server" DataTextField="Name" DataValueField="id" RepeatDirection="Horizontal" CssClass="RadioButtonList"></asp:RadioButtonList>
+                            <asp:RadioButtonList ID="makkahAccommodation_list" ClientIDMode="Static" 
+                                runat="server" DataTextField="Name" DataValueField="id" 
+                                RepeatDirection="Horizontal" CssClass="RadioButtonList"></asp:RadioButtonList>
                         </div>
                     </div>
                 </div>

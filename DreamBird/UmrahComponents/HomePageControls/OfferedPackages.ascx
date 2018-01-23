@@ -22,6 +22,7 @@
 
 
         </script>
+        
         <div id="what_we_offer">
             <h1>Select Packages
             </h1>

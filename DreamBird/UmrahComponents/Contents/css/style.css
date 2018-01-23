@@ -101,7 +101,7 @@ html, body {
 }
 
 .search_result img {
-    padding: 15px;
+    
 }
 
 .chat_icons {
@@ -285,7 +285,6 @@ output {
     margin-top: 5px;
     margin-bottom: 25px;
     font-size: 16px;
-    text-shadow: 0px 0px 3px;
 }
 
 .tags {
@@ -366,8 +365,17 @@ output {
     background-color: #f6f6f6;
 }
 
-    .search_detail h3, h5 {
+    .search_detail h3,h4, h5 {
         text-align: center;
+        font-family: 'OpenSans-Regular';
+    }
+    .search_detail h4{
+        font-family:'OpenSans-Light';
+        font-size:14px;
+    }
+    .search_detail b{
+        font-weight:bold;
+        font-size:18px;
     }
 
     .search_detail h3 {
@@ -377,6 +385,9 @@ output {
 .search_result {
     background-color: white;
     box-shadow: 3px 4px 5px 1px #a5a5a5;
+    margin-top: 15px; 
+    margin-bottom: 10px; 
+    padding: 0;
 }
 
 .clientsb {
@@ -426,7 +437,7 @@ output {
     font-weight: 800;
     color: white;
     font-size: 4em;
-    font-family: 'Heebo', sans-serif;
+    font-family:'Montserrat Bold', sans-serif;
 }
 
 .search_bar .form-control {
@@ -439,6 +450,8 @@ output {
 #slider_wrapper h3 {
     text-align: center;
     color: white;
+    font-size: 16pt;
+    font-family: 'Lato-Regular'
 }
 
 #slider_wrapper .btn-primary {
@@ -569,19 +582,28 @@ output {
     #primary_package_wrapper h2 {
         text-align: center;
         font-weight: 800;
-        font-family: 'Heebo', sans-serif;
+        font-family: 'Montserrat Bold', sans-serif;
     }
 
     #primary_package_wrapper h4 {
         text-align: center;
         font-weight: 300;
         margin-bottom: 30px;
+        font-size:16px;
+        font-family: 'OpenSans-Regular';
     }
 
 .search_result h2 {
     text-align: center;
     font-weight: 800;
     font-family: 'Heebo', sans-serif;
+    font-family: 'MyriadPro-Bold';
+    font-size: 4em;
+}
+
+.search_result h2 .pkr{
+    font-size: 28px;
+    font-family: 'MyriadPro Regular';
 }
 
 .banner {
@@ -591,6 +613,10 @@ output {
     top: 0;
     right: 10px;
     padding: 10px;
+}
+@font-face {
+    font-family: 'glyphicons-halflings-regular';
+    src: url('../fonts/glyphicons-halflings-regular.eot') format('embedded-opentype');
 }
 
 .banner_bottom {
@@ -761,32 +787,35 @@ output {
         text-align: center;
         font-weight: 800;
         color: white;
-        font-family: 'Heebo', sans-serif;
+        font-family: 'Montserrat Bold', sans-serif;
+        font-size:30px;
     }
 
     #what_we_offer h4 {
         text-align: center;
         font-weight: 400;
         color: white;
+        font-size:16px;
+        font-family:'OpenSans-Regular';
     }
 
 .offer_tabs {
     background-color: #e6e6e6;
 }
 
-#search_result_hotel > .nav-tabs {
+/*#search_result_hotel > .nav-tabs {
     border-bottom: none;
     position: absolute;
     z-index: 1000;
     left: 52px;
     bottom: 20px;
-}
+}*/
 
-#search_result_filter > .nav-tabs {
+#search_result_filter  .nav-tabs {
     border-bottom: none;
     position: absolute;
     z-index: 1000;
-    left: 15px;
+    right:10px;
     top: 10px;
 }
 
@@ -803,27 +832,27 @@ output {
     font-size: 1.2em;
 }
 
-#search_result_hotel > .nav > li > a {
+/*#search_result_hotel > .nav > li > a {
     padding: 1px 25px;
     border: none;
     border-radius: 4px;
     margin-top: 3px;
-}
+}*/
 
-#search_result_filter > .nav > li > a {
+#search_result_filter  .nav > li > a {
     padding: 1px 8px;
     border: none;
     border-radius: 15px;
     margin-top: 3px;
 }
 
-#search_result_hotel > .nav-tabs > li > a {
+/*#search_result_hotel > .nav-tabs > li > a {
     background-color: #957ba4;
     color: white;
     font-weight: 600;
-}
+}*/
 
-#search_result_filter > .nav-tabs > li > a {
+#search_result_filter  .nav-tabs > li > a {
     background-color: #957ba4;
     color: white;
     font-weight: 600;
@@ -832,27 +861,29 @@ output {
 .detail_package_name h5 {
     text-align: right;
     margin-top: 0px;
+    font-family:'OpenSans-Regular';
 }
 
 
 .detail_package_detail h5 {
     text-align: left;
     font-weight: 800;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    margin:0;
+    font-family:'OpenSans-Bold';
 }
 
 .detail_package_detail .glyphicon {
     color: #ff9900;
 }
 
-#search_result_hotel > .nav-tabs > .active > a {
+/*#search_result_hotel > .nav-tabs > .active > a {
+    background-color: #5a2778;
+}*/
+
+#search_result_filter  .nav-tabs > .active > a {
     background-color: #5a2778;
 }
 
-#search_result_filter > .nav-tabs > .active > a {
-    background-color: #5a2778;
-}
 
 #what_we_offer_tabs > .nav > li > a {
     padding: 40px 15px;
@@ -861,14 +892,14 @@ output {
 
 
 #what_we_offer_tabs h2 {
-    font-family: 'Heebo', sans-serif;
-    font-size:36px;
+    font-family: 'Montserrat Bold';
+    font-size: 28px;
 }
-
+    
 #what_we_offer_tabs_inner h2 {
     font-family: 'Heebo', sans-serif;
     text-transform: uppercase;
-    font-size:30px;
+    font-size:24px;
     margin-bottom: 13px;
 }
 
@@ -877,6 +908,7 @@ output {
     text-transform: uppercase;
     color:#b885cc;
 }
+
 
 #what_we_offer_tabs > .nav-tabs {
     background-image: url(../img/nav_image.jpg);
@@ -887,6 +919,8 @@ output {
         background-color: rgba(98, 35, 136, 0.3);
         color: white;
         font-weight: 600;
+        border:0;
+        border-radius:0;
     }
 
     #what_we_offer_tabs > .nav-tabs.nav-justified > .active {
@@ -920,19 +954,25 @@ output {
     text-align: center;
     color: black;
     background-color: #f6f6f6;
+    border: 0;
+    border-radius: 0;
+    margin-right: 0;
 }
 
 #what_we_offer_tabs > .tab-content > .tab-pane > #what_we_offer_tabs_inner > div > .nav > .active > a {
     background-color: #871ec3;
     color: white;
+    border: 0;
+    border-radius: 0;
+    margin-right: 0;
 }
 #what_we_offer_tabs > .tab-content > .tab-pane > #what_we_offer_tabs_inner > div > .tab-content > .tab-pane {
-    height: 425px;
+    min-height: 82.5%;
     background-color: white;
     padding-top: 50px;
     padding-bottom: 25px;
 }
-
+    
 .what_we_offer_item {
     background: #d13eea; /* Old browsers */
     background: -moz-linear-gradient(-45deg, #d13eea 0%, #671a94 100%); /* FF3.6-15 */
@@ -1006,7 +1046,8 @@ output {
 
 #lower_footer {
     background-color: #231929;
-    height: 50px;
+    padding:25px 55px;
+    color:white;
 }
 
 #footer_wrapper {
@@ -1016,4 +1057,49 @@ output {
 .RadioButtonList input[type="radio"] {
     margin-left: 10px;
     margin-right: 1px;
+}
+#form1 {
+    margin-bottom:0;
+}
+
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    src: url('../fonts/Fonts/Montsserat/Montserrat-Bold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'MyriadPro Regular';
+    src: url('../fonts/Fonts/Myraid Pro/MyriadPro-Regular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Lato Black';
+    src: url('../fonts/Fonts/lato/Lato-Black.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('../fonts/Fonts/lato/Lato-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url('../fonts/Fonts/Open Sans/OpenSans-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OpenSans-Light';
+    src: url('../fonts/Fonts/Open Sans/OpenSans-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('../fonts/Fonts/Open Sans/OpenSans-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url('../fonts/Fonts/lato/Lato-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Lato-Light_0';
+    src: url('../fonts/Fonts/lato/Lato-Light_0.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'MyriadPro-Bold';
+    src: url('../fonts/Fonts/Myraid Pro/MyriadPro-Bold.otf') format('opentype');
 }

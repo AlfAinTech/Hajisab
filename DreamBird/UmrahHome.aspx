@@ -132,7 +132,7 @@
                             <uc1:BestUmrahPackages runat="server" ID="BestUmrahPackages" />
                             <uc1:PrimaryUmrahPackages runat="server" ID="PrimaryUmrahPackages" />
                             <uc1:OfferedPackages runat="server" ID="OfferedPackages" />
-                            <div id="sortable-5" class="col-md-12" style="">
+                            <div id="sortable-5" class="col-md-12" style="padding:0;">
                             <uc1:PackageFooter runat="server" ID="PackageFooter" />
                                 </div>
                         </div>

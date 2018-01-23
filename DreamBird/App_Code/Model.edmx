@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DreamBirdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DreamBirdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Accommodation">
           <Key>
             <PropertyRef Name="id" />
@@ -72,7 +72,7 @@
           <Property Name="ClaimValue" Type="nvarchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'HajiSab.Jahanzaib.AspNetUserLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUserLogins">
           <Key>
             <PropertyRef Name="LoginProvider" />
@@ -363,16 +363,6 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DetailPath" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Tags">
           <Key>
             <PropertyRef Name="id" />
@@ -414,7 +404,19 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="text" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__AirLine__AspNetU__44952D46">
+        <Association Name="FK__AirLine__AspNetU__778AC167">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AirLine" Type="Self.AirLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AirLine">
+              <PropertyRef Name="AspNetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AirLine__AspNetU__787EE5A0">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="AirLine" Type="Self.AirLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -450,7 +452,31 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Dreams__AspNetUs__66EA454A">
+        <Association Name="FK__Hotel__AspNetUse__07C12930">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Hotel">
+              <PropertyRef Name="AspNetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hotel__AspNetUse__08B54D69">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Hotel">
+              <PropertyRef Name="AspNetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packages__AspNet__1CBC4616">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
           <ReferentialConstraint>
@@ -462,14 +488,14 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Hotel__AspNetUse__603D47BB">
+        <Association Name="FK__Packages__AspNet__1DB06A4F">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+          <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Hotel">
+            <Dependent Role="Packages">
               <PropertyRef Name="AspNetUserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -510,7 +536,19 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VisaPacka__AspNe__5006DFF2">
+        <Association Name="FK__VisaPacka__AspNe__245D67DE">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="VisaPackages" Type="Self.VisaPackages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VisaPackages">
+              <PropertyRef Name="AspNetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VisaPacka__AspNe__25518C17">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="VisaPackages" Type="Self.VisaPackages" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1011,7 +1049,6 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
           <EntitySet Name="Packages" EntityType="Self.Packages" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="PackageTags" EntityType="Self.PackageTags" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="PackageType" EntityType="Self.PackageType" Schema="Jahanzaib" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="TransPort" EntityType="Self.TransPort" Schema="Jahanzaib" store:Type="Tables" />
           <EntitySet Name="VideoTranscript" EntityType="Self.VideoTranscript" Schema="Jahanzaib" store:Type="Tables" />
@@ -1024,7 +1061,11 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
     [AspNetUserLogins].[UserId] AS [UserId]
     FROM [Jahanzaib].[AspNetUserLogins] AS [AspNetUserLogins]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__AirLine__AspNetU__44952D46" Association="Self.FK__AirLine__AspNetU__44952D46">
+          <AssociationSet Name="FK__AirLine__AspNetU__778AC167" Association="Self.FK__AirLine__AspNetU__778AC167">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AirLine" EntitySet="AirLine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AirLine__AspNetU__787EE5A0" Association="Self.FK__AirLine__AspNetU__787EE5A0">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AirLine" EntitySet="AirLine" />
           </AssociationSet>
@@ -1036,13 +1077,21 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
             <End Role="Accommodation" EntitySet="Accommodation" />
             <End Role="AlharmainUserPackage" EntitySet="AlharmainUserPackage" />
           </AssociationSet>
-          <AssociationSet Name="FK__Dreams__AspNetUs__66EA454A" Association="Self.FK__Dreams__AspNetUs__66EA454A">
+          <AssociationSet Name="FK__Hotel__AspNetUse__07C12930" Association="Self.FK__Hotel__AspNetUse__07C12930">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Hotel" EntitySet="Hotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hotel__AspNetUse__08B54D69" Association="Self.FK__Hotel__AspNetUse__08B54D69">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Hotel" EntitySet="Hotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packages__AspNet__1CBC4616" Association="Self.FK__Packages__AspNet__1CBC4616">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Packages" EntitySet="Packages" />
           </AssociationSet>
-          <AssociationSet Name="FK__Hotel__AspNetUse__603D47BB" Association="Self.FK__Hotel__AspNetUse__603D47BB">
+          <AssociationSet Name="FK__Packages__AspNet__1DB06A4F" Association="Self.FK__Packages__AspNet__1DB06A4F">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Hotel" EntitySet="Hotel" />
+            <End Role="Packages" EntitySet="Packages" />
           </AssociationSet>
           <AssociationSet Name="FK__VideoTran__Media__1D114BD1" Association="Self.FK__VideoTran__Media__1D114BD1">
             <End Role="MediaItems" EntitySet="MediaItems" />
@@ -1056,7 +1105,11 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
             <End Role="MediaItems" EntitySet="MediaItems" />
             <End Role="VideoTranscript" EntitySet="VideoTranscript" />
           </AssociationSet>
-          <AssociationSet Name="FK__VisaPacka__AspNe__5006DFF2" Association="Self.FK__VisaPacka__AspNe__5006DFF2">
+          <AssociationSet Name="FK__VisaPacka__AspNe__245D67DE" Association="Self.FK__VisaPacka__AspNe__245D67DE">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="VisaPackages" EntitySet="VisaPackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VisaPacka__AspNe__25518C17" Association="Self.FK__VisaPacka__AspNe__25518C17">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="VisaPackages" EntitySet="VisaPackages" />
           </AssociationSet>
@@ -1238,7 +1291,6 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
             <End Role="Hotel" EntitySet="Hotels" />
             <End Role="PackageItenryDetail" EntitySet="PackageItenryDetails" />
           </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="DreamBirdModel.sysdiagram" />
           <EntitySet Name="TransPorts" EntityType="DreamBirdModel.TransPort" />
           <AssociationSet Name="FK_transportID" Association="DreamBirdModel.FK_transportID">
             <End Role="TransPort" EntitySet="TransPorts" />
@@ -1580,16 +1632,6 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TransPort">
           <Key>
             <PropertyRef Name="id" />
@@ -2553,17 +2595,6 @@ warning 6002: The table/view 'UmrahHaji.Jahanzaib.AspNetUserLogins' does not hav
               <MappingFragment StoreEntitySet="Ziarat">
                 <ScalarProperty Name="text" ColumnName="text" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DreamBirdModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

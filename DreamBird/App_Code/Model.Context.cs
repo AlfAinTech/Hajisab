@@ -31,7 +31,6 @@ public partial class PackageEntities : DbContext
     public virtual DbSet<HotelImage> HotelImages { get; set; }
     public virtual DbSet<PackageItenryDetail> PackageItenryDetails { get; set; }
     public virtual DbSet<Ziarat> Ziarats { get; set; }
-    public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     public virtual DbSet<TransPort> TransPorts { get; set; }
     public virtual DbSet<AirLine> AirLines { get; set; }
     public virtual DbSet<Flight> Flights { get; set; }
